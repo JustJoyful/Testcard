@@ -192,3 +192,11 @@ These are requested revisions to the implementation plan; execution still awaits
 6. **Calendar checkpoint:** Phase 1 targets October 30 end of day. If Task 7 (pilot) is not complete by October 28 end of day (Asia/Kolkata), stop and cut scope before tuning; a GPU-hour projection cannot waive this checkpoint. Reserve the remaining project days for ResNet, LIVE-VQC, the demo and honest reporting.
 
 Frozen feature configs, recorded measurements and Phase 0 hash artifacts are unchanged. No Phase 1 extraction, splits or training have been run while revising the plan.
+
+## 2026-10-25: Phase 1 execution started
+
+- The user authorized execution of the revised core-slice plan. Git and CUDA access now work in this environment. Preserved the verified Phase 0 checkout in a baseline commit and created `phase1-core-slice`; source archives, weights, raw clips and cache arrays stay ignored. Work remains in the original directory on this named branch so existing ignored inputs are available.
+- Created and committed immutable outer/inner splits; provenance and generated role counts are in `data/splits/konvid_folds.meta.json`. Repeated split invocation verifies the same files without rewriting.
+- Implemented the planned cache, data, heads, trainer, ridge, selection, CV and parity interfaces. Generated parameter counts are in `results/phase1/head_parameters.json`. The frozen preprocessing/features modules are unchanged.
+- Real fixed-sample GPU extraction passed for both spatial backbones. Full KoNViD → LIVE-VQC extraction is running sequentially. Hardware completion, controls, training pilot, runtime approval, tuning, CV/ridge and parity remain pending; Phase 1 is not complete and the protocol remains draft. No tuning-seed fallback has been activated. Consult generated extraction evidence and the execution ledger rather than treating offline tests as hardware evidence.
+- Code commits are audit fields rather than numerical compatibility keys: unrelated additions do not invalidate already verified caches/runs. A fitting correction requires a dated affected-run invalidation and a new shuffled-label control.

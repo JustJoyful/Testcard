@@ -14,13 +14,52 @@ def same_inputs(record,provenance):
 
 
 def require_control(directory,provenance):
-    path=Path(directory)/'diagnostic.json'
+    from src.features import sha256
+    from src.metrics import bootstrap_srcc
+    from src.training import config_hash
+    directory=Path(directory)
+    path=directory/'diagnostic.json'
     if not path.exists():
         raise ValueError(f'missing control gate: {path}')
     result=json.loads(path.read_text())
+    bootstrap=result.get('bootstrap',{})
+    score=bootstrap.get('srcc')
+    interval=bootstrap.get('ci95')
     if (result.get('status')!='passed' or not same_inputs(result.get('provenance',{}),provenance)
-            or result.get('seeds')!=list(range(5))):
+            or result.get('seeds')!=list(range(5)) or bootstrap.get('status')!='ok'
+            or score is None or not np.isfinite(score) or abs(score)>=.15
+            or interval is None or len(interval)!=2 or not np.isfinite(interval).all()
+            or not interval[0]<=0<=interval[1]):
         raise ValueError(f'failed/stale control gate: {path}')
+    try:
+        permutation=directory.parent/'control_permutation.json'
+        if sha256(permutation)!=result['permutation_sha256']:
+            raise ValueError('changed fixed permutation')
+        outputs=[]
+        for seed in range(5):
+            run=json.loads((directory/f'seed{seed}'/'run.json').read_text())
+            rows=json.loads((directory/f'seed{seed}'/'predictions.json').read_text())
+            kind='control_final' if directory.name=='control_final' else 'control_initial'
+            if (run['status']!='complete' or run['seed']!=seed or not same_inputs(run['provenance'],provenance)
+                    or run['provenance']['label_mode']!='shuffled' or run['provenance']['run_kind']!=kind
+                    or run['provenance']['fold']!=0 or run['provenance']['permutation_sha256']!=result['permutation_sha256']
+                    or run['identity']['config_sha256']!=result['config_sha256']
+                    or sha256(directory/f'seed{seed}'/'best.pt')!=run['checkpoint_sha256']
+                    or [r['video_id'] for r in rows]!=result['video_ids']
+                    or len(set(result['video_ids']))!=len(result['video_ids'])
+                    or any(r['seed']!=seed or r['label_mode']!='shuffled' or r['run_kind']!=kind
+                           or r['checkpoint_sha256']!=run['checkpoint_sha256'] for r in rows)):
+                raise ValueError(f'incomplete/stale seed {seed}')
+            outputs.append(rows)
+        labels=np.array([r['mos'] for r in outputs[0]])
+        ensemble=np.array([[r['prediction'] for r in rows] for rows in outputs]).mean(0)
+        if any([r['mos'] for r in rows]!=labels.tolist() for rows in outputs):
+            raise ValueError('inconsistent control labels')
+        actual=bootstrap_srcc(labels,ensemble)
+        if actual!=bootstrap or ensemble.tolist()!=result['seed_averaged_predictions']:
+            raise ValueError('control diagnostic differs from saved individual predictions')
+    except (OSError,KeyError,TypeError,ValueError) as exc:
+        raise ValueError(f'invalid control artifacts: {path}: {exc}') from exc
     return result
 
 
@@ -95,9 +134,16 @@ def require_selection_gates(protocol,provenance,need_rank=False):
     if not path.exists():
         raise ValueError('missing measured runtime budget')
     budget=json.loads(path.read_text())
-    if budget['status']!='go' or budget['protocol_sha256']!=config_hash(protocol) or not same_inputs(budget['provenance'],provenance):
+    if (budget['status']!='go' or budget['protocol_sha256']!=config_hash(protocol) or not same_inputs(budget['provenance'],provenance)
+            or budget.get('reserved_gpu_hours')!=30 or budget.get('planning_2x_hours',float('inf'))>budget.get('remaining_head_hours',0)):
         raise ValueError('failed/stale runtime budget')
     pilot=json.loads((root/'training_pilot.json').read_text())
+    from src.features import sha256
+    if (pilot.get('status')!='complete' or not same_inputs(pilot.get('provenance',{}),provenance)
+            or budget.get('pilot_sha256')!=sha256(root/'training_pilot.json')
+            or set(pilot.get('runs',{}))!={'mean_pool','bigru','transformer','mamba'}
+            or budget.get('planned_counts')!=planned_fit_counts({'seeds':list(range(5))},protocol)):
+        raise ValueError('invalid actual pilot or runtime fit counts')
     calendar_gate(pilot['completed_at'])
     if need_rank:
         path=Path('configs/rank_loss.yaml')

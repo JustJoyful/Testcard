@@ -47,3 +47,12 @@ def test_runtime_reserves_unspent_extraction_even_after_pilots():
     result=runtime_budget(scope,{'rank_candidates':[0,.1,.3,1],'max_epochs':200},pilots,10.,8.,actual_extraction_hours=4.)
     assert result['remaining_extraction_allowance_hours']==6.
     assert result['remaining_head_hours']==56.
+
+
+def test_claimed_pass_cannot_hide_failed_control_numbers(tmp_path):
+    from src.cache import atomic_json
+    from src.tuning import require_control
+    atomic_json(tmp_path/'diagnostic.json',{'status':'passed','seeds':list(range(5)),
+        'provenance':{},'bootstrap':{'status':'ok','srcc':.9,'ci95':[.8,.95],'valid_draws':10000,'invalid_draws':0}})
+    with pytest.raises(ValueError,match='control'):
+        require_control(tmp_path,{})

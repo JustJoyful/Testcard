@@ -123,6 +123,42 @@ def collect_cv(protocol,provenance,configs,root):
     return rows,runs
 
 
+def validate_parameter_budget(protocol):
+    from src.heads import build_head
+    from src.heads.common import parameter_counts
+    tier=yaml.safe_load(Path(protocol['head_tiers']).read_text())['matched']
+    expected=json.loads(Path('results/phase1/head_parameters.json').read_text())
+    actual={str(d):{h:parameter_counts(build_head(h,d,{'tier':tier,'input_dropout':protocol['input_dropout'],'head_dropout':protocol['head_dropout']}))
+                     for h in ('mean_pool','bigru','transformer','mamba')} for d in (1536,2048)}
+    if actual!=expected or any(max(r['head'] for r in group.values())/min(r['head'] for r in group.values())>1.05 for group in actual.values()):
+        raise ValueError('parameter budget changed/failed')
+    return actual
+
+
+def validate_runtime(protocol,provenance,root):
+    from src.tuning import planned_fit_counts,calendar_gate
+    pilot=json.loads((root/'training_pilot.json').read_text())
+    budget=json.loads((root/'runtime_budget.json').read_text())
+    if (pilot['status']!='complete' or set(pilot['runs'])!={'mean_pool','bigru','transformer','mamba'}
+            or not same_inputs(pilot['provenance'],provenance) or budget['status']!='go'
+            or budget['protocol_sha256']!=config_hash(protocol) or not same_inputs(budget['provenance'],provenance)
+            or budget['pilot_sha256']!=sha256(root/'training_pilot.json')
+            or budget['reserved_gpu_hours']!=30 or budget['planning_2x_hours']>budget['remaining_head_hours']):
+        raise ValueError('missing/failed/stale actual pilot/runtime budget')
+    calendar_gate(pilot['completed_at'])
+    for head,run in pilot['runs'].items():
+        if (run['status']!='complete' or run['config']['device']!='cuda' or run['peak_cuda_bytes']<=0
+                or run['seed']!=0 or run['completed_epochs']<1 or run['wall_seconds']<=0
+                or not same_inputs(run['provenance'],provenance)
+                or json.loads((root/'pilot'/head/'run.json').read_text())!=run
+                or sha256(root/'pilot'/head/'best.pt')!=run['checkpoint_sha256']):
+            raise ValueError(f'invalid actual pilot: {head}')
+    counts=planned_fit_counts(yaml.safe_load(Path('configs/scope.yaml').read_text()),protocol)
+    if budget['planned_counts']!=counts:
+        raise ValueError('runtime budget fit counts changed')
+    return {'status':'go','planning_2x_hours':budget['planning_2x_hours'],'remaining_head_hours':budget['remaining_head_hours']}
+
+
 def phase_report(protocol,root,features):
     root=Path(root)
     training=importlib.import_module('scripts.05_train')
@@ -139,6 +175,10 @@ def phase_report(protocol,root,features):
     configs=gate('frozen_selection',lambda:training.selected_configs(protocol,provenance or {}))
     gate('initial_control',lambda:require_control(root/'control_initial',provenance or {}))
     gate('final_control',lambda:require_control(root/'control_final',provenance or {}))
+    parity=importlib.import_module('scripts.04_parity_check')
+    gate('feature_parity',lambda:parity.validate_parity(root/'parity.json',provenance or {},Path(protocol['cache_root'])))
+    gate('runtime_pilot',lambda:validate_runtime(protocol,provenance or {},root))
+    gate('parameter_budget',lambda:validate_parameter_budget(protocol))
     if provenance and configs:
         collected=gate('cv_artifacts',lambda:collect_cv(protocol,provenance,configs,root))
         if collected:
