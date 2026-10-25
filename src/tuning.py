@@ -60,3 +60,51 @@ def calendar_gate(pilot_completed=None):
     observed=pilot_completed or datetime.now(ZoneInfo('Asia/Kolkata')).isoformat()
     if datetime.fromisoformat(observed)>deadline:
         raise ValueError('October 28 pilot checkpoint missed: record concrete scope cut/revised schedule before tuning')
+
+
+def make_trials(protocol,count=10,seed=0):
+    if count!=10 or seed!=0:
+        raise ValueError('ten ordered seed-0 candidates required')
+    rng=np.random.default_rng(seed)
+    return [{'candidate_id':i,'learning_rate':float(np.exp(rng.uniform(np.log(1e-4),np.log(3e-3)))),
+             'weight_decay':float(np.exp(rng.uniform(np.log(1e-6),np.log(1e-2)))),
+             'input_dropout':float(rng.choice([0,.1,.2])),'head_dropout':float(rng.choice([0,.1,.2]))} for i in range(count)]
+
+
+def select_trial(rows,expected_seeds):
+    if not rows:
+        raise ValueError('incomplete trial rows')
+    candidates=sorted({r['candidate_id'] for r in rows})
+    scores=[]
+    for candidate in candidates:
+        members=[r for r in rows if r['candidate_id']==candidate]
+        if (sorted(r['seed'] for r in members)!=sorted(expected_seeds)
+                or any(r['status']!='complete' or r.get('validation_srcc') is None or not np.isfinite(r['validation_srcc']) for r in members)):
+            raise ValueError(f'incomplete/failed candidate {candidate}: every declared seed required')
+        scores.append({'candidate_id':candidate,'mean_validation_srcc':float(np.mean([r['validation_srcc'] for r in members]))})
+    return max(scores,key=lambda r:(r['mean_validation_srcc'],-r['candidate_id']))
+
+
+def require_selection_gates(protocol,provenance,need_rank=False):
+    from src.training import config_hash
+    root=Path(protocol['results_root'])
+    if protocol['status']!='frozen':
+        raise ValueError('protocol must be frozen by measured runtime gate')
+    require_control(root/'control_initial',provenance)
+    path=root/'runtime_budget.json'
+    if not path.exists():
+        raise ValueError('missing measured runtime budget')
+    budget=json.loads(path.read_text())
+    if budget['status']!='go' or budget['protocol_sha256']!=config_hash(protocol) or not same_inputs(budget['provenance'],provenance):
+        raise ValueError('failed/stale runtime budget')
+    pilot=json.loads((root/'training_pilot.json').read_text())
+    calendar_gate(pilot['completed_at'])
+    if need_rank:
+        path=Path('configs/rank_loss.yaml')
+        if not path.exists():
+            raise ValueError('missing rank freeze')
+        import yaml
+        rank=yaml.safe_load(path.read_text())
+        if rank['status']!='frozen' or rank['protocol_sha256']!=config_hash(protocol) or not same_inputs(rank['provenance'],provenance):
+            raise ValueError('stale rank freeze')
+        return rank

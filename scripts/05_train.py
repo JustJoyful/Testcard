@@ -17,7 +17,7 @@ from src.features import sha256
 from src.heads import build_head
 from src.splits import freeze_splits
 from src.training import fit_one, predict, seed_everything
-from src.tuning import require_control
+from src.tuning import require_control, require_selection_gates, make_trials, select_trial, same_inputs
 
 HEADS=['mean_pool','bigru','transformer','mamba']
 
@@ -157,9 +157,81 @@ def freeze_protocol(protocol,config_path,provenance,pilot):
     return protocol
 
 
+def persist_yaml(path,value):
+    from src.cache import atomic_write
+    path=Path(path)
+    if path.exists():
+        if yaml.safe_load(path.read_text())!=value:
+            raise ValueError(f'incompatible immutable config: {path}')
+    else:
+        atomic_write(path,yaml.safe_dump(value,sort_keys=False).encode())
+
+
+def rank_runs(protocol,provenance):
+    from src.training import config_hash
+    require_selection_gates(protocol,provenance)
+    root=Path(protocol['results_root'])/'rank'
+    train,val=role_data(protocol,0,'train'),role_data(protocol,0,'val')
+    rows=[]
+    for candidate,weight in enumerate(protocol['rank_candidates']):
+        config={**resolved_config(protocol),'rank_weight':weight}
+        for seed in protocol['tuning_seeds']:
+            _,run=fit_run(protocol,config,provenance,'mean_pool',0,seed,root/f'candidate{candidate}'/f'seed{seed}',train,val,run_kind='rank')
+            rows.append({'candidate_id':candidate,'seed':seed,'validation_srcc':run['best_validation_srcc'],
+                         'status':run['status'],'provenance':provenance})
+    winner=select_trial(rows,protocol['tuning_seeds'])
+    result={'status':'frozen','rank_weight':protocol['rank_candidates'][winner['candidate_id']],
+            'protocol_sha256':config_hash(protocol),'provenance':provenance,'winner':winner,'rows':rows}
+    atomic_json(root/'selection.json',result)
+    persist_yaml('configs/rank_loss.yaml',result)
+    return result
+
+
+def tune_runs(protocol,provenance):
+    from src.training import config_hash
+    rank=require_selection_gates(protocol,provenance,need_rank=True)
+    candidates=make_trials(protocol)
+    # Persist the same ordered candidates once, before any head is fitted.
+    persist_yaml('configs/tuning_trials.yaml',{'status':'frozen','protocol_sha256':config_hash(protocol),'trials':candidates})
+    train,val=role_data(protocol,0,'train'),role_data(protocol,0,'val')
+    for head in HEADS:
+        rows=[]
+        root=Path(protocol['results_root'])/'tune'/head
+        for trial in candidates:
+            candidate=trial['candidate_id']
+            config={**resolved_config(protocol),**{k:v for k,v in trial.items() if k!='candidate_id'},'rank_weight':rank['rank_weight']}
+            for seed in protocol['tuning_seeds']:
+                _,run=fit_run(protocol,config,provenance,head,0,seed,root/f'candidate{candidate}'/f'seed{seed}',train,val,run_kind='tune')
+                rows.append({'candidate_id':candidate,'seed':seed,'validation_srcc':run['best_validation_srcc'],
+                             'status':run['status'],'provenance':provenance})
+        winner=select_trial(rows,protocol['tuning_seeds'])
+        config={**resolved_config(protocol),**{k:v for k,v in candidates[winner['candidate_id']].items() if k!='candidate_id'},
+                'rank_weight':rank['rank_weight']}
+        result={'status':'frozen','head':head,'protocol_sha256':config_hash(protocol),'provenance':provenance,
+                'config':config,'winner':winner,'rows':rows}
+        atomic_json(root/'selection.json',result)
+        persist_yaml(f'configs/heads/{head}.yaml',result)
+
+
+def selected_configs(protocol,provenance):
+    from src.training import config_hash
+    rank=require_selection_gates(protocol,provenance,need_rank=True)
+    result={}
+    for head in HEADS:
+        path=Path(f'configs/heads/{head}.yaml')
+        if not path.exists():
+            raise ValueError(f'missing selected head config: {head}')
+        record=yaml.safe_load(path.read_text())
+        if (record['status']!='frozen' or record['head']!=head or record['protocol_sha256']!=config_hash(protocol)
+                or not same_inputs(record['provenance'],provenance) or record['config']['rank_weight']!=rank['rank_weight']):
+            raise ValueError(f'changed/incompatible head selection: {head}')
+        result[head]=record['config']
+    return result
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--mode',choices=['single','control-initial','pilot'],required=True)
+    p.add_argument('--mode',choices=['single','control-initial','pilot','rank','tune'],required=True)
     p.add_argument('--config',type=Path,required=True)
     p.add_argument('--features',type=Path,required=True)
     p.add_argument('--head',choices=HEADS)
@@ -175,6 +247,12 @@ def main():
     if args.mode=='pilot':
         pilot=pilot_runs(protocol,provenance)
         freeze_protocol(protocol,args.config,provenance,pilot)
+        return
+    if args.mode=='rank':
+        rank_runs(protocol,provenance)
+        return
+    if args.mode=='tune':
+        tune_runs(protocol,provenance)
         return
     if any(v is None for v in (args.head,args.fold,args.seed,args.output)):
         p.error('single requires --head, --fold, --seed and --output')
