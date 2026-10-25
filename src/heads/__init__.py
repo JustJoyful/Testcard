@@ -1,11 +1,12 @@
 from .common import VideoHead
+from .mamba import MambaHead
 from .mean_pool import MeanPoolHead
 from .gru import BiGRUHead
 from .transformer import TransformerHead
 
 
 def build_head(name,input_dim,config):
-    factories={'mean_pool':MeanPoolHead,'bigru':BiGRUHead,'transformer':TransformerHead}
+    factories={'mamba':MambaHead,'mean_pool':MeanPoolHead,'bigru':BiGRUHead,'transformer':TransformerHead}
     if name not in factories:
         raise ValueError(f'unknown head: {name}')
     tier=config['tier']

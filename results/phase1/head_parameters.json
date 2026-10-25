@@ -1,0 +1,46 @@
+{
+  "1536": {
+    "mean_pool": {
+      "front_end": 396544,
+      "head": 412285,
+      "total": 808829
+    },
+    "bigru": {
+      "front_end": 396544,
+      "head": 407601,
+      "total": 804145
+    },
+    "transformer": {
+      "front_end": 396544,
+      "head": 412289,
+      "total": 808833
+    },
+    "mamba": {
+      "front_end": 396544,
+      "head": 410837,
+      "total": 807381
+    }
+  },
+  "2048": {
+    "mean_pool": {
+      "front_end": 528640,
+      "head": 412285,
+      "total": 940925
+    },
+    "bigru": {
+      "front_end": 528640,
+      "head": 407601,
+      "total": 936241
+    },
+    "transformer": {
+      "front_end": 528640,
+      "head": 412289,
+      "total": 940929
+    },
+    "mamba": {
+      "front_end": 528640,
+      "head": 410837,
+      "total": 939477
+    }
+  }
+}

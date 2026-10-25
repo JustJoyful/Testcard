@@ -6,3 +6,8 @@ matched:
   transformer_nhead: 4
   transformer_ff: 256
   readout_hidden: 64
+  mamba_layers: 1
+  mamba_inner: 230
+  mamba_state: 16
+  mamba_dt_rank: 16
+  mamba_conv: 4
