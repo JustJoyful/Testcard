@@ -76,7 +76,7 @@ def fit_one(model,train_data,val_data,config,output,seed,provenance):
     device=config['device']
     seed_everything(seed,config['cpu_threads'])
     model.to(device=device,dtype=torch.float32)
-    identity={'config_sha256':config_hash(config),'seed':seed,'provenance':provenance}
+    identity={'config_sha256':config_hash(config),'seed':seed,'provenance':{k:v for k,v in provenance.items() if k!='code_commit'}}
     existing=load_completed(model,output,identity,device)
     if existing:
         return existing

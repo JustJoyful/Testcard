@@ -71,3 +71,13 @@ def test_predictions_inverse_target_scale():
         model.linear.weight.fill_(1); model.linear.bias.zero_()
     actual=predict(model,dataset(),{'mean':10.,'std':2.},'cpu')
     assert actual[2]=={'video_id':'v2','prediction':14.}
+
+
+def test_audit_commit_change_does_not_invalidate_fit(tmp_path):
+    from src.training import fit_one
+    model=Tiny()
+    first=fit_one(model,dataset(),dataset(),config(),tmp_path,0,{'code_commit':'a','split_sha256':'same'})
+    before=(tmp_path/'best.pt').stat().st_mtime_ns
+    second=fit_one(Tiny(),dataset(),dataset(),config(),tmp_path,0,{'code_commit':'b','split_sha256':'same'})
+    assert first['checkpoint_sha256']==second['checkpoint_sha256']
+    assert (tmp_path/'best.pt').stat().st_mtime_ns==before

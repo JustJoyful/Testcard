@@ -16,7 +16,7 @@ from src.data import CachedFeatureDataset
 from src.features import sha256
 from src.heads import build_head
 from src.splits import freeze_splits
-from src.training import fit_one, predict, seed_everything
+from src.training import fit_one, predict, seed_everything, load_completed, config_hash
 from src.tuning import require_control, require_selection_gates, make_trials, select_trial, same_inputs
 
 HEADS=['mean_pool','bigru','transformer','mamba']
@@ -46,12 +46,19 @@ def role_data(protocol,fold,role):
 def fit_run(protocol,config,provenance,head,fold,seed,output,train=None,val=None,run_kind='single',label_mode='real'):
     seed_everything(seed,protocol['cpu_threads'])
     model=build_head(head,1536 if protocol['feature_set']=='dino' else 2048,config)
+    run_provenance={**provenance,'head':head,'fold':fold,'run_kind':run_kind,'label_mode':label_mode}
+    identity={'config_sha256':config_hash(config),'seed':seed,
+              'provenance':{k:v for k,v in run_provenance.items() if k!='code_commit'}}
+    model.to(protocol['device'])
+    existing=load_completed(model,output,identity,protocol['device'])
+    if existing:
+        return model,existing
     if train is None:
         train=role_data(protocol,fold,'train')
     if val is None:
         val=role_data(protocol,fold,'val')
     result=fit_one(model,train,val,config,output,seed,
-                   {**provenance,'head':head,'fold':fold,'run_kind':run_kind,'label_mode':label_mode})
+                   run_provenance)
     return model,result
 
 
@@ -229,9 +236,93 @@ def selected_configs(protocol,provenance):
     return result
 
 
+def prediction_rows(protocol,model,run,test,head,fold,seed,run_id):
+    labels={test[i]['video_id']:test[i]['mos'] for i in range(len(test))}
+    return [{**r,'dataset':'konvid','feature_set':protocol['feature_set'],'head':head,'fold':fold,'seed':seed,
+             'mos':labels[r['video_id']],'checkpoint_sha256':run['checkpoint_sha256'],'run_id':run_id,
+             'run_kind':'cv','label_mode':'real'} for r in predict(model,test,run['target_stats'],protocol['device'])]
+
+
+def save_predictions(path,rows,run):
+    path=Path(path)
+    meta_path=path.with_suffix('.meta.json')
+    identity={'run_identity':run['identity'],'checkpoint_sha256':run['checkpoint_sha256']}
+    if path.exists() and meta_path.exists():
+        meta=json.loads(meta_path.read_text())
+        if meta['identity']!=identity or meta['predictions_sha256']!=sha256(path):
+            raise ValueError(f'incompatible/corrupt completed predictions: {path}')
+        if json.loads(path.read_text())!=rows:
+            raise ValueError(f'changed prediction rows: {path}')
+        return
+    atomic_json(path,rows)
+    atomic_json(meta_path,{'status':'complete','identity':identity,'predictions_sha256':sha256(path)})
+
+
+def ridge_run(protocol,provenance,fold,train,val,test):
+    import io
+    import time
+    import numpy as np
+    from src.cache import atomic_write
+    from src.baselines import fit_ridge,predict_ridge
+    root=Path(protocol['results_root'])/'ridge'/f'fold{fold}'
+    root.mkdir(parents=True,exist_ok=True)
+    identity={'config_sha256':config_hash(protocol),'provenance':{k:v for k,v in provenance.items() if k!='code_commit'},'fold':fold}
+    metadata=root/'run.json'
+    start=time.perf_counter()
+    def pool(data):
+        return np.array([data[i]['features'].numpy().mean(0,dtype=np.float64) for i in range(len(data))])
+    if metadata.exists():
+        record=json.loads(metadata.read_text())
+        if record['status']=='complete':
+            if record['identity']!=identity or sha256(root/'model.npz')!=record['checkpoint_sha256']:
+                raise ValueError(f'incompatible ridge artifact: {root}')
+            with np.load(root/'model.npz',allow_pickle=False) as archive:
+                artifact={k:archive[k] for k in archive.files}
+        else:
+            raise ValueError('unexpected partial ridge metadata; investigate')
+    else:
+        artifact=fit_ridge(pool(train),np.array([train[i]['mos'] for i in range(len(train))]),
+                           pool(val),np.array([val[i]['mos'] for i in range(len(val))]),[.001,.01,.1,1,10,100,1000])
+        buffer=io.BytesIO()
+        np.savez(buffer,**{k:v for k,v in artifact.items() if k!='trials'})
+        atomic_write(root/'model.npz',buffer.getvalue())
+        record={'status':'complete','identity':identity,'checkpoint_sha256':sha256(root/'model.npz'),
+                'alpha':artifact['alpha'],'validation_srcc':artifact['validation_srcc'],'trials':artifact['trials'],
+                'wall_seconds':time.perf_counter()-start,'code_commit':provenance['code_commit']}
+        atomic_json(metadata,record)
+    values=predict_ridge(artifact,pool(test))
+    rows=[{'video_id':test[i]['video_id'],'dataset':'konvid','feature_set':protocol['feature_set'],'head':'ridge',
+           'fold':fold,'seed':None,'mos':test[i]['mos'],'prediction':float(value),'run_kind':'cv','label_mode':'real',
+           'run_id':f'ridge/fold{fold}','checkpoint_sha256':record['checkpoint_sha256']} for i,value in enumerate(values)]
+    save_predictions(root/'predictions.json',rows,record)
+    return rows
+
+
+def cv_runs(protocol,provenance):
+    configs=selected_configs(protocol,provenance)
+    final=require_control(Path(protocol['results_root'])/'control_final',provenance)
+    if final['config_sha256']!=config_hash(configs['mean_pool']):
+        raise ValueError('final control does not match selected mean-pool config')
+    if protocol['seeds']!=list(range(5)) or protocol['feature_set']!='dino':
+        raise ValueError('Phase 1 requires DINO and five seeds')
+    for fold in range(5):
+        train,val=role_data(protocol,fold,'train'),role_data(protocol,fold,'val')
+        for head in HEADS:
+            for seed in protocol['seeds']:
+                run_id=f'cv/{head}/fold{fold}/seed{seed}'
+                output=Path(protocol['results_root'])/run_id
+                model,run=fit_run(protocol,configs[head],provenance,head,fold,seed,output,train,val,run_kind='cv')
+                # Test-role loading is deliberately after checkpoint selection/restoration.
+                test=role_data(protocol,fold,'test')
+                rows=prediction_rows(protocol,model,run,test,head,fold,seed,run_id)
+                save_predictions(output/'predictions.json',rows,run)
+        test=role_data(protocol,fold,'test')
+        ridge_run(protocol,provenance,fold,train,val,test)
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--mode',choices=['single','control-initial','pilot','rank','tune'],required=True)
+    p.add_argument('--mode',choices=['single','control-initial','pilot','rank','tune','control','cv'],required=True)
     p.add_argument('--config',type=Path,required=True)
     p.add_argument('--features',type=Path,required=True)
     p.add_argument('--head',choices=HEADS)
@@ -253,6 +344,12 @@ def main():
         return
     if args.mode=='tune':
         tune_runs(protocol,provenance)
+        return
+    if args.mode=='control':
+        control_runs(protocol,provenance,final=True)
+        return
+    if args.mode=='cv':
+        cv_runs(protocol,provenance)
         return
     if any(v is None for v in (args.head,args.fold,args.seed,args.output)):
         p.error('single requires --head, --fold, --seed and --output')
