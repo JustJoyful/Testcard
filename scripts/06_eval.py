@@ -5,6 +5,7 @@ import csv
 import importlib
 import json
 import sys
+import subprocess
 from pathlib import Path
 
 import numpy as np
@@ -146,6 +147,8 @@ def validate_runtime(protocol,provenance,root):
             or budget['reserved_gpu_hours']!=30 or budget['planning_2x_hours']>budget['remaining_head_hours']):
         raise ValueError('missing/failed/stale actual pilot/runtime budget')
     calendar_gate(pilot['completed_at'])
+    if pilot['ridge_cpu']['status']!='complete' or pilot['ridge_cpu']['alpha_fits']!=7 or pilot['ridge_cpu']['wall_seconds']<=0:
+        raise ValueError('missing measured CPU ridge pilot')
     for head,run in pilot['runs'].items():
         if (run['status']!='complete' or run['config']['device']!='cuda' or run['peak_cuda_bytes']<=0
                 or run['seed']!=0 or run['completed_epochs']<1 or run['wall_seconds']<=0
@@ -159,6 +162,46 @@ def validate_runtime(protocol,provenance,root):
     return {'status':'go','planning_2x_hours':budget['planning_2x_hours'],'remaining_head_hours':budget['remaining_head_hours']}
 
 
+def time_accounting(root):
+    root=Path(root)
+    extraction=json.loads((root/'extraction.json').read_text())
+    gpu=sum(r['wall_seconds'] for r in extraction['invocations'])/3600
+    ridge=0.
+    for path in root.rglob('run.json'):
+        run=json.loads(path.read_text())
+        if path.relative_to(root).parts[0]=='ridge':
+            ridge+=run.get('wall_seconds',0)/3600
+        elif run.get('config',{}).get('device','').startswith('cuda'):
+            gpu+=run.get('wall_seconds',0)/3600
+    parity=json.loads((root/'parity.json').read_text())
+    return {'gpu_job_wall_hours':gpu,'remaining_gpu_allowance_hours':100-gpu,
+            'cpu_ridge_wall_hours':ridge,'cpu_parity_wall_hours':parity['wall_seconds']/3600,
+            'hands_on_hours':'unmeasured; planning allowance remains 80 hours',
+            'measurement':'saved attempt job wall time includes CPU/IO overhead while GPU is allocated; not GPU kernel utilization'}
+
+
+def update_phase_docs(accounting):
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+    date=datetime.now(ZoneInfo('Asia/Kolkata')).date().isoformat()
+    marker='## '+date+': Phase 1 exit verified'
+    decision=Path('DECISIONS.md')
+    if marker not in decision.read_text():
+        with decision.open('a') as f:
+            f.write('\n'+marker+'\n\nThe generated phase gate passes. Definitive DINO/ridge artifacts are complete and must be reused in Phase 2. '
+                    +'Saved GPU job wall hours: '+str(accounting['gpu_job_wall_hours'])
+                    +'; remaining planning allowance: '+str(accounting['remaining_gpu_allowance_hours'])
+                    +' hours. These are job wall measurements, not kernel utilization; hands-on time remains unmeasured. '
+                    +'See results/phase1/summary.json, time_accounting.json and phase_gate.json. No LIVE-VQC predictions were made.\n')
+    phases=Path('PHASES.md')
+    text=phases.read_text()
+    marker='## Phase 1 execution status (2026-10-25)'
+    if marker in text:
+        text=text.split(marker)[0]+marker+'\n\nPhase 1 passed the generated exit gate on '+date+'. '
+        text+='See `results/phase1/phase_gate.json` and `time_accounting.json`. Phase 2 reuses these definitive DINO/ridge outputs.\n'
+        atomic_write(phases,text.encode())
+
+
 def phase_report(protocol,root,features):
     root=Path(root)
     training=importlib.import_module('scripts.05_train')
@@ -168,13 +211,18 @@ def phase_report(protocol,root,features):
         try:
             evidence[name]=fn()
             return evidence[name]
-        except (OSError,ValueError,KeyError,TypeError,RuntimeError) as exc:
+        except (OSError,ValueError,KeyError,TypeError,RuntimeError,subprocess.SubprocessError) as exc:
             failures.append({'gate':name,'reason':str(exc)})
             return None
     provenance=gate('cache_and_committed_splits',lambda:training.prerequisites(protocol,features))
     configs=gate('frozen_selection',lambda:training.selected_configs(protocol,provenance or {}))
     gate('initial_control',lambda:require_control(root/'control_initial',provenance or {}))
-    gate('final_control',lambda:require_control(root/'control_final',provenance or {}))
+    def final_control():
+        result=require_control(root/'control_final',provenance or {})
+        if not configs or result['config_sha256']!=config_hash(configs['mean_pool']):
+            raise ValueError('final control differs from selected mean-pool config')
+        return result
+    gate('final_control',final_control)
     parity=importlib.import_module('scripts.04_parity_check')
     gate('feature_parity',lambda:parity.validate_parity(root/'parity.json',provenance or {},Path(protocol['cache_root'])))
     gate('runtime_pilot',lambda:validate_runtime(protocol,provenance or {},root))
@@ -183,6 +231,7 @@ def phase_report(protocol,root,features):
         collected=gate('cv_artifacts',lambda:collect_cv(protocol,provenance,configs,root))
         if collected:
             rows,runs=collected
+            evidence['cv_artifacts']={'status':'complete','neural_runs':len(runs),'ridge_runs':5,'prediction_rows':len(rows)}
             inventory=list(csv.DictReader(Path(protocol['inventory']).open()))
             source={r['video_id']:float(r['mos']) for r in inventory}
             splits=list(csv.DictReader(Path(protocol['splits']).open()))
@@ -199,6 +248,10 @@ def phase_report(protocol,root,features):
                 evidence['summary']=summary
                 if undefined:
                     failures.append({'gate':'metrics','reason':f'undefined mandatory metrics: {undefined}'})
+    if not failures:
+        accounting=gate('measured_time_accounting',lambda:time_accounting(root))
+        if accounting is not None:
+            atomic_json(root/'time_accounting.json',accounting)
     gate_result={'status':'failed' if failures else 'passed','missing_or_failed_gates':failures,'evidence':evidence}
     atomic_json(root/'phase_gate.json',gate_result)
     atomic_write(root/'report.md',('# Phase 1 core slice\n\nStatus: '+gate_result['status']+'\n\n'
@@ -206,6 +259,8 @@ def phase_report(protocol,root,features):
         +'Headline: mean per-fold SRCC across 25 fold × seed runs. Ensemble OOF is a separate quantity.\n'
         +'PLCC logistic mapping uses target labels. Warning-only determinism; no bitwise reproducibility claim.\n\n'
         +'\n'.join(f"- {r['gate']}: {r['reason']}" for r in failures)+'\n').encode())
+    if gate_result['status']=='passed':
+        update_phase_docs(accounting)
     return gate_result
 
 

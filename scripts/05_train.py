@@ -115,18 +115,46 @@ def control_runs(protocol,provenance,final=False):
     return diagnostic
 
 
+def ridge_pilot(train,val):
+    import time
+    import numpy as np
+    from src.baselines import fit_ridge
+    def pooled(data):
+        return np.array([data[i]['features'].numpy().mean(0,dtype=np.float64) for i in range(len(data))])
+    started=time.perf_counter()
+    fit_ridge(pooled(train),np.array([train[i]['mos'] for i in range(len(train))]),
+              pooled(val),np.array([val[i]['mos'] for i in range(len(val))]),[.001,.01,.1,1,10,100,1000])
+    elapsed=time.perf_counter()-started
+    return {'status':'complete','device':'cpu','alpha_fits':7,'wall_seconds':elapsed,
+            'projected_five_fold_seconds':5*elapsed,'assumption':'five times measured fold-0 CPU ridge work; no test-role loading'}
+
+
 def pilot_runs(protocol,provenance):
     from datetime import datetime
     from zoneinfo import ZoneInfo
     require_control(Path(protocol['results_root'])/'control_initial',provenance)
     root=Path(protocol['results_root'])
-    config=resolved_config(protocol)
+    current=resolved_config(protocol)
+    snapshot=root/'pilot'/'config.json'
+    if snapshot.exists():
+        config=json.loads(snapshot.read_text())
+        mutable={'status','tuning_seeds'}
+        if {k:v for k,v in config.items() if k not in mutable}!={k:v for k,v in current.items() if k not in mutable}:
+            raise ValueError('incompatible immutable pilot fitting snapshot')
+    else:
+        config=current
+        atomic_json(snapshot,config)
     train=role_data(protocol,0,'train')
     val=role_data(protocol,0,'val')
     runs={}
     for head in HEADS:
         _,runs[head]=fit_run(protocol,config,provenance,head,0,0,root/'pilot'/head,train,val,run_kind='pilot')
-    result={'status':'complete','runs':runs,'provenance':provenance,
+    existing_path=root/'training_pilot.json'
+    if existing_path.exists():
+        existing=json.loads(existing_path.read_text())
+        if existing['status']=='complete' and existing['runs']==runs and same_inputs(existing['provenance'],provenance):
+            return existing
+    result={'status':'complete','runs':runs,'ridge_cpu':ridge_pilot(train,val),'provenance':provenance,
             'completed_at':datetime.now(ZoneInfo('Asia/Kolkata')).isoformat()}
     atomic_json(root/'training_pilot.json',result)
     return result
@@ -136,7 +164,11 @@ def freeze_protocol(protocol,config_path,provenance,pilot):
     from src.tuning import calendar_gate, runtime_budget
     from src.training import config_hash
     from src.cache import atomic_write
-    calendar_gate(pilot['completed_at'])
+    try:
+        calendar_gate(pilot['completed_at'])
+    except ValueError as exc:
+        record_scope_stop(protocol,str(exc),{'provenance':provenance,'gate':'calendar'})
+        raise
     scope=yaml.safe_load(Path('configs/scope.yaml').read_text())
     extraction=json.loads((Path(protocol['results_root'])/'extraction.json').read_text())
     actual=sum(r['wall_seconds'] for r in extraction['invocations'])/3600
@@ -151,27 +183,52 @@ def freeze_protocol(protocol,config_path,provenance,pilot):
     if budget['status']!='go' and protocol['tuning_seeds']==list(range(5)):
         protocol={**protocol,'tuning_seeds':[0,1]}
         with Path('DECISIONS.md').open('a') as f:
-            f.write('\n## 2026-10-25: Measured tuning-only fallback\n\n'
+            f.write('\n## '+local_date()+': Measured tuning-only fallback\n\n'
                     +f"Five-seed tuning projected {budget['planning_2x_hours']:.6f} GPU hours against {budget['remaining_head_hours']:.6f} remaining; activate common rank/head tuning seeds [0,1] before selection. CV and both controls retain seeds 0–4. See results/phase1/runtime_budget.json.\n")
         budget=runtime_budget(scope,protocol,pilot['runs'],extraction_planning,actual,actual_extraction_hours=actual_extraction)
     if budget['status']=='go':
         protocol={**protocol,'status':'frozen'}
     atomic_write(config_path,yaml.safe_dump(protocol,sort_keys=False).encode())
-    budget.update(provenance=provenance,protocol_sha256=config_hash(protocol),pilot_sha256=sha256(Path(protocol['results_root'])/'training_pilot.json'))
+    budget.update(ridge_cpu=pilot['ridge_cpu'],provenance=provenance,protocol_sha256=config_hash(protocol),pilot_sha256=sha256(Path(protocol['results_root'])/'training_pilot.json'))
     atomic_json(Path(protocol['results_root'])/'runtime_budget.json',budget)
     if budget['status']!='go':
+        record_scope_stop(protocol,'runtime no-go after the allowed tuning-seed fallback',budget)
         raise ValueError('runtime no-go after allowed fallback: stop and record further scope proposal')
     return protocol
+
+
+def local_date():
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+    return datetime.now(ZoneInfo('Asia/Kolkata')).date().isoformat()
+
+
+def record_scope_stop(protocol,reason,budget):
+    proposal='Defer the Phase 4 demo; revise the Phase 1 target to November 1 and reserve November 2–4 for ResNet and LIVE-VQC. This is a proposal requiring a scope decision, not an activated change.'
+    record={**budget,'status':'no-go','date':local_date(),'reason':reason,'scope_proposal':proposal}
+    atomic_json(Path(protocol['results_root'])/'runtime_budget.json',record)
+    with Path('DECISIONS.md').open('a') as f:
+        f.write('\n## '+local_date()+': Phase 1 stopped before tuning\n\n'+reason+'\n\n'+proposal+'\n')
+
+
+def without_commit(value):
+    if isinstance(value,dict):
+        return {k:without_commit(v) for k,v in value.items() if k!='code_commit'}
+    if isinstance(value,list):
+        return [without_commit(v) for v in value]
+    return value
 
 
 def persist_yaml(path,value):
     from src.cache import atomic_write
     path=Path(path)
     if path.exists():
-        if yaml.safe_load(path.read_text())!=value:
+        existing=yaml.safe_load(path.read_text())
+        if without_commit(existing)!=without_commit(value):
             raise ValueError(f'incompatible immutable config: {path}')
-    else:
-        atomic_write(path,yaml.safe_dump(value,sort_keys=False).encode())
+        return existing
+    atomic_write(path,yaml.safe_dump(value,sort_keys=False).encode())
+    return value
 
 
 def rank_runs(protocol,provenance):
@@ -189,8 +246,8 @@ def rank_runs(protocol,provenance):
     winner=select_trial(rows,protocol['tuning_seeds'])
     result={'status':'frozen','rank_weight':protocol['rank_candidates'][winner['candidate_id']],
             'protocol_sha256':config_hash(protocol),'provenance':provenance,'winner':winner,'rows':rows}
+    result=persist_yaml('configs/rank_loss.yaml',result)
     atomic_json(root/'selection.json',result)
-    persist_yaml('configs/rank_loss.yaml',result)
     return result
 
 
@@ -216,8 +273,8 @@ def tune_runs(protocol,provenance):
                 'rank_weight':rank['rank_weight']}
         result={'status':'frozen','head':head,'protocol_sha256':config_hash(protocol),'provenance':provenance,
                 'config':config,'winner':winner,'rows':rows}
+        result=persist_yaml(f'configs/heads/{head}.yaml',result)
         atomic_json(root/'selection.json',result)
-        persist_yaml(f'configs/heads/{head}.yaml',result)
 
 
 def selected_configs(protocol,provenance):

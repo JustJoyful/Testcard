@@ -44,6 +44,7 @@ def require_control(directory,provenance):
                     or run['provenance']['label_mode']!='shuffled' or run['provenance']['run_kind']!=kind
                     or run['provenance']['fold']!=0 or run['provenance']['permutation_sha256']!=result['permutation_sha256']
                     or run['identity']['config_sha256']!=result['config_sha256']
+                    or config_hash(run['config'])!=result['config_sha256']
                     or sha256(directory/f'seed{seed}'/'best.pt')!=run['checkpoint_sha256']
                     or [r['video_id'] for r in rows]!=result['video_ids']
                     or len(set(result['video_ids']))!=len(result['video_ids'])
@@ -51,6 +52,25 @@ def require_control(directory,provenance):
                            or r['checkpoint_sha256']!=run['checkpoint_sha256'] for r in rows)):
                 raise ValueError(f'incomplete/stale seed {seed}')
             outputs.append(rows)
+        import csv
+        from src.splits import freeze_splits
+        config=run['config']
+        freeze_splits(config['inventory'],config['splits'])
+        if sha256(config['splits'])!=provenance['split_sha256']:
+            raise ValueError('control split identity mismatch')
+        inventory=list(csv.DictReader(Path(config['inventory']).open()))
+        lookup={r['video_id']:float(r['mos']) for r in inventory}
+        roles=list(csv.DictReader(Path(config['splits']).open()))
+        train_ids=[r['video_id'] for r in roles if int(r['outer_fold'])==0 and r['role']=='train']
+        test_ids=[r['video_id'] for r in roles if int(r['outer_fold'])==0 and r['role']=='test']
+        if result['video_ids']!=test_ids:
+            raise ValueError('control IDs differ from authoritative fold-0 test role')
+        if any(r['mos']!=lookup[r['video_id']] for rows in outputs for r in rows):
+            raise ValueError('control MOS differs from authoritative inventory')
+        order=np.random.default_rng(0).permutation(len(train_ids))
+        expected=[{'video_id':key,'label_source_id':train_ids[int(j)]} for key,j in zip(train_ids,order)]
+        if json.loads(permutation.read_text())!=expected:
+            raise ValueError('control training permutation differs from fixed seed-0 mapping')
         labels=np.array([r['mos'] for r in outputs[0]])
         ensemble=np.array([[r['prediction'] for r in rows] for rows in outputs]).mean(0)
         if any([r['mos'] for r in rows]!=labels.tolist() for rows in outputs):
