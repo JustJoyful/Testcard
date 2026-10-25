@@ -1,0 +1,54 @@
+{
+  "status": "go",
+  "planned_counts": {
+    "tune": 200,
+    "rank": 20,
+    "cv": 100,
+    "control_initial": 5,
+    "control_final": 5,
+    "pilot": 4,
+    "ridge": 5,
+    "ridge_alpha": 35
+  },
+  "remaining_counts": {
+    "tune": 200,
+    "rank": 20,
+    "cv": 100,
+    "control_initial": 0,
+    "control_final": 5,
+    "pilot": 0,
+    "ridge": 5,
+    "ridge_alpha": 35
+  },
+  "spent_gpu_hours": 9.60343278722556,
+  "remaining_extraction_allowance_hours": 0.7961082744441086,
+  "reserved_gpu_hours": 30.0,
+  "remaining_head_hours": 59.600458938330334,
+  "optimistic_hours": 1.3820384466875137,
+  "planning_2x_hours": 2.7640768933750275,
+  "max_epoch_upper_hours": 9.130468914438875,
+  "assumption": "one complete observed fit per head; 2x planning gate; initial control and pilots already spent",
+  "ridge_cpu_alpha_fits": 35,
+  "ridge_cpu": {
+    "status": "complete",
+    "device": "cpu",
+    "alpha_fits": 7,
+    "wall_seconds": 1.0765371910001704,
+    "projected_five_fold_seconds": 5.382685955000852,
+    "assumption": "five times measured fold-0 CPU ridge work; no test-role loading"
+  },
+  "provenance": {
+    "config_feature_sha256": "8397ea636c79e69a382e88a7238f798b398dafd91774edd6b50555f7bb62777c",
+    "split_sha256": "3f5d9f96ba8bdfefc85ce7f9413a17a4e7307f8023525e33ec4a2424f2b50263",
+    "cache_sha256": "311ae067d92f2077ed1adf93006d7da991f23f94c0845fd1f6063a90025c9ab3",
+    "cache_meta_sha256": "27af097a62ed3472519367ab50c2b6deb32af26788986d8fccdd886f1d9dfb3c",
+    "lock_sha256": "aef832296aa3a46d27fd5165d19da0dd932fc01360fc49bff3e3020c390399dc",
+    "weights_sha256": {
+      "dino": "0b8b82f85de91b424aded121c7e1dcc2b7bc6d0adeea651bf73a13307fad8c73",
+      "resnet50": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca"
+    },
+    "code_commit": "7501baffa8979862cc537a9b737e1208a5535b98"
+  },
+  "protocol_sha256": "a747eceae8e62bc85e5974f846bd4589a63be995cf5aa429044fd93bce95b58d",
+  "pilot_sha256": "d3e75c1071f96e803fc4d62d932a51e558ee3d807a598eab3cb946c19f8efbc4"
+}
