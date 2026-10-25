@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "algorithm": "rank-quantile-5-roundrobin-largest-remainder-v1",
+  "seed": 0,
+  "inventory_sha256": "6b1d792204a111563cc103888c3e5deded62fbdec63cb97bb976c8361e812e5b",
+  "split_sha256": "3f5d9f96ba8bdfefc85ce7f9413a17a4e7307f8023525e33ec4a2424f2b50263",
+  "role_rows": 6000,
+  "fold_counts": {
+    "0": {
+      "train": 816,
+      "test": 240,
+      "val": 144
+    },
+    "1": {
+      "train": 816,
+      "test": 240,
+      "val": 144
+    },
+    "2": {
+      "train": 816,
+      "test": 240,
+      "val": 144
+    },
+    "3": {
+      "train": 816,
+      "val": 144,
+      "test": 240
+    },
+    "4": {
+      "test": 240,
+      "train": 816,
+      "val": 144
+    }
+  }
+}
