@@ -20,8 +20,8 @@
     "ridge": 5,
     "ridge_alpha": 35
   },
-  "spent_gpu_hours": 9.60343278722556,
-  "remaining_extraction_allowance_hours": 0.7961082744441086,
+  "spent_gpu_hours": 9.653297776310836,
+  "remaining_extraction_allowance_hours": 0.7462432853588314,
   "reserved_gpu_hours": 30.0,
   "remaining_head_hours": 59.600458938330334,
   "optimistic_hours": 1.3820384466875137,
@@ -47,7 +47,7 @@
       "dino": "0b8b82f85de91b424aded121c7e1dcc2b7bc6d0adeea651bf73a13307fad8c73",
       "resnet50": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca"
     },
-    "code_commit": "7501baffa8979862cc537a9b737e1208a5535b98"
+    "code_commit": "8655ef939cfa718c7d7f2a0d3b02f193ebd58e73"
   },
   "protocol_sha256": "a747eceae8e62bc85e5974f846bd4589a63be995cf5aa429044fd93bce95b58d",
   "pilot_sha256": "d3e75c1071f96e803fc4d62d932a51e558ee3d807a598eab3cb946c19f8efbc4"
