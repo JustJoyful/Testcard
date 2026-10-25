@@ -204,3 +204,7 @@ Frozen feature configs, recorded measurements and Phase 0 hash artifacts are unc
 ### Phase 1 implementation review
 
 An independent whole-branch review identified restart and evidence-binding issues. These were reproduced and fixed before any real head training: retain immutable pilot/selection snapshots across audit-only commits and the protocol freeze, validate authoritative control roles/MOS/permutation, bind the final control to the selected mean-pool config, and replace stale success evidence on Git prerequisite failure. Preselection CPU ridge timing and dated stop decisions are implemented. See `docs/superpowers/reviews/2026-10-25-phase-1-review.md` for evidence. Frozen feature production is unchanged; no cached arrays are invalidated by these pre-training consumer fixes.
+
+### Phase 1 real feature parity verified
+
+The fixed-sample CPU fp32 versus cached GPU fp16 parity artifact passed and was revalidated against current source/reference checksums. Evidence is in `results/phase1/parity.json`. This does not complete Phase 1: full cache extraction, controls, pilots, tuning and definitive CV/ridge remain pending in the live sequential queue. No LIVE-VQC predictions were made.
