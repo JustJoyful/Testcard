@@ -13,3 +13,6 @@ __pycache__/
 .worktrees/
 .phase0-uv-cache/
 .venv-check/
+/results/**/*.pt
+/results/**/*.pth
+/results/**/*.npz
