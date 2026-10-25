@@ -1,0 +1,8 @@
+matched:
+  front_width: 256
+  mean_pool_hidden: 1598
+  gru_hidden: 156
+  transformer_layers: 1
+  transformer_nhead: 4
+  transformer_ff: 256
+  readout_hidden: 64
