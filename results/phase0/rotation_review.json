@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "records": [
+    {
+      "video_id": "E001",
+      "timestamp": 0.0,
+      "source_sha256": "8eea7094a345e3c69f4c3238f029b429b62d083723432fa912700f25f73d9840",
+      "reviewer": "user",
+      "upright": true,
+      "rotation_applied": 270,
+      "inspected_timestamps": [
+        0.0
+      ]
+    },
+    {
+      "video_id": "G001",
+      "timestamp": 0.0,
+      "source_sha256": "575852c6ad6c1ca7092ebaac284932d54fb67de47dd6509714242e70316825be",
+      "reviewer": "user",
+      "upright": true,
+      "rotation_applied": 0,
+      "inspected_timestamps": [
+        0.0
+      ]
+    },
+    {
+      "video_id": "G002",
+      "timestamp": 0.0,
+      "source_sha256": "6f60bca78bbc4baa8c1a5f2e87f38b1b08aed782190f0e2e3f857aaa3ff1d2c6",
+      "reviewer": "user",
+      "upright": true,
+      "rotation_applied": 0,
+      "inspected_timestamps": [
+        0.0
+      ]
+    }
+  ],
+  "preprocess_sha256": "8e05229eadecb511a93612ff82d95e12b2225cc7bd7bead1b32e2ee0813cdbfe",
+  "note": "User confirmed all three in-memory decoded previews look upright."
+}

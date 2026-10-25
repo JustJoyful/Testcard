@@ -1,0 +1,11 @@
+# Direct dependencies; install requirements.lock for the verified local package pins.
+# Target interpreter: Python 3.11.15; real pretrained and notebook checks remain separate.
+torch
+torchvision
+numpy
+PyYAML
+pytest
+# Required for LIVE-VQC's data.mat label source.
+scipy
+# SlowFast dependency; actual install/load and fallback decision are pending.
+pytorchvideo

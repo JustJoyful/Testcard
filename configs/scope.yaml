@@ -1,0 +1,63 @@
+deadline: '2026-11-04'
+planning_days: 10
+hands_on_hours_per_day: 8
+unattended_gpu_hours_per_night: 10
+hands_on_hours_total: 80
+gpu_hours_total: 100
+active_backbones:
+- dino
+- resnet50
+cut_backbones:
+- slowfast_r50
+ugc: cut
+separate_layer_comparison: false
+cache_config: configs/features_v1.yaml
+primary_feature_set:
+- dino_cls
+- dino_patchmean_L12
+control_feature_set:
+- resnet50
+cached_dino_blocks:
+- 6
+- 9
+- 12
+cached_dino_statistics:
+- cls
+- patchmean
+- patchstd
+heads:
+- mean_pool
+- bigru
+- transformer
+- mamba
+folds: 5
+seeds:
+- 0
+- 1
+- 2
+- 3
+- 4
+tuning:
+  trials_per_head: 10
+  fold: 0
+  objective: inner_validation_srcc
+  freeze_ranges_after_phase1_timing: true
+serving:
+  backend: FastAPI
+  frontend: same-origin HTML upload page
+  execution: single CPU inference job at a time in the API process
+  packaging: single Dockerfile
+  cpu_budget_seconds_per_10s: 120
+mandatory_checks:
+- padding_invariance
+- naive_mamba_recurrence
+- causal_variant_causality
+- shuffled_labels
+- ridge_baseline
+- paired_bootstrap_CIs
+- Holm_primary_families
+- LIVE_VQC_after_configuration_freeze
+- serving_parity
+- saved_output_generated_reporting
+training_runtime: unmeasured; benchmark one run per head before committing to full
+  grid

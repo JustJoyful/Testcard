@@ -1,0 +1,63 @@
+{
+  "status": "go",
+  "missing_or_failed_gates": [],
+  "projections": {
+    "dino": {
+      "seconds_per_decoded_second": 0.8244966632509566,
+      "repeat_video_ratio_std": 0.019027891939534428,
+      "konvid_seconds": 7916.924089860584,
+      "livevqc_seconds": 4833.135920754197,
+      "combined_planning_seconds": 25500.120021229563,
+      "note": "LIVE-VQC extrapolated from KoNViD; includes 2x planning allowance; training unmeasured."
+    },
+    "resnet50": {
+      "seconds_per_decoded_second": 0.38258486484854337,
+      "repeat_video_ratio_std": 0.01986346259230352,
+      "konvid_seconds": 3673.6295826749356,
+      "livevqc_seconds": 2242.6830034041855,
+      "combined_planning_seconds": 11832.625172158241,
+      "note": "LIVE-VQC extrapolated from KoNViD; includes 2x planning allowance; training unmeasured."
+    },
+    "slowfast_r50": {
+      "seconds_per_decoded_second": 1.6451685357215016,
+      "repeat_video_ratio_std": 0.02437993409878888,
+      "konvid_seconds": 15797.122041681114,
+      "livevqc_seconds": 9643.851212615502,
+      "combined_planning_seconds": 50881.94650859323,
+      "note": "LIVE-VQC extrapolated from KoNViD; includes 2x planning allowance; training unmeasured."
+    }
+  },
+  "projected_gpu_planning_hours": 24.504081028328066,
+  "predicted_feature_bytes": 1229969408,
+  "additional_disk_required_with_reserve_bytes": 7864651109,
+  "disk_accounting": "Current free bytes already exclude retained archives, installed environments, weights and retained sample clips; additional capacity includes two full feature copies for atomic-write headroom, a transient raw video and reserve.",
+  "cpu_dino_seconds_per_10s_worst_sample": 29.925741336161153,
+  "cpu_budget_note": "DINO-only extraction estimate; head inference and API overhead unmeasured; 25% extraction headroom required.",
+  "evidence_hashes": {
+    "config_sha256": "ff290dc34eb9a660e82b44ad82392e3a3deab6afac0e70c449a3e47870815881",
+    "execution_config_sha256": "9d93ddb15c228a4d3d2a8ea85cbe3926eb72389a73d5b2297ea47095db792bde",
+    "lock_sha256": "aef832296aa3a46d27fd5165d19da0dd932fc01360fc49bff3e3020c390399dc",
+    "code_sha256": "a905caf3b4a2f22de7b11c06feb536ac5ce4763815ca9ba292df6a563cb99153",
+    "manifests": {
+      "data/manifests/konvid.csv": "6b1d792204a111563cc103888c3e5deded62fbdec63cb97bb976c8361e812e5b",
+      "data/manifests/livevqc.csv": "c1d3535d06aa4db2f790ab716c21182f5c98918c6776811dd396b893eb43c804"
+    },
+    "weights": {
+      "dino": "0b8b82f85de91b424aded121c7e1dcc2b7bc6d0adeea651bf73a13307fad8c73",
+      "resnet50": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca",
+      "motion": "454f39e1c1f985df2bee2aa27887ed53ff56e74ed8b8cca11203a1a1264d7cc2"
+    }
+  },
+  "preprocessing_frozen": false,
+  "source_evidence_sha256": {
+    "results/phase0/environment.json": "8b53c0c4f2f3f0af9347dc107691da18e640dcd6ee71cc828a74034084a0ab3b",
+    "results/phase0/archive_audit.json": "85dd9e5efed0c12a9a2042097551da5e954b3b1c8e77f9a05d17301cc5a7c73e",
+    "results/phase0/konvid_label_join.json": "e772dbb874863e46e0b5b39558b3701d9e03a8e4357d9fc44c0e960c5486478a",
+    "results/phase0/inventory.json": "d195892add95346cdad9a2c59626d62e00cf8576fd92f8c5a753b6d72d468ce5",
+    "results/phase0/rotation_review.json": "006cd756f47262425bec76170cd4bc949c9390ba02169780af7a2750c1703cb1",
+    "results/phase0/decode_checks.json": "5e90ec4d997da349eeb81d306785db0b7ae1b5da492bcda4142d976d7f0bbb11",
+    "results/phase0/backbones.json": "6a9045bcd98909e549ba6faf26c68c22093c07818a78d3cd6c25b1b146e27a7d",
+    "results/phase0/run.json": "1440c2583399b7162215903d32f63922e1201d5dfd4bcef27e785855416fd0d6",
+    "results/phase0/timing_summary.json": "4b8e2e754a250270707acfb22a6d30ea7865c77b90a3bddb1c0f0647cfc8cb5d"
+  }
+}

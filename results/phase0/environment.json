@@ -1,0 +1,166 @@
+{
+  "observed_at": "2026-10-25T11:19:58.025141+00:00",
+  "status": "blocked",
+  "os": "Linux-7.2.9-2-cachyos-x86_64-with-glibc2.44",
+  "system_python": "3.14.8 (main, Oct 13 2026, 10:33:10) [GCC 16.2.1 20260810]",
+  "target_python": {
+    "command": [
+      ".venv/bin/python",
+      "--version"
+    ],
+    "returncode": 0,
+    "stdout": "Python 3.11.15",
+    "stderr": ""
+  },
+  "cpu": {
+    "command": [
+      "lscpu"
+    ],
+    "returncode": 0,
+    "stdout": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           39 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  12\nOn-line CPU(s) list:                     0-11\nVendor ID:                               GenuineIntel\nModel name:                              12th Gen Intel(R) Core(TM) i5-12450HX\nCPU family:                              6\nModel:                                   151\nThread(s) per core:                      2\nCore(s) per socket:                      8\nSocket(s):                               1\nStepping:                                2\nMicrocode version:                       0x3e\nCPU(s) scaling MHz:                      58%\nCPU max MHz:                             2400.0000\nCPU min MHz:                             800.0000\nBogoMIPS:                                5376.00\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb intel_pt sha_ni xsaveopt xsavec xgetbv1 xsaves split_lock_detect user_shstk avx_vnni dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp hwp_pkg_req hfi vnmi umip pku ospke waitpkg gfni vaes vpclmulqdq rdpid movdiri movdir64b fsrm md_clear serialize arch_lbr ibt flush_l1d arch_capabilities\nVirtualization:                          VT-x\nL1d cache:                               320 KiB (8 instances)\nL1i cache:                               384 KiB (8 instances)\nL2 cache:                                7 MiB (5 instances)\nL3 cache:                                12 MiB (1 instance)\nNUMA node(s):                            1\nNUMA node0 CPU(s):                       0-11\nVulnerability Gather data sampling:      Not affected\nVulnerability Ghostwrite:                Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Old microcode:             Not affected\nVulnerability Reg file data sampling:    Mitigation; Clear Register File\nVulnerability Retbleed:                  Not affected\nVulnerability Spec rstack overflow:      Not affected\nVulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl\nVulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; BHI BHI_DIS_S\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Not affected\nVulnerability Tsx async abort:           Not affected\nVulnerability Vmscape:                   Mitigation; IBPB before exit to userspace",
+    "stderr": ""
+  },
+  "ram": {
+    "command": [
+      "free",
+      "-b"
+    ],
+    "returncode": 0,
+    "stdout": "total        used        free      shared  buff/cache   available\nMem:     16454090752  9482592256  3396022272   504082432  4747853824  6971498496\nSwap:    16453201920  1583955968 14869245952",
+    "stderr": ""
+  },
+  "disk": {
+    "total_bytes": 245444710400,
+    "used_bytes": 185895444480,
+    "free_bytes": 56283521024
+  },
+  "git": {
+    "command": [
+      "git",
+      "status",
+      "--short",
+      "--branch"
+    ],
+    "returncode": 128,
+    "stdout": "",
+    "stderr": "fatal: not a git repository (or any parent up to mount point /)\nStopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set)."
+  },
+  "git_metadata": {
+    "is_directory": true,
+    "entry_count": 0,
+    "mode": "0o555"
+  },
+  "gpu": {
+    "command": [
+      "nvidia-smi"
+    ],
+    "returncode": 9,
+    "stdout": "NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running.",
+    "stderr": ""
+  },
+  "decoder": {
+    "ffmpeg": {
+      "command": [
+        "ffmpeg",
+        "-version"
+      ],
+      "returncode": 0,
+      "stdout": "ffmpeg version n9.0.2 Copyright (c) 2000-2026 the FFmpeg developers\nbuilt with gcc 16 (GCC)\nconfiguration: --prefix=/usr --disable-debug --disable-static --disable-stripping --enable-amf --enable-avisynth --enable-cuda-llvm --enable-lto --enable-fontconfig --enable-frei0r --enable-gmp --enable-gnutls --enable-gpl --enable-ladspa --enable-lcms2 --enable-libaom --enable-libass --enable-libbluray --enable-libbs2b --enable-libdav1d --enable-libdrm --enable-libdvdnav --enable-libdvdread --enable-libfreetype --enable-libfribidi --enable-libgsm --enable-libharfbuzz --enable-libiec61883 --enable-libjack --enable-libjxl --enable-libmodplug --enable-libmp3lame --enable-libopencore_amrnb --enable-libopencore_amrwb --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libplacebo --enable-libpulse --enable-librav1e --enable-librsvg --enable-librubberband --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtheora --enable-libv4l2 --enable-libvidstab --enable-libvmaf --enable-libvorbis --enable-libvpl --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxcb --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-nvdec --enable-nvenc --enable-opencl --enable-opengl --enable-shared --enable-vapoursynth --enable-version3 --enable-vulkan --disable-decoder=magicyuv\nlibavutil      61.  1.102 / 61.  1.102\nlibavcodec     63.  1.102 / 63.  1.102\nlibavformat    63.  1.102 / 63.  1.102\nlibavdevice    63.  1.102 / 63.  1.102\nlibavfilter    12.  1.102 / 12.  1.102\nlibswscale     10.  1.102 / 10.  1.102\nlibswresample   7.  1.102 /  7.  1.102\n\nExiting with exit code 0",
+      "stderr": ""
+    },
+    "ffprobe": {
+      "command": [
+        "ffprobe",
+        "-version"
+      ],
+      "returncode": 0,
+      "stdout": "ffprobe version n9.0.2 Copyright (c) 2007-2026 the FFmpeg developers\nbuilt with gcc 16 (GCC)\nconfiguration: --prefix=/usr --disable-debug --disable-static --disable-stripping --enable-amf --enable-avisynth --enable-cuda-llvm --enable-lto --enable-fontconfig --enable-frei0r --enable-gmp --enable-gnutls --enable-gpl --enable-ladspa --enable-lcms2 --enable-libaom --enable-libass --enable-libbluray --enable-libbs2b --enable-libdav1d --enable-libdrm --enable-libdvdnav --enable-libdvdread --enable-libfreetype --enable-libfribidi --enable-libgsm --enable-libharfbuzz --enable-libiec61883 --enable-libjack --enable-libjxl --enable-libmodplug --enable-libmp3lame --enable-libopencore_amrnb --enable-libopencore_amrwb --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libplacebo --enable-libpulse --enable-librav1e --enable-librsvg --enable-librubberband --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtheora --enable-libv4l2 --enable-libvidstab --enable-libvmaf --enable-libvorbis --enable-libvpl --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxcb --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-nvdec --enable-nvenc --enable-opencl --enable-opengl --enable-shared --enable-vapoursynth --enable-version3 --enable-vulkan --disable-decoder=magicyuv\nlibavutil      61.  1.102 / 61.  1.102\nlibavcodec     63.  1.102 / 63.  1.102\nlibavformat    63.  1.102 / 63.  1.102\nlibavdevice    63.  1.102 / 63.  1.102\nlibavfilter    12.  1.102 / 12.  1.102\nlibswscale     10.  1.102 / 10.  1.102\nlibswresample   7.  1.102 /  7.  1.102",
+      "stderr": ""
+    },
+    "confirmed": false
+  },
+  "system_imports": {
+    "torch": false,
+    "torchvision": false,
+    "numpy": true,
+    "yaml": true,
+    "pytest": false,
+    "scipy": false
+  },
+  "dependency_install": {
+    "command": "UV_CACHE_DIR=/tmp/vqa-uv-cache UV_HTTP_RETRIES=0 uv pip install --python .venv/bin/python numpy PyYAML pytest scipy",
+    "returncode": 2,
+    "failure": "pypi.org DNS lookup: Temporary failure in name resolution"
+  },
+  "lock_sha256": "aef832296aa3a46d27fd5165d19da0dd932fc01360fc49bff3e3020c390399dc",
+  "cuda_available": null,
+  "cuda_check_status": "torch unavailable; nvidia-smi failed",
+  "seed": 0,
+  "fold": null,
+  "head_checkpoint": null,
+  "archives": [
+    {
+      "path": "KoNViD_1k_videos.zip",
+      "size_bytes": 2407293394
+    },
+    {
+      "path": "LIVE_Video_Quality_Challeng_(VQC)_Database.zip",
+      "size_bytes": 5914539319
+    }
+  ],
+  "blockers": [
+    "schedule_inputs_missing",
+    "cpu_budget_unmeasured",
+    "agent_cuda_access_unavailable",
+    "verified_fresh_lock_install_pending"
+  ],
+  "official_references": [
+    "https://github.com/pytorch/vision#installation",
+    "https://pytorch.org/get-started/locally/",
+    "https://github.com/pytorch/hub/blob/master/facebookresearch_pytorchvideo_slowfast.md",
+    "https://database.mmsp-kn.de/konvid-1k-database.html",
+    "https://live.ece.utexas.edu/research/LIVEVQC/index.html"
+  ],
+  "schedule": {
+    "deadline": "2026-10-31",
+    "timezone": "Asia/Kolkata",
+    "weekly_hours": null,
+    "available_compute_hours": null,
+    "unattended_compute_note": "User can leave the laptop open; numerical allowance unspecified."
+  },
+  "user_host_verification": {
+    "nvidia_smi_exit_code": 0,
+    "gpu": "NVIDIA GeForce RTX 3050",
+    "gpu_memory_mib": 6144,
+    "driver": "615.78.08",
+    "cuda_umd": "13.4",
+    "git_init_exit_code": 0,
+    "note": "User shell verification; CUDA access inside the agent execution environment remains unverified."
+  },
+  "subsequent_install_verification": {
+    "pip_check": "49 packages; compatible",
+    "core_imports": "passed",
+    "torch": "2.14.1+cu130",
+    "torchvision": "0.29.1+cu130",
+    "agent_cuda_available": false,
+    "host_install": "user command exit 0",
+    "note": "Historical initial failures retained above; package installation blocker resolved on host."
+  },
+  "fresh_lock_install": {
+    "tool": "uv pip install --offline; uv pip check",
+    "package_count": 49,
+    "status": "passed",
+    "imports": "torch/torchvision/numpy/yaml/pytest/scipy passed",
+    "cuda_in_agent": false,
+    "temporary_environment_removed": true
+  },
+  "host_backbone_execution": {
+    "status": "passed",
+    "source": "results/phase0/backbones.json",
+    "devices": [
+      "cuda",
+      "cpu"
+    ],
+    "note": "Actual pretrained execution verified; initial agent-only access failures remain historical."
+  }
+}

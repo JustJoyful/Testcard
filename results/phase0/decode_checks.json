@@ -1,0 +1,78 @@
+{
+  "checks": [
+    {
+      "dataset": "konvid",
+      "video_id": "11902527296",
+      "T": 33,
+      "duration_s": 8.008,
+      "fps": 29.97002997002997,
+      "width": 960,
+      "height": 540,
+      "rotation_applied": 0,
+      "source_sha256": "7bfea450d9cf8d1403c349401df3aa5cea04070615550fef11b99d4e9012c1b1",
+      "status": "ok"
+    },
+    {
+      "dataset": "konvid",
+      "video_id": "5268797415",
+      "T": 32,
+      "duration_s": 8.0,
+      "fps": 24.0,
+      "width": 960,
+      "height": 540,
+      "rotation_applied": 0,
+      "source_sha256": "dc16883f866554cb0d6181000d31d2c0a0e78295e231dd26f02d3cf576348ef5",
+      "status": "ok"
+    },
+    {
+      "dataset": "konvid",
+      "video_id": "6648629457",
+      "T": 33,
+      "duration_s": 8.008,
+      "fps": 23.976023976023978,
+      "width": 960,
+      "height": 540,
+      "rotation_applied": 0,
+      "source_sha256": "d328374508d1f08056bb06a04871183287aa2ddeb0cb8576e7962652940e769f",
+      "status": "ok"
+    },
+    {
+      "dataset": "livevqc",
+      "video_id": "E001",
+      "T": 41,
+      "duration_s": 10.0314,
+      "fps": 30.00578184500668,
+      "width": 640,
+      "height": 480,
+      "rotation_applied": 270,
+      "source_sha256": "8eea7094a345e3c69f4c3238f029b429b62d083723432fa912700f25f73d9840",
+      "status": "ok"
+    },
+    {
+      "dataset": "livevqc",
+      "video_id": "G001",
+      "T": 40,
+      "duration_s": 10.0,
+      "fps": 30.0,
+      "width": 404,
+      "height": 720,
+      "rotation_applied": 0,
+      "source_sha256": "575852c6ad6c1ca7092ebaac284932d54fb67de47dd6509714242e70316825be",
+      "status": "ok"
+    },
+    {
+      "dataset": "livevqc",
+      "video_id": "G002",
+      "T": 41,
+      "duration_s": 10.033333,
+      "fps": 30.0,
+      "width": 404,
+      "height": 720,
+      "rotation_applied": 0,
+      "source_sha256": "6f60bca78bbc4baa8c1a5f2e87f38b1b08aed782190f0e2e3f857aaa3ff1d2c6",
+      "status": "ok"
+    }
+  ],
+  "preprocess_sha256": "8e05229eadecb511a93612ff82d95e12b2225cc7bd7bead1b32e2ee0813cdbfe",
+  "status": "passed"
+}

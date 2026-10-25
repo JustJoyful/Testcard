@@ -1,0 +1,38 @@
+{
+  "status": "go",
+  "scope_config_sha256": "3886fcd5e5364f7cafc09cd00e3565111d5cc6279cbec97d0b4b832b998a7675",
+  "feature_config_sha256": "5f84db9d0085a0936fc9092b94df047e782bd3732c303102d31f14eed4e79f82",
+  "readiness_snapshot_sha256": "fe3b9c9fbad7ad08ab85cdc94c93d2318fe13271662aac578e1ea98d168d9795",
+  "timings_sha256": "f5462b742189a3e5cdc0ef5c49a43e2a73dbd75c1c7a0ef1f1913f441634bb4c",
+  "active_backbones": [
+    "dino",
+    "resnet50"
+  ],
+  "projections": {
+    "dino": {
+      "seconds_per_decoded_second": 0.8244966632509566,
+      "repeat_video_ratio_std": 0.019027891939534428,
+      "konvid_seconds": 7916.924089860584,
+      "livevqc_seconds": 4833.135920754197,
+      "combined_planning_seconds": 25500.120021229563,
+      "note": "LIVE-VQC extrapolated from KoNViD; includes 2x planning allowance; training unmeasured."
+    },
+    "resnet50": {
+      "seconds_per_decoded_second": 0.38258486484854337,
+      "repeat_video_ratio_std": 0.01986346259230352,
+      "konvid_seconds": 3673.6295826749356,
+      "livevqc_seconds": 2242.6830034041855,
+      "combined_planning_seconds": 11832.625172158241,
+      "note": "LIVE-VQC extrapolated from KoNViD; includes 2x planning allowance; training unmeasured."
+    }
+  },
+  "gpu_extraction_planning_hours": 10.37020699816328,
+  "gpu_allowance_hours": 100,
+  "hands_on_allowance_hours": 80,
+  "cached_dimension": 7424,
+  "timesteps": 63218,
+  "predicted_feature_bytes": 938660864,
+  "additional_disk_with_atomic_headroom_and_reserve_bytes": 7282034021,
+  "training_runtime": "unmeasured; measure one run per head in Phase 1",
+  "note": "Projection uses completed per-backbone measurements with 2x allowance. LIVE-VQC extrapolates KoNViD. Cut SlowFast measurements remain untouched as historical evidence."
+}

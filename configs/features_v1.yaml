@@ -1,0 +1,87 @@
+seed: 0
+datasets:
+  konvid:
+    archive: KoNViD_1k_videos.zip
+    labels: KoNViD_1k_metadata.zip
+    labels_member: KoNViD_1k_mos.csv
+    raw_dir: data/raw/konvid
+    mos_scale:
+    - 1
+    - 5
+  livevqc:
+    archive: LIVE_Video_Quality_Challeng_(VQC)_Database.zip
+    labels_member: LIVE Video Quality Challenge (VQC) Database/data.mat
+    raw_dir: data/raw/livevqc
+    mos_scale:
+    - 0
+    - 100
+decoder:
+  name: ffmpeg
+  ffmpeg: ffmpeg
+  ffprobe: ffprobe
+  confirmed: true
+cache_version: v1
+backbones:
+  dino:
+    architecture: dinov2_vitb14
+    hub_commit: 7764ea0f912e53c92e82eb78a2a1631e92725fc8
+    weights_sha256: 0b8b82f85de91b424aded121c7e1dcc2b7bc6d0adeea651bf73a13307fad8c73
+    blocks:
+    - 6
+    - 9
+    - 12
+    norm: true
+    patch_std_correction: 0
+    confirmed: true
+    weights_bytes: 346378731
+    feature_dimensions:
+      cls: 768
+      patchmean_L6: 768
+      patchstd_L6: 768
+      patchmean_L9: 768
+      patchstd_L9: 768
+      patchmean_L12: 768
+      patchstd_L12: 768
+  resnet50:
+    weights: ResNet50_Weights.IMAGENET1K_V2
+    weights_sha256: 11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca
+    confirmed: true
+    weights_bytes: 102540417
+    feature_dimensions:
+      pooled: 2048
+preprocessing:
+  frozen: true
+  spatial_fps: 4
+  spatial_crop: 448
+  spatial_interpolation: bicubic
+  spatial_antialias: true
+  spatial_mean:
+  - 0.485
+  - 0.456
+  - 0.406
+  spatial_std:
+  - 0.229
+  - 0.224
+  - 0.225
+  offline_precision: cuda_autocast_fp16
+  cache_dtype: float16
+  serving_precision: cpu_float32
+cache_outputs:
+  dino:
+  - cls
+  - patchmean_L6
+  - patchstd_L6
+  - patchmean_L9
+  - patchstd_L9
+  - patchmean_L12
+  - patchstd_L12
+  resnet50:
+  - pooled
+research_feature_sets:
+  primary:
+  - dino_cls
+  - dino_patchmean_L12
+  control:
+  - resnet50
+freeze_note: Frozen after passing Phase 0 readiness; active spatial-only v1 policy.
+  Blocks 6/9/12 are cached; no separate layer comparison or motion/UGC extraction.

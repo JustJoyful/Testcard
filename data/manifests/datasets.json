@@ -1,0 +1,40 @@
+{
+  "konvid": {
+    "official_source_url": "https://database.mmsp-kn.de/konvid-1k-database.html",
+    "license_url": "https://database.mmsp-kn.de/konvid-1k-database.html",
+    "license_terms": "Research access; cite both requested references. Underlying videos are Creative Commons source material; exact per-video CC variants not established by archive filenames.",
+    "redistribution_restrictions": "Do not redistribute videos without confirming source-specific rights; never commit videos.",
+    "release": "Unknown; identify the supplied archive by SHA-256.",
+    "archive_identity": {
+      "sha256": "3528bf99b4d8bad23ced543a45c9a338a14ff567cd6e1bfa2be967c3daed5def",
+      "compressed_bytes": 2407293394,
+      "uncompressed_bytes": 2412945110,
+      "member_count": 1201,
+      "corrupt_member": null,
+      "status": "ok"
+    },
+    "label_member": "KoNViD_1k_mos.csv",
+    "label_sha256": "ae3b110c9aef6ee3a6429d15de071a56ba8abe0386d77eaec415bc729ca8e87a",
+    "accessed": "2026-10-25",
+    "label_join": "passed"
+  },
+  "livevqc": {
+    "official_source_url": "https://live.ece.utexas.edu/research/LIVEVQC/index.html",
+    "license_url": "https://live.ece.utexas.edu/research/LIVEVQC/index.html",
+    "license_terms": "Use/copy/modify/distribute permitted with entire copyright notice in copies, source acknowledgement, and requested citations. See archived readme and official source for full terms.",
+    "redistribution_restrictions": "Preserve full copyright notice and source acknowledgement; never commit videos.",
+    "release": "2018 database; supplied archive identity recorded separately.",
+    "archive_identity": {
+      "sha256": "e031a69432b9ecbf1a700277096b02ecc30cdf065c70710552640de188257f78",
+      "compressed_bytes": 5914539319,
+      "uncompressed_bytes": 5913499558,
+      "member_count": 587,
+      "corrupt_member": null,
+      "status": "ok"
+    },
+    "label_member": "LIVE Video Quality Challenge (VQC) Database/data.mat",
+    "label_sha256": "90b68979b993e68682e5138bfcca2e2918fb4d30846cc3143412aecd5535492b",
+    "accessed": "2026-10-25",
+    "label_join": "passed"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "status": "frozen",
+  "date": "2026-10-25",
+  "cache_version": "v1",
+  "feature_config_sha256": "5f84db9d0085a0936fc9092b94df047e782bd3732c303102d31f14eed4e79f82",
+  "scope_config_sha256": "3886fcd5e5364f7cafc09cd00e3565111d5cc6279cbec97d0b4b832b998a7675",
+  "readiness_snapshot_sha256": "fe3b9c9fbad7ad08ab85cdc94c93d2318fe13271662aac578e1ea98d168d9795",
+  "source_sha256": {
+    "src/preprocess.py": "8e05229eadecb511a93612ff82d95e12b2225cc7bd7bead1b32e2ee0813cdbfe",
+    "src/features.py": "a5ec35b5c3896b53e6fd59bbcc7c52db31409292d667ceff83a8302dc616eabc"
+  },
+  "lock_sha256": "aef832296aa3a46d27fd5165d19da0dd932fc01360fc49bff3e3020c390399dc",
+  "weights_sha256": {
+    "dino": "0b8b82f85de91b424aded121c7e1dcc2b7bc6d0adeea651bf73a13307fad8c73",
+    "resnet50": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca"
+  },
+  "rotation_review_sha256": "006cd756f47262425bec76170cd4bc949c9390ba02169780af7a2750c1703cb1",
+  "timing_measurement_cache_label": "phase0-unfrozen",
+  "note": "v1 is the first active feature cache; no existing feature arrays are renamed. Historical preflight config/cache label and measured rows are preserved."
+}

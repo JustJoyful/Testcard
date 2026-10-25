@@ -1,0 +1,85 @@
+{
+  "konvid": {
+    "video_count": 1200,
+    "successful_probes": 1200,
+    "failed_ids": [],
+    "archive": {
+      "sha256": "3528bf99b4d8bad23ced543a45c9a338a14ff567cd6e1bfa2be967c3daed5def",
+      "compressed_bytes": 2407293394,
+      "uncompressed_bytes": 2412945110,
+      "member_count": 1201,
+      "corrupt_member": null,
+      "status": "ok"
+    },
+    "largest_temporary_video_bytes": 9778281,
+    "duration_total_s": 9602.129932999942,
+    "distributions": {
+      "duration_s": {
+        "min": 7.5075,
+        "median": 8.008,
+        "max": 8.008008
+      },
+      "fps": {
+        "min": 23.976,
+        "median": 29.97002997002997,
+        "max": 29.97002997002997
+      },
+      "width": {
+        "min": 960,
+        "median": 960.0,
+        "max": 960
+      },
+      "height": {
+        "min": 540,
+        "median": 540.0,
+        "max": 540
+      }
+    },
+    "manifest_sha256": "6b1d792204a111563cc103888c3e5deded62fbdec63cb97bb976c8361e812e5b"
+  },
+  "livevqc": {
+    "video_count": 585,
+    "successful_probes": 585,
+    "failed_ids": [],
+    "archive": {
+      "sha256": "e031a69432b9ecbf1a700277096b02ecc30cdf065c70710552640de188257f78",
+      "compressed_bytes": 5914539319,
+      "uncompressed_bytes": 5913499558,
+      "member_count": 587,
+      "corrupt_member": null,
+      "status": "ok"
+    },
+    "largest_temporary_video_bytes": 36003173,
+    "duration_total_s": 5861.922960000032,
+    "distributions": {
+      "duration_s": {
+        "min": 9.566667,
+        "median": 10.020107,
+        "max": 10.115702
+      },
+      "fps": {
+        "min": 16.566517227958162,
+        "median": 29.980013324450365,
+        "max": 120.15994668443852
+      },
+      "width": {
+        "min": 320,
+        "median": 1280.0,
+        "max": 1920
+      },
+      "height": {
+        "min": 240,
+        "median": 720.0,
+        "max": 1080
+      }
+    },
+    "manifest_sha256": "c1d3535d06aa4db2f790ab716c21182f5c98918c6776811dd396b893eb43c804"
+  },
+  "disk": {
+    "free_bytes": 52152774656,
+    "reserve_bytes": null,
+    "reserve_confirmed": false,
+    "raw_policy": "retain only 20 selected KoNViD clips and 3 portrait clips; original archives retained",
+    "cache_and_weights_projection": "pending actual feature dimensions/weights"
+  }
+}

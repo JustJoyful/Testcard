@@ -1,0 +1,43 @@
+{
+  "observed_at": "2026-10-25T11:20:34.653737+00:00",
+  "archives": [
+    {
+      "path": "KoNViD_1k_videos.zip",
+      "archive_sha256": "3528bf99b4d8bad23ced543a45c9a338a14ff567cd6e1bfa2be967c3daed5def",
+      "compressed_bytes": 2407293394,
+      "uncompressed_bytes": 2412945110,
+      "member_count": 1201,
+      "video_count": 1200,
+      "nonvideo_members": [],
+      "unsafe_members": [],
+      "crc_corrupt_member": null,
+      "crc_status": "ok",
+      "duplicate_video_ids": false,
+      "labels_join_status": "blocked_missing_MOS_source",
+      "metadata_probe_status": "not_run",
+      "original_unchanged": true
+    },
+    {
+      "path": "LIVE_Video_Quality_Challeng_(VQC)_Database.zip",
+      "archive_sha256": "e031a69432b9ecbf1a700277096b02ecc30cdf065c70710552640de188257f78",
+      "compressed_bytes": 5914539319,
+      "uncompressed_bytes": 5913499558,
+      "member_count": 587,
+      "video_count": 585,
+      "nonvideo_members": [
+        "LIVE Video Quality Challenge (VQC) Database/readme.txt",
+        "LIVE Video Quality Challenge (VQC) Database/data.mat"
+      ],
+      "unsafe_members": [],
+      "crc_corrupt_member": null,
+      "crc_status": "ok",
+      "duplicate_video_ids": false,
+      "labels_join_status": "not_checked",
+      "metadata_probe_status": "not_run",
+      "label_source_sha256": "90b68979b993e68682e5138bfcca2e2918fb4d30846cc3143412aecd5535492b",
+      "original_unchanged": true
+    }
+  ],
+  "bulk_extraction": false,
+  "raw_files_deleted": false
+}

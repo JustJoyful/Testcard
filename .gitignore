@@ -1,0 +1,15 @@
+.venv/
+/data/raw/
+/*.zip
+/cache/
+/weights/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.aws/
+.codex/
+.agents/
+.superpowers/
+.worktrees/
+.phase0-uv-cache/
+.venv-check/

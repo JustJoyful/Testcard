@@ -1,0 +1,45 @@
+{
+  "status": "complete",
+  "phase_complete": true,
+  "resume_task": null,
+  "deadline": "2026-10-31",
+  "completed_plan_tasks": [],
+  "checks_completed": [
+    "hardware_and_decoder_inspection",
+    "archive_crc_and_path_checks",
+    "archive_original_checksum_preservation",
+    "initial_config_validation",
+    "konvid_exact_label_join",
+    "installed_dependency_consistency",
+    "core_python_imports"
+  ],
+  "missing_gates": [],
+  "evidence_sha256": {
+    "results/phase0/environment.json": "8b53c0c4f2f3f0af9347dc107691da18e640dcd6ee71cc828a74034084a0ab3b",
+    "results/phase0/archive_audit.json": "85dd9e5efed0c12a9a2042097551da5e954b3b1c8e77f9a05d17301cc5a7c73e",
+    "configs/phase0.yaml": "ff290dc34eb9a660e82b44ad82392e3a3deab6afac0e70c449a3e47870815881",
+    "env/requirements.in": "c20af43a51e3b4b5748dde5eea6ca831a63b4d7aba8c8d8602a8564388802823",
+    "results/phase0/konvid_label_join.json": "e772dbb874863e46e0b5b39558b3701d9e03a8e4357d9fc44c0e960c5486478a"
+  },
+  "projections": null,
+  "offline_test_count": 50,
+  "independent_review": "2 Important findings fixed; 50 tests pass",
+  "task_status": {
+    "1": "locked environment, decoder, budget and numerical schedule recorded",
+    "2": "complete inventories, joins, fixed samples, checksum preservation and feasible spatial disk projection verified",
+    "3": "offline preprocessing tests, six real full decodes and three human portrait verdicts passed; spatial policy frozen",
+    "4": "actual pretrained CPU/CUDA smoke passed; active DINO/ResNet identities frozen; SlowFast retained as historical evidence",
+    "5": "all 360 original measurements passed and hashes remain current; CPU budget accepted",
+    "6": "all UGC work explicitly cut by user",
+    "7": "historical readiness go; active spatial projection go; v1 preprocessing freeze recorded"
+  },
+  "host_commands": [
+    "OMP_NUM_THREADS=4 .venv/bin/python scripts/00_backbone_check.py --config configs/phase0.yaml",
+    "OMP_NUM_THREADS=4 .venv/bin/python scripts/00_timing.py --config configs/phase0.yaml"
+  ],
+  "ready_for_phase": 1,
+  "active_scope_config": "configs/scope.yaml",
+  "frozen_feature_config": "configs/features_v1.yaml",
+  "scope_report": "results/phase0/scope_report.md",
+  "git_commits": "not created: agent .git writes remain blocked"
+}
