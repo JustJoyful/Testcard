@@ -148,8 +148,12 @@ def coverage(root):
     return result
 
 
-def validate_freeze(feature_config, freeze_record=Path('results/phase0/preprocessing_freeze.json')):
+def validate_freeze(feature_config, freeze_record=None):
+    config = yaml.safe_load(Path(feature_config).read_text())
+    freeze_record = freeze_record or config.get('freeze_record', 'results/phase0/preprocessing_freeze.json')
     frozen = json.loads(Path(freeze_record).read_text())
+    if frozen.get('status') != 'frozen' or frozen['cache_version'] != config['cache_version']:
+        raise ValueError('feature config/freeze version or status mismatch')
     checks = {str(feature_config): frozen['feature_config_sha256'], 'env/requirements.lock': frozen['lock_sha256'],
               'configs/scope.yaml': frozen['scope_config_sha256'],
               'results/phase0/readiness_at_freeze.json': frozen['readiness_snapshot_sha256'], **frozen['source_sha256']}
@@ -166,7 +170,7 @@ def validate_freeze(feature_config, freeze_record=Path('results/phase0/preproces
     return frozen
 
 
-def validate_cache(root, feature_config, freeze_record=Path('results/phase0/preprocessing_freeze.json')):
+def validate_cache(root, feature_config, freeze_record=None):
     frozen = validate_freeze(feature_config,freeze_record)
     root = Path(root)
     meta = json.loads((root/'meta.json').read_text())

@@ -1,0 +1,24 @@
+{
+  "status": "frozen",
+  "date": "2026-10-26",
+  "cache_version": "v2",
+  "feature_config_sha256": "8397ea636c79e69a382e88a7238f798b398dafd91774edd6b50555f7bb62777c",
+  "scope_config_sha256": "d346222b8ae6b8cd98414dccebda4570fd6ea64620ff30b1d013f1ad47747986",
+  "readiness_snapshot_sha256": "fe3b9c9fbad7ad08ab85cdc94c93d2318fe13271662aac578e1ea98d168d9795",
+  "source_sha256": {
+    "src/preprocess.py": "804c8d89cb5e8b163d6dc6e97d5d618a53c198c6aa6e4c9915dc5428ee46320b",
+    "src/features.py": "a5ec35b5c3896b53e6fd59bbcc7c52db31409292d667ceff83a8302dc616eabc"
+  },
+  "lock_sha256": "aef832296aa3a46d27fd5165d19da0dd932fc01360fc49bff3e3020c390399dc",
+  "weights_sha256": {
+    "dino": "0b8b82f85de91b424aded121c7e1dcc2b7bc6d0adeea651bf73a13307fad8c73",
+    "resnet50": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca"
+  },
+  "rotation_review_sha256": "006cd756f47262425bec76170cd4bc949c9390ba02169780af7a2750c1703cb1",
+  "timing_measurement_cache_label": "phase0-unfrozen",
+  "note": "New v2 freeze after verified demuxer-time-base repair. Original spatial sampling/rotation/transforms/weights and historical Phase 0 readiness retained. RGB byte equivalence and full shared decode verified on six failures plus A001. All v2 features and parity are regenerated; v1 remains historical.",
+  "parent_freeze_sha256": "54447ad6b608c70f3ef2f8daf34ecaf5f3cb4b411a1f840639cf1f4c2ca516e8",
+  "validation_evidence_sha256": {
+    "results/phase1/decoder_diagnosis.json": "e851907d16f781e836518d70820f649d9c1d6c2d1f59db94eb1afc11bdcd4d6e"
+  }
+}

@@ -208,3 +208,13 @@ An independent whole-branch review identified restart and evidence-binding issue
 ### Phase 1 real feature parity verified
 
 The fixed-sample CPU fp32 versus cached GPU fp16 parity artifact passed and was revalidated against current source/reference checksums. Evidence is in `results/phase1/parity.json`. This does not complete Phase 1: full cache extraction, controls, pilots, tuning and definitive CV/ridge remain pending in the live sequential queue. No LIVE-VQC predictions were made.
+
+## 2026-10-26: Repair variable-frame-rate decoder output timing
+
+The six LIVE-VQC failures (A078, A080, A106, B001, B004, B054) are rawvideo output-muxer timestamp collisions, not source timestamp regressions or corrupt decodes. The original command exits zero but logs non-monotonic output DTS after rounding distinct source timestamps to its default encoder time base. Matching the demuxer time base removes this error without dropping frames. Per-source RGB stream hashes/frame counts from both commands are saved in `results/phase1/decoder_diagnosis.json`; a generated VFR fixture reproduces the failure independently.
+
+Before changing shared preprocessing, apply Rule 24: activate a new v2 feature/cache policy and regenerate all feature arrays and fixed-sample parity. Preserve v1 config/freeze/evidence and cached arrays; do not rewrite the original freeze hashes or silently relabel v1 arrays. No head fitting has started, so no accuracy experiment exists to invalidate. Frozen splits, source archives, sampling/rotation/normalization, pretrained weights, head sizes and selection protocol stay the same. Training remains gated on complete v2 caches and regenerated parity. Previous extraction attempts remain in the compute accounting.
+
+The minimal decoder change is `-enc_time_base demux` on the raw RGB output. Retain strict FFmpeg diagnostics, `-xerror`, decode-length and frame-count validation. Never suppress the DTS text or ignore unrelated errors. The active feature config declares its versioned freeze record; cache validation must bind config and freeze versions. This supersedes the plan's v1 path references for active commands only; historical Phase 0 evidence remains unchanged.
+
+Reference: [official FFmpeg encoder time-base documentation](https://www.ffmpeg.org/ffmpeg.html#Advanced-options). FFmpeg documents the default video encoder time base as reciprocal frame rate and `demux` as the input demuxer time base.

@@ -12,7 +12,7 @@ Offline and serving must import the same `src/preprocess.py` and `src/features.p
 
 ## 2. Spatial Preprocessing Policy (v1, frozen 2026-10-25)
 
-The active spatial settings below are frozen in `configs/features_v1.yaml` after passing Phase 0 readiness. Changes require a new cache version and affected evidence reruns. The freeze record is `results/phase0/preprocessing_freeze.json`.
+The active spatial settings below use `configs/features_v2.yaml` and `results/phase0/preprocessing_freeze_v2.json` after the 2026-10-26 VFR output-time-base repair. The original v1 config/freeze remain historical evidence. Changes require a new cache version and affected evidence reruns.
 
 Shared decoding:
 - Decoding: the verified FFmpeg/ffprobe path; never mix decoders. Decode sequentially and take the frame nearest each target timestamp. Do not seek, since seeking is unreliable in some containers.
@@ -220,3 +220,7 @@ The single `matched` tier in `configs/head_tiers.yaml` fixes width/depth before 
 Mamba uses two independent pre-LayerNorm residual blocks, aligned forward/backward within each valid prefix and averaged before masked pooling. Each uses a causal depthwise convolution, input-dependent B/C, positive softplus delta and the real recurrence `h=exp(delta*A)*h+delta*B*u`, `y=sum(C*h)+D*u`. Padding is sanitized before projection/convolution; inactive states freeze and outputs are zero. Float64 values/gradients are checked against independent scalar loops. A_log starts at log(1..16), D at one; dt weights are uniform ±rank^(-1/2), with inverse-softplus bias for log-uniform dt in [0.001,0.1]. The local implementation uses no extension or einops.
 
 Inspected reference identity: state-spaces/mamba `e9594ce1c732d97440f0332fdc43170a2294dbfa`, [Mamba-1 block](https://github.com/state-spaces/mamba/blob/e9594ce1c732d97440f0332fdc43170a2294dbfa/mamba_ssm/modules/mamba_simple.py) and [selective scan](https://github.com/state-spaces/mamba/blob/e9594ce1c732d97440f0332fdc43170a2294dbfa/mamba_ssm/ops/selective_scan_interface.py). The declared project optimizer applies the same weight decay policy to every head, including A_log/D.
+
+## Decoder v2 (2026-10-26)
+
+Raw RGB output uses `-enc_time_base demux` with passthrough frame timing, preserving input timestamp precision rather than rounding VFR frames to nominal FPS. Strict stderr/error and complete-decode checks remain enabled. Source sampling timestamps, frame ordering, rotation, resizing and normalization are unchanged. Diagnostic RGB hashes and frame counts for all six failed clips plus a normal control match the legacy output exactly. The source change still receives cache v2 and fresh extraction/parity under Rule 24; v1 artifacts are retained, never relabeled.

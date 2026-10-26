@@ -123,7 +123,8 @@ def main():
     torch.cuda.synchronize()
     evidence_path = Path('results/phase1/extraction.json')
     evidence = json.loads(evidence_path.read_text()) if evidence_path.exists() else {'invocations':[]}
-    evidence['invocations'].append({'dataset':args.dataset,'backbone':args.backbone,'subset':bool(args.sample_ids),
+    evidence['invocations'].append({'cache_version':config['cache_version'],'feature_config_sha256':sha256(args.config),
+        'dataset':args.dataset,'backbone':args.backbone,'subset':bool(args.sample_ids),
         'expected_ids':[r['video_id'] for r in rows],'completed_ids':completed,'skipped_ids':skipped,
         'failures':failures,'wall_seconds':time.perf_counter()-start,'status':'failed' if failures else 'complete'})
     if (root/'meta.json').exists():

@@ -78,9 +78,10 @@ def iter_samples(path: Path, config: dict):
     count, step = (16, 2/30) if motion == 'r3d18' else (32, 2/30)
     offsets = (np.arange(count) - (count-1)/2) * step
     frame_bytes = meta['width'] * meta['height'] * 3
+    # Preserve source timestamp precision instead of rounding VFR frames to nominal FPS.
     command = ['ffmpeg', '-v', 'error', '-xerror', '-err_detect', 'explode', '-noautorotate',
                '-i', str(path), '-map', '0:v:0', '-an', '-sn', '-fps_mode', 'passthrough',
-               '-f', 'rawvideo', '-pix_fmt', 'rgb24', 'pipe:1']
+               '-enc_time_base', 'demux', '-f', 'rawvideo', '-pix_fmt', 'rgb24', 'pipe:1']
     with tempfile.TemporaryFile() as errors:
         process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=errors)
         decoded = 0

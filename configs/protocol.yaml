@@ -1,7 +1,7 @@
 schema_version: 1
 status: draft
 feature_set: dino
-cache_root: cache/v1
+cache_root: cache/v2
 inventory: data/manifests/konvid.csv
 splits: data/splits/konvid_folds.csv
 head_tiers: configs/head_tiers.yaml

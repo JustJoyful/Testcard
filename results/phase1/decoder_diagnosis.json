@@ -1,0 +1,212 @@
+[
+  {
+    "video_id": "A078",
+    "source_sha256": "631be8e73789edc713389f2602dcd6979fdd9426105b022242a23afcb8b9bdfe",
+    "probe_frames": 299,
+    "fps": 29.98552538183909,
+    "duplicate_pts": 0,
+    "minimum_pts_step": 0.031177999999999706,
+    "decodes": {
+      "legacy": {
+        "returncode": 0,
+        "stderr": "[rawvideo @ 0x55ae58290f40] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 123 >= 123\n",
+        "rgb_sha256": "4b9efc2439d84beef4168f61eddd72004c5c1d15214b0353d1e98271fdd0b4e3",
+        "bytes": 1860019200,
+        "frames": 299.0
+      },
+      "demux": {
+        "returncode": 0,
+        "stderr": "",
+        "rgb_sha256": "4b9efc2439d84beef4168f61eddd72004c5c1d15214b0353d1e98271fdd0b4e3",
+        "bytes": 1860019200,
+        "frames": 299.0
+      }
+    },
+    "shared_decoder": {
+      "status": "passed",
+      "samples": 40,
+      "sampled_rgb_sha256": "2c770667e4e6dec84aebe66a60064fc63b081f8fdb675ad1c5473a328894243a",
+      "wall_seconds": 14.400027316005435
+    }
+  },
+  {
+    "video_id": "A080",
+    "source_sha256": "ff29cd9f8ccb92e4f6ab1fe423427439a6cd2210cd569d6c2d38c30bbcdd63a1",
+    "probe_frames": 300,
+    "fps": 29.954369510445755,
+    "duplicate_pts": 0,
+    "minimum_pts_step": 0.03292200000000012,
+    "decodes": {
+      "legacy": {
+        "returncode": 0,
+        "stderr": "[rawvideo @ 0x55e8c8dc3440] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 156 >= 156\n[rawvideo @ 0x55e8c8dc3440] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 169 >= 169\n[rawvideo @ 0x55e8c8dc3440] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 197 >= 197\n",
+        "rgb_sha256": "38d13a2e4022b8e7b2986f4877020fe77425107be85b22f8e59820d760c2c612",
+        "bytes": 1866240000,
+        "frames": 300.0
+      },
+      "demux": {
+        "returncode": 0,
+        "stderr": "",
+        "rgb_sha256": "38d13a2e4022b8e7b2986f4877020fe77425107be85b22f8e59820d760c2c612",
+        "bytes": 1866240000,
+        "frames": 300.0
+      }
+    },
+    "shared_decoder": {
+      "status": "passed",
+      "samples": 41,
+      "sampled_rgb_sha256": "906e4e6e4b4a3f9206a821f373ad731a1b764d2fd55a7957682b27782a7a763b",
+      "wall_seconds": 14.324484387005214
+    }
+  },
+  {
+    "video_id": "A106",
+    "source_sha256": "90bc9a518b2c54115392caa39b56b0b152a657fadde3ba27eb94f1dba8fae5c1",
+    "probe_frames": 303,
+    "fps": 30.346771812080537,
+    "duplicate_pts": 0,
+    "minimum_pts_step": 6.699999999999762e-05,
+    "decodes": {
+      "legacy": {
+        "returncode": 0,
+        "stderr": "[rawvideo @ 0x5556f8b2f4c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1 >= 1\n    Last message repeated 4 times\n[rawvideo @ 0x5556f8b2f4c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 297 >= 297\n",
+        "rgb_sha256": "2c71a34ebff8e090eb858cef52c3e0df1cfd781ff0b116b20a0768377293f093",
+        "bytes": 1884902400,
+        "frames": 303.0
+      },
+      "demux": {
+        "returncode": 0,
+        "stderr": "",
+        "rgb_sha256": "2c71a34ebff8e090eb858cef52c3e0df1cfd781ff0b116b20a0768377293f093",
+        "bytes": 1884902400,
+        "frames": 303.0
+      }
+    },
+    "shared_decoder": {
+      "status": "passed",
+      "samples": 40,
+      "sampled_rgb_sha256": "0491eb9e5b8803ddbefb40da565d403d5c00ff81cd5c63eea030d87e915d50fc",
+      "wall_seconds": 12.80483496900706
+    }
+  },
+  {
+    "video_id": "B001",
+    "source_sha256": "46392c596508b123ef7d7489be5c92da9d7535213e7b4f5d51c811ef330c2461",
+    "probe_frames": 196,
+    "fps": 19.561507300633973,
+    "duplicate_pts": 0,
+    "minimum_pts_step": 0.03252200000000016,
+    "decodes": {
+      "legacy": {
+        "returncode": 0,
+        "stderr": "[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 49 >= 49\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 51 >= 51\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 53 >= 53\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 55 >= 55\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 57 >= 57\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 59 >= 59\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 61 >= 61\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 63 >= 63\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 65 >= 65\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 67 >= 67\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 68 >= 68\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 69 >= 69\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 70 >= 70\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 71 >= 71\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 72 >= 72\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 73 >= 73\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 74 >= 74\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 75 >= 75\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 76 >= 76\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 77 >= 77\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 78 >= 78\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 79 >= 79\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 80 >= 80\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 81 >= 81\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 82 >= 82\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 83 >= 83\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 84 >= 84\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 85 >= 85\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 86 >= 86\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 87 >= 87\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 88 >= 88\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 89 >= 89\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 90 >= 90\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91 >= 91\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 92 >= 92\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 93 >= 93\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 94 >= 94\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 95 >= 95\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 96 >= 96\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 97 >= 97\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 98 >= 98\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 99 >= 99\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 100 >= 100\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 101 >= 101\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 102 >= 102\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 103 >= 103\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 104 >= 104\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 105 >= 105\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 106 >= 106\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 107 >= 107\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 108 >= 108\n    Last message repeated 1 times\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 109 >= 109\n[rawvideo @ 0x55ae700056c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 110 >= 110\n    Last message repeated 1 times\n",
+        "rgb_sha256": "c3493e5e5c7691d9434fb7da7414826b6bc73c34a3c92fd0bb2b6482ed9257e7",
+        "bytes": 541900800,
+        "frames": 196.0
+      },
+      "demux": {
+        "returncode": 0,
+        "stderr": "",
+        "rgb_sha256": "c3493e5e5c7691d9434fb7da7414826b6bc73c34a3c92fd0bb2b6482ed9257e7",
+        "bytes": 541900800,
+        "frames": 196.0
+      }
+    },
+    "shared_decoder": {
+      "status": "passed",
+      "samples": 41,
+      "sampled_rgb_sha256": "7d1b331c623ea0e89b5bcfe6833daf49d9a593c2a22d0b5ef29e8af5a71c9e69",
+      "wall_seconds": 1.6273188409977593
+    }
+  },
+  {
+    "video_id": "B004",
+    "source_sha256": "0c85f64bd64d26491739ca063afefab82486e0ec6a08532cff20abd4ec53e07f",
+    "probe_frames": 301,
+    "fps": 30.08098213462822,
+    "duplicate_pts": 0,
+    "minimum_pts_step": 0.03282199999999946,
+    "decodes": {
+      "legacy": {
+        "returncode": 0,
+        "stderr": "[rawvideo @ 0x558e424ad780] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 220 >= 220\n",
+        "rgb_sha256": "4a805c8cf5c917139d69bd4fc22c4ba854fa5d382683f7aad2eeba72bb7ab6b7",
+        "bytes": 832204800,
+        "frames": 301.0
+      },
+      "demux": {
+        "returncode": 0,
+        "stderr": "",
+        "rgb_sha256": "4a805c8cf5c917139d69bd4fc22c4ba854fa5d382683f7aad2eeba72bb7ab6b7",
+        "bytes": 832204800,
+        "frames": 301.0
+      }
+    },
+    "shared_decoder": {
+      "status": "passed",
+      "samples": 41,
+      "sampled_rgb_sha256": "509d35943a9a4f14c1c29f98d99a567d49e17404271ec1c1154af9ac3a5e1364",
+      "wall_seconds": 2.6221661970048444
+    }
+  },
+  {
+    "video_id": "B054",
+    "source_sha256": "570eb861fed6a26c0d6cfdee668cc5e739fab2763d061db88eb6c250f0c77c78",
+    "probe_frames": 1202,
+    "fps": 120.15994668443852,
+    "duplicate_pts": 0,
+    "minimum_pts_step": 0.007915999999999812,
+    "decodes": {
+      "legacy": {
+        "returncode": 0,
+        "stderr": "[rawvideo @ 0x5621d15213c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 390 >= 390\n[rawvideo @ 0x5621d15213c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1133 >= 1133\n",
+        "rgb_sha256": "b82ca36316cfde80c1e6dfc3c0cf17882e1f3588021163b1a12eb52afaaf6c5b",
+        "bytes": 3323289600,
+        "frames": 1202.0
+      },
+      "demux": {
+        "returncode": 0,
+        "stderr": "",
+        "rgb_sha256": "b82ca36316cfde80c1e6dfc3c0cf17882e1f3588021163b1a12eb52afaaf6c5b",
+        "bytes": 3323289600,
+        "frames": 1202.0
+      }
+    },
+    "shared_decoder": {
+      "status": "passed",
+      "samples": 41,
+      "sampled_rgb_sha256": "c82fc102320a63fa1cbfdde2e79e16d37bbc461d4c3397ba29fc844f9c8e926d",
+      "wall_seconds": 7.271750698011601
+    }
+  },
+  {
+    "video_id": "A001",
+    "source_sha256": "3397df278ef991bc7a7a14a8ded4f78c1a3c52ed0bd833c8d2defae155caaa69",
+    "probe_frames": 300,
+    "fps": 29.99290167993575,
+    "duplicate_pts": 0,
+    "minimum_pts_step": 0.033223,
+    "decodes": {
+      "legacy": {
+        "returncode": 0,
+        "stderr": "",
+        "rgb_sha256": "33cb24187a5526adbe4d16e9f72f813747d437d8b411dc9177119677649daf7b",
+        "bytes": 1866240000,
+        "frames": 300.0
+      },
+      "demux": {
+        "returncode": 0,
+        "stderr": "",
+        "rgb_sha256": "33cb24187a5526adbe4d16e9f72f813747d437d8b411dc9177119677649daf7b",
+        "bytes": 1866240000,
+        "frames": 300.0
+      }
+    },
+    "shared_decoder": {
+      "status": "passed",
+      "samples": 41,
+      "sampled_rgb_sha256": "345b7582ba4f109e767509b8b840964e1d10b61f614e85914deba0b4974b9a40",
+      "wall_seconds": 15.259821890998865
+    }
+  }
+]

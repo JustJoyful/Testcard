@@ -121,3 +121,28 @@ def test_metadata_only_probe_does_not_request_frame_sections(short_video, monkey
         return original(command, **kwargs)
     monkeypatch.setattr(p.subprocess, 'run', inspect_command)
     assert p.probe_video(short_video, timestamps=False)['duration_s'] == .5
+
+
+def test_variable_frame_timestamps_do_not_collide_in_output(tmp_path):
+    path = tmp_path / 'variable.mp4'
+    subprocess.run([
+        'ffmpeg', '-v', 'error', '-f', 'lavfi', '-i',
+        'testsrc2=size=64x32:rate=30:duration=1', '-vf',
+        "settb=1/1000,setpts='if(eq(N,13),401,N*1000/30)'",
+        '-fps_mode', 'passthrough', '-enc_time_base', '1:1000',
+        '-c:v', 'libx264', '-pix_fmt', 'yuv420p', str(path),
+    ], check=True)
+    legacy = subprocess.run([
+        'ffmpeg', '-v', 'error', '-xerror', '-err_detect', 'explode', '-noautorotate',
+        '-i', str(path), '-map', '0:v:0', '-an', '-sn', '-fps_mode', 'passthrough',
+        '-f', 'rawvideo', '-pix_fmt', 'rgb24', 'pipe:1',
+    ], capture_output=True, check=True)
+    assert b'non monotonically increasing dts' in legacy.stderr
+    meta = p.probe_video(path)
+    frames = np.frombuffer(legacy.stdout, dtype=np.uint8).reshape(-1, 32, 64, 3)
+    assert len(frames) == len(meta['pts']) == 30
+    samples = list(p.iter_samples(path, {}))
+    assert len(samples) == 4
+    for timestamp, frame, _ in samples:
+        index = p.nearest_indices(meta['pts'], np.array([timestamp]))[0]
+        np.testing.assert_array_equal(frame, frames[index])

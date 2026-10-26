@@ -1,5 +1,7 @@
 # Phase 1 Core Slice Implementation Plan
 
+> **Execution amendment — 2026-10-26:** The verified VFR rawvideo time-base repair activates `configs/features_v2.yaml`, `cache/v2`, and `results/phase0/preprocessing_freeze_v2.json` for subsequent commands and gates below. Preserve original v1 configs/freezes/caches as history; regenerate every feature array and fixed-sample parity under v2. Splits/head protocols stay fixed; no training had started. Earlier extraction attempts remain in compute accounting. See DECISIONS.md and results/phase1/decoder_diagnosis.json.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Finish Phase 1 by 2026-10-30: cache both datasets, produce the final DINO head-comparison CV runs, and verify ridge, leakage control and parity within the approved spatial-only scope.

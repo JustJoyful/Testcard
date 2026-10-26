@@ -11,7 +11,7 @@ cut_backbones:
 - slowfast_r50
 ugc: cut
 separate_layer_comparison: false
-cache_config: configs/features_v1.yaml
+cache_config: configs/features_v2.yaml
 primary_feature_set:
 - dino_cls
 - dino_patchmean_L12
