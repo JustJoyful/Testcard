@@ -18,3 +18,10 @@ The full offline suite passes (145 tests). All six failed clips subsequently com
 Fresh v2 fixed-sample extraction, full dataset extraction and parity are queued, followed by the original gated training sequence. GPU priming shell PID: 613777 (session 46339); full extraction shell PID: 629143 (session 39694); CPU parity watcher PID: 629308 (session 16281); training continuation PID: 642290 (session 96054). These launch identities replace the stopped v1 queue.
 
 Monitor `.superpowers/decoder-repair/{priming,extraction,parity,remaining}.log`. Exact shell sequences are `prime.sh`, `extract-v2.sh`, and `run-remaining-v2.sh` in that directory. Keep one extraction writer. All active commands use `configs/features_v2.yaml` and `cache/v2`; the final report still must pass before Phase 1 is complete.
+
+## User-requested pause
+
+
+User-requested pause at 2026-10-26T19:54:53.316048+05:30: all extraction and continuation processes stopped. Published cache groups: {"konvid": {"dino": 1200, "resnet50": 1200}, "livevqc": {"dino": 463, "resnet50": 6}}. Resume with `bash /home/joydeep/Projects/VQA/scripts/continue_phase1.sh`; this sequence has no stale PID waits and revalidates completed cache entries. Resume shell verified by bash -n plus two isolated execution-order/failure-stop tests; no real workload was restarted.
+
+The old process IDs above are historical; no pipeline jobs remain active. The resume command performs extraction first, then verifies cache/parity before the remaining gated stages. The unfinished video may be recomputed.
