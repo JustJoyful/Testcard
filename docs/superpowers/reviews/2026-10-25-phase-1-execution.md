@@ -34,3 +34,5 @@ It exits nonzero and publishes missing/failed gates until actual evidence is com
 Implementation rulings: work in the named branch in place so ignored inputs remain available; code commit is audit-only for otherwise compatible saved artifacts. Hardware remains gate-dependent; single-writer and later-phase exclusions follow the approved scope; artifact checks validate provenance relationships without an added attestation system. The costs are no directory isolation, unsupported simultaneous external writers, and a possible explicit stop for a scope decision. No review findings remain deferred.
 
 Parity subsequently completed successfully: 160 real CPU/GPU comparisons; minimum timestep cosine 0.9998409678411763. Evidence: `results/phase1/parity.json`, independently revalidated against current sample arrays and source hashes. Full extraction and all head-training stages remain pending.
+
+The v1 queue later stopped on six LIVE-VQC decoder errors. They are resolved by the versioned repair; current v2 jobs and monitoring paths are in [the decoder repair record](2026-10-26-decoder-repair.md). Earlier PIDs above are historical.

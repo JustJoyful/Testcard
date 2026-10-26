@@ -218,3 +218,7 @@ Before changing shared preprocessing, apply Rule 24: activate a new v2 feature/c
 The minimal decoder change is `-enc_time_base demux` on the raw RGB output. Retain strict FFmpeg diagnostics, `-xerror`, decode-length and frame-count validation. Never suppress the DTS text or ignore unrelated errors. The active feature config declares its versioned freeze record; cache validation must bind config and freeze versions. This supersedes the plan's v1 path references for active commands only; historical Phase 0 evidence remains unchanged.
 
 Reference: [official FFmpeg encoder time-base documentation](https://www.ffmpeg.org/ffmpeg.html#Advanced-options). FFmpeg documents the default video encoder time base as reciprocal frame rate and `demux` as the input demuxer time base.
+
+### Decoder repair verified and v2 queue resumed
+
+All six failed IDs pass the shared decoder and both real GPU backbones. Checksum-bound per-branch evidence is generated in `results/phase1/decoder_repair/verification.json`; the independent focused review found no Important/Critical issues. Fresh v2 feature and parity runs precede the existing leakage/pilot/runtime/selection/CV gates. The original failed v1 evidence remains under `results/phase1/decoder_repair/`; no clips, branches, folds or seeds were dropped, and no old arrays were relabeled.
