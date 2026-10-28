@@ -87,8 +87,51 @@ def summarize(rows,runs,root):
                           'quantity':'seed-averaged pooled OOF ensemble'})
     atomic_json(root/'oof_ensemble.json',ensembles)
     atomic_json(root/'summary.json',{'heads':summary,'undefined_metric_runs':failed,
-                                    'note':'Definitive fixed-DINO comparison; Phase 2 reuses these runs. Target-label logistic mapping; no bootstrap PLCC.'})
+                                    'note':'Per-fold summaries and pooled seed-averaged OOF predictions. Target-label logistic mapping; no bootstrap PLCC.'})
     return summary,failed
+
+
+def load_cv_run(protocol,provenance,configs,root,head,fold,seed):
+    directory=root/'ridge'/f'fold{fold}' if head=='ridge' else root/'cv'/head/f'fold{fold}'/f'seed{seed}'
+    run=json.loads((directory/'run.json').read_text())
+    artifact=directory/('model.npz' if head=='ridge' else 'best.pt')
+    if run['status']!='complete' or sha256(artifact)!=run['checkpoint_sha256']:
+        raise ValueError(f'incomplete/corrupt run: {directory}')
+    expected_config=protocol if head=='ridge' else configs[head]
+    if run['identity']['config_sha256']!=config_hash(expected_config) or not same_inputs(run['identity']['provenance'],provenance):
+        raise ValueError(f'wrong config/split/cache: {directory}')
+    if head=='ridge':
+        if run['identity']['fold']!=fold:
+            raise ValueError(f'wrong ridge fold: {directory}')
+    else:
+        identity=run['identity']['provenance']
+        if (identity['head']!=head or identity['fold']!=fold or identity['run_kind']!='cv'
+                or identity['label_mode']!='real' or run['seed']!=seed or run['identity']['seed']!=seed):
+            raise ValueError(f'wrong run identity: {directory}')
+        if json.loads((directory/'config.json').read_text())!=expected_config or run['config']!=expected_config:
+            raise ValueError(f'changed resolved run config: {directory}')
+    return run
+
+
+def collect_run(protocol,provenance,configs,root,head,fold,seed):
+    run=load_cv_run(protocol,provenance,configs,root,head,fold,seed)
+    directory=root/'ridge'/f'fold{fold}' if head=='ridge' else root/'cv'/head/f'fold{fold}'/f'seed{seed}'
+    path=directory/'predictions.json'
+    metadata=json.loads(path.with_suffix('.meta.json').read_text())
+    expected_identity={'run_identity':run['identity'],'checkpoint_sha256':run['checkpoint_sha256']}
+    if metadata['status']!='complete' or metadata['identity']!=expected_identity or metadata['predictions_sha256']!=sha256(path):
+        raise ValueError(f'corrupt/stale predictions: {path}')
+    predictions=json.loads(path.read_text())
+    expected_run=f'ridge/fold{fold}' if head=='ridge' else f'cv/{head}/fold{fold}/seed{seed}'
+    if any(r['head']!=head or r['fold']!=fold or r['seed']!=seed or r['checkpoint_sha256']!=run['checkpoint_sha256']
+           or r['feature_set']!=protocol['feature_set'] or r['dataset']!='konvid' or r['run_id']!=expected_run for r in predictions):
+        raise ValueError(f'prediction provenance mismatch: {path}')
+    inventory={r['video_id']:float(r['mos']) for r in csv.DictReader(Path(protocol['inventory']).open())}
+    tests={r['video_id']:fold for r in csv.DictReader(Path(protocol['splits']).open()) if r['role']=='test' and int(r['outer_fold'])==fold}
+    if (validate_oof(predictions,tests,[head],[seed])['status']!='complete'
+            or any(r['mos']!=inventory.get(r['video_id']) for r in predictions)):
+        raise ValueError(f'incomplete/invalid prediction coverage: {path}')
+    return predictions,run
 
 
 def collect_cv(protocol,provenance,configs,root):
@@ -97,30 +140,10 @@ def collect_cv(protocol,provenance,configs,root):
     for head in training.HEADS+['ridge']:
         for fold in range(5):
             for seed in ([None] if head=='ridge' else protocol['seeds']):
-                directory=root/'ridge'/f'fold{fold}' if head=='ridge' else root/'cv'/head/f'fold{fold}'/f'seed{seed}'
-                run=json.loads((directory/'run.json').read_text())
-                artifact=directory/('model.npz' if head=='ridge' else 'best.pt')
-                if run['status']!='complete' or sha256(artifact)!=run['checkpoint_sha256']:
-                    raise ValueError(f'incomplete/corrupt run: {directory}')
-                expected_config=protocol if head=='ridge' else configs[head]
-                if run['identity']['config_sha256']!=config_hash(expected_config) or not same_inputs(run['identity']['provenance'],provenance):
-                    raise ValueError(f'wrong config/split/cache: {directory}')
-                if head!='ridge':
-                    identity=run['identity']['provenance']
-                    if identity['head']!=head or identity['fold']!=fold or identity['run_kind']!='cv' or identity['label_mode']!='real' or run['seed']!=seed:
-                        raise ValueError(f'wrong run identity: {directory}')
-                    if json.loads((directory/'config.json').read_text())!=expected_config:
-                        raise ValueError(f'changed resolved run config: {directory}')
-                    runs.append(run)
-                path=directory/'predictions.json'
-                metadata=json.loads(path.with_suffix('.meta.json').read_text())
-                expected_identity={'run_identity':run['identity'],'checkpoint_sha256':run['checkpoint_sha256']}
-                if metadata['status']!='complete' or metadata['identity']!=expected_identity or metadata['predictions_sha256']!=sha256(path):
-                    raise ValueError(f'corrupt/stale predictions: {path}')
-                predictions=json.loads(path.read_text())
-                if any(r['head']!=head or r['fold']!=fold or r['seed']!=seed or r['checkpoint_sha256']!=run['checkpoint_sha256'] or r['feature_set']!='dino' or r['dataset']!='konvid' for r in predictions):
-                    raise ValueError(f'prediction provenance mismatch: {path}')
+                predictions,run=collect_run(protocol,provenance,configs,root,head,fold,seed)
                 rows.extend(predictions)
+                if head!='ridge':
+                    runs.append(run)
     return rows,runs
 
 
