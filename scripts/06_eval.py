@@ -177,7 +177,7 @@ def time_accounting(root):
     return {'gpu_job_wall_hours':gpu,'remaining_gpu_allowance_hours':100-gpu,
             'cpu_ridge_wall_hours':ridge,'cpu_parity_wall_hours':parity['wall_seconds']/3600,
             'hands_on_hours':'unmeasured; planning allowance remains 80 hours',
-            'measurement':'saved attempt job wall time includes CPU/IO overhead while GPU is allocated; not GPU kernel utilization'}
+            'measurement':'Saved attempt job wall time includes CPU/IO overhead while GPU is allocated, not kernel utilization. Interrupted jobs without a saved completion record are untimed; remaining allowance is an upper bound from saved attempts. CPU totals cover active parity and definitive ridge fits, excluding audit/pilot overhead.'}
 
 
 def update_phase_docs(accounting):
@@ -190,7 +190,7 @@ def update_phase_docs(accounting):
         with decision.open('a') as f:
             f.write('\n'+marker+'\n\nThe generated phase gate passes. Definitive DINO/ridge artifacts are complete and must be reused in Phase 2. '
                     +'Saved GPU job wall hours: '+str(accounting['gpu_job_wall_hours'])
-                    +'; remaining planning allowance: '+str(accounting['remaining_gpu_allowance_hours'])
+                    +'; upper-bound remaining planning allowance from saved attempts: '+str(accounting['remaining_gpu_allowance_hours'])
                     +' hours. These are job wall measurements, not kernel utilization; hands-on time remains unmeasured. '
                     +'See results/phase1/summary.json, time_accounting.json and phase_gate.json. No LIVE-VQC predictions were made.\n')
     phases=Path('PHASES.md')
@@ -216,8 +216,33 @@ def control_history(root):
             'disclosure':'Original training-only control failed. User approved independent validation-label permutation on 2026-10-27; the unchanged numerical gates apply to the new controls. This post-hoc amendment does not erase the original failure.'}
 
 
+def headline_table(root,summary):
+    fields=('srcc','krcc','plcc_raw','plcc_mapped')
+    rows=[]
+    lines=['| Head | Runs | SRCC mean ± SD | KRCC mean ± SD | Raw PLCC mean ± SD | Mapped PLCC mean ± SD |',
+           '| --- | ---: | ---: | ---: | ---: | ---: |']
+    for head in ('ridge','mean_pool','bigru','transformer','mamba'):
+        if head not in summary:
+            continue
+        item=summary[head]
+        if item['status']!='complete':
+            raise ValueError(f'cannot publish undefined headline metrics: {head}')
+        row={'head':head,'run_count':item['run_count']}
+        for field in fields:
+            row[field+'_mean']=item[field+'_mean']
+            row[field+'_std']=item[field+'_std']
+        rows.append(row)
+        values=[f"{item[field+'_mean']:.4f} ± {item[field+'_std']:.4f}" for field in fields]
+        lines.append('| '+head+' | '+str(item['run_count'])+' | '+' | '.join(values)+' |')
+    if not rows:
+        return ''
+    atomic_write(Path(root)/'headline.csv',csv_bytes(rows,list(rows[0])))
+    return '\n'.join(lines)+'\n\nMapped PLCC is the mean of per-run target-label logistic mappings. Ridge has five deterministic fold fits; neural rows summarize 25 fold × seed fits. Paired comparison CIs/Holm reporting follow in Phase 2.\n\n'
+
+
 def phase_report(protocol,root,features):
     root=Path(root)
+    atomic_json(root/'phase_gate.json',{'status':'failed','missing_or_failed_gates':[{'gate':'report_incomplete','reason':'Report regeneration has not completed'}]})
     training=importlib.import_module('scripts.05_train')
     failures=[]
     evidence={}
@@ -242,7 +267,7 @@ def phase_report(protocol,root,features):
     gate('feature_parity',lambda:parity.validate_parity(root/'parity.json',provenance or {},Path(protocol['cache_root'])))
     gate('runtime_pilot',lambda:validate_runtime(protocol,provenance or {},root))
     gate('parameter_budget',lambda:validate_parameter_budget(protocol))
-    if provenance and configs:
+    if provenance is not None and configs is not None:
         collected=gate('cv_artifacts',lambda:collect_cv(protocol,provenance,configs,root))
         if collected:
             rows,runs=collected
@@ -272,15 +297,16 @@ def phase_report(protocol,root,features):
         if accounting is not None:
             atomic_json(root/'time_accounting.json',accounting)
     gate_result={'status':'failed' if failures else 'passed','missing_or_failed_gates':failures,'evidence':evidence}
-    atomic_json(root/'phase_gate.json',gate_result)
+    table=headline_table(root,evidence['summary']) if gate_result['status']=='passed' and evidence.get('summary') else ''
     atomic_write(root/'report.md',('# Phase 1 core slice\n\nStatus: '+gate_result['status']+'\n\n'
         +'Definitive fixed-DINO head comparison; Phase 2 must reuse completed CV and ridge artifacts.\n\n'
         +'Headline: mean per-fold SRCC across 25 fold × seed runs. Ensemble OOF is a separate quantity.\n'
         +((history['disclosure']+'\n\n') if history else 'Control-protocol history is missing.\n\n')
         +'PLCC logistic mapping uses target labels. Warning-only determinism; no bitwise reproducibility claim.\n\n'
-        +'\n'.join(f"- {r['gate']}: {r['reason']}" for r in failures)+'\n').encode())
+        +table+'\n'.join(f"- {r['gate']}: {r['reason']}" for r in failures)+'\n').encode())
     if gate_result['status']=='passed':
         update_phase_docs(accounting)
+    atomic_json(root/'phase_gate.json',gate_result)
     return gate_result
 
 

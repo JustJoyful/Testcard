@@ -37,7 +37,7 @@ def report_fixture(tmp_path,monkeypatch):
     p=yaml.safe_load(Path('configs/protocol.yaml').read_text())
     p.update(inventory=str(source),splits=str(splits),results_root=str(tmp_path))
     configs={'mean_pool':{'rank_weight':.1}}
-    monkeypatch.setattr(training,'prerequisites',lambda *a:{})
+    monkeypatch.setattr(training,'prerequisites',lambda *a:{'split_sha256':'fixture'})
     monkeypatch.setattr(training,'selected_configs',lambda *a:configs)
     final={'status':'passed','config_sha256':config_hash(configs['mean_pool'])}
     monkeypatch.setattr(script,'require_control',lambda *a:final)
@@ -109,3 +109,40 @@ def test_phase_doc_update_preserves_later_amendments(tmp_path,monkeypatch):
     text=(tmp_path/'PHASES.md').read_text()
     assert 'passed the generated exit gate' in text
     assert 'Keep original failed control visible.' in text
+
+
+def test_headline_table_uses_saved_summary_metrics_and_run_count(tmp_path):
+    import csv
+    script=importlib.import_module('scripts.06_eval')
+    summary={'mamba':{'status':'complete','run_count':25,'srcc_mean':.71347,'srcc_std':.04234,
+        'krcc_mean':.52345,'krcc_std':.0321,'plcc_raw_mean':.74567,'plcc_raw_std':.031,
+        'plcc_mapped_mean':.76543,'plcc_mapped_std':.02567}}
+    table=script.headline_table(tmp_path,summary)
+    assert '| mamba | 25 | 0.7135 ± 0.0423 | 0.5234 ± 0.0321 | 0.7457 ± 0.0310 | 0.7654 ± 0.0257 |' in table
+    row=list(csv.DictReader((tmp_path/'headline.csv').open()))[0]
+    assert row['head']=='mamba' and int(row['run_count'])==25
+    assert float(row['srcc_mean'])==.71347 and float(row['plcc_mapped_mean'])==.76543
+
+
+def test_output_failure_cannot_leave_a_passing_phase_gate(tmp_path,monkeypatch):
+    import json
+    script,training,p,final=report_fixture(tmp_path,monkeypatch)
+    assert script.phase_report(p,tmp_path,Path('configs/features_v2.yaml'))['status']=='passed'
+    monkeypatch.setattr(script,'summarize',lambda *a:({'mamba':{'status':'complete'}},[]))
+    def failed_output(*a):
+        raise OSError('output unavailable')
+    monkeypatch.setattr(script,'headline_table',failed_output)
+    with pytest.raises(OSError):
+        script.phase_report(p,tmp_path,Path('configs/features_v2.yaml'))
+    assert json.loads((tmp_path/'phase_gate.json').read_text())['status']!='passed'
+
+
+def test_empty_provenance_cannot_skip_missing_cv_check(tmp_path,monkeypatch):
+    script,training,p,final=report_fixture(tmp_path,monkeypatch)
+    monkeypatch.setattr(training,'prerequisites',lambda *a:{})
+    def missing(*a):
+        raise ValueError('missing CV artifacts')
+    monkeypatch.setattr(script,'collect_cv',missing)
+    result=script.phase_report(p,tmp_path,Path('configs/features_v2.yaml'))
+    assert result['status']=='failed'
+    assert any(r['gate']=='cv_artifacts' for r in result['missing_or_failed_gates'])
