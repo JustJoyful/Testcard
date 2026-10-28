@@ -43,7 +43,7 @@ def role_data(protocol,fold,role):
                                 fold,role,protocol['feature_set'])
 
 
-def fit_run(protocol,config,provenance,head,fold,seed,output,train=None,val=None,run_kind='single',label_mode='real'):
+def fit_run(protocol,config,provenance,head,fold,seed,output,train=None,val=None,run_kind='single',label_mode='real',*,progress=None):
     seed_everything(seed,protocol['cpu_threads'])
     model=build_head(head,1536 if protocol['feature_set']=='dino' else 2048,config)
     run_provenance={**provenance,'head':head,'fold':fold,'run_kind':run_kind,'label_mode':label_mode}
@@ -52,29 +52,36 @@ def fit_run(protocol,config,provenance,head,fold,seed,output,train=None,val=None
     model.to(protocol['device'])
     existing=load_completed(model,output,identity,protocol['device'])
     if existing:
+        if progress is not None:
+            progress({'event':'fit_reused','run_path':str(output),'head':head,'fold':fold,'seed':seed,
+                      'device':protocol['device'],'epoch':existing['best_epoch']})
         return model,existing
     if train is None:
         train=role_data(protocol,fold,'train')
     if val is None:
         val=role_data(protocol,fold,'val')
     result=fit_one(model,train,val,config,output,seed,
-                   run_provenance)
+                   run_provenance,progress=progress)
     return model,result
 
 
-def control_runs(protocol,provenance,final=False):
+def control_runs(protocol,provenance,final=False,*,config=None,progress=None):
     import numpy as np
     from src.metrics import bootstrap_srcc
     from src.training import config_hash
+    external=config is not None
+    if external and (config.get('feature_set')!=protocol['feature_set'] or config.get('results_root')!=protocol['results_root']):
+        raise ValueError('external control config feature/root mismatch')
     root=control_directory(protocol['results_root'],final)
     root.mkdir(parents=True,exist_ok=True)
     if protocol['seeds']!=list(range(5)):
         raise ValueError('controls require all five seeds')
-    config=selected_configs(protocol,provenance)['mean_pool'] if final else resolved_config(protocol)
+    if config is None:
+        config=selected_configs(protocol,provenance)['mean_pool'] if final else resolved_config(protocol)
     snapshot=root/'config.json'
     if snapshot.exists():
         saved=json.loads(snapshot.read_text())
-        if final and saved!=config:
+        if (final or external) and saved!=config:
             raise ValueError('changed selected final-control config')
         config=saved
     else:
@@ -101,7 +108,7 @@ def control_runs(protocol,provenance,final=False):
         model,run=fit_run(protocol,config,{**provenance,'permutation_sha256':sha256(permutation_path),
                            'validation_permutation_sha256':val_permutation_sha,'control_policy_sha256':policy_sha},
                           'mean_pool',0,seed,root/f'seed{seed}',shuffled,shuffled_val,
-                          'control_final' if final else 'control_initial','shuffled')
+                          'control_final' if final else 'control_initial','shuffled',progress=progress)
         test=role_data(protocol,0,'test')
         rows=predict(model,test,run['target_stats'],protocol['device'])
         labels={test[i]['video_id']:test[i]['mos'] for i in range(len(test))}
@@ -109,6 +116,8 @@ def control_runs(protocol,provenance,final=False):
                'label_mode':'shuffled','checkpoint_sha256':run['checkpoint_sha256']} for r in rows]
         atomic_json(root/f'seed{seed}'/'predictions.json',rows)
         outputs.append(rows)
+        if progress is not None:
+            progress({'event':'control_seed_complete','control_complete':len(outputs),'run_path':str(root/f'seed{seed}')})
     ids=[r['video_id'] for r in outputs[0]]
     ensemble=np.array([[r['prediction'] for r in rows] for rows in outputs]).mean(0)
     result=bootstrap_srcc(np.array([r['mos'] for r in outputs[0]]),ensemble)
@@ -374,19 +383,48 @@ def cv_runs(protocol,provenance):
         raise ValueError('final control does not match selected mean-pool config')
     if protocol['seeds']!=list(range(5)) or protocol['feature_set']!='dino':
         raise ValueError('Phase 1 requires DINO and five seeds')
+    return fit_cv_grid(protocol,provenance,configs)
+
+
+def fit_cv_grid(protocol,provenance,configs,*,progress=None):
+    import importlib
+    report=importlib.import_module('scripts.06_eval')
+    root=Path(protocol['results_root'])
+    completed=set()
+    for head in HEADS+['ridge']:
+        for fold in range(5):
+            for seed in ([None] if head=='ridge' else protocol['seeds']):
+                directory=root/'ridge'/f'fold{fold}' if head=='ridge' else root/'cv'/head/f'fold{fold}'/f'seed{seed}'
+                if (directory/'run.json').exists() and json.loads((directory/'run.json').read_text())['status']=='complete' and (directory/'predictions.meta.json').exists():
+                    report.collect_run(protocol,provenance,configs,root,head,fold,seed)
+                    completed.add((head,fold,seed))
+    def emit(event):
+        if progress is not None:
+            progress({'event':event,'cv_complete':sum(h!='ridge' for h,f,s in completed),
+                      'ridge_complete':sum(h=='ridge' for h,f,s in completed)})
+    emit('grid_start')
     for fold in range(5):
-        train,val=role_data(protocol,fold,'train'),role_data(protocol,fold,'val')
-        for head in HEADS:
-            for seed in protocol['seeds']:
-                run_id=f'cv/{head}/fold{fold}/seed{seed}'
-                output=Path(protocol['results_root'])/run_id
-                model,run=fit_run(protocol,configs[head],provenance,head,fold,seed,output,train,val,run_kind='cv')
-                # Test-role loading is deliberately after checkpoint selection/restoration.
-                test=role_data(protocol,fold,'test')
-                rows=prediction_rows(protocol,model,run,test,head,fold,seed,run_id)
-                save_predictions(output/'predictions.json',rows,run)
-        test=role_data(protocol,fold,'test')
-        ridge_run(protocol,provenance,fold,train,val,test)
+        train=val=None
+        for head in HEADS+['ridge']:
+            for seed in ([None] if head=='ridge' else protocol['seeds']):
+                if (head,fold,seed) in completed:
+                    continue
+                if train is None:
+                    train,val=role_data(protocol,fold,'train'),role_data(protocol,fold,'val')
+                if head=='ridge':
+                    test=role_data(protocol,fold,'test')
+                    ridge_run(protocol,provenance,fold,train,val,test)
+                else:
+                    run_id=f'cv/{head}/fold{fold}/seed{seed}'
+                    output=root/run_id
+                    model,run=fit_run(protocol,configs[head],provenance,head,fold,seed,output,train,val,run_kind='cv',progress=progress)
+                    test=role_data(protocol,fold,'test')
+                    rows=prediction_rows(protocol,model,run,test,head,fold,seed,run_id)
+                    save_predictions(output/'predictions.json',rows,run)
+                report.collect_run(protocol,provenance,configs,root,head,fold,seed)
+                completed.add((head,fold,seed))
+                emit('prediction_complete')
+    emit('grid_complete')
 
 
 def main():
