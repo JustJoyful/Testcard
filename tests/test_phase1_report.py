@@ -47,6 +47,7 @@ def report_fixture(tmp_path,monkeypatch):
     rows=[{'video_id':key,'fold':fold,'head':head,'seed':seed,'label_mode':'real','run_kind':'cv','mos':mos,'prediction':mos}
           for key,fold,mos in [('a',0,2.),('b',1,3.)] for head in training.HEADS+['ridge'] for seed in ([None] if head=='ridge' else range(5))]
     monkeypatch.setattr(script,'collect_cv',lambda *a:(rows,[]))
+    monkeypatch.setattr(script,'control_history',lambda *a:{'disclosure':'approved amendment','post_hoc_amendment':True})
     monkeypatch.setattr(script,'summarize',lambda *a:({},[]))
     monkeypatch.setattr(script,'time_accounting',lambda *a:{})
     monkeypatch.setattr(script,'update_phase_docs',lambda *a:None)
@@ -85,3 +86,26 @@ def test_time_accounting_uses_saved_job_wall_times(tmp_path):
     actual=script.time_accounting(tmp_path)
     assert actual['gpu_job_wall_hours']==1.5 and actual['remaining_gpu_allowance_hours']==98.5
     assert actual['cpu_ridge_wall_hours']==1/60 and actual['cpu_parity_wall_hours']==1/30
+
+
+def test_control_history_preserves_failed_original_and_declares_amendment(tmp_path):
+    from src.cache import atomic_json
+    script=importlib.import_module('scripts.06_eval')
+    original={'status':'failed','bootstrap':{'status':'ok','srcc':.129,'ci95':[.004,.255]}}
+    atomic_json(tmp_path/'control_final/diagnostic.json',original)
+    result=script.control_history(tmp_path)
+    assert result['original_final_control']['status']=='failed'
+    assert result['original_final_control']['ci95']==[.004,.255]
+    assert result['active_policy']['schema_version']==2
+    assert result['post_hoc_amendment'] is True
+
+
+def test_phase_doc_update_preserves_later_amendments(tmp_path,monkeypatch):
+    script=importlib.import_module('scripts.06_eval')
+    monkeypatch.chdir(tmp_path)
+    (tmp_path/'DECISIONS.md').write_text('# Decisions\n')
+    (tmp_path/'PHASES.md').write_text('# Phases\n\n## Phase 1 execution status (2026-10-25)\n\nPreviously blocked.\n\n### Approved amendment\n\nKeep original failed control visible.\n')
+    script.update_phase_docs({'gpu_job_wall_hours':1.,'remaining_gpu_allowance_hours':99.})
+    text=(tmp_path/'PHASES.md').read_text()
+    assert 'passed the generated exit gate' in text
+    assert 'Keep original failed control visible.' in text

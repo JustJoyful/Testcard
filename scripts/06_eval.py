@@ -16,7 +16,7 @@ from src.cache import atomic_json, atomic_write, csv_bytes
 from src.features import sha256
 from src.metrics import correlations, fit_logistic_plcc
 from src.training import config_hash
-from src.tuning import require_control, same_inputs
+from src.tuning import CONTROL_POLICY_PATH, control_policy, control_directory, require_control, same_inputs
 
 
 def validate_oof(rows,fold_by_id,heads,seeds):
@@ -197,9 +197,23 @@ def update_phase_docs(accounting):
     text=phases.read_text()
     marker='## Phase 1 execution status (2026-10-25)'
     if marker in text:
-        text=text.split(marker)[0]+marker+'\n\nPhase 1 passed the generated exit gate on '+date+'. '
-        text+='See `results/phase1/phase_gate.json` and `time_accounting.json`. Phase 2 reuses these definitive DINO/ridge outputs.\n'
-        atomic_write(phases,text.encode())
+        before,_,after=text.partition(marker)
+        _,separator,later=after.lstrip('\n').partition('\n\n')
+        status='Phase 1 passed the generated exit gate on '+date+'. See `results/phase1/phase_gate.json` and `time_accounting.json`. Phase 2 reuses these definitive DINO/ridge outputs.'
+        atomic_write(phases,(before+marker+'\n\n'+status+separator+later).encode())
+
+
+
+def control_history(root):
+    path=Path(root)/'control_final/diagnostic.json'
+    original=json.loads(path.read_text())
+    bootstrap=original['bootstrap']
+    if original['status']!='failed' or bootstrap['status']!='ok':
+        raise ValueError('original failed control evidence is missing or changed')
+    return {'post_hoc_amendment':True,'active_policy':control_policy(),
+            'policy_sha256':sha256(CONTROL_POLICY_PATH),'original_diagnostic_sha256':sha256(path),
+            'original_final_control':{'status':original['status'],'srcc':bootstrap['srcc'],'ci95':bootstrap['ci95']},
+            'disclosure':'Original training-only control failed. User approved independent validation-label permutation on 2026-10-27; the unchanged numerical gates apply to the new controls. This post-hoc amendment does not erase the original failure.'}
 
 
 def phase_report(protocol,root,features):
@@ -216,9 +230,10 @@ def phase_report(protocol,root,features):
             return None
     provenance=gate('cache_and_committed_splits',lambda:training.prerequisites(protocol,features))
     configs=gate('frozen_selection',lambda:training.selected_configs(protocol,provenance or {}))
-    gate('initial_control',lambda:require_control(root/'control_initial',provenance or {}))
+    history=gate('control_history',lambda:control_history(root))
+    gate('initial_control',lambda:require_control(control_directory(root),provenance or {}))
     def final_control():
-        result=require_control(root/'control_final',provenance or {})
+        result=require_control(control_directory(root,True),provenance or {})
         if not configs or result['config_sha256']!=config_hash(configs['mean_pool']):
             raise ValueError('final control differs from selected mean-pool config')
         return result
@@ -246,6 +261,10 @@ def phase_report(protocol,root,features):
             if not failures:
                 summary,undefined=summarize(rows,runs,root)
                 evidence['summary']=summary
+                summary_path=root/'summary.json'
+                saved_summary=json.loads(summary_path.read_text()) if summary_path.exists() else {'heads':summary}
+                saved_summary['control_protocol']=history
+                atomic_json(summary_path,saved_summary)
                 if undefined:
                     failures.append({'gate':'metrics','reason':f'undefined mandatory metrics: {undefined}'})
     if not failures:
@@ -257,6 +276,7 @@ def phase_report(protocol,root,features):
     atomic_write(root/'report.md',('# Phase 1 core slice\n\nStatus: '+gate_result['status']+'\n\n'
         +'Definitive fixed-DINO head comparison; Phase 2 must reuse completed CV and ridge artifacts.\n\n'
         +'Headline: mean per-fold SRCC across 25 fold × seed runs. Ensemble OOF is a separate quantity.\n'
+        +((history['disclosure']+'\n\n') if history else 'Control-protocol history is missing.\n\n')
         +'PLCC logistic mapping uses target labels. Warning-only determinism; no bitwise reproducibility claim.\n\n'
         +'\n'.join(f"- {r['gate']}: {r['reason']}" for r in failures)+'\n').encode())
     if gate_result['status']=='passed':

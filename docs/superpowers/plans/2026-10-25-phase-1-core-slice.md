@@ -1,5 +1,7 @@
 # Phase 1 Core Slice Implementation Plan
 
+> **User-approved control amendment — 2026-10-27:** For negative controls only, independently permute labels within both training and validation roles (fixed seed 0 per role), preserve true test labels, and keep the original pass thresholds/five model seeds. This supersedes the training-only/true-validation instructions in Tasks 7/9. Original control artifacts/failure remain unchanged and disclosed. Execute `2026-10-27-control-v2-completion.md`; reuse unchanged real-label selection work.
+
 > **Execution amendment — 2026-10-26:** The verified VFR rawvideo time-base repair activates `configs/features_v2.yaml`, `cache/v2`, and `results/phase0/preprocessing_freeze_v2.json` for subsequent commands and gates below. Preserve original v1 configs/freezes/caches as history; regenerate every feature array and fixed-sample parity under v2. Splits/head protocols stay fixed; no training had started. Earlier extraction attempts remain in compute accounting. See DECISIONS.md and results/phase1/decoder_diagnosis.json.
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.

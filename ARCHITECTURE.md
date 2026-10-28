@@ -224,3 +224,7 @@ Inspected reference identity: state-spaces/mamba `e9594ce1c732d97440f0332fdc4317
 ## Decoder v2 (2026-10-26)
 
 Raw RGB output uses `-enc_time_base demux` with passthrough frame timing, preserving input timestamp precision rather than rounding VFR frames to nominal FPS. Strict stderr/error and complete-decode checks remain enabled. Source sampling timestamps, frame ordering, rotation, resizing and normalization are unchanged. Diagnostic RGB hashes and frame counts for all six failed clips plus a normal control match the legacy output exactly. The source change still receives cache v2 and fresh extraction/parity under Rule 24; v1 artifacts are retained, never relabeled.
+
+## Negative-control v2 (approved 2026-10-27)
+
+`configs/control_v2.yaml` fixes independent seed-0 target permutations within training and validation. Test labels/IDs stay true. Controls use the same numerical trainer and selected/default configurations, but checkpoint choice sees permuted validation targets. Original controls remain under `control_initial/` and `control_final/`; new controls use `_v2` directories, policy identity and both permutation identities. Original failed evidence and the post-hoc amendment are included in the final report. No real-label fitting/selection configuration is changed; the original CI/absolute-SRCC gate still applies to both active controls.

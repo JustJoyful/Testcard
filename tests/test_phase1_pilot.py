@@ -115,7 +115,7 @@ def test_cli_repairs_interrupted_protocol_freeze_without_refitting(tmp_path,monk
     original=script.atomic_json
     original(tmp_path/'extraction.json',{'invocations':[{'wall_seconds':10.}]})
     for seed in range(5):
-        original(tmp_path/'control_initial'/f'seed{seed}'/'run.json',{'wall_seconds':1.})
+        original(tmp_path/'control_initial_v2'/f'seed{seed}'/'run.json',{'wall_seconds':1.})
     config_path=tmp_path/'protocol.yaml'
     config_path.write_text(yaml.safe_dump(protocol))
     def interrupted(path,value):

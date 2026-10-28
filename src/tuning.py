@@ -13,6 +13,38 @@ def same_inputs(record,provenance):
     return all(record.get(k)==provenance.get(k) for k in AUDIT_INPUTS)
 
 
+CONTROL_POLICY_PATH=Path('configs/control_v2.yaml')
+
+
+def control_policy():
+    import yaml
+    policy=yaml.safe_load(CONTROL_POLICY_PATH.read_text())
+    expected={'schema_version':2,'training_targets':'permuted_within_training',
+              'validation_targets':'independently_permuted_within_validation',
+              'train_permutation_seed':0,'validation_permutation_seed':0,'model_seeds':list(range(5))}
+    if policy!=expected:
+        raise ValueError('control policy differs from the approved immutable v2 protocol')
+    return policy
+
+
+def control_directory(root,final=False):
+    return Path(root)/('control_final_v2' if final else 'control_initial_v2')
+
+
+def permute_control_role(data,role):
+    if role not in ('train','val'):
+        raise ValueError('only train/val control roles may be permuted')
+    policy=control_policy()
+    items=[data[i] for i in range(len(data))]
+    ids=[r['video_id'] for r in items]
+    if not items or len(ids)!=len(set(ids)):
+        raise ValueError('empty/duplicate control role IDs')
+    seed=policy['train_permutation_seed' if role=='train' else 'validation_permutation_seed']
+    order=np.random.default_rng(seed).permutation(len(items))
+    mapping=[{'video_id':key,'label_source_id':ids[int(j)]} for key,j in zip(ids,order)]
+    return [{**r,'mos':items[int(j)]['mos']} for r,j in zip(items,order)],mapping
+
+
 def require_control(directory,provenance):
     from src.features import sha256
     from src.metrics import bootstrap_srcc
@@ -22,6 +54,10 @@ def require_control(directory,provenance):
     if not path.exists():
         raise ValueError(f'missing control gate: {path}')
     result=json.loads(path.read_text())
+    policy=control_policy()
+    policy_sha=sha256(CONTROL_POLICY_PATH)
+    if result.get('control_policy')!=policy or result.get('control_policy_sha256')!=policy_sha:
+        raise ValueError(f'legacy/stale control policy: {path}')
     bootstrap=result.get('bootstrap',{})
     score=bootstrap.get('srcc')
     interval=bootstrap.get('ci95')
@@ -32,6 +68,9 @@ def require_control(directory,provenance):
             or not interval[0]<=0<=interval[1]):
         raise ValueError(f'failed/stale control gate: {path}')
     try:
+        validation_permutation=directory.parent/'control_validation_permutation_v2.json'
+        if sha256(validation_permutation)!=result['validation_permutation_sha256']:
+            raise ValueError('changed validation permutation')
         permutation=directory.parent/'control_permutation.json'
         if sha256(permutation)!=result['permutation_sha256']:
             raise ValueError('changed fixed permutation')
@@ -39,10 +78,12 @@ def require_control(directory,provenance):
         for seed in range(5):
             run=json.loads((directory/f'seed{seed}'/'run.json').read_text())
             rows=json.loads((directory/f'seed{seed}'/'predictions.json').read_text())
-            kind='control_final' if directory.name=='control_final' else 'control_initial'
+            kind='control_final' if directory.name.startswith('control_final') else 'control_initial'
             if (run['status']!='complete' or run['seed']!=seed or not same_inputs(run['provenance'],provenance)
                     or run['provenance']['label_mode']!='shuffled' or run['provenance']['run_kind']!=kind
                     or run['provenance']['fold']!=0 or run['provenance']['permutation_sha256']!=result['permutation_sha256']
+                    or run['provenance'].get('validation_permutation_sha256')!=result['validation_permutation_sha256']
+                    or run['provenance'].get('control_policy_sha256')!=policy_sha
                     or run['identity']['config_sha256']!=result['config_sha256']
                     or config_hash(run['config'])!=result['config_sha256']
                     or sha256(directory/f'seed{seed}'/'best.pt')!=run['checkpoint_sha256']
@@ -62,6 +103,7 @@ def require_control(directory,provenance):
         lookup={r['video_id']:float(r['mos']) for r in inventory}
         roles=list(csv.DictReader(Path(config['splits']).open()))
         train_ids=[r['video_id'] for r in roles if int(r['outer_fold'])==0 and r['role']=='train']
+        val_ids=[r['video_id'] for r in roles if int(r['outer_fold'])==0 and r['role']=='val']
         test_ids=[r['video_id'] for r in roles if int(r['outer_fold'])==0 and r['role']=='test']
         if result['video_ids']!=test_ids:
             raise ValueError('control IDs differ from authoritative fold-0 test role')
@@ -71,6 +113,10 @@ def require_control(directory,provenance):
         expected=[{'video_id':key,'label_source_id':train_ids[int(j)]} for key,j in zip(train_ids,order)]
         if json.loads(permutation.read_text())!=expected:
             raise ValueError('control training permutation differs from fixed seed-0 mapping')
+        val_order=np.random.default_rng(policy['validation_permutation_seed']).permutation(len(val_ids))
+        expected_val=[{'video_id':key,'label_source_id':val_ids[int(j)]} for key,j in zip(val_ids,val_order)]
+        if json.loads(validation_permutation.read_text())!=expected_val:
+            raise ValueError('control validation permutation differs from fixed seed-0 mapping')
         labels=np.array([r['mos'] for r in outputs[0]])
         ensemble=np.array([[r['prediction'] for r in rows] for rows in outputs]).mean(0)
         if any([r['mos'] for r in rows]!=labels.tolist() for rows in outputs):
@@ -149,7 +195,7 @@ def require_selection_gates(protocol,provenance,need_rank=False):
     root=Path(protocol['results_root'])
     if protocol['status']!='frozen':
         raise ValueError('protocol must be frozen by measured runtime gate')
-    require_control(root/'control_initial',provenance)
+    require_control(control_directory(root),provenance)
     path=root/'runtime_budget.json'
     if not path.exists():
         raise ValueError('missing measured runtime budget')

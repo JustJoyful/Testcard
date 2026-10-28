@@ -116,3 +116,7 @@ The original queue stopped on six LIVE-VQC rawvideo output timestamp collisions.
 ### Final-control stop (2026-10-27)
 
 V2 cache/parity, initial control, measured pilots and all tuning are complete. The final selected-config shuffled-label control fails its predeclared CI condition. Both implementation and independent audits found no concrete defect, and the failure remains unresolved. Definitive CV/ridge and later phases are blocked under Rule 10; see `results/phase1/control_final/audit.md`, `independent_audit.md` and `diagnostic.json`. No processes are left running.
+
+### Approved control amendment (2026-10-27)
+
+The user approved the written negative-control v2 correction. Training and validation targets are independently permuted within role, with original test labels and unchanged numerical thresholds. Original controls and failure remain saved/disclosed. Both five-seed v2 controls must pass before CV/ridge; full Phase 1 is complete only when its amended, fully disclosed exit report passes.

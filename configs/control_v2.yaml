@@ -1,0 +1,6 @@
+schema_version: 2
+training_targets: permuted_within_training
+validation_targets: independently_permuted_within_validation
+train_permutation_seed: 0
+validation_permutation_seed: 0
+model_seeds: [0, 1, 2, 3, 4]

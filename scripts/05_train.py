@@ -17,7 +17,7 @@ from src.features import sha256
 from src.heads import build_head
 from src.splits import freeze_splits
 from src.training import fit_one, predict, seed_everything, load_completed, config_hash
-from src.tuning import require_control, require_selection_gates, make_trials, select_trial, same_inputs
+from src.tuning import CONTROL_POLICY_PATH, control_policy, control_directory, permute_control_role, require_control, require_selection_gates, make_trials, select_trial, same_inputs
 
 HEADS=['mean_pool','bigru','transformer','mamba']
 
@@ -66,7 +66,7 @@ def control_runs(protocol,provenance,final=False):
     import numpy as np
     from src.metrics import bootstrap_srcc
     from src.training import config_hash
-    root=Path(protocol['results_root'])/('control_final' if final else 'control_initial')
+    root=control_directory(protocol['results_root'],final)
     root.mkdir(parents=True,exist_ok=True)
     if protocol['seeds']!=list(range(5)):
         raise ValueError('controls require all five seeds')
@@ -81,18 +81,26 @@ def control_runs(protocol,provenance,final=False):
         atomic_json(snapshot,config)
     train=role_data(protocol,0,'train')
     val=role_data(protocol,0,'val')
-    order=np.random.default_rng(0).permutation(len(train))
-    permutation=[{'video_id':train[i]['video_id'],'label_source_id':train[int(j)]['video_id']} for i,j in enumerate(order)]
+    policy=control_policy()
+    policy_sha=sha256(CONTROL_POLICY_PATH)
+    shuffled,permutation=permute_control_role(train,'train')
+    shuffled_val,val_permutation=permute_control_role(val,'val')
     permutation_path=Path(protocol['results_root'])/'control_permutation.json'
     if permutation_path.exists() and json.loads(permutation_path.read_text())!=permutation:
         raise ValueError('fixed training permutation changed')
     if not permutation_path.exists():
         atomic_json(permutation_path,permutation)
-    shuffled=[{**train[i],'mos':train[int(j)]['mos']} for i,j in enumerate(order)]
+    val_permutation_path=Path(protocol['results_root'])/'control_validation_permutation_v2.json'
+    if val_permutation_path.exists() and json.loads(val_permutation_path.read_text())!=val_permutation:
+        raise ValueError('fixed validation permutation changed')
+    if not val_permutation_path.exists():
+        atomic_json(val_permutation_path,val_permutation)
+    val_permutation_sha=sha256(val_permutation_path)
     outputs=[]
     for seed in protocol['seeds']:
-        model,run=fit_run(protocol,config,{**provenance,'permutation_sha256':sha256(permutation_path)},
-                          'mean_pool',0,seed,root/f'seed{seed}',shuffled,val,
+        model,run=fit_run(protocol,config,{**provenance,'permutation_sha256':sha256(permutation_path),
+                           'validation_permutation_sha256':val_permutation_sha,'control_policy_sha256':policy_sha},
+                          'mean_pool',0,seed,root/f'seed{seed}',shuffled,shuffled_val,
                           'control_final' if final else 'control_initial','shuffled')
         test=role_data(protocol,0,'test')
         rows=predict(model,test,run['target_stats'],protocol['device'])
@@ -105,7 +113,8 @@ def control_runs(protocol,provenance,final=False):
     ensemble=np.array([[r['prediction'] for r in rows] for rows in outputs]).mean(0)
     result=bootstrap_srcc(np.array([r['mos'] for r in outputs[0]]),ensemble)
     passed=result['status']=='ok' and result['ci95'][0]<=0<=result['ci95'][1] and abs(result['srcc'])<.15
-    diagnostic={'status':'passed' if passed else 'failed','bootstrap':result,'seeds':protocol['seeds'],
+    diagnostic={'status':'passed' if passed else 'failed','control_policy':policy,'control_policy_sha256':policy_sha,
+                'validation_permutation_sha256':val_permutation_sha,'bootstrap':result,'seeds':protocol['seeds'],
                 'provenance':provenance,'config_sha256':config_hash(config),
                 'permutation_sha256':sha256(permutation_path),'video_ids':ids,
                 'seed_averaged_predictions':ensemble.tolist()}
@@ -132,7 +141,7 @@ def ridge_pilot(train,val):
 def pilot_runs(protocol,provenance):
     from datetime import datetime
     from zoneinfo import ZoneInfo
-    require_control(Path(protocol['results_root'])/'control_initial',provenance)
+    require_control(control_directory(protocol['results_root']),provenance)
     root=Path(protocol['results_root'])
     current=resolved_config(protocol)
     snapshot=root/'pilot'/'config.json'
@@ -164,6 +173,9 @@ def freeze_protocol(protocol,config_path,provenance,pilot):
     from src.tuning import calendar_gate, runtime_budget
     from src.training import config_hash
     from src.cache import atomic_write
+    if protocol.get('status')=='frozen' and (Path(protocol['results_root'])/'runtime_budget.json').exists():
+        require_selection_gates(protocol,provenance)
+        return protocol
     try:
         calendar_gate(pilot['completed_at'])
     except ValueError as exc:
@@ -175,7 +187,7 @@ def freeze_protocol(protocol,config_path,provenance,pilot):
     actual_extraction=actual
     actual+=sum(r['wall_seconds'] for r in pilot['runs'].values())/3600
     for seed in range(5):
-        run=json.loads((Path(protocol['results_root'])/'control_initial'/f'seed{seed}'/'run.json').read_text())
+        run=json.loads((control_directory(protocol['results_root'])/f'seed{seed}'/'run.json').read_text())
         actual+=run['wall_seconds']/3600
     projection=json.loads(Path('results/phase0/scoped_feasibility.json').read_text())
     extraction_planning=sum(projection['projections'][h]['combined_planning_seconds'] for h in ('dino','resnet50'))/3600
@@ -357,7 +369,7 @@ def ridge_run(protocol,provenance,fold,train,val,test):
 
 def cv_runs(protocol,provenance):
     configs=selected_configs(protocol,provenance)
-    final=require_control(Path(protocol['results_root'])/'control_final',provenance)
+    final=require_control(control_directory(protocol['results_root'],True),provenance)
     if final['config_sha256']!=config_hash(configs['mean_pool']):
         raise ValueError('final control does not match selected mean-pool config')
     if protocol['seeds']!=list(range(5)) or protocol['feature_set']!='dino':

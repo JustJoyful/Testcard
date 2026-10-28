@@ -31,7 +31,7 @@ PY
 commit_outputs 'data: verify both spatial caches and parity' data/manifests/phase1_cache.csv data/manifests/phase1_cache.meta.json results/phase1/extraction.json results/phase1/parity.json
 phase1_stage='initial five-seed leakage control'
 .venv/bin/python scripts/05_train.py --mode control-initial --config configs/protocol.yaml --features configs/features_v2.yaml
-commit_outputs 'data: verify initial shuffled-label control' results/phase1/control_initial results/phase1/control_permutation.json
+commit_outputs 'data: verify initial shuffled-label control' results/phase1/control_initial_v2 results/phase1/control_permutation.json results/phase1/control_validation_permutation_v2.json
 phase1_stage='training pilot and measured runtime gate'
 .venv/bin/python scripts/05_train.py --mode pilot --config configs/protocol.yaml --features configs/features_v2.yaml
 commit_outputs 'feat: freeze measured phase one protocol' configs/protocol.yaml results/phase1/training_pilot.json results/phase1/runtime_budget.json results/phase1/pilot DECISIONS.md
@@ -43,7 +43,7 @@ phase1_stage='equal-budget head tuning'
 commit_outputs 'data: freeze equal-budget head tuning' configs/tuning_trials.yaml configs/heads results/phase1/tune
 phase1_stage='final five-seed leakage control'
 .venv/bin/python scripts/05_train.py --mode control --config configs/protocol.yaml --features configs/features_v2.yaml
-commit_outputs 'data: verify selected shuffled-label control' results/phase1/control_final
+commit_outputs 'data: verify selected shuffled-label control' results/phase1/control_final_v2
 phase1_stage='definitive DINO CV and ridge'
 .venv/bin/python scripts/05_train.py --mode cv --config configs/protocol.yaml --features configs/features_v2.yaml
 phase1_stage='offline tests and final exit report'
