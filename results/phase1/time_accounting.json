@@ -1,0 +1,8 @@
+{
+  "gpu_job_wall_hours": 10.942467243436393,
+  "remaining_gpu_allowance_hours": 89.0575327565636,
+  "cpu_ridge_wall_hours": 0.0013933004802765933,
+  "cpu_parity_wall_hours": 0.28315417740166593,
+  "hands_on_hours": "unmeasured; planning allowance remains 80 hours",
+  "measurement": "Saved attempt job wall time includes CPU/IO overhead while GPU is allocated, not kernel utilization. Interrupted jobs without a saved completion record are untimed; remaining allowance is an upper bound from saved attempts. CPU totals cover active parity and definitive ridge fits, excluding audit/pilot overhead."
+}

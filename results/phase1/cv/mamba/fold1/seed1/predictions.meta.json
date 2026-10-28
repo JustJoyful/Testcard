@@ -1,0 +1,26 @@
+{
+  "status": "complete",
+  "identity": {
+    "run_identity": {
+      "config_sha256": "db6368748edafcc44fce13dacbe7e0c6ee737750608747d65d6055be6d193a48",
+      "seed": 1,
+      "provenance": {
+        "config_feature_sha256": "8397ea636c79e69a382e88a7238f798b398dafd91774edd6b50555f7bb62777c",
+        "split_sha256": "3f5d9f96ba8bdfefc85ce7f9413a17a4e7307f8023525e33ec4a2424f2b50263",
+        "cache_sha256": "311ae067d92f2077ed1adf93006d7da991f23f94c0845fd1f6063a90025c9ab3",
+        "cache_meta_sha256": "27af097a62ed3472519367ab50c2b6deb32af26788986d8fccdd886f1d9dfb3c",
+        "lock_sha256": "aef832296aa3a46d27fd5165d19da0dd932fc01360fc49bff3e3020c390399dc",
+        "weights_sha256": {
+          "dino": "0b8b82f85de91b424aded121c7e1dcc2b7bc6d0adeea651bf73a13307fad8c73",
+          "resnet50": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca"
+        },
+        "head": "mamba",
+        "fold": 1,
+        "run_kind": "cv",
+        "label_mode": "real"
+      }
+    },
+    "checkpoint_sha256": "f3013a39bbcce23f1e11adc6351df4708ad0ea07a1197e50e27ce0efe6fc0de0"
+  },
+  "predictions_sha256": "41c511a533e37de1c9159a842ac9884184ee2e64e3c5b864b6c0d9371edf1639"
+}

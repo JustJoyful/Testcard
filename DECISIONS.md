@@ -244,3 +244,7 @@ Only control construction and evidence checks change. Shared numerical fitting, 
 ### Cache verification lookup optimization
 
 During the amended real controls, repeated manifest scans were identified as an integrity-check bottleneck. Coverage and dataset loading now index the already-read manifest once by dataset/video/branch. Each key keeps every matching row, preserving duplicate rejection and all existing status/source/checksum/shape/dtype/finite checks. The list-based path remains supported. Dataset ID/feature/label order and all numerical fitting behavior are unchanged; existing controls/selection/real-fit artifacts remain reusable. A regression failed before the helper existed, the full suite passes, and a read-only comparison on actual arrays is bitwise equal. The focused independent review is saved in `docs/superpowers/reviews/2026-10-27-manifest-lookup-review.md`.
+
+## 2026-10-27: Phase 1 exit verified
+
+The generated phase gate passes. Definitive DINO/ridge artifacts are complete and must be reused in Phase 2. Saved GPU job wall hours: 10.942467243436393; upper-bound remaining planning allowance from saved attempts: 89.0575327565636 hours. These are job wall measurements, not kernel utilization; hands-on time remains unmeasured. See results/phase1/summary.json, time_accounting.json and phase_gate.json. No LIVE-VQC predictions were made.

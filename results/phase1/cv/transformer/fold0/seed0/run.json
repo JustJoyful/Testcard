@@ -1,0 +1,271 @@
+{
+  "status": "complete",
+  "identity": {
+    "config_sha256": "cbd805a8f4588c879d7a0824f5e07792d91b30527843a679825ea630561327e3",
+    "seed": 0,
+    "provenance": {
+      "config_feature_sha256": "8397ea636c79e69a382e88a7238f798b398dafd91774edd6b50555f7bb62777c",
+      "split_sha256": "3f5d9f96ba8bdfefc85ce7f9413a17a4e7307f8023525e33ec4a2424f2b50263",
+      "cache_sha256": "311ae067d92f2077ed1adf93006d7da991f23f94c0845fd1f6063a90025c9ab3",
+      "cache_meta_sha256": "27af097a62ed3472519367ab50c2b6deb32af26788986d8fccdd886f1d9dfb3c",
+      "lock_sha256": "aef832296aa3a46d27fd5165d19da0dd932fc01360fc49bff3e3020c390399dc",
+      "weights_sha256": {
+        "dino": "0b8b82f85de91b424aded121c7e1dcc2b7bc6d0adeea651bf73a13307fad8c73",
+        "resnet50": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca"
+      },
+      "head": "transformer",
+      "fold": 0,
+      "run_kind": "cv",
+      "label_mode": "real"
+    }
+  },
+  "seed": 0,
+  "config": {
+    "schema_version": 1,
+    "status": "frozen",
+    "feature_set": "dino",
+    "cache_root": "cache/v2",
+    "inventory": "data/manifests/konvid.csv",
+    "splits": "data/splits/konvid_folds.csv",
+    "head_tiers": "configs/head_tiers.yaml",
+    "device": "cuda",
+    "cpu_threads": 4,
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "batch_size": 64,
+    "max_epochs": 200,
+    "patience": 15,
+    "warmup_epochs": 5,
+    "learning_rate": 0.0008727093859002809,
+    "weight_decay": 1.1999049779393521e-05,
+    "input_dropout": 0.0,
+    "head_dropout": 0.0,
+    "rank_weight": 0.3,
+    "rank_candidates": [
+      0,
+      0.1,
+      0.3,
+      1
+    ],
+    "gradient_clip_norm": 1.0,
+    "results_root": "results/phase1",
+    "trials_per_head": 10,
+    "tuning_seed": 0,
+    "tuning_seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "deterministic_warn_only": true,
+    "tier": {
+      "front_width": 256,
+      "mean_pool_hidden": 1598,
+      "gru_hidden": 156,
+      "transformer_layers": 1,
+      "transformer_nhead": 4,
+      "transformer_ff": 256,
+      "readout_hidden": 64,
+      "mamba_layers": 1,
+      "mamba_inner": 230,
+      "mamba_state": 16,
+      "mamba_dt_rank": 16,
+      "mamba_conv": 4
+    }
+  },
+  "provenance": {
+    "config_feature_sha256": "8397ea636c79e69a382e88a7238f798b398dafd91774edd6b50555f7bb62777c",
+    "split_sha256": "3f5d9f96ba8bdfefc85ce7f9413a17a4e7307f8023525e33ec4a2424f2b50263",
+    "cache_sha256": "311ae067d92f2077ed1adf93006d7da991f23f94c0845fd1f6063a90025c9ab3",
+    "cache_meta_sha256": "27af097a62ed3472519367ab50c2b6deb32af26788986d8fccdd886f1d9dfb3c",
+    "lock_sha256": "aef832296aa3a46d27fd5165d19da0dd932fc01360fc49bff3e3020c390399dc",
+    "weights_sha256": {
+      "dino": "0b8b82f85de91b424aded121c7e1dcc2b7bc6d0adeea651bf73a13307fad8c73",
+      "resnet50": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca"
+    },
+    "code_commit": "b3215f04dde5f2efc788cbf33ac9cf74ffc19865",
+    "head": "transformer",
+    "fold": 0,
+    "run_kind": "cv",
+    "label_mode": "real"
+  },
+  "checkpoint_path": "results/phase1/cv/transformer/fold0/seed0/best.pt",
+  "run_json_path": "results/phase1/cv/transformer/fold0/seed0/run.json",
+  "target_stats": {
+    "mean": 3.025078144471814,
+    "std": 0.6404620155041453
+  },
+  "best_epoch": 11,
+  "best_validation_srcc": 0.711401631615861,
+  "completed_epochs": 26,
+  "history": [
+    {
+      "epoch": 1,
+      "mean_loss": 0.8902698434316195,
+      "validation_srcc": 0.5425612874298406,
+      "wall_seconds": 0.6645825990017329
+    },
+    {
+      "epoch": 2,
+      "mean_loss": 0.6580599683981675,
+      "validation_srcc": 0.6667396908354257,
+      "wall_seconds": 0.35365676099900156
+    },
+    {
+      "epoch": 3,
+      "mean_loss": 0.5563150988175318,
+      "validation_srcc": 0.6360975358122831,
+      "wall_seconds": 0.32506582100177184
+    },
+    {
+      "epoch": 4,
+      "mean_loss": 0.48390886875299305,
+      "validation_srcc": 0.6550270601884214,
+      "wall_seconds": 0.3455981459992472
+    },
+    {
+      "epoch": 5,
+      "mean_loss": 0.4325893819332123,
+      "validation_srcc": 0.6708515718072463,
+      "wall_seconds": 0.33987795500070206
+    },
+    {
+      "epoch": 6,
+      "mean_loss": 0.411732201392834,
+      "validation_srcc": 0.6696939748181122,
+      "wall_seconds": 0.3234160679967317
+    },
+    {
+      "epoch": 7,
+      "mean_loss": 0.3891267776489258,
+      "validation_srcc": 0.6778353383649574,
+      "wall_seconds": 0.3423510479988181
+    },
+    {
+      "epoch": 8,
+      "mean_loss": 0.3779014532382672,
+      "validation_srcc": 0.6848834158665094,
+      "wall_seconds": 0.3215171029987687
+    },
+    {
+      "epoch": 9,
+      "mean_loss": 0.33743101816910964,
+      "validation_srcc": 0.6896102702388075,
+      "wall_seconds": 0.2834505809987604
+    },
+    {
+      "epoch": 10,
+      "mean_loss": 0.3325303472005404,
+      "validation_srcc": 0.6960333257549067,
+      "wall_seconds": 0.3267283999994106
+    },
+    {
+      "epoch": 11,
+      "mean_loss": 0.31628602743148804,
+      "validation_srcc": 0.711401631615861,
+      "wall_seconds": 0.3284472899977118
+    },
+    {
+      "epoch": 12,
+      "mean_loss": 0.32421828462527347,
+      "validation_srcc": 0.6641270587418935,
+      "wall_seconds": 0.2705793700006325
+    },
+    {
+      "epoch": 13,
+      "mean_loss": 0.286088574391145,
+      "validation_srcc": 0.693872879985255,
+      "wall_seconds": 0.2777868640005181
+    },
+    {
+      "epoch": 14,
+      "mean_loss": 0.2703708364413335,
+      "validation_srcc": 0.6878296609812156,
+      "wall_seconds": 0.27069657100219047
+    },
+    {
+      "epoch": 15,
+      "mean_loss": 0.2621915008013065,
+      "validation_srcc": 0.7019619908902296,
+      "wall_seconds": 0.2768446940026479
+    },
+    {
+      "epoch": 16,
+      "mean_loss": 0.27286252035544467,
+      "validation_srcc": 0.6942386484783496,
+      "wall_seconds": 0.31318654700226034
+    },
+    {
+      "epoch": 17,
+      "mean_loss": 0.28055335581302643,
+      "validation_srcc": 0.6849899308672456,
+      "wall_seconds": 0.303682342000684
+    },
+    {
+      "epoch": 18,
+      "mean_loss": 0.24065673007414892,
+      "validation_srcc": 0.7082182398957418,
+      "wall_seconds": 0.30914604300050996
+    },
+    {
+      "epoch": 19,
+      "mean_loss": 0.2444201226417835,
+      "validation_srcc": 0.6769992960950271,
+      "wall_seconds": 0.293663958000252
+    },
+    {
+      "epoch": 20,
+      "mean_loss": 0.2349741791303341,
+      "validation_srcc": 0.6644707203480427,
+      "wall_seconds": 0.28733489500154974
+    },
+    {
+      "epoch": 21,
+      "mean_loss": 0.23594980858839476,
+      "validation_srcc": 0.6878919622080613,
+      "wall_seconds": 0.2941102149998187
+    },
+    {
+      "epoch": 22,
+      "mean_loss": 0.22731319872232583,
+      "validation_srcc": 0.710923318971045,
+      "wall_seconds": 0.2761614740011282
+    },
+    {
+      "epoch": 23,
+      "mean_loss": 0.22763794660568237,
+      "validation_srcc": 0.6847708717147878,
+      "wall_seconds": 0.28092989799915813
+    },
+    {
+      "epoch": 24,
+      "mean_loss": 0.2186295883013652,
+      "validation_srcc": 0.6852290871896536,
+      "wall_seconds": 0.3033133680000901
+    },
+    {
+      "epoch": 25,
+      "mean_loss": 0.23218083954774416,
+      "validation_srcc": 0.6763742741095744,
+      "wall_seconds": 0.29705754699898534
+    },
+    {
+      "epoch": 26,
+      "mean_loss": 0.22309503646997306,
+      "validation_srcc": 0.6879301468309669,
+      "wall_seconds": 0.29163927599802264
+    }
+  ],
+  "warnings": [
+    "Memory Efficient attention defaults to a non-deterministic algorithm. To explicitly enable determinism call torch.use_deterministic_algorithms(True, warn_only=False). (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/attention_backward.cu:910.)"
+  ],
+  "wall_seconds": 9.587561085998459,
+  "peak_cuda_bytes": 156792832,
+  "checkpoint_sha256": "de90f621fe101d3efd90bbf1736b68960afcc724840e3bcc4d1b7485d47ef560"
+}

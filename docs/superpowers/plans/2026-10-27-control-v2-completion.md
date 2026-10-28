@@ -31,16 +31,20 @@
 
 Files: `configs/control_v2.yaml`, `src/tuning.py`, `scripts/05_train.py`, `scripts/06_eval.py`, `scripts/continue_phase1.sh`, relevant control/pilot/report tests; dated plan/rules/docs amendment.
 
-- [ ] Add failing tests for deterministic independent role permutation, shuffled validation passed to fitting, unchanged held-out targets, policy/permutation provenance, legacy rejection and unchanged real-fit budget reuse.
-- [ ] Run focused tests and observe missing-interface/old-behavior failures.
-- [ ] Implement `control_policy()`, `control_directory(root, final=False)` and `permute_control_role(data,role)` in existing tuning utilities; keep all current checksum, role/MOS/seed/CI validation.
-- [ ] Update every caller and resume commit path. Initial/final controls share immutable train/validation permutations, but use separate original default/selected model configs. Preserve original control directories unchanged.
-- [ ] Update binding documents with the approved post-hoc amendment before any real amended fit. Explain that validation supervision is a demonstrated path, not a proven cause of the old failure.
-- [ ] Focused/full tests pass; independent focused review; fix demonstrated Important issues with RED→GREEN tests. Commit source/config/docs.
+- [x] Add failing tests for deterministic independent role permutation, shuffled validation passed to fitting, unchanged held-out targets, policy/permutation provenance, legacy rejection and unchanged real-fit budget reuse.
+- [x] Run focused tests and observe missing-interface/old-behavior failures.
+- [x] Implement `control_policy()`, `control_directory(root, final=False)` and `permute_control_role(data,role)` in existing tuning utilities; keep all current checksum, role/MOS/seed/CI validation.
+- [x] Update every caller and resume commit path. Initial/final controls share immutable train/validation permutations, but use separate original default/selected model configs. Preserve original control directories unchanged.
+- [x] Update binding documents with the approved post-hoc amendment before any real amended fit. Explain that validation supervision is a demonstrated path, not a proven cause of the old failure.
+- [x] Focused/full tests pass; independent focused review; fix demonstrated Important issues with RED→GREEN tests. Commit source/config/docs.
 
 ### Task 2: Real controls, CV/ridge and exit
 
-- [ ] Validate complete cache, unchanged committed splits and frozen configs/protocol; run five-seed initial v2 control, then five-seed final v2 control. Never reroll a failure.
-- [ ] If both pass, execute 100 definitive CV fits and five ridge fits with existing frozen configs. Save predictions and hashes; reuse complete fits, restart partial fits only.
-- [ ] Run ordinary pytest and the final completeness-first report; require zero missing/failed gates and all mandatory metrics finite.
-- [ ] Generate tables/ensembles/time accounting and updated phase documents from saved outputs, including explicit original-control failure/amendment disclosure. Commit small artifacts, never arrays/checkpoints.
+- [x] Validate complete cache, unchanged committed splits and frozen configs/protocol; run five-seed initial v2 control, then five-seed final v2 control. Never reroll a failure.
+- [x] If both pass, execute 100 definitive CV fits and five ridge fits with existing frozen configs. Save predictions and hashes; reuse complete fits, restart partial fits only.
+- [x] Run ordinary pytest and the final completeness-first report; require zero missing/failed gates and all mandatory metrics finite.
+- [x] Generate tables/ensembles/time accounting and updated phase documents from saved outputs, including explicit original-control failure/amendment disclosure. Commit small artifacts, never arrays/checkpoints.
+
+## Verified execution outcome (2026-10-27)
+
+Completed under the explicitly approved v2 protocol. The single completion worker exited zero after both five-seed controls, 100 definitive neural CV fits, five ridge fits, `.venv/bin/python -m pytest -q` (159 passed) and `scripts/06_eval.py --config configs/protocol.yaml --results results/phase1 --features configs/features_v2.yaml` (passed, no missing/failed gates). The report contains generated tables, 25,200 validated OOF predictions and 6,000 seed-averaged ensemble rows. All 70 snapshotted original/frozen files match their preserved checksums. See `results/phase1/report.md`, `phase_gate.json`, and the three focused reviews under `docs/superpowers/reviews/2026-10-27-*review.md`. No later-phase experiments, merge or push were performed.

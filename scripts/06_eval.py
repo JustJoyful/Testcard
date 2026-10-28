@@ -303,7 +303,7 @@ def phase_report(protocol,root,features):
         +'Headline: mean per-fold SRCC across 25 fold × seed runs. Ensemble OOF is a separate quantity.\n'
         +((history['disclosure']+'\n\n') if history else 'Control-protocol history is missing.\n\n')
         +'PLCC logistic mapping uses target labels. Warning-only determinism; no bitwise reproducibility claim.\n\n'
-        +table+'\n'.join(f"- {r['gate']}: {r['reason']}" for r in failures)+'\n').encode())
+        +table+'\n'.join(f"- {r['gate']}: {r['reason']}" for r in failures)).rstrip().encode()+b'\n')
     if gate_result['status']=='passed':
         update_phase_docs(accounting)
     atomic_json(root/'phase_gate.json',gate_result)

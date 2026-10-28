@@ -1,0 +1,26 @@
+{
+  "status": "complete",
+  "identity": {
+    "run_identity": {
+      "config_sha256": "69e902b7994f40e47731b26336a4bbfc922b847a6c7c0469e04451ab3f0200c9",
+      "seed": 1,
+      "provenance": {
+        "config_feature_sha256": "8397ea636c79e69a382e88a7238f798b398dafd91774edd6b50555f7bb62777c",
+        "split_sha256": "3f5d9f96ba8bdfefc85ce7f9413a17a4e7307f8023525e33ec4a2424f2b50263",
+        "cache_sha256": "311ae067d92f2077ed1adf93006d7da991f23f94c0845fd1f6063a90025c9ab3",
+        "cache_meta_sha256": "27af097a62ed3472519367ab50c2b6deb32af26788986d8fccdd886f1d9dfb3c",
+        "lock_sha256": "aef832296aa3a46d27fd5165d19da0dd932fc01360fc49bff3e3020c390399dc",
+        "weights_sha256": {
+          "dino": "0b8b82f85de91b424aded121c7e1dcc2b7bc6d0adeea651bf73a13307fad8c73",
+          "resnet50": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca"
+        },
+        "head": "mean_pool",
+        "fold": 1,
+        "run_kind": "cv",
+        "label_mode": "real"
+      }
+    },
+    "checkpoint_sha256": "91e89bb6b71f69458d9e80db025463fcb98ef8035e359d83e1b96c9a9d50da30"
+  },
+  "predictions_sha256": "31d5d3539f5380d7d03bdd1b89fd18bb5930916f79d571b39f5069a0d35013d4"
+}
