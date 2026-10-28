@@ -248,3 +248,32 @@ During the amended real controls, repeated manifest scans were identified as an 
 ## 2026-10-27: Phase 1 exit verified
 
 The generated phase gate passes. Definitive DINO/ridge artifacts are complete and must be reused in Phase 2. Saved GPU job wall hours: 10.942467243436393; upper-bound remaining planning allowance from saved attempts: 89.0575327565636 hours. These are job wall measurements, not kernel utilization; hands-on time remains unmeasured. See results/phase1/summary.json, time_accounting.json and phase_gate.json. No LIVE-VQC predictions were made.
+
+## 2026-10-27: Shuffled-label control evidence closed; v2 standard for later feature sets
+
+This entry closes the control-design decision before Phase 2. Values below are generated directly from the preserved saved outputs; no model was retrained, permutation rerolled or pass threshold changed. The original failed result remains failed.
+
+**Original selected-config control (training targets shuffled; true validation targets).** The five-seed averaged prediction on the 240-video outer test fold has SRCC 0.12918040273838305, with 95% video-bootstrap CI [0.004278085064662253, 0.25522434250352]. The CI excludes zero, so the control failed despite absolute SRCC below 0.15. The diagnostic records 10000 valid bootstrap draws and 0 invalid draws. Source: [original diagnostic](results/phase1/control_final/diagnostic.json).
+
+The inner-validation scores below are measured against **true validation MOS at each seed’s selected epoch**, not shuffled-validation scores or held-out test scores. Each value matches the selected history entry and the maximum saved validation SRCC; each selected checkpoint checksum was verified.
+
+| Seed | Best epoch | Inner-validation SRCC at selected epoch | Saved run |
+| ---: | ---: | ---: | --- |
+| 0 | 6 | 0.25354790580931924 | [seed 0](results/phase1/control_final/seed0/run.json) |
+| 1 | 5 | 0.17477905790631865 | [seed 1](results/phase1/control_final/seed1/run.json) |
+| 2 | 19 | 0.1666256360575032 | [seed 2](results/phase1/control_final/seed2/run.json) |
+| 3 | 7 | 0.12358955632604288 | [seed 3](results/phase1/control_final/seed3/run.json) |
+| 4 | 18 | 0.18718504091660654 | [seed 4](results/phase1/control_final/seed4/run.json) |
+
+Their arithmetic mean is 0.1811454394031581. All five selected validation scores are positive. This is the positive-validation pattern, rather than near-zero selected validation scores accompanying a positive test result.
+
+**Mechanism and interpretation.** Although gradient fitting used permuted training targets, checkpoint selection maximized SRCC against real validation labels. This left a real-label supervision path: early stopping could select a checkpoint whose feature-to-quality association aligned with true validation MOS, and that association could also carry to the test videos. The positive selected validation scores support this explanation. They are selected maxima, not unbiased estimates or a formal significance test; these observations do not prove this mechanism uniquely caused the original test association or prove absence of every possible leak. Existing role/permutation/checkpoint/CPU-inference/bootstrap audits found no concrete implementation defect; see [the independent audit](results/phase1/control_final/independent_audit.md).
+
+**Post-hoc amendment and observed result.** The user approved policy v2 on 2026-10-27 **after the original control failed**. It independently permutes training and validation targets within their own roles, with a separate fixed seed-0 RNG for each permutation, while retaining true test labels/IDs. The original training permutation, frozen model configurations, five model seeds and numerical thresholds were retained. Both amended controls were run once; their saved test-fold results are:
+
+| Amended control | Test-fold ensemble SRCC | 95% bootstrap CI | Gate |
+| --- | ---: | --- | --- |
+| [Initial/default](results/phase1/control_initial_v2/diagnostic.json) | -0.10300331599991715 | [-0.2220614423993075, 0.021783227062860476] | passed |
+| [Final/selected](results/phase1/control_final_v2/diagnostic.json) | -0.1189693161394431 | [-0.23995964728281755, 0.0066654817834086826] | passed |
+
+**Settled standard for later feature sets.** Under Rule 10, policy v2 is now the standard shuffled-label control for **every later feature set, including ResNet in Phase 2**, and every new pipeline change. Use fold 0 and the cheapest mean-pool head, independently shuffle targets within training and validation, preserve true held-out test targets, retain all five model seeds and fixed permutation provenance, and require both default and selected-config controls to pass. The unchanged conjunction is a 95% bootstrap CI including zero and absolute SRCC below 0.15, using 10,000 seed-0 video-bootstrap draws. Do not reuse a DINO control as evidence for ResNet; any new failure stops further work for investigation without searching permutations, seeds, configs or thresholds for a pass. Preserve and disclose the original failure and this post-hoc amendment in later reports. The control-design decision is closed on this basis; this entry does not run or certify the future ResNet control.
