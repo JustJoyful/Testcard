@@ -21,7 +21,7 @@
         "dino": "0b8b82f85de91b424aded121c7e1dcc2b7bc6d0adeea651bf73a13307fad8c73",
         "resnet50": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca"
       },
-      "code_commit": "504ac908f6b3ef1978920be6873f436b525ff7f6"
+      "code_commit": "9c989b8dde8760bb00abbac8539512ffb77e9c80"
     },
     "frozen_selection": {
       "mean_pool": {
