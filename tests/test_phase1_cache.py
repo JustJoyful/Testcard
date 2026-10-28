@@ -93,3 +93,19 @@ def test_unsafe_video_id_is_rejected(tmp_path):
     from src.cache import write_video_features
     with pytest.raises(ValueError):
         write_video_features(tmp_path, 'konvid', '../x', arrays(), row(), fixture_meta())
+
+
+def test_indexed_lookup_keeps_integrity_and_duplicate_checks(tmp_path):
+    from src.cache import index_manifest,read_branch,read_manifest,write_video_features
+    write_video_features(tmp_path,'konvid','v0',arrays(),row(),fixture_meta())
+    records=read_manifest(tmp_path)
+    index=index_manifest(records)
+    np.testing.assert_array_equal(read_branch(tmp_path,'konvid','v0','dino_cls',index,row()),np.ones((2,768),np.float16))
+    with pytest.raises(ValueError,match='source'):
+        read_branch(tmp_path,'konvid','v0','dino_cls',index,{**row(),'source_sha256':'different'})
+    duplicate=index_manifest(records+[records[0]])
+    with pytest.raises(ValueError,match='manifest'):
+        read_branch(tmp_path,'konvid','v0','dino_cls',duplicate,row())
+    (tmp_path/'konvid/dino_cls/v0.npy').write_bytes(b'corrupt')
+    with pytest.raises(ValueError,match='checksum'):
+        read_branch(tmp_path,'konvid','v0','dino_cls',index,row())

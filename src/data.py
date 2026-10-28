@@ -6,7 +6,7 @@ import numpy as np
 import torch
 from torch.utils.data import Dataset
 
-from src.cache import DINO_BRANCHES, read_branch, read_manifest
+from src.cache import DINO_BRANCHES, index_manifest, read_branch, read_manifest
 from src.splits import freeze_splits
 
 
@@ -20,7 +20,7 @@ class CachedFeatureDataset(Dataset):
         roles=list(csv.DictReader(Path(splits).open()))
         self.ids=[r['video_id'] for r in roles if int(r['outer_fold'])==fold and r['role']==role]
         self.items=[]
-        records=read_manifest(root)
+        records=index_manifest(read_manifest(root))
         branches=DINO_BRANCHES if feature_set=='dino' else ['resnet50']
         # Check the entire authoritative inventory, so no invalid video disappears from fitting.
         for key,row in sources.items():

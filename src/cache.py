@@ -61,12 +61,21 @@ def safe_id(dataset, video_id):
         raise ValueError(f'unsafe dataset/video ID: {dataset}/{video_id}')
 
 
+def index_manifest(rows):
+    index={}
+    for row in rows:
+        key=(row['dataset'],row['video_id'],row['feature_set'])
+        index.setdefault(key,[]).append(row)
+    return index
+
+
 def read_branch(root, dataset, video_id, branch, rows=None, source=None):
     safe_id(dataset, video_id)
     if branch not in BRANCHES:
         raise ValueError(f'{video_id}: unknown branch {branch}')
-    records = [r for r in (read_manifest(root) if rows is None else rows)
-               if (r['dataset'],r['video_id'],r['feature_set']) == (dataset,video_id,branch)]
+    rows=index_manifest(read_manifest(root)) if rows is None else rows
+    records=(rows.get((dataset,video_id,branch),[]) if isinstance(rows,dict) else
+             [r for r in rows if (r['dataset'],r['video_id'],r['feature_set'])==(dataset,video_id,branch)])
     path = Path(root)/dataset/branch/(video_id+'.npy')
     try:
         if len(records) != 1 or records[0]['status'] != 'ok':
@@ -133,7 +142,7 @@ def write_video_features(root, dataset, video_id, arrays, source_row, meta):
 
 def coverage(root):
     meta = json.loads((Path(root)/'meta.json').read_text())
-    rows = read_manifest(root)
+    rows = index_manifest(read_manifest(root))
     result = {}
     for dataset, ids in meta['expected_ids'].items():
         failed = []
