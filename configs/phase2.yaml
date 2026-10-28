@@ -1,0 +1,15 @@
+schema_version: 1
+source_protocol: configs/protocol.yaml
+phase1_root: results/phase1
+results_root: results/phase2
+features: configs/features_v2.yaml
+selection:
+  aggregation: equal_head_fold_seed_mean
+  tie_break: dino
+statistics:
+  draws: 10000
+  seed: 0
+  margin: 0.01
+  primary_metric: srcc
+  pvalue_method: centered_bootstrap_add_one
+  min_finite_fraction: 0.99
