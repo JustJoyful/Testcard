@@ -70,16 +70,23 @@ def load_completed(model,output,identity,device):
     return record
 
 
-def fit_one(model,train_data,val_data,config,output,seed,provenance):
+def fit_one(model,train_data,val_data,config,output,seed,provenance,*,progress=None):
     output=Path(output)
     output.mkdir(parents=True,exist_ok=True)
     device=config['device']
     seed_everything(seed,config['cpu_threads'])
     model.to(device=device,dtype=torch.float32)
     identity={'config_sha256':config_hash(config),'seed':seed,'provenance':{k:v for k,v in provenance.items() if k!='code_commit'}}
+    def emit(event,**values):
+        if progress is not None:
+            progress({'event':event,'run_path':str(output),'seed':seed,'head':provenance.get('head'),
+                      'fold':provenance.get('fold'),'feature_set':config.get('feature_set'),
+                      'device':device,'max_epochs':config['max_epochs'],**values})
     existing=load_completed(model,output,identity,device)
     if existing:
+        emit('fit_reused',epoch=existing['best_epoch'])
         return existing
+    emit('fit_start')
     resolved=output/'config.json'
     if resolved.exists() and json.loads(resolved.read_text())!=config:
         raise ValueError(f'{output}: incompatible saved config')
@@ -111,7 +118,7 @@ def fit_one(model,train_data,val_data,config,output,seed,provenance):
                     group['lr']=config['learning_rate']*multiplier
                 model.train()
                 losses=[]
-                for batch in loader:
+                for batch_index,batch in enumerate(loader,1):
                     optimizer.zero_grad(set_to_none=True)
                     target=(batch['mos'].to(device)-stats['mean'])/stats['std']
                     value=model(batch['features'].to(device),batch['lengths'])
@@ -120,12 +127,18 @@ def fit_one(model,train_data,val_data,config,output,seed,provenance):
                     torch.nn.utils.clip_grad_norm_(model.parameters(),config['gradient_clip_norm'],error_if_nonfinite=True)
                     optimizer.step()
                     losses.append(float(loss.detach()))
+                    emit('batch_end',epoch=epoch,batch=batch_index,batches=len(loader),train_loss=float(np.mean(losses)))
+                emit('validation_start',epoch=epoch)
                 predictions=predict(model,val_data,stats,device)
                 score=correlations(np.array([val_data[i]['mos'] for i in range(len(val_data))]),
                                    np.array([r['prediction'] for r in predictions]))
                 synchronize(device)
                 history.append({'epoch':epoch,'mean_loss':float(np.mean(losses)),
                                 'validation_srcc':score['srcc'],'wall_seconds':time.perf_counter()-epoch_start})
+                if progress is not None:
+                    validation_l1=float(np.mean([abs(val_data[i]['mos']-r['prediction']) for i,r in enumerate(predictions)])/stats['std'])
+                    emit('epoch_end',epoch=epoch,train_loss=float(np.mean(losses)),validation_l1_z=validation_l1,
+                         validation_srcc=score['srcc'],validation_epoch=epoch)
                 if score['status']=='ok' and score['srcc']>best:
                     best,best_epoch=score['srcc'],epoch
                     buffer=io.BytesIO()
@@ -145,8 +158,13 @@ def fit_one(model,train_data,val_data,config,output,seed,provenance):
         model.load_state_dict(torch.load(output/'best.pt',map_location=device,weights_only=True)['state_dict'])
         atomic_json(output/'run.json',record)
         atomic_write(output/'warnings.log',('\n'.join(observed)+'\n').encode())
-        return record
     except Exception as exc:
         record.update(status='failed',reason=str(exc),warnings=observed,wall_seconds=time.perf_counter()-start)
         atomic_json(output/'run.json',record)
+        try:
+            emit('fit_failed',reason=str(exc))
+        except Exception as observer_error:
+            exc.add_note(f'Progress reporting also failed: {observer_error}')
         raise
+    emit('fit_complete',epoch=record['completed_epochs'],best_epoch=record['best_epoch'],wall_seconds=record['wall_seconds'])
+    return record
