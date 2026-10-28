@@ -1,0 +1,201 @@
+{
+  "status": "investigated_gate_still_failed",
+  "role_counts": {
+    "train": 816,
+    "val": 144,
+    "test": 240
+  },
+  "split_sha256": "3f5d9f96ba8bdfefc85ce7f9413a17a4e7307f8023525e33ec4a2424f2b50263",
+  "permutation_sha256": "0694ac8a59669426cb1e8e602a32ccb1346ea7055d2192e5dca18e2e10cbd13d",
+  "permutation_matches_declared_seed0": true,
+  "split_roles_disjoint": true,
+  "fixed_label_positions": 0,
+  "original_vs_permuted_training_srcc": 0.04506344208470326,
+  "target_stats": {
+    "mean": 3.0250781444718133,
+    "std": 0.6404620155041453
+  },
+  "cross_role_duplicate_source_checksums": [],
+  "cross_role_identical_cls_arrays": [],
+  "controls": {
+    "control_initial": {
+      "recorded_status": "passed",
+      "bootstrap_reproduced": {
+        "srcc": 0.07427258946968268,
+        "ci95": [
+          -0.05189994539084714,
+          0.20111890816556402
+        ],
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "status": "ok",
+        "reason": null
+      },
+      "independent_bootstrap_ci95": [
+        -0.05189994539084714,
+        0.20111890816556402
+      ],
+      "prediction_seed_correlation_matrix": [
+        [
+          1.0,
+          0.8289355134924985,
+          0.7834126984738384,
+          0.7058413896698598,
+          0.7803417356714537
+        ],
+        [
+          0.8289355134924985,
+          1.0,
+          0.8721529154688443,
+          0.6951480685868848,
+          0.8759746481837116
+        ],
+        [
+          0.7834126984738384,
+          0.8721529154688444,
+          1.0,
+          0.6319968940256335,
+          0.9051767775273275
+        ],
+        [
+          0.7058413896698599,
+          0.6951480685868849,
+          0.6319968940256335,
+          1.0,
+          0.6671192766490169
+        ],
+        [
+          0.7803417356714537,
+          0.8759746481837116,
+          0.9051767775273276,
+          0.6671192766490169,
+          1.0
+        ]
+      ],
+      "runs": [
+        {
+          "seed": 0,
+          "best_epoch": 6,
+          "validation_srcc": 0.0939924541403132,
+          "heldout_srcc_diagnostic_only": 0.08630851062320277
+        },
+        {
+          "seed": 1,
+          "best_epoch": 10,
+          "validation_srcc": 0.131956008176331,
+          "heldout_srcc_diagnostic_only": 0.058533608471937275
+        },
+        {
+          "seed": 2,
+          "best_epoch": 19,
+          "validation_srcc": 0.13210673695095784,
+          "heldout_srcc_diagnostic_only": 0.07715134845302608
+        },
+        {
+          "seed": 3,
+          "best_epoch": 4,
+          "validation_srcc": 0.10223430353690975,
+          "heldout_srcc_diagnostic_only": 0.06457717923868786
+        },
+        {
+          "seed": 4,
+          "best_epoch": 15,
+          "validation_srcc": 0.11182266332017289,
+          "heldout_srcc_diagnostic_only": 0.0735858891211228
+        }
+      ],
+      "audited_checkpoint_and_config_hashes": true,
+      "authoritative_test_ids_and_mos_match": true
+    },
+    "control_final": {
+      "recorded_status": "failed",
+      "bootstrap_reproduced": {
+        "srcc": 0.12918040273838305,
+        "ci95": [
+          0.004278085064662253,
+          0.25522434250352
+        ],
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "status": "ok",
+        "reason": null
+      },
+      "independent_bootstrap_ci95": [
+        0.004278085064662253,
+        0.25522434250352
+      ],
+      "prediction_seed_correlation_matrix": [
+        [
+          1.0,
+          0.7611970824924619,
+          0.7006315816944189,
+          0.7529270019268226,
+          0.727610049982207
+        ],
+        [
+          0.7611970824924619,
+          1.0,
+          0.6119011185401564,
+          0.7650204060621816,
+          0.7101836559884426
+        ],
+        [
+          0.700631581694419,
+          0.6119011185401564,
+          0.9999999999999998,
+          0.6831703893655906,
+          0.7852273274165819
+        ],
+        [
+          0.7529270019268226,
+          0.7650204060621817,
+          0.6831703893655906,
+          1.0,
+          0.7305462986553669
+        ],
+        [
+          0.7276100499822071,
+          0.7101836559884427,
+          0.785227327416582,
+          0.730546298655367,
+          1.0
+        ]
+      ],
+      "runs": [
+        {
+          "seed": 0,
+          "best_epoch": 6,
+          "validation_srcc": 0.25354790580931924,
+          "heldout_srcc_diagnostic_only": 0.21162047245996396
+        },
+        {
+          "seed": 1,
+          "best_epoch": 5,
+          "validation_srcc": 0.17477905790631865,
+          "heldout_srcc_diagnostic_only": 0.07523622712695384
+        },
+        {
+          "seed": 2,
+          "best_epoch": 19,
+          "validation_srcc": 0.1666256360575032,
+          "heldout_srcc_diagnostic_only": 0.09494652385730007
+        },
+        {
+          "seed": 3,
+          "best_epoch": 7,
+          "validation_srcc": 0.12358955632604288,
+          "heldout_srcc_diagnostic_only": 0.08998986691658867
+        },
+        {
+          "seed": 4,
+          "best_epoch": 18,
+          "validation_srcc": 0.18718504091660654,
+          "heldout_srcc_diagnostic_only": 0.06718941861772292
+        }
+      ],
+      "audited_checkpoint_and_config_hashes": true,
+      "authoritative_test_ids_and_mos_match": true
+    }
+  },
+  "policy": "No seeds, permutation, configurations, thresholds or fitting changed; no CV launched."
+}

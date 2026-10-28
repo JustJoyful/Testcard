@@ -112,3 +112,7 @@ Implementation is present on `phase1-core-slice`; fixed indices are committed. S
 ### Decoder repair during Phase 1 (2026-10-26)
 
 The original queue stopped on six LIVE-VQC rawvideo output timestamp collisions. Active extraction now uses `configs/features_v2.yaml` and `cache/v2`, with a versioned freeze and fresh feature/parity runs. Source archives, immutable splits and v1 artifacts remain intact. Prior extraction GPU wall time remains part of the budget. Training stays blocked until both new dataset caches pass. See `results/phase1/decoder_diagnosis.json` and the dated decision.
+
+### Final-control stop (2026-10-27)
+
+V2 cache/parity, initial control, measured pilots and all tuning are complete. The final selected-config shuffled-label control fails its predeclared CI condition. Both implementation and independent audits found no concrete defect, and the failure remains unresolved. Definitive CV/ridge and later phases are blocked under Rule 10; see `results/phase1/control_final/audit.md`, `independent_audit.md` and `diagnostic.json`. No processes are left running.

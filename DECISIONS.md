@@ -222,3 +222,13 @@ Reference: [official FFmpeg encoder time-base documentation](https://www.ffmpeg.
 ### Decoder repair verified and v2 queue resumed
 
 All six failed IDs pass the shared decoder and both real GPU backbones. Checksum-bound per-branch evidence is generated in `results/phase1/decoder_repair/verification.json`; the independent focused review found no Important/Critical issues. Fresh v2 feature and parity runs precede the existing leakage/pilot/runtime/selection/CV gates. The original failed v1 evidence remains under `results/phase1/decoder_repair/`; no clips, branches, folds or seeds were dropped, and no old arrays were relabeled.
+
+## 2026-10-27: Final control failed; definitive CV remains stopped
+
+All shared-rank and equal-budget head tuning fits completed, with frozen selected configs. The selected mean-pool final shuffled-label control completed all five seeds but failed: SRCC 0.12918040273838305, 95% CI [0.004278085064662253, 0.25522434250352]. The absolute-SRCC condition passes; the interval excludes zero.
+
+Under Rule 10, no CV/ridge fits or LIVE-VQC predictions are launched. The saved permutation, seeds, split indices, selected configs and pass criterion are unchanged. Do not reroll the permutation, pick another config from the held-out control result, or relabel this result as passing.
+
+Read-only main and independent audits verify role separation, authoritative IDs/MOS, fixed training permutation, training-only target statistics, checkpoint/config bindings, best-epoch selection and exact bootstrap reproduction. Independent CPU inference agrees with saved GPU predictions and validation scores. No concrete implementation defect was detected; this does not prove chance caused the failure or establish absence of every possible leakage mechanism. No fitting correction or post-hoc threshold change is justified by these checks.
+
+The existing gate remains failed. Further experimental progress requires a resolved cause or an explicit, transparently documented research-protocol decision; a generic request to continue is not authorization to bypass it. Machine-readable and human-readable audits are saved under results/phase1/control_final/. Offline verification: `.venv/bin/python -m pytest -q` → 147 passed.
