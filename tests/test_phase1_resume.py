@@ -46,3 +46,17 @@ def test_extraction_failure_stops_resume_before_training(tmp_path):
     assert result.returncode == 23
     assert sum('02_extract_spatial.py' in line for line in calls) == 3
     assert not any('--mode ' in line for line in calls)
+
+
+def test_resume_never_mutates_git(tmp_path):
+    log=tmp_path/'git.log'
+    env={**os.environ,'PHASE1_GIT_LOG':str(log)}
+    shell=r'''
+function .venv/bin/python() { return 0; }
+function git() { printf '%s\n' "$*" >> "$PHASE1_GIT_LOG"; return 0; }
+source scripts/continue_phase1.sh
+'''
+    result=subprocess.run(['bash','-c',shell],cwd=ROOT,env=env,capture_output=True,text=True)
+    assert result.returncode==0,result.stderr
+    calls=log.read_text().splitlines() if log.exists() else []
+    assert not any(c.split()[0] in ('add','commit','push') for c in calls)
