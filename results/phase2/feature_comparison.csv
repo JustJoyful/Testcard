@@ -1,0 +1,3 @@
+feature_set,inner_validation_srcc_mean,selected,mean_pool_inner_validation_srcc,bigru_inner_validation_srcc,transformer_inner_validation_srcc,mamba_inner_validation_srcc
+dino,0.7157960881764193,False,0.7111103534852696,0.7185333288624346,0.7212745680096462,0.7122661023483261
+resnet50,0.7636316431083497,True,0.7654659118105855,0.7584398005313272,0.7643456108213599,0.7662752492701267

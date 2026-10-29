@@ -1,0 +1,13 @@
+{
+  "status": "ok",
+  "reason": null,
+  "plcc_mapped": 0.7244949589535613,
+  "coefficients": [
+    3.841715809921025,
+    1.481577331378994,
+    2.675747119533152,
+    0.507039726050273
+  ],
+  "fitting_domain": "target_labels",
+  "convergence": "`ftol` termination condition is satisfied."
+}
