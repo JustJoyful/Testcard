@@ -1,0 +1,749 @@
+[
+  {
+    "pair_id": "neural/mean_pool-bigru",
+    "family": "primary_srcc",
+    "a": [
+      "resnet50",
+      "mean_pool"
+    ],
+    "b": [
+      "resnet50",
+      "bigru"
+    ],
+    "metrics": {
+      "srcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "srcc",
+        "delta": -0.004571973739441515,
+        "ci95": [
+          -0.014479309319197147,
+          0.005244117800006932
+        ],
+        "p_raw": 0.36246375362463756,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e",
+        "classification": "no detectable difference (inconclusive at this sample size)",
+        "p_holm": 0.7249275072492751,
+        "holm_reject": false
+      },
+      "krcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "krcc",
+        "delta": -0.006938299907705225,
+        "ci95": [
+          -0.016734180968611748,
+          0.002835485719209173
+        ],
+        "p_raw": 0.16248375162483752,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e"
+      }
+    }
+  },
+  {
+    "pair_id": "neural/mean_pool-transformer",
+    "family": "primary_srcc",
+    "a": [
+      "resnet50",
+      "mean_pool"
+    ],
+    "b": [
+      "resnet50",
+      "transformer"
+    ],
+    "metrics": {
+      "srcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "srcc",
+        "delta": -0.009796688749099003,
+        "ci95": [
+          -0.01809027196853458,
+          -0.0016464826419266463
+        ],
+        "p_raw": 0.020397960203979604,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e",
+        "classification": "detectable difference, not shown to exceed the margin",
+        "p_holm": 0.10198980101989802,
+        "holm_reject": false
+      },
+      "krcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "krcc",
+        "delta": -0.011258689391666521,
+        "ci95": [
+          -0.019107905949670538,
+          -0.003396142685063184
+        ],
+        "p_raw": 0.0065993400659934,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e"
+      }
+    }
+  },
+  {
+    "pair_id": "neural/mean_pool-mamba",
+    "family": "primary_srcc",
+    "a": [
+      "resnet50",
+      "mean_pool"
+    ],
+    "b": [
+      "resnet50",
+      "mamba"
+    ],
+    "metrics": {
+      "srcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "srcc",
+        "delta": 0.002069013533904318,
+        "ci95": [
+          -0.00582339843261565,
+          0.010022965977412512
+        ],
+        "p_raw": 0.6141385861413858,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e",
+        "classification": "no detectable difference (inconclusive at this sample size)",
+        "p_holm": 0.7249275072492751,
+        "holm_reject": false
+      },
+      "krcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "krcc",
+        "delta": 0.0005498170079718534,
+        "ci95": [
+          -0.007287637273817959,
+          0.008413528467698975
+        ],
+        "p_raw": 0.8912108789121088,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e"
+      }
+    }
+  },
+  {
+    "pair_id": "neural/bigru-transformer",
+    "family": "primary_srcc",
+    "a": [
+      "resnet50",
+      "bigru"
+    ],
+    "b": [
+      "resnet50",
+      "transformer"
+    ],
+    "metrics": {
+      "srcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "srcc",
+        "delta": -0.005224715009657488,
+        "ci95": [
+          -0.01354702053128356,
+          0.0027874940211039725
+        ],
+        "p_raw": 0.21097890210978903,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e",
+        "classification": "no detectable difference (inconclusive at this sample size)",
+        "p_holm": 0.6329367063293672,
+        "holm_reject": false
+      },
+      "krcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "krcc",
+        "delta": -0.0043203894839612955,
+        "ci95": [
+          -0.012766590032054196,
+          0.00403151344136053
+        ],
+        "p_raw": 0.3093690630936906,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e"
+      }
+    }
+  },
+  {
+    "pair_id": "neural/bigru-mamba",
+    "family": "primary_srcc",
+    "a": [
+      "resnet50",
+      "bigru"
+    ],
+    "b": [
+      "resnet50",
+      "mamba"
+    ],
+    "metrics": {
+      "srcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "srcc",
+        "delta": 0.006640987273345833,
+        "ci95": [
+          -0.002395732522776844,
+          0.015502020263546074
+        ],
+        "p_raw": 0.1421857814218578,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e",
+        "classification": "no detectable difference (inconclusive at this sample size)",
+        "p_holm": 0.5687431256874312,
+        "holm_reject": false
+      },
+      "krcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "krcc",
+        "delta": 0.007488116915677079,
+        "ci95": [
+          -0.0008133239267601565,
+          0.01587414668550061
+        ],
+        "p_raw": 0.0821917808219178,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e"
+      }
+    }
+  },
+  {
+    "pair_id": "neural/transformer-mamba",
+    "family": "primary_srcc",
+    "a": [
+      "resnet50",
+      "transformer"
+    ],
+    "b": [
+      "resnet50",
+      "mamba"
+    ],
+    "metrics": {
+      "srcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "srcc",
+        "delta": 0.011865702283003321,
+        "ci95": [
+          0.0038540772607286084,
+          0.02006032428606947
+        ],
+        "p_raw": 0.003999600039996,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e",
+        "classification": "detectable difference, not shown to exceed the margin",
+        "p_holm": 0.023997600239976002,
+        "holm_reject": true
+      },
+      "krcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "krcc",
+        "delta": 0.011808506399638374,
+        "ci95": [
+          0.00415859109810329,
+          0.019567431165491925
+        ],
+        "p_raw": 0.0029997000299970002,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e"
+      }
+    }
+  },
+  {
+    "pair_id": "ridge/mean_pool",
+    "family": "secondary",
+    "a": [
+      "resnet50",
+      "ridge"
+    ],
+    "b": [
+      "resnet50",
+      "mean_pool"
+    ],
+    "metrics": {
+      "srcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "srcc",
+        "delta": 0.014529819068684224,
+        "ci95": [
+          0.0017846656832709669,
+          0.0274984602611512
+        ],
+        "p_raw": 0.0287971202879712,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e",
+        "classification": "detectable difference, not shown to exceed the margin"
+      },
+      "krcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "krcc",
+        "delta": 0.01500414332414457,
+        "ci95": [
+          0.002859908750359819,
+          0.027062230768795856
+        ],
+        "p_raw": 0.014498550144985502,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e"
+      }
+    }
+  },
+  {
+    "pair_id": "ridge/bigru",
+    "family": "secondary",
+    "a": [
+      "resnet50",
+      "ridge"
+    ],
+    "b": [
+      "resnet50",
+      "bigru"
+    ],
+    "metrics": {
+      "srcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "srcc",
+        "delta": 0.00995784532924271,
+        "ci95": [
+          -0.003889120958754305,
+          0.024468424786436998
+        ],
+        "p_raw": 0.16278372162783722,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e",
+        "classification": "no detectable difference (inconclusive at this sample size)"
+      },
+      "krcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "krcc",
+        "delta": 0.008065843416439344,
+        "ci95": [
+          -0.00472680272009135,
+          0.021314718961129495
+        ],
+        "p_raw": 0.22517748225177484,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e"
+      }
+    }
+  },
+  {
+    "pair_id": "ridge/transformer",
+    "family": "secondary",
+    "a": [
+      "resnet50",
+      "ridge"
+    ],
+    "b": [
+      "resnet50",
+      "transformer"
+    ],
+    "metrics": {
+      "srcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "srcc",
+        "delta": 0.0047331303195852215,
+        "ci95": [
+          -0.007336035165667262,
+          0.017338625051763274
+        ],
+        "p_raw": 0.44625537446255376,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e",
+        "classification": "no detectable difference (inconclusive at this sample size)"
+      },
+      "krcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "krcc",
+        "delta": 0.003745453932478049,
+        "ci95": [
+          -0.007480106773962966,
+          0.01510294808268855
+        ],
+        "p_raw": 0.5092490750924907,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e"
+      }
+    }
+  },
+  {
+    "pair_id": "ridge/mamba",
+    "family": "secondary",
+    "a": [
+      "resnet50",
+      "ridge"
+    ],
+    "b": [
+      "resnet50",
+      "mamba"
+    ],
+    "metrics": {
+      "srcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "srcc",
+        "delta": 0.016598832602588542,
+        "ci95": [
+          0.0028562183067797737,
+          0.030773092811534224
+        ],
+        "p_raw": 0.0202979702029797,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e",
+        "classification": "detectable difference, not shown to exceed the margin"
+      },
+      "krcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "krcc",
+        "delta": 0.015553960332116423,
+        "ci95": [
+          0.0027852919119388366,
+          0.028441967232697853
+        ],
+        "p_raw": 0.0165983401659834,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e"
+      }
+    }
+  },
+  {
+    "pair_id": "feature/mean_pool",
+    "family": "secondary",
+    "a": [
+      "dino",
+      "mean_pool"
+    ],
+    "b": [
+      "resnet50",
+      "mean_pool"
+    ],
+    "metrics": {
+      "srcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "srcc",
+        "delta": -0.06098238120938404,
+        "ci95": [
+          -0.08841483827973048,
+          -0.03355750269976338
+        ],
+        "p_raw": 9.999000099990002e-05,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e",
+        "classification": "B better than A (practically meaningful)"
+      },
+      "krcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "krcc",
+        "delta": -0.052433564105413555,
+        "ci95": [
+          -0.0773457959865289,
+          -0.02737753572110566
+        ],
+        "p_raw": 9.999000099990002e-05,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e"
+      }
+    }
+  },
+  {
+    "pair_id": "feature/bigru",
+    "family": "secondary",
+    "a": [
+      "dino",
+      "bigru"
+    ],
+    "b": [
+      "resnet50",
+      "bigru"
+    ],
+    "metrics": {
+      "srcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "srcc",
+        "delta": -0.060204307892806064,
+        "ci95": [
+          -0.08809542502327251,
+          -0.03163833932527427
+        ],
+        "p_raw": 9.999000099990002e-05,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e",
+        "classification": "B better than A (practically meaningful)"
+      },
+      "krcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "krcc",
+        "delta": -0.05584689507368523,
+        "ci95": [
+          -0.08115034604552152,
+          -0.030077736834523538
+        ],
+        "p_raw": 9.999000099990002e-05,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e"
+      }
+    }
+  },
+  {
+    "pair_id": "feature/transformer",
+    "family": "secondary",
+    "a": [
+      "dino",
+      "transformer"
+    ],
+    "b": [
+      "resnet50",
+      "transformer"
+    ],
+    "metrics": {
+      "srcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "srcc",
+        "delta": -0.061052971201363215,
+        "ci95": [
+          -0.0879017714888182,
+          -0.03383853207879264
+        ],
+        "p_raw": 9.999000099990002e-05,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e",
+        "classification": "B better than A (practically meaningful)"
+      },
+      "krcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "krcc",
+        "delta": -0.05548407166740943,
+        "ci95": [
+          -0.07949975744789069,
+          -0.030808225995903236
+        ],
+        "p_raw": 9.999000099990002e-05,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e"
+      }
+    }
+  },
+  {
+    "pair_id": "feature/mamba",
+    "family": "secondary",
+    "a": [
+      "dino",
+      "mamba"
+    ],
+    "b": [
+      "resnet50",
+      "mamba"
+    ],
+    "metrics": {
+      "srcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "srcc",
+        "delta": -0.0549228403213452,
+        "ci95": [
+          -0.08151760336857475,
+          -0.028035821010375134
+        ],
+        "p_raw": 9.999000099990002e-05,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e",
+        "classification": "B better than A (practically meaningful)"
+      },
+      "krcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "krcc",
+        "delta": -0.04838110575224053,
+        "ci95": [
+          -0.07273809844606323,
+          -0.023943345068635987
+        ],
+        "p_raw": 9.999000099990002e-05,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e"
+      }
+    }
+  },
+  {
+    "pair_id": "feature/ridge",
+    "family": "secondary",
+    "a": [
+      "dino",
+      "ridge"
+    ],
+    "b": [
+      "resnet50",
+      "ridge"
+    ],
+    "metrics": {
+      "srcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "srcc",
+        "delta": -0.043742207156721724,
+        "ci95": [
+          -0.06965466479086425,
+          -0.017781465728314336
+        ],
+        "p_raw": 0.0016998300169983002,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e",
+        "classification": "B better than A (practically meaningful)"
+      },
+      "krcc": {
+        "status": "ok",
+        "reason": null,
+        "metric": "krcc",
+        "delta": -0.040608312010101066,
+        "ci95": [
+          -0.06457668519275728,
+          -0.016611970692601077
+        ],
+        "p_raw": 0.0013998600139986002,
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "seed": 0,
+        "draws": 10000,
+        "pvalue_method": "centered_bootstrap_add_one",
+        "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e"
+      }
+    }
+  }
+]

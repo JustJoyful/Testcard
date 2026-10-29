@@ -1,0 +1,31 @@
+pair_id,family,metric,a,b,delta,ci_low,ci_high,p_raw,p_holm,holm_reject,classification
+neural/mean_pool-bigru,primary_srcc,srcc,resnet50:mean_pool,resnet50:bigru,-0.004571973739441515,-0.014479309319197147,0.005244117800006932,0.36246375362463756,0.7249275072492751,False,no detectable difference (inconclusive at this sample size)
+neural/mean_pool-bigru,secondary,krcc,resnet50:mean_pool,resnet50:bigru,-0.006938299907705225,-0.016734180968611748,0.002835485719209173,0.16248375162483752,,,
+neural/mean_pool-transformer,primary_srcc,srcc,resnet50:mean_pool,resnet50:transformer,-0.009796688749099003,-0.01809027196853458,-0.0016464826419266463,0.020397960203979604,0.10198980101989802,False,"detectable difference, not shown to exceed the margin"
+neural/mean_pool-transformer,secondary,krcc,resnet50:mean_pool,resnet50:transformer,-0.011258689391666521,-0.019107905949670538,-0.003396142685063184,0.0065993400659934,,,
+neural/mean_pool-mamba,primary_srcc,srcc,resnet50:mean_pool,resnet50:mamba,0.002069013533904318,-0.00582339843261565,0.010022965977412512,0.6141385861413858,0.7249275072492751,False,no detectable difference (inconclusive at this sample size)
+neural/mean_pool-mamba,secondary,krcc,resnet50:mean_pool,resnet50:mamba,0.0005498170079718534,-0.007287637273817959,0.008413528467698975,0.8912108789121088,,,
+neural/bigru-transformer,primary_srcc,srcc,resnet50:bigru,resnet50:transformer,-0.005224715009657488,-0.01354702053128356,0.0027874940211039725,0.21097890210978903,0.6329367063293672,False,no detectable difference (inconclusive at this sample size)
+neural/bigru-transformer,secondary,krcc,resnet50:bigru,resnet50:transformer,-0.0043203894839612955,-0.012766590032054196,0.00403151344136053,0.3093690630936906,,,
+neural/bigru-mamba,primary_srcc,srcc,resnet50:bigru,resnet50:mamba,0.006640987273345833,-0.002395732522776844,0.015502020263546074,0.1421857814218578,0.5687431256874312,False,no detectable difference (inconclusive at this sample size)
+neural/bigru-mamba,secondary,krcc,resnet50:bigru,resnet50:mamba,0.007488116915677079,-0.0008133239267601565,0.01587414668550061,0.0821917808219178,,,
+neural/transformer-mamba,primary_srcc,srcc,resnet50:transformer,resnet50:mamba,0.011865702283003321,0.0038540772607286084,0.02006032428606947,0.003999600039996,0.023997600239976002,True,"detectable difference, not shown to exceed the margin"
+neural/transformer-mamba,secondary,krcc,resnet50:transformer,resnet50:mamba,0.011808506399638374,0.00415859109810329,0.019567431165491925,0.0029997000299970002,,,
+ridge/mean_pool,secondary,srcc,resnet50:ridge,resnet50:mean_pool,0.014529819068684224,0.0017846656832709669,0.0274984602611512,0.0287971202879712,,,"detectable difference, not shown to exceed the margin"
+ridge/mean_pool,secondary,krcc,resnet50:ridge,resnet50:mean_pool,0.01500414332414457,0.002859908750359819,0.027062230768795856,0.014498550144985502,,,
+ridge/bigru,secondary,srcc,resnet50:ridge,resnet50:bigru,0.00995784532924271,-0.003889120958754305,0.024468424786436998,0.16278372162783722,,,no detectable difference (inconclusive at this sample size)
+ridge/bigru,secondary,krcc,resnet50:ridge,resnet50:bigru,0.008065843416439344,-0.00472680272009135,0.021314718961129495,0.22517748225177484,,,
+ridge/transformer,secondary,srcc,resnet50:ridge,resnet50:transformer,0.0047331303195852215,-0.007336035165667262,0.017338625051763274,0.44625537446255376,,,no detectable difference (inconclusive at this sample size)
+ridge/transformer,secondary,krcc,resnet50:ridge,resnet50:transformer,0.003745453932478049,-0.007480106773962966,0.01510294808268855,0.5092490750924907,,,
+ridge/mamba,secondary,srcc,resnet50:ridge,resnet50:mamba,0.016598832602588542,0.0028562183067797737,0.030773092811534224,0.0202979702029797,,,"detectable difference, not shown to exceed the margin"
+ridge/mamba,secondary,krcc,resnet50:ridge,resnet50:mamba,0.015553960332116423,0.0027852919119388366,0.028441967232697853,0.0165983401659834,,,
+feature/mean_pool,secondary,srcc,dino:mean_pool,resnet50:mean_pool,-0.06098238120938404,-0.08841483827973048,-0.03355750269976338,9.999000099990002e-05,,,B better than A (practically meaningful)
+feature/mean_pool,secondary,krcc,dino:mean_pool,resnet50:mean_pool,-0.052433564105413555,-0.0773457959865289,-0.02737753572110566,9.999000099990002e-05,,,
+feature/bigru,secondary,srcc,dino:bigru,resnet50:bigru,-0.060204307892806064,-0.08809542502327251,-0.03163833932527427,9.999000099990002e-05,,,B better than A (practically meaningful)
+feature/bigru,secondary,krcc,dino:bigru,resnet50:bigru,-0.05584689507368523,-0.08115034604552152,-0.030077736834523538,9.999000099990002e-05,,,
+feature/transformer,secondary,srcc,dino:transformer,resnet50:transformer,-0.061052971201363215,-0.0879017714888182,-0.03383853207879264,9.999000099990002e-05,,,B better than A (practically meaningful)
+feature/transformer,secondary,krcc,dino:transformer,resnet50:transformer,-0.05548407166740943,-0.07949975744789069,-0.030808225995903236,9.999000099990002e-05,,,
+feature/mamba,secondary,srcc,dino:mamba,resnet50:mamba,-0.0549228403213452,-0.08151760336857475,-0.028035821010375134,9.999000099990002e-05,,,B better than A (practically meaningful)
+feature/mamba,secondary,krcc,dino:mamba,resnet50:mamba,-0.04838110575224053,-0.07273809844606323,-0.023943345068635987,9.999000099990002e-05,,,
+feature/ridge,secondary,srcc,dino:ridge,resnet50:ridge,-0.043742207156721724,-0.06965466479086425,-0.017781465728314336,0.0016998300169983002,,,B better than A (practically meaningful)
+feature/ridge,secondary,krcc,dino:ridge,resnet50:ridge,-0.040608312010101066,-0.06457668519275728,-0.016611970692601077,0.0013998600139986002,,,

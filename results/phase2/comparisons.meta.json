@@ -1,0 +1,21 @@
+{
+  "resample_indices_sha256": "67f8d39579842f4faac4d806ae7ca44c736d40829e9b33764af531bc7de31f3e",
+  "draws": 10000,
+  "seed": 0,
+  "pvalue_method": "centered_bootstrap_add_one",
+  "ci_scope": "pointwise 95%; seed-averaged ensemble; test sampling noise only",
+  "source_identity": "5165c540f2f16997271b2974d80cf02814c5020129cc4733c690feaf503d9169",
+  "cv_sources_sha256": "c6514057359255c931dc67a01da741881d67161407938a896c5de2b863eba1c8",
+  "selection_sha256": "7efc34db0275c0e2d47e9d26c919711425fdb3d5de301f00a6bc9c850ee61fef",
+  "video_ids_sha256": "e0326dadf34073feac712191a79bfdcf82db96fe357b8095fefbc86331585941",
+  "policy": {
+    "draws": 10000,
+    "seed": 0,
+    "margin": 0.01,
+    "primary_metric": "srcc",
+    "pvalue_method": "centered_bootstrap_add_one",
+    "min_finite_fraction": 0.99
+  },
+  "json_sha256": "b5556c12fb24ddafbe42adbee0edfec658e660b9db7269cb3db43274f37a0e3d",
+  "csv_sha256": "1933f42b6f839be1bc28894b6ec46250336b092ed694ffd43f9dc2c1f9d94892"
+}
