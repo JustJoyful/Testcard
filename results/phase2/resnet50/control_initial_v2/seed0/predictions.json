@@ -1,0 +1,2162 @@
+[
+  {
+    "video_id": "10019485755",
+    "prediction": 2.793832540512085,
+    "mos": 3.7,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "10132105415",
+    "prediction": 2.917908191680908,
+    "mos": 1.64,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "10149337843",
+    "prediction": 2.944965124130249,
+    "mos": 3.94,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "10178280003",
+    "prediction": 2.663939952850342,
+    "mos": 1.7,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "10403478556",
+    "prediction": 2.886913776397705,
+    "mos": 3.68,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "10411421606",
+    "prediction": 2.861159324645996,
+    "mos": 2.52,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "10417424703",
+    "prediction": 3.3067452907562256,
+    "mos": 1.88,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "10595581344",
+    "prediction": 3.475634813308716,
+    "mos": 4.14,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "10609570083",
+    "prediction": 3.392439603805542,
+    "mos": 3.1,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "10636855406",
+    "prediction": 3.2347493171691895,
+    "mos": 3.88,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "10657154643",
+    "prediction": 3.3011090755462646,
+    "mos": 3.58,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "11013388203",
+    "prediction": 2.640756368637085,
+    "mos": 3.76,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "11086166076",
+    "prediction": 3.625257968902588,
+    "mos": 3.28,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "11535683914",
+    "prediction": 3.899829387664795,
+    "mos": 3.94,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "11617643563",
+    "prediction": 3.0998148918151855,
+    "mos": 3.4,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "11688667226",
+    "prediction": 3.8129005432128906,
+    "mos": 1.94,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "12031712185",
+    "prediction": 3.613325357437134,
+    "mos": 2.58,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "12044525214",
+    "prediction": 4.001905918121338,
+    "mos": 3.0,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "12276570315",
+    "prediction": 3.368867874145508,
+    "mos": 3.365217391,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "12379836133",
+    "prediction": 3.538919687271118,
+    "mos": 4.24,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "12439507093",
+    "prediction": 2.8927292823791504,
+    "mos": 2.5,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "12461764004",
+    "prediction": 2.8658034801483154,
+    "mos": 2.16,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "12567402335",
+    "prediction": 2.9794199466705322,
+    "mos": 1.8,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "12623549414",
+    "prediction": 3.3387112617492676,
+    "mos": 3.68,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "12626612584",
+    "prediction": 2.3974828720092773,
+    "mos": 3.1,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "12704590184",
+    "prediction": 2.509265422821045,
+    "mos": 3.9,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "13042523904",
+    "prediction": 3.492760419845581,
+    "mos": 3.12,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "3318634083",
+    "prediction": 3.5738837718963623,
+    "mos": 2.3,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "3339387387",
+    "prediction": 2.8695919513702393,
+    "mos": 2.42,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "3343535739",
+    "prediction": 3.6480631828308105,
+    "mos": 2.4,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "3357588876",
+    "prediction": 2.6060473918914795,
+    "mos": 2.96,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "3358799122",
+    "prediction": 3.275193214416504,
+    "mos": 3.785714286,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "3359662128",
+    "prediction": 3.3600823879241943,
+    "mos": 3.08,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "3374751086",
+    "prediction": 3.6022284030914307,
+    "mos": 2.24,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "3407992311",
+    "prediction": 3.5738296508789062,
+    "mos": 4.08,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "3482706595",
+    "prediction": 3.0408430099487305,
+    "mos": 3.2,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "3496871384",
+    "prediction": 3.02433180809021,
+    "mos": 2.08,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "3561516939",
+    "prediction": 3.3099005222320557,
+    "mos": 2.44,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "3583315023",
+    "prediction": 3.8897714614868164,
+    "mos": 2.84,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "3590551873",
+    "prediction": 3.1138453483581543,
+    "mos": 2.7,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "3629928686",
+    "prediction": 2.797105312347412,
+    "mos": 3.48,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "3647017501",
+    "prediction": 3.1285154819488525,
+    "mos": 3.56,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "3722785424",
+    "prediction": 4.202479362487793,
+    "mos": 3.571428571,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "3860380907",
+    "prediction": 3.215487241744995,
+    "mos": 3.6,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "3863745355",
+    "prediction": 3.055656671524048,
+    "mos": 4.02,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4005506137",
+    "prediction": 2.687807321548462,
+    "mos": 2.24,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4067736860",
+    "prediction": 3.215834379196167,
+    "mos": 3.16,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4136131472",
+    "prediction": 3.191213607788086,
+    "mos": 3.2,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4161747134",
+    "prediction": 2.7739346027374268,
+    "mos": 3.48,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4177089041",
+    "prediction": 2.873629093170166,
+    "mos": 1.66,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4202404174",
+    "prediction": 3.840116024017334,
+    "mos": 3.14,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4227960041",
+    "prediction": 2.756237506866455,
+    "mos": 3.66,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4281436885",
+    "prediction": 3.8559024333953857,
+    "mos": 3.494339623,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4299787720",
+    "prediction": 3.447782039642334,
+    "mos": 2.849802372,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4453069241",
+    "prediction": 2.78304123878479,
+    "mos": 2.92,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4491961485",
+    "prediction": 3.5326037406921387,
+    "mos": 3.08,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4526948676",
+    "prediction": 3.611642837524414,
+    "mos": 3.34,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4565232312",
+    "prediction": 3.1430113315582275,
+    "mos": 2.64,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4642004278",
+    "prediction": 3.5921120643615723,
+    "mos": 2.56,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4642629203",
+    "prediction": 3.6228623390197754,
+    "mos": 3.52,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4736973814",
+    "prediction": 3.4210429191589355,
+    "mos": 3.46,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4761429801",
+    "prediction": 2.392732858657837,
+    "mos": 3.08,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4801560427",
+    "prediction": 3.587735652923584,
+    "mos": 3.44,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4866613201",
+    "prediction": 3.037093162536621,
+    "mos": 2.2,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4871910775",
+    "prediction": 3.091698408126831,
+    "mos": 2.48,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4889669313",
+    "prediction": 3.5513691902160645,
+    "mos": 2.52,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4914377539",
+    "prediction": 2.5342419147491455,
+    "mos": 2.2,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4942462682",
+    "prediction": 3.038677930831909,
+    "mos": 3.5,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4966446054",
+    "prediction": 3.6225509643554688,
+    "mos": 2.26,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4969714039",
+    "prediction": 2.622548818588257,
+    "mos": 3.08,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "4991520511",
+    "prediction": 3.128722667694092,
+    "mos": 1.98,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5009379117",
+    "prediction": 3.4451451301574707,
+    "mos": 2.299595142,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5040855662",
+    "prediction": 3.4272279739379883,
+    "mos": 3.18,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5043852749",
+    "prediction": 2.9653289318084717,
+    "mos": 1.84,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5052341075",
+    "prediction": 3.2754218578338623,
+    "mos": 3.48,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5066571585",
+    "prediction": 3.417506217956543,
+    "mos": 3.2,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5067647428",
+    "prediction": 3.534086227416992,
+    "mos": 3.6,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5111411754",
+    "prediction": 2.9522366523742676,
+    "mos": 2.68,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5133219451",
+    "prediction": 3.8479557037353516,
+    "mos": 2.32,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5134417428",
+    "prediction": 3.5418076515197754,
+    "mos": 2.26,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5149271412",
+    "prediction": 3.6874430179595947,
+    "mos": 2.82,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5169144673",
+    "prediction": 3.3959202766418457,
+    "mos": 2.98,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5170915466",
+    "prediction": 2.0494518280029297,
+    "mos": 2.88,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5176278265",
+    "prediction": 2.7893548011779785,
+    "mos": 3.12,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5203755303",
+    "prediction": 3.863002061843872,
+    "mos": 2.68,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5206708965",
+    "prediction": 3.342724323272705,
+    "mos": 3.28,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5215773911",
+    "prediction": 3.38838791847229,
+    "mos": 3.54,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5218123691",
+    "prediction": 3.1193926334381104,
+    "mos": 3.04,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5222599467",
+    "prediction": 3.6789615154266357,
+    "mos": 2.6,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5250183455",
+    "prediction": 2.527829647064209,
+    "mos": 3.1,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5263204150",
+    "prediction": 2.8536794185638428,
+    "mos": 3.64,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5266882983",
+    "prediction": 3.1115434169769287,
+    "mos": 2.3,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5318369391",
+    "prediction": 4.199249267578125,
+    "mos": 3.3,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5319413177",
+    "prediction": 3.7713136672973633,
+    "mos": 2.48,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5341444640",
+    "prediction": 2.999868631362915,
+    "mos": 3.68,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5355837503",
+    "prediction": 2.6955037117004395,
+    "mos": 4.1,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5379891328",
+    "prediction": 3.6594953536987305,
+    "mos": 3.5,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5391431291",
+    "prediction": 3.5775277614593506,
+    "mos": 4.151851852,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5412442677",
+    "prediction": 2.922233819961548,
+    "mos": 2.3,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5419510404",
+    "prediction": 3.217963933944702,
+    "mos": 2.26,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5526460224",
+    "prediction": 2.7622015476226807,
+    "mos": 3.38,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5562932712",
+    "prediction": 3.718055248260498,
+    "mos": 3.9,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5564209652",
+    "prediction": 3.054112672805786,
+    "mos": 2.46,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5579073175",
+    "prediction": 2.6461801528930664,
+    "mos": 3.32,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5589046662",
+    "prediction": 3.0897586345672607,
+    "mos": 3.134453782,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5609569195",
+    "prediction": 3.188347101211548,
+    "mos": 2.82,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5622498540",
+    "prediction": 3.8054351806640625,
+    "mos": 3.0,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5625415555",
+    "prediction": 4.056796073913574,
+    "mos": 2.08,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5632758635",
+    "prediction": 3.1574113368988037,
+    "mos": 3.64,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5649370618",
+    "prediction": 2.660663604736328,
+    "mos": 2.9,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5668545266",
+    "prediction": 3.3971028327941895,
+    "mos": 2.46,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5694745216",
+    "prediction": 2.855821132659912,
+    "mos": 2.66,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5698463243",
+    "prediction": 2.0882585048675537,
+    "mos": 2.96,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5705527370",
+    "prediction": 2.8243045806884766,
+    "mos": 3.74,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5733977738",
+    "prediction": 3.226311683654785,
+    "mos": 2.06,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5754220740",
+    "prediction": 4.305615425109863,
+    "mos": 2.74,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5850199057",
+    "prediction": 2.473550319671631,
+    "mos": 2.4,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5858312093",
+    "prediction": 2.863260507583618,
+    "mos": 2.4,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5893119747",
+    "prediction": 3.6974406242370605,
+    "mos": 4.12,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5912268467",
+    "prediction": 3.6262924671173096,
+    "mos": 3.34,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5917982116",
+    "prediction": 3.036362886428833,
+    "mos": 3.84,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5935222726",
+    "prediction": 3.5304579734802246,
+    "mos": 1.86,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5956265529",
+    "prediction": 3.3736298084259033,
+    "mos": 2.04,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5956380805",
+    "prediction": 2.750906467437744,
+    "mos": 3.46,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5962679589",
+    "prediction": 3.2373623847961426,
+    "mos": 1.86,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5988574543",
+    "prediction": 3.626981496810913,
+    "mos": 2.9,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "5999732346",
+    "prediction": 3.556813955307007,
+    "mos": 2.9,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6021943274",
+    "prediction": 3.307359218597412,
+    "mos": 3.14,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6047579133",
+    "prediction": 3.3748674392700195,
+    "mos": 3.12,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6058824138",
+    "prediction": 3.0973541736602783,
+    "mos": 2.74,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6059786344",
+    "prediction": 2.4234933853149414,
+    "mos": 2.66,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6061346837",
+    "prediction": 2.566068172454834,
+    "mos": 2.78,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6100104774",
+    "prediction": 3.1278200149536133,
+    "mos": 3.16,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6104508040",
+    "prediction": 3.6036767959594727,
+    "mos": 3.08,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6106291030",
+    "prediction": 3.3288769721984863,
+    "mos": 3.6,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6111574885",
+    "prediction": 3.271817445755005,
+    "mos": 2.74,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6137257339",
+    "prediction": 2.5215940475463867,
+    "mos": 4.02,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6173852301",
+    "prediction": 2.9779646396636963,
+    "mos": 2.2,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6181812275",
+    "prediction": 3.52195143699646,
+    "mos": 3.06,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6212970517",
+    "prediction": 2.5591375827789307,
+    "mos": 2.06,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6223028206",
+    "prediction": 3.0754456520080566,
+    "mos": 1.68,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6268902756",
+    "prediction": 3.2998063564300537,
+    "mos": 1.843137255,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6313769652",
+    "prediction": 3.5864620208740234,
+    "mos": 3.82,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6324422954",
+    "prediction": 3.4091830253601074,
+    "mos": 2.76,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6369679907",
+    "prediction": 2.747126340866089,
+    "mos": 1.72,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6416687735",
+    "prediction": 3.348686933517456,
+    "mos": 3.36,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6444142351",
+    "prediction": 2.603985548019409,
+    "mos": 3.28,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6518466029",
+    "prediction": 3.952105760574341,
+    "mos": 3.02,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6528988807",
+    "prediction": 2.642960786819458,
+    "mos": 3.94488189,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6598948831",
+    "prediction": 1.9922980070114136,
+    "mos": 3.7,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6680559525",
+    "prediction": 2.994617223739624,
+    "mos": 3.3,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6694501209",
+    "prediction": 4.322423934936523,
+    "mos": 2.92,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6694553789",
+    "prediction": 3.0461132526397705,
+    "mos": 3.62,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6794539977",
+    "prediction": 3.645021438598633,
+    "mos": 3.4,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6809728071",
+    "prediction": 2.9560964107513428,
+    "mos": 3.52,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6812860936",
+    "prediction": 3.091028928756714,
+    "mos": 2.88,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6866970306",
+    "prediction": 3.0297155380249023,
+    "mos": 3.32,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6867862287",
+    "prediction": 2.9706058502197266,
+    "mos": 3.68,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6868748154",
+    "prediction": 2.623903751373291,
+    "mos": 3.26,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6874423527",
+    "prediction": 4.204403877258301,
+    "mos": 2.82,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6879288904",
+    "prediction": 2.9798309803009033,
+    "mos": 2.78,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6929069239",
+    "prediction": 3.0210115909576416,
+    "mos": 2.58,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6932519097",
+    "prediction": 2.9532532691955566,
+    "mos": 3.12,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6937597827",
+    "prediction": 3.932387351989746,
+    "mos": 3.28,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6949440526",
+    "prediction": 3.9058072566986084,
+    "mos": 3.92,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6971905222",
+    "prediction": 3.298768997192383,
+    "mos": 2.6,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6985991227",
+    "prediction": 3.2150497436523438,
+    "mos": 1.62,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "6995540661",
+    "prediction": 3.4382567405700684,
+    "mos": 3.18,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "7005478889",
+    "prediction": 3.0430643558502197,
+    "mos": 2.86,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "7177696763",
+    "prediction": 2.7419660091400146,
+    "mos": 4.06,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "7198853624",
+    "prediction": 4.780221462249756,
+    "mos": 3.6,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "7246583832",
+    "prediction": 2.8704276084899902,
+    "mos": 2.86,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "7287123594",
+    "prediction": 2.7345526218414307,
+    "mos": 3.48,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "7341359052",
+    "prediction": 2.460327386856079,
+    "mos": 3.16,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "7381539666",
+    "prediction": 3.6034836769104004,
+    "mos": 2.86,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "7383994638",
+    "prediction": 3.8870739936828613,
+    "mos": 3.74,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "7396603710",
+    "prediction": 2.822852373123169,
+    "mos": 3.64,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "7521145978",
+    "prediction": 3.324568033218384,
+    "mos": 3.44,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "7541374876",
+    "prediction": 2.540369749069214,
+    "mos": 3.38,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "7542896986",
+    "prediction": 3.2303788661956787,
+    "mos": 3.02,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "7547384258",
+    "prediction": 2.9003686904907227,
+    "mos": 2.44,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "7548202460",
+    "prediction": 3.070774793624878,
+    "mos": 3.3,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "7550224002",
+    "prediction": 3.3814892768859863,
+    "mos": 2.34,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "7556185878",
+    "prediction": 3.24349308013916,
+    "mos": 2.82,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "7556474634",
+    "prediction": 3.1031992435455322,
+    "mos": 2.94,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "7700672030",
+    "prediction": 3.454735279083252,
+    "mos": 3.3,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "7734422826",
+    "prediction": 3.062000274658203,
+    "mos": 2.82,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "7734563104",
+    "prediction": 3.082651138305664,
+    "mos": 2.7,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "7834396986",
+    "prediction": 3.73007869720459,
+    "mos": 3.3,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "7892371292",
+    "prediction": 4.1337385177612305,
+    "mos": 3.48,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "7969995368",
+    "prediction": 3.776885986328125,
+    "mos": 3.04,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "7977126554",
+    "prediction": 3.54671573638916,
+    "mos": 3.96,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "7983363078",
+    "prediction": 2.9112014770507812,
+    "mos": 1.9,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8007634384",
+    "prediction": 2.941774368286133,
+    "mos": 2.98,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8026448058",
+    "prediction": 3.9248383045196533,
+    "mos": 3.44,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8031519344",
+    "prediction": 3.3109488487243652,
+    "mos": 3.3,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8172276744",
+    "prediction": 3.5704081058502197,
+    "mos": 3.92,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8178490084",
+    "prediction": 3.704335927963257,
+    "mos": 3.42,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8236900278",
+    "prediction": 3.0005524158477783,
+    "mos": 3.36,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8240363350",
+    "prediction": 3.6120171546936035,
+    "mos": 3.22,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8252040986",
+    "prediction": 3.5124495029449463,
+    "mos": 3.68,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8253260683",
+    "prediction": 3.5185024738311768,
+    "mos": 3.08,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8257892715",
+    "prediction": 3.5145211219787598,
+    "mos": 1.98,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8299847304",
+    "prediction": 2.96756911277771,
+    "mos": 2.96,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8304230962",
+    "prediction": 3.5939888954162598,
+    "mos": 2.32,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8387302863",
+    "prediction": 3.3408424854278564,
+    "mos": 3.3,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8429349812",
+    "prediction": 2.8973708152770996,
+    "mos": 3.72,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8455309721",
+    "prediction": 3.8149988651275635,
+    "mos": 3.42,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8477990214",
+    "prediction": 2.9097275733947754,
+    "mos": 2.1,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8536800170",
+    "prediction": 2.89680814743042,
+    "mos": 3.12,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8536919744",
+    "prediction": 2.850891590118408,
+    "mos": 1.22,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8541047953",
+    "prediction": 3.2859866619110107,
+    "mos": 3.28,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8548046708",
+    "prediction": 3.579951286315918,
+    "mos": 3.36,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8583146942",
+    "prediction": 2.847297191619873,
+    "mos": 2.54,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8587384006",
+    "prediction": 3.3648500442504883,
+    "mos": 3.74,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8591330227",
+    "prediction": 3.3200855255126953,
+    "mos": 2.36,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8610122536",
+    "prediction": 2.694895029067993,
+    "mos": 3.58,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8625682550",
+    "prediction": 3.5661704540252686,
+    "mos": 1.84,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8643275693",
+    "prediction": 3.327362537384033,
+    "mos": 3.22,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8670600555",
+    "prediction": 3.4017982482910156,
+    "mos": 3.16,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8683385786",
+    "prediction": 3.6786534786224365,
+    "mos": 3.66,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8717647202",
+    "prediction": 4.05642557144165,
+    "mos": 3.64,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8729448612",
+    "prediction": 3.6418967247009277,
+    "mos": 2.7,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8731159058",
+    "prediction": 2.9134104251861572,
+    "mos": 2.2,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8751856572",
+    "prediction": 2.8445372581481934,
+    "mos": 3.9,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8758952624",
+    "prediction": 3.512982130050659,
+    "mos": 4.3,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8859509880",
+    "prediction": 3.5419652462005615,
+    "mos": 3.94,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8933125503",
+    "prediction": 3.314748764038086,
+    "mos": 2.4,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8965205906",
+    "prediction": 2.9694406986236572,
+    "mos": 3.6,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8986658663",
+    "prediction": 3.5169663429260254,
+    "mos": 3.2,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "8991258489",
+    "prediction": 3.035287618637085,
+    "mos": 3.86,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "9093682547",
+    "prediction": 3.5401082038879395,
+    "mos": 3.1,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "9095814754",
+    "prediction": 2.873142957687378,
+    "mos": 3.8,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "9195826668",
+    "prediction": 4.168769359588623,
+    "mos": 3.16,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "9256674744",
+    "prediction": 3.143312454223633,
+    "mos": 2.26,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "9298912586",
+    "prediction": 3.334625720977783,
+    "mos": 2.5,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "9524637688",
+    "prediction": 3.1561217308044434,
+    "mos": 2.58,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "9571377943",
+    "prediction": 3.834991693496704,
+    "mos": 4.28,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "9633321480",
+    "prediction": 2.285480499267578,
+    "mos": 4.08,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  },
+  {
+    "video_id": "9675032717",
+    "prediction": 3.8607730865478516,
+    "mos": 3.26,
+    "seed": 0,
+    "run_kind": "control_initial",
+    "label_mode": "shuffled",
+    "checkpoint_sha256": "dac092110c3f996d40a808dfd438194babcf5f39c685ba7bcbee77ca9d89953c"
+  }
+]
