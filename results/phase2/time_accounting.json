@@ -1,0 +1,10 @@
+{
+  "gpu_job_wall_hours": 11.376606450885586,
+  "remaining_gpu_allowance_hours": 88.62339354911441,
+  "cpu_ridge_wall_hours": 0.00279395417360926,
+  "cpu_parity_wall_hours": 0.28315417740166593,
+  "hands_on_hours": "unmeasured; planning allowance remains 80 hours",
+  "measurement": "Cumulative saved run/attempt wall time, not kernel utilization. Untimed interruptions and hands-on time unmeasured; remaining allowance is an upper bound. CPU statistics/report overhead is not measured.",
+  "phase1_gpu_job_wall_hours": 10.942467243436393,
+  "phase2_gpu_job_wall_hours": 0.4341392074491927
+}
