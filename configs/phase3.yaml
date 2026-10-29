@@ -1,0 +1,10 @@
+phase2_gate: results/phase2/phase_gate.json
+phase2_freeze: results/phase2/konvid_freeze.json
+feature_config: configs/features_v2.yaml
+cache_root: cache/v2
+konvid_inventory: data/manifests/konvid.csv
+live_inventory: data/manifests/livevqc.csv
+cpu_sample_ids: data/splits/phase0_konvid_ids.txt
+results_root: results/phase3
+cpu_repeats: 3
+cpu_statistic: maximum_normalized_total
