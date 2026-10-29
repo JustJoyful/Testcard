@@ -124,12 +124,24 @@ def write_video_features(root, dataset, video_id, arrays, source_row, meta):
     else:
         atomic_json(metadata, meta)
     rows = read_manifest(root)
-    # Remove the whole group first: interrupted repairs never leave reusable stale rows.
-    kept = [r for r in rows if not (r['dataset']==dataset and r['video_id']==video_id and r['feature_set'] in keys)]
+    indexed = index_manifest(rows)
+    valid = set()
+    for branch in keys:
+        try:
+            previous = read_branch(root, dataset, video_id, branch, indexed, source_row)
+        except ValueError:
+            continue
+        if len(previous) != len(arrays[branch]):
+            raise ValueError(f'{video_id}: repaired timestep count differs from valid {branch}')
+        valid.add(branch)
+    # Publish invalid rows as absent before replacing files; preserve valid arrays during repairs.
+    kept = [r for r in rows if not (r['dataset']==dataset and r['video_id']==video_id and r['feature_set'] in keys-valid)]
     if len(kept) != len(rows):
         atomic_write(root/'manifest.csv', csv_bytes(kept,FIELDS))
     additions = []
     for branch, value in arrays.items():
+        if branch in valid:
+            continue
         path = root/dataset/branch/(video_id+'.npy')
         atomic_array(path,value)
         record = {key: source_row.get(key,'') for key in FIELDS}
