@@ -1,0 +1,43 @@
+{
+  "status": "passed with qualification",
+  "dataset": "LIVE-VQC",
+  "videos": 585,
+  "selected_feature_set": "resnet50",
+  "cpu_winner": {
+    "candidate_id": "resnet50/ridge",
+    "feature_set": "resnet50",
+    "head": "ridge",
+    "headline_cv_srcc": 0.7800956439350273,
+    "cpu_latency_seconds_per_10s": 8.327765951528725,
+    "candidate_latency": {
+      "resnet50/mamba": 8.332729464293969,
+      "resnet50/ridge": 8.327765951528725,
+      "resnet50/bigru": 8.329647393870951,
+      "dino/mean_pool": 28.721490308452125,
+      "resnet50/transformer": 8.329140139873592,
+      "dino/bigru": 28.722947240280806,
+      "dino/transformer": 28.72217215533985,
+      "dino/mamba": 28.72567832541377,
+      "resnet50/mean_pool": 8.328314390571716,
+      "dino/ridge": 28.721011824434342
+    },
+    "cpu_threads": 4
+  },
+  "control_status": "failed",
+  "control_investigation": "control_fixed_epoch/investigation.json",
+  "decision": "DECISIONS.md: 2026-10-28 Phase 3 qualified continuation after fixed-epoch control failure",
+  "headline_rows": 10,
+  "prediction_runs": 42,
+  "primary_pairs": 6,
+  "secondary_pairs": 9,
+  "method": "Raw predictions for SRCC/KRCC; four-parameter PLCC mapping fitted on LIVE-VQC target labels. Neural headline mean/sample SD are across five seeds. Paired intervals use seed-averaged predictions and one shared 10,000-draw LIVE-video index bank, capturing test sampling noise only. Only six ResNet neural SRCC pairs receive Holm adjustment; other p-values are secondary and unadjusted. 95% CI classification checks equivalence within \u00b10.01 before directional difference.",
+  "limitations": [
+    "KoNViD feature selection used inner-validation scores from videos also present in head comparisons.",
+    "Fixed-epoch shuffled-label control failed at seeds 3 and 4; this qualified continuation does not reclassify that result.",
+    "Five-seed trained ensemble also failed the original rule; untrained baseline failed it, while trained predictions were mostly unlike initialization.",
+    "Full-data median CV epochs approximate a different steps-per-epoch schedule.",
+    "KoNViD and LIVE-VQC differ in domain and sequence lengths.",
+    "Center crop loses edge content, especially for portrait videos.",
+    "UGC and separate length-effect claims were cut from scope."
+  ]
+}

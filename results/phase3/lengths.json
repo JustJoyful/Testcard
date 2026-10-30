@@ -1,0 +1,18 @@
+{
+  "konvid": {
+    "count": 1200,
+    "minimum": 31,
+    "median": 33.0,
+    "maximum": 33,
+    "p10": 32.0,
+    "p90": 33.0
+  },
+  "livevqc": {
+    "count": 585,
+    "minimum": 39,
+    "median": 41.0,
+    "maximum": 41,
+    "p10": 40.0,
+    "p90": 41.0
+  }
+}
