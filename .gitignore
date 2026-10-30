@@ -33,3 +33,8 @@ __pycache__/
 /artifacts/serving/
 /.venv-serving/
 /results/phase4a/features/
+/results/phase4b/features/
+/serving/web/node_modules/
+/serving/web/dist/
+/serving/web/test-results/
+/serving/web/playwright-report/
