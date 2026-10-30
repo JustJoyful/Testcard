@@ -1,0 +1,210 @@
+{
+  "status": "post_failure_investigation",
+  "original_control_status": "failed",
+  "original_diagnostic_sha256": "6cdffc7747abf0a95bab5ae54c5b3fc16905f21cc3350b5234aac416abe84c05",
+  "seed4_result_sha256": "c3756ce37950647f70b00a92f8e8d9d0bcdb2a241029c51809f788a00df26c2e",
+  "untrained_baseline_sha256": "f7ff20981998119f648e07b481996a9fed85e31640e9d7559c57d93b7b9a6182",
+  "permutations_sha256": "dec9d14cc53af2eff654e2847b6e67466db12456b0e300a8989989eda9e0d132",
+  "code_sha256_at_control": "bb0f9d46624a1b794684aff6ea4c3e14d1664438309c128e01b20d4fb2590ad9",
+  "seed_count": 5,
+  "test_video_count": 240,
+  "seeds": [
+    {
+      "seed": 0,
+      "status_under_unchanged_rule": "passed",
+      "trained": {
+        "srcc": -0.10105954598673686,
+        "ci95": [
+          -0.22797056517033018,
+          0.027675104618657003
+        ],
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "status": "ok",
+        "reason": null
+      },
+      "untrained": {
+        "srcc": -0.3123601081073275,
+        "ci95": [
+          -0.4199457767113455,
+          -0.19372356844465569
+        ],
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "status": "ok",
+        "reason": null
+      },
+      "trained_vs_untrained_pearson_r": -0.013528824750259495,
+      "trained_vs_untrained_spearman_r": 0.00028819944790708165,
+      "initialization_variance_fraction_r_squared": 0.0001830290991232339,
+      "trained_residual_after_linear_initialization_srcc": -0.10557171420625652,
+      "trained_predictions_sha256": "e6684221dd317d77baab50c3c416edf51575924999470a16bd2d0f5a731afe0b",
+      "checkpoint_sha256": "20546c3eead7b5390f60b84e9115efa512b9d47bc1a2e304ad4992f342d52f42"
+    },
+    {
+      "seed": 1,
+      "status_under_unchanged_rule": "passed",
+      "trained": {
+        "srcc": -0.02135238738685829,
+        "ci95": [
+          -0.14657425291843706,
+          0.10276821138881724
+        ],
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "status": "ok",
+        "reason": null
+      },
+      "untrained": {
+        "srcc": 0.21508869988410656,
+        "ci95": [
+          0.08644290613591708,
+          0.3361906502169277
+        ],
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "status": "ok",
+        "reason": null
+      },
+      "trained_vs_untrained_pearson_r": 0.07140404708264986,
+      "trained_vs_untrained_spearman_r": 0.09440094446084131,
+      "initialization_variance_fraction_r_squared": 0.005098537939781277,
+      "trained_residual_after_linear_initialization_srcc": -0.03756016508273562,
+      "trained_predictions_sha256": "a8d5bcf40eed694c096c2f87b0f53cbbb192e333482cb19dea1c7dffdc93b54c",
+      "checkpoint_sha256": "47436b3b35641bc7688c7416ba2d82844622f19ef98ee2468ad2fad771272ba6"
+    },
+    {
+      "seed": 2,
+      "status_under_unchanged_rule": "passed",
+      "trained": {
+        "srcc": -0.06559247134695688,
+        "ci95": [
+          -0.1900986434961054,
+          0.058644549402847905
+        ],
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "status": "ok",
+        "reason": null
+      },
+      "untrained": {
+        "srcc": 0.023996313950118923,
+        "ci95": [
+          -0.09615996184902206,
+          0.14268473049556274
+        ],
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "status": "ok",
+        "reason": null
+      },
+      "trained_vs_untrained_pearson_r": 0.0514538106813851,
+      "trained_vs_untrained_spearman_r": 0.03870987343530269,
+      "initialization_variance_fraction_r_squared": 0.002647494633635819,
+      "trained_residual_after_linear_initialization_srcc": -0.06787264639814848,
+      "trained_predictions_sha256": "b987aa4469e81ab25f287a4529b0be66df480187859f86e9b40170dead2565c0",
+      "checkpoint_sha256": "3e963b3145ddd5f59a4da34324278a4a7ab56a67150cab2dd561f655711d77b9"
+    },
+    {
+      "seed": 3,
+      "status_under_unchanged_rule": "failed",
+      "trained": {
+        "srcc": -0.23220455414710606,
+        "ci95": [
+          -0.34658453980923376,
+          -0.11363985937456615
+        ],
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "status": "ok",
+        "reason": null
+      },
+      "untrained": {
+        "srcc": -0.17236873262480235,
+        "ci95": [
+          -0.291272077398778,
+          -0.04607554716952613
+        ],
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "status": "ok",
+        "reason": null
+      },
+      "trained_vs_untrained_pearson_r": 0.09554048547172532,
+      "trained_vs_untrained_spearman_r": 0.12067136582232328,
+      "initialization_variance_fraction_r_squared": 0.009127984364172956,
+      "trained_residual_after_linear_initialization_srcc": -0.21449358852008912,
+      "trained_predictions_sha256": "7343f2f4c6ec454aaddcaaf0aa3f77c7ae49e6dfaf56649a397d1fd8fc07c6bb",
+      "checkpoint_sha256": "11ce904429b11189a90223abf4f9ad6dd21ffc33f203b0088c2158a06183688f"
+    },
+    {
+      "seed": 4,
+      "status_under_unchanged_rule": "failed",
+      "trained": {
+        "srcc": -0.23606735212550964,
+        "ci95": [
+          -0.35402084968918945,
+          -0.11056844896837471
+        ],
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "status": "ok",
+        "reason": null
+      },
+      "untrained": {
+        "srcc": -0.18426010812973176,
+        "ci95": [
+          -0.3045715173247393,
+          -0.05823637698965637
+        ],
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "status": "ok",
+        "reason": null
+      },
+      "trained_vs_untrained_pearson_r": 0.48492376275240673,
+      "trained_vs_untrained_spearman_r": 0.4797131894650948,
+      "initialization_variance_fraction_r_squared": 0.23515105568195244,
+      "trained_residual_after_linear_initialization_srcc": -0.1850891837717984,
+      "trained_predictions_sha256": "5c6c43c86f867d02d5fd9c8c4c6d15f0d7b48a9f35b86d6653bcb738b8cdcbcd",
+      "checkpoint_sha256": "929352daf44df345e354da7f9940392f47163cbb83546a9372d6551e824fb2ed"
+    }
+  ],
+  "phase1_phase2_comparable_trained_ensemble": {
+    "srcc": -0.15630810500361644,
+    "ci95": [
+      -0.27793265212678797,
+      -0.03061500699296038
+    ],
+    "valid_draws": 10000,
+    "invalid_draws": 0,
+    "status": "ok",
+    "reason": null
+  },
+  "untrained_ensemble": {
+    "srcc": -0.20266298295751015,
+    "ci95": [
+      -0.32302469016922025,
+      -0.07466652461170466
+    ],
+    "valid_draws": 10000,
+    "invalid_draws": 0,
+    "status": "ok",
+    "reason": null
+  },
+  "sign_argument": {
+    "trained_negative_seed_ids": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "untrained_negative_seed_ids": [
+      0,
+      3,
+      4
+    ],
+    "interpretation": "Same negative sign in seeds 0, 3 and 4, opposite signs in seeds 1 and 2. Low prediction correlations for seeds 0-3 refute initialization dominance; untrained ensemble failure shows the fixed rule lacks specificity on this fold, not that trained scores come from initialization."
+  }
+}

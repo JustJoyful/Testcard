@@ -1,0 +1,18 @@
+{
+  "seed": 4,
+  "status": "failed",
+  "bootstrap": {
+    "srcc": -0.23606735212550964,
+    "ci95": [
+      -0.35402084968918945,
+      -0.11056844896837471
+    ],
+    "valid_draws": 10000,
+    "invalid_draws": 0,
+    "status": "ok",
+    "reason": null
+  },
+  "run_sha256": "51fc87a9b0355355946525c5b043257f3d18066942ad7900a1246fbb44cf9562",
+  "checkpoint_sha256": "929352daf44df345e354da7f9940392f47163cbb83546a9372d6551e824fb2ed",
+  "predictions_sha256": "5c6c43c86f867d02d5fd9c8c4c6d15f0d7b48a9f35b86d6653bcb738b8cdcbcd"
+}

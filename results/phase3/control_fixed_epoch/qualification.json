@@ -1,0 +1,11 @@
+{
+  "status": "approved_qualified_continuation",
+  "control_status": "failed",
+  "approval": "user instruction on 2026-10-28; proceed with qualified Phase 3 outcome while preserving failed control",
+  "original_diagnostic_sha256": "6cdffc7747abf0a95bab5ae54c5b3fc16905f21cc3350b5234aac416abe84c05",
+  "seed4_result_sha256": "c3756ce37950647f70b00a92f8e8d9d0bcdb2a241029c51809f788a00df26c2e",
+  "investigation_sha256": "43bfa16d5ef61891c4d27a3b9a522bf0c2c4c6a4a5c2646251c42e663cd8e48c",
+  "decision_path": "DECISIONS.md",
+  "decision_heading": "2026-10-28: Phase 3 qualified continuation after fixed-epoch control failure",
+  "decision_sha256": "7deda051f15aeddf7199280305ca88f47aaa9779f6caa7090e91fdc57e7f7e6a"
+}

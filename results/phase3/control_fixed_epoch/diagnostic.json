@@ -1,0 +1,80 @@
+{
+  "status": "failed",
+  "seeds": [
+    {
+      "seed": 0,
+      "status": "passed",
+      "bootstrap": {
+        "srcc": -0.10105954598673686,
+        "ci95": [
+          -0.22797056517033018,
+          0.027675104618657003
+        ],
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "status": "ok",
+        "reason": null
+      },
+      "run_sha256": "43d46d8cd13091b008bd09e372fd012ea0a35fa5ef87b6dc567c2aaa39bc944e",
+      "checkpoint_sha256": "20546c3eead7b5390f60b84e9115efa512b9d47bc1a2e304ad4992f342d52f42",
+      "predictions_sha256": "e6684221dd317d77baab50c3c416edf51575924999470a16bd2d0f5a731afe0b"
+    },
+    {
+      "seed": 1,
+      "status": "passed",
+      "bootstrap": {
+        "srcc": -0.02135238738685829,
+        "ci95": [
+          -0.14657425291843706,
+          0.10276821138881724
+        ],
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "status": "ok",
+        "reason": null
+      },
+      "run_sha256": "0e911983bf81e959f70338163c9401355ce855e6739008af3e27d137af8ae25b",
+      "checkpoint_sha256": "47436b3b35641bc7688c7416ba2d82844622f19ef98ee2468ad2fad771272ba6",
+      "predictions_sha256": "a8d5bcf40eed694c096c2f87b0f53cbbb192e333482cb19dea1c7dffdc93b54c"
+    },
+    {
+      "seed": 2,
+      "status": "passed",
+      "bootstrap": {
+        "srcc": -0.06559247134695688,
+        "ci95": [
+          -0.1900986434961054,
+          0.058644549402847905
+        ],
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "status": "ok",
+        "reason": null
+      },
+      "run_sha256": "5f77cc44caef83daa912fea7daf27ff8607826b01326b7b275518e41a665c7cc",
+      "checkpoint_sha256": "3e963b3145ddd5f59a4da34324278a4a7ab56a67150cab2dd561f655711d77b9",
+      "predictions_sha256": "b987aa4469e81ab25f287a4529b0be66df480187859f86e9b40170dead2565c0"
+    },
+    {
+      "seed": 3,
+      "status": "failed",
+      "bootstrap": {
+        "srcc": -0.23220455414710606,
+        "ci95": [
+          -0.34658453980923376,
+          -0.11363985937456615
+        ],
+        "valid_draws": 10000,
+        "invalid_draws": 0,
+        "status": "ok",
+        "reason": null
+      },
+      "run_sha256": "3d91ad10dc2a4f9d0ce0a393dd5dd4df11bb3104093fddf37627f66229dfbb13",
+      "checkpoint_sha256": "11ce904429b11189a90223abf4f9ad6dd21ffc33f203b0088c2158a06183688f",
+      "predictions_sha256": "7343f2f4c6ec454aaddcaaf0aa3f77c7ae49e6dfaf56649a397d1fd8fc07c6bb"
+    }
+  ],
+  "freeze_sha256": "4a19edfb683fcf3b08265de32822eb22cebe34f8aa8e0fd42e4e08783aeceb8c",
+  "code_sha256": "bb0f9d46624a1b794684aff6ea4c3e14d1664438309c128e01b20d4fb2590ad9",
+  "phase2_gate_sha256": "c7b0262d3dba5fe7f0da651e51de9052dcd90dca8b98e51bd6e9417bf386d8d7"
+}
