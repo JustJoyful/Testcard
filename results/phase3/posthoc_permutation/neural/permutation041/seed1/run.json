@@ -1,0 +1,114 @@
+{
+  "status": "complete",
+  "identity": {
+    "config_sha256": "4a8133668ecfab08e1197e2c6ca4e1362b272aad9e7790849dc6d8fd73a20565",
+    "seed": 1,
+    "epochs": 3,
+    "provenance": {
+      "diagnostic": "post_hoc_matched_neural_null",
+      "head": "mean_pool",
+      "permutation_seed": 41,
+      "execution_sha256": "dd9533792544beffdefb8a4e1f6943c4ed9a85399585c88968bbe969587d9dce",
+      "control_permutations_sha256": "34e615d66dfc5822f8fdbb45027b68f9ce6c9546b1109a7ada96a24c64f9f30f"
+    }
+  },
+  "seed": 1,
+  "config": {
+    "schema_version": 1,
+    "status": "frozen",
+    "feature_set": "resnet50",
+    "cache_root": "cache/v2",
+    "inventory": "data/manifests/konvid.csv",
+    "splits": "data/splits/konvid_folds.csv",
+    "head_tiers": "configs/head_tiers.yaml",
+    "device": "cuda",
+    "cpu_threads": 4,
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "batch_size": 64,
+    "max_epochs": 200,
+    "patience": 15,
+    "warmup_epochs": 5,
+    "learning_rate": 0.0007871809912482114,
+    "weight_decay": 0.000827915939467036,
+    "input_dropout": 0.1,
+    "head_dropout": 0.1,
+    "rank_weight": 0.3,
+    "rank_candidates": [
+      0,
+      0.1,
+      0.3,
+      1
+    ],
+    "gradient_clip_norm": 1.0,
+    "results_root": "results/phase2/resnet50",
+    "trials_per_head": 10,
+    "tuning_seed": 0,
+    "tuning_seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "deterministic_warn_only": true,
+    "tier": {
+      "front_width": 256,
+      "mean_pool_hidden": 1598,
+      "gru_hidden": 156,
+      "transformer_layers": 1,
+      "transformer_nhead": 4,
+      "transformer_ff": 256,
+      "readout_hidden": 64,
+      "mamba_layers": 1,
+      "mamba_inner": 230,
+      "mamba_state": 16,
+      "mamba_dt_rank": 16,
+      "mamba_conv": 4
+    }
+  },
+  "provenance": {
+    "diagnostic": "post_hoc_matched_neural_null",
+    "head": "mean_pool",
+    "permutation_seed": 41,
+    "execution_sha256": "dd9533792544beffdefb8a4e1f6943c4ed9a85399585c88968bbe969587d9dce",
+    "control_permutations_sha256": "34e615d66dfc5822f8fdbb45027b68f9ce6c9546b1109a7ada96a24c64f9f30f"
+  },
+  "selection": "fixed_final_epoch",
+  "fold": null,
+  "checkpoint_path": "results/phase3/posthoc_permutation/neural/permutation041/seed1/best.pt",
+  "target_stats": {
+    "mean": 3.028378649065625,
+    "std": 0.6414443995573461
+  },
+  "best_epoch": 3,
+  "completed_epochs": 3,
+  "history": [
+    {
+      "epoch": 1,
+      "mean_loss": 1.039802320798238,
+      "learning_rate": 0.0001574361982496423,
+      "wall_seconds": 0.3192551680003817
+    },
+    {
+      "epoch": 2,
+      "mean_loss": 0.9805637121200561,
+      "learning_rate": 0.0003148723964992846,
+      "wall_seconds": 0.3148633239979972
+    },
+    {
+      "epoch": 3,
+      "mean_loss": 0.9034803907076517,
+      "learning_rate": 0.0004723085947489268,
+      "wall_seconds": 0.2857589099985489
+    }
+  ],
+  "warnings": [],
+  "wall_seconds": 0.9403008640001644,
+  "checkpoint_sha256": "3ab44edfa95f06011effaffe5701e97a5e8bf85b4123895cb1286ab010ab56c6"
+}
