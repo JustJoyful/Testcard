@@ -30,3 +30,6 @@ __pycache__/
 /results/phase3/posthoc_permutation/neural/**/best.pt
 /results/**/session.log
 /results/phase2/progress.json
+/artifacts/serving/
+/.venv-serving/
+/results/phase4a/features/
