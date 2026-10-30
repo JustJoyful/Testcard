@@ -26,3 +26,7 @@ __pycache__/
 !/results/phase2/resnet50/control_final_v2/**/*.pt
 !/results/phase3/**/*.pt
 !/results/phase3/**/*.npz
+# Supplementary null checkpoints are reproducible; retain predictions and run records.
+/results/phase3/posthoc_permutation/neural/**/best.pt
+/results/**/session.log
+/results/phase2/progress.json
