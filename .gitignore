@@ -16,3 +16,13 @@ __pycache__/
 /results/**/*.pt
 /results/**/*.pth
 /results/**/*.npz
+!/results/phase1/cv/**/*.pt
+!/results/phase1/ridge/**/*.npz
+!/results/phase1/control_initial_v2/**/*.pt
+!/results/phase1/control_final_v2/**/*.pt
+!/results/phase2/resnet50/cv/**/*.pt
+!/results/phase2/resnet50/ridge/**/*.npz
+!/results/phase2/resnet50/control_initial_v2/**/*.pt
+!/results/phase2/resnet50/control_final_v2/**/*.pt
+!/results/phase3/**/*.pt
+!/results/phase3/**/*.npz
