@@ -1,0 +1,9 @@
+{
+  "status": "complete",
+  "predictions_sha256": "ccfa8fce84e679ffffb09cb71ec8bac3b4d1308d8017b2c3864e5f48ed349e22",
+  "run_sha256": "1e29a79235d3e63378f567584c0119888603a3e4a1a6aa5c896c8926ab34101b",
+  "checkpoint_sha256": "aa417bf4b6a6902f1ebb0f7ac0080ff2d9ef0d48a1b82e15f718538032ee40a3",
+  "phase2_gate_sha256": "c7b0262d3dba5fe7f0da651e51de9052dcd90dca8b98e51bd6e9417bf386d8d7",
+  "code_sha256": "68a001f55650d758a69b09e789d6be55a6a0646b23baea2808bd8e9770841c56",
+  "freeze_sha256": "4a19edfb683fcf3b08265de32822eb22cebe34f8aa8e0fd42e4e08783aeceb8c"
+}
