@@ -332,3 +332,15 @@ The proposed explanation that three-epoch trained predictions are dominated by t
 The label-path audit found no mechanism carrying validation or held-out LIVE labels into model updates, frozen hyperparameter selection, CPU winner selection or LIVE score computation. Fixed-epoch full refits use all 1,200 KoNViD MOS values by design; the control verifier reads fold-0 test MOS only to evaluate the preserved failed control. The refit and LIVE prediction entry points now omit LIVE MOS from their in-memory context, and the LIVE feature dataset and prediction rows omit MOS. `predict` batches features without labels. Only the reporting stage attaches LIVE MOS and fits the reported PLCC mapping. This is a data-flow finding, not proof that every possible leak is absent.
 
 Phase 3 may proceed to full refits, LIVE predictions and reporting only with a gate whose status is **`passed with qualification`**, whose `control_status` remains **`failed`**, and whose hashes include this decision and all control evidence. The reported results must disclose the failed per-seed and ensemble control. For future studies, predeclare an untrained-initialization null baseline and compare trained controls against that distribution instead of relying on a fixed |SRCC| threshold; do not change the current project's rule retroactively.
+
+## 2026-10-30: Approved Phase 4a static decoder packaging amendment
+
+The exact host/cache FFmpeg `n9.0.2` static archive was unavailable in the checked distributions. Before any serving parity measurement, the user approved BtbN `n9.0.2-37-gae19868753` from the same release branch plus 37 maintenance commits. Use only the immutable dated archive URL:
+
+https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2026-10-29-19-17/ffmpeg-n9.0.2-37-gae19868753-linux64-gpl-9.0.tar.xz
+
+Full archive SHA256: `83537b0f6a97905f325080f6f5916e70ec252d1ef3e4ce4746f755b88720cbf5`. The verified binaries report `n9.0.2-37-gae19868753-20261029`. This replaces only the exact-version packaging prerequisite; the model, weights, frozen preprocessing, cached features and research results are unchanged. Record complete host and image `ffmpeg -version` and `ffprobe -version` output side by side, with archive and image identities.
+
+All parity thresholds remain exactly predeclared: minimum cosine at least 0.999 for every aligned timestep, absolute cached-reference/raw score difference at most 0.01 MOS, and CLI/API absolute score difference at most 1e-6. If parity fails, stop and report the failure. The fallback is building tag `n9.0.2` from source in a Docker builder stage; thresholds must not be loosened. The request-latency budget is unchanged. No fallback or result is claimed before measurement.
+
+Historical gates retain their original decision-log identity. The original bytes are preserved in `results/phase4a/decisions_research.md`, and `results/phase4a/packaging_amendment.json` binds that exact historical prefix, this approved appended entry and the current complete log. Phase 3 remains passed with qualification; its shuffled-label control remains failed.
