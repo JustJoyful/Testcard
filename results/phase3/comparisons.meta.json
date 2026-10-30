@@ -1,0 +1,12 @@
+{
+  "draws": 10000,
+  "seed": 0,
+  "video_ids_sha256": "5723eb673c900dbc28ac64305957c949d76dd08be5c21ec2c17450a771d65ff9",
+  "resample_indices_sha256": "d515f99431a5dc3cf1222e462457618804b5151ff32fb40d964a1e710f9f3512",
+  "primary_srcc_pairs": 6,
+  "secondary_pairs": 9,
+  "pvalue_method": "centered_bootstrap_add_one",
+  "ci_scope": "seed-averaged prediction, LIVE video resampling",
+  "margin": 0.01,
+  "min_finite_fraction": 0.99
+}
