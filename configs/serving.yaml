@@ -1,0 +1,27 @@
+winner: resnet50/ridge
+model: results/phase3/refit/resnet50/ridge/seedNone/model.npz
+model_sha256: 4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3
+weights: weights/torch/checkpoints/resnet50-11ad3fa6.pth
+feature_config: configs/features_v2.yaml
+preprocessing_freeze: results/phase0/preprocessing_freeze_v2.json
+research_snapshot: results/phase4a/research_snapshot.json
+phase3_gate: results/phase3/phase_gate.json
+deployment: results/phase3/deployment.json
+cpu_threads: 4
+limits:
+  file_bytes: 104857600
+  body_bytes: 105906176
+  receipt_seconds: 60
+  duration_seconds: 30
+  source_pixels: 2073600
+  longest_side: 1920
+  fps: 60
+parity:
+  minimum_cosine: 0.999
+  cache_score_absolute: 0.01
+  cli_api_absolute: 0.000001
+latency:
+  warm_repeats: 3
+  seconds_per_ten_seconds: 120
+sample_ids: data/splits/phase0_konvid_ids.txt
+sample_config: configs/phase0.yaml
