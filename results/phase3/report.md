@@ -126,6 +126,8 @@ The user approved continuation with the control explicitly failed. This is the s
 
 ## Limits and interpretation
 
+**Post-hoc follow-up (2026-10-29):** [Permutation diagnostics](posthoc_permutation/report.md) examine the historical shuffled-label correlations and a fixed-alpha ridge surrogate null. These supplementary results do not change the failed control or qualified gate, and do not establish a cause for the neural failure or rule out leakage.
+
 - KoNViD feature selection used inner-validation scores from videos also present in head comparisons.
 - Fixed-epoch shuffled-label control failed at seeds 3 and 4; this qualified continuation does not reclassify that result.
 - Five-seed trained ensemble also failed the original rule; untrained baseline failed it, while trained predictions were mostly unlike initialization.
