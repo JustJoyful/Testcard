@@ -34,7 +34,9 @@ def record():
         raise SystemExit(f'expected one {REGISTRY} manifest digest after push, found {digests}')
     atomic_json(RECORD, dict(image=f'{REGISTRY}:{TAG}', local_image_id=image_id, manifest_digest=digests[0].split('@', 1)[1],
                              pinned_reference=digests[0], gated_tag=gated['tag'], gate_commit=gated['gate_commit'],
-                             note='The Space pins the registry manifest digest; the local image ID is the config digest of the same gated image.'))
+                             note=('Docker uses the containerd image store here, so the local image ID is itself the manifest digest and '
+                                   'the two values are equal.' if image_id == digests[0].split('@', 1)[1] else
+                                   'The local image ID is the config digest; the Space pins the registry manifest digest.')))
 
 
 def main():

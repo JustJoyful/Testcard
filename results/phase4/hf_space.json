@@ -1,0 +1,9 @@
+{
+  "image": "ghcr.io/justjoyful/testcard:0.1.0",
+  "local_image_id": "sha256:cea6b009c05a18522c44889df72407a916b020cbec51086e859f4dcf9907b4ef",
+  "manifest_digest": "sha256:cea6b009c05a18522c44889df72407a916b020cbec51086e859f4dcf9907b4ef",
+  "pinned_reference": "ghcr.io/justjoyful/testcard@sha256:cea6b009c05a18522c44889df72407a916b020cbec51086e859f4dcf9907b4ef",
+  "gated_tag": "testcard:0.1.0",
+  "gate_commit": "d1e863846433a5c88024819c28d6291f873ce039",
+  "note": "Docker uses the containerd image store here, so the local image ID is itself the manifest digest and the two values are equal."
+}
