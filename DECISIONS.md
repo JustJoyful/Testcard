@@ -344,3 +344,14 @@ Full archive SHA256: `83537b0f6a97905f325080f6f5916e70ec252d1ef3e4ce4746f755b887
 All parity thresholds remain exactly predeclared: minimum cosine at least 0.999 for every aligned timestep, absolute cached-reference/raw score difference at most 0.01 MOS, and CLI/API absolute score difference at most 1e-6. If parity fails, stop and report the failure. The fallback is building tag `n9.0.2` from source in a Docker builder stage; thresholds must not be loosened. The request-latency budget is unchanged. No fallback or result is claimed before measurement.
 
 Historical gates retain their original decision-log identity. The original bytes are preserved in `results/phase4a/decisions_research.md`, and `results/phase4a/packaging_amendment.json` binds that exact historical prefix, this approved appended entry and the current complete log. Phase 3 remains passed with qualification; its shuffled-label control remains failed.
+
+
+## 2026-10-31: Approved Phase 4b local demo and in-process polling
+
+The user selected the local Docker demo first, preserving Phase 4a media/resource limits and adding in-process polling. Extend the existing single-process FastAPI service with one admitted `/upload` job and `/status/{task_id}`; retain `/predict` and the exact shared prediction JSON. No hosting, paid resources, Celery, Redis, Compose or Gradio. Model, weights, sampling, CPU fp32 and four torch threads remain unchanged.
+
+Accept checked MP4/MOV/WebM, at most 104857600 file bytes, 105906176 body bytes, 60 seconds receipt, 30 seconds duration, 2073600 source pixels, 1920 longest side and 60 fps. Additional submissions get 503 before body reads. Accepted jobs own admission and temporary files through completion, including caller cancellation. Delete video bytes on completion/error; retain at most 32 terminal metadata records for 900 seconds in process memory, with no durable jobs or server-cancellation promise.
+
+Preserve Phase 4a evidence/image as historical proof; new evidence belongs to results/phase4b/. Per-timestep cosine >=0.999, cached/raw score difference <=0.01 MOS, front-door difference <=1e-6, and maximum normalized warm time <=120 seconds per ten seconds are unchanged. If parity fails, stop and report; only then consider the approved tag-n9.0.2 Docker-builder fallback. Phase 3 remains passed with qualification, its original control remains failed, and supplementary post-hoc diagnostics do not replace that failure.
+
+Mandatory execution checkpoint: finish Tasks 1-2 and present backend verification plus current DESIGN.md, then STOP before Task 3. Do not create serving/web/, install frontend packages/fonts, scaffold, mock up or edit a page until the user explicitly resumes frontend work. The implementation request does not waive this checkpoint. No commits, pushes or publication are authorized by this execution.
