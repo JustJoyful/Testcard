@@ -279,7 +279,7 @@ KoNViD-1k and LIVE-VQC were used under their owners' terms, recorded in [docs/da
 ```bibtex
 @misc{testcard,
   title  = {Testcard: Where does the quality signal live? Cached features versus temporal heads for no-reference video quality},
-  author = {TODO},
+  author = {Das, Joydeep},
   year   = {2026},
   url    = {https://github.com/JustJoyful/Testcard},
   note   = {Code and results}
