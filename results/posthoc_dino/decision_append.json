@@ -1,0 +1,9 @@
+{
+  "date": "2026-10-31",
+  "label": "post-hoc exploratory DINO pre-declaration",
+  "before_sha256": "e4e88ab96770266454fb6c70890fc7d630534d6c6a41eedbebf32b53d0bee4a3",
+  "prefix_bytes": 56916,
+  "appended_sha256": "796ceab768466b99d2e1088c212bb18e6eb4d5ecb0ee295a40e0aec3aa9ca301",
+  "after_sha256": "5552961812ed51c44b8e3d13900c92116cb635a54633d12e36836d0a90d4e58b",
+  "previous_amendment_sha256": "11982eb1ac2c1279e8cf3674ac61a935a0ff04327e7cf115f9b7453033b385ae"
+}

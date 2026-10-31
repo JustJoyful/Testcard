@@ -355,3 +355,65 @@ Accept checked MP4/MOV/WebM, at most 104857600 file bytes, 105906176 body bytes,
 Preserve Phase 4a evidence/image as historical proof; new evidence belongs to results/phase4b/. Per-timestep cosine >=0.999, cached/raw score difference <=0.01 MOS, front-door difference <=1e-6, and maximum normalized warm time <=120 seconds per ten seconds are unchanged. If parity fails, stop and report; only then consider the approved tag-n9.0.2 Docker-builder fallback. Phase 3 remains passed with qualification, its original control remains failed, and supplementary post-hoc diagnostics do not replace that failure.
 
 Mandatory execution checkpoint: finish Tasks 1-2 and present backend verification plus current DESIGN.md, then STOP before Task 3. Do not create serving/web/, install frontend packages/fonts, scaffold, mock up or edit a page until the user explicitly resumes frontend work. The implementation request does not waive this checkpoint. No commits, pushes or publication are authorized by this execution.
+
+## 2026-10-31: Post-hoc exploratory pre-declaration — why DINOv2 lost to ResNet-50 on KoNViD
+
+**Post-hoc and exploratory.** This analysis is declared after the Phase 1–3 results were seen. It is diagnostic only and changes no frozen configuration, deployed model, phase gate, headline result or existing artifact. All outputs go to `results/posthoc_dino/`. No variant, metric or comparison may be added after any result below is computed. All comparisons are unadjusted.
+
+Question: is quality information present in DINOv2's earlier layers and lost at the last layer, or is the DINO deficit relative to ResNet-50 model-wide?
+
+### Part A: DINO layer comparison (ridge only, cached `cache/v2` features, CPU)
+
+Exactly five variants. Branches are concatenated in the listed order, per frame, then mean-pooled over frames:
+
+- **A0**: `dino_cls` + `dino_patchmean_L12` (the Phase 1/2 DINO ridge feature set).
+- **L6**: `dino_patchmean_L6` + `dino_patchstd_L6`.
+- **L9**: `dino_patchmean_L9` + `dino_patchstd_L9`.
+- **L12**: `dino_patchmean_L12` + `dino_patchstd_L12`.
+- **ALL**: `dino_cls`, `dino_patchmean_L6`, `dino_patchstd_L6`, `dino_patchmean_L9`, `dino_patchstd_L9`, `dino_patchmean_L12`, `dino_patchstd_L12` (7 branches).
+
+Protocol, identical to the Phase 1/2 ridge:
+- Same immutable folds and inner-validation splits (`data/splits/konvid_folds.csv`).
+- Frames are cast to float32 and mean-pooled in float64.
+- `src/baselines.fit_ridge` is used, with training-only feature and target standardization.
+- Alpha is chosen from the grid {0.001, 0.01, 0.1, 1, 10, 100, 1000} by inner-validation SRCC, smaller alpha winning ties.
+- One deterministic fit per fold, on the fold's train role; the test role gives out-of-fold predictions.
+
+Each fold's selected alpha is recorded. A selection of 0.001 or 1000 is flagged as a grid-edge hit and reported as a limitation. The grid is not extended.
+
+**A0 reproduction check.** A0's per-fold test SRCC must match the per-fold SRCC recomputed from the saved Phase 1/2 DINO ridge predictions (`results/phase1/ridge/fold*/predictions.json`) within an absolute difference of 1e-9 in every fold. If it does not, stop and report before any other variant is reported.
+
+Reported:
+1. **Per-fold results:** mean ± SD of per-fold SRCC and KRCC for each variant, next to the saved Phase 2 ResNet-50 ridge and DINO ridge rows.
+2. **Paired bootstrap** of pooled out-of-fold predictions. It uses 10,000 draws from one shared seed-0 index bank (`src.metrics.make_bootstrap_indices`) over the KoNViD inventory order, with SRCC and KRCC as A minus B, a two-sided 95% CI, unadjusted, and classification by the PRD §7 table with margin 0.01. The ResNet-50 ridge OOF predictions are the saved Phase 2 ones. The comparisons are exactly these nine:
+   - L6, L9, L12 and ALL vs A0.
+   - A0, L6, L9, L12 and ALL vs ResNet-50 ridge.
+3. **LIVE-VQC (exploratory):** for each variant, one full-KoNViD ridge fit (`fit_ridge_fixed_alpha`) at the median of its five CV-selected alphas, the Phase 3 rule. It is evaluated on all 585 LIVE-VQC videos, reporting SRCC, KRCC and logistic-mapped PLCC fitted on LIVE labels, as in Phase 3. LIVE results feed back into nothing.
+
+Interpretation rule, fixed now: the KoNViD gap is the ResNet-50 ridge mean per-fold SRCC minus A0's mean per-fold SRCC. A variant "closes most of the gap" if its mean per-fold SRCC recovers more than 50% of that gap. If L6, L9 or ALL does so, the earlier-layer hypothesis is supported; otherwise the deficit is called model-wide. The bootstrap classifications are reported alongside and qualify this, and mixed evidence is stated as mixed.
+
+### Part B: distortion sensitivity (optional, GPU, run by the user)
+
+Frames:
+- Decode the 20 fixed Phase 0 KoNViD IDs (`data/splits/phase0_konvid_ids.txt`) with the shared `src/preprocess.py` sampling path.
+- Pool the sampled frames and choose 50 without replacement using `numpy.random.default_rng(0)`.
+
+Distortions, applied to the decoded uint8 RGB frame before `spatial_tensor`:
+- Gaussian blur σ ∈ {1, 2, 4}, via `scipy.ndimage.gaussian_filter` over the spatial axes only.
+- Additive Gaussian noise σ ∈ {5, 15, 30} on the 0–255 scale, from `default_rng(0)`, clipped and rounded to uint8.
+- JPEG re-encode at Pillow quality ∈ {50, 20, 5}.
+- The clean frame.
+
+Branches: ResNet-50 pooled, DINO CLS L12, and DINO patch-mean L6, L9 and L12, extracted with the shared `src/features.py` backbones.
+
+Metric: for each branch and level, the mean (1 − cosine) between each clean frame and its distorted version, divided by the mean (1 − cosine) over all pairs of different clean frames. Higher means the branch reacts more to degradation relative to content.
+
+Output: a CSV, plus one figure with the ratio against distortion level, one line per branch and one panel per distortion type. Part B can support or contradict Part A; mixed evidence is stated as mixed.
+
+### Deliverables and checks
+
+- CSV/JSON for every number, a short `report.md` and figures, all generated from saved outputs, with no hand-typed numbers.
+- After the analysis, all Phase 1–4a gate-listed hashes are verified unchanged.
+- `NOTES.md` records the findings and limitations: post-hoc, multiple variants, alpha-grid edges and the A0 reproduction check.
+
+This entry is the only post-hoc append. Its prefix and bytes are pinned in `results/posthoc_dino/decision_append.json`, which `src/serving_bundle.verify_snapshot` checks.
