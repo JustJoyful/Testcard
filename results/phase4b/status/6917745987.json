@@ -1,0 +1,95 @@
+{
+  "http_status": 202,
+  "accepted": {
+    "task_id": "8d52d34c6454494eabbde5cb30b77474"
+  },
+  "filename": "6917745987.mp4",
+  "polls": [
+    {
+      "at_seconds": 0.041719258995726705,
+      "http_status": 200,
+      "state": "processing",
+      "stage": "extract"
+    },
+    {
+      "at_seconds": 1.0437376239860896,
+      "http_status": 200,
+      "state": "processing",
+      "stage": "extract"
+    },
+    {
+      "at_seconds": 2.0455889639852103,
+      "http_status": 200,
+      "state": "processing",
+      "stage": "extract"
+    },
+    {
+      "at_seconds": 3.052145160996588,
+      "http_status": 200,
+      "state": "processing",
+      "stage": "extract"
+    },
+    {
+      "at_seconds": 4.053969134984072,
+      "http_status": 200,
+      "state": "processing",
+      "stage": "extract"
+    },
+    {
+      "at_seconds": 5.06274127899087,
+      "http_status": 200,
+      "state": "processing",
+      "stage": "extract"
+    },
+    {
+      "at_seconds": 6.064311912981793,
+      "http_status": 200,
+      "state": "processing",
+      "stage": "extract"
+    },
+    {
+      "at_seconds": 7.066366473009111,
+      "http_status": 200,
+      "state": "processing",
+      "stage": "extract"
+    },
+    {
+      "at_seconds": 8.068100728996797,
+      "http_status": 200,
+      "state": "done",
+      "stage": null
+    }
+  ],
+  "final": {
+    "task_id": "8d52d34c6454494eabbde5cb30b77474",
+    "state": "done",
+    "stage": null,
+    "result": {
+      "task_id": "8d52d34c6454494eabbde5cb30b77474",
+      "filename": "6917745987.mp4",
+      "clip_seconds": 8.008,
+      "created_at": "2026-10-31T16:56:36.887644Z",
+      "prediction": {
+        "score": 2.442235273970251,
+        "timings_seconds": {
+          "extraction": 7.653728739998769,
+          "head": 8.649498340673745e-05,
+          "total": 7.653815629979363
+        },
+        "verified": {
+          "model_sha256": "4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3",
+          "weights_sha256": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca",
+          "weights_enum": "ResNet50_Weights.IMAGENET1K_V2",
+          "preprocessing_sha256": "acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b",
+          "cpu_threads": 4
+        },
+        "startup_seconds": 3.2339905629924033
+      }
+    },
+    "error": null
+  },
+  "request_started": 199414.690351483,
+  "request_finished": 199422.758454384,
+  "wall_seconds": 8.06810290098656,
+  "upload_seconds": 0.03947570998570882
+}

@@ -1,0 +1,113 @@
+{
+  "http_status": 202,
+  "accepted": {
+    "task_id": "793b828823874465bd0396e304f37037"
+  },
+  "filename": "11902527296.mp4",
+  "polls": [
+    {
+      "at_seconds": 0.04276778100756928,
+      "http_status": 200,
+      "state": "processing",
+      "stage": "extract"
+    },
+    {
+      "at_seconds": 1.0452449310105294,
+      "http_status": 200,
+      "state": "processing",
+      "stage": "extract"
+    },
+    {
+      "at_seconds": 2.0474575069965795,
+      "http_status": 200,
+      "state": "processing",
+      "stage": "extract"
+    },
+    {
+      "at_seconds": 3.056571454013465,
+      "http_status": 200,
+      "state": "processing",
+      "stage": "extract"
+    },
+    {
+      "at_seconds": 4.058631129999412,
+      "http_status": 200,
+      "state": "processing",
+      "stage": "extract"
+    },
+    {
+      "at_seconds": 5.060700472007738,
+      "http_status": 200,
+      "state": "processing",
+      "stage": "extract"
+    },
+    {
+      "at_seconds": 6.063437864009757,
+      "http_status": 200,
+      "state": "processing",
+      "stage": "extract"
+    },
+    {
+      "at_seconds": 7.065317586995661,
+      "http_status": 200,
+      "state": "processing",
+      "stage": "extract"
+    },
+    {
+      "at_seconds": 8.067749622015981,
+      "http_status": 200,
+      "state": "processing",
+      "stage": "extract"
+    },
+    {
+      "at_seconds": 9.070012594020227,
+      "http_status": 200,
+      "state": "processing",
+      "stage": "extract"
+    },
+    {
+      "at_seconds": 10.072113803005777,
+      "http_status": 200,
+      "state": "processing",
+      "stage": "extract"
+    },
+    {
+      "at_seconds": 11.073716633021832,
+      "http_status": 200,
+      "state": "done",
+      "stage": null
+    }
+  ],
+  "final": {
+    "task_id": "793b828823874465bd0396e304f37037",
+    "state": "done",
+    "stage": null,
+    "result": {
+      "task_id": "793b828823874465bd0396e304f37037",
+      "filename": "11902527296.mp4",
+      "clip_seconds": 8.008,
+      "created_at": "2026-10-31T16:48:53.029104Z",
+      "prediction": {
+        "score": 3.4206814401750743,
+        "timings_seconds": {
+          "extraction": 10.980313857988222,
+          "head": 7.972298772074282e-05,
+          "total": 10.980394068988971
+        },
+        "verified": {
+          "model_sha256": "4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3",
+          "weights_sha256": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca",
+          "weights_enum": "ResNet50_Weights.IMAGENET1K_V2",
+          "preprocessing_sha256": "acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b",
+          "cpu_threads": 4
+        },
+        "startup_seconds": 3.2339905629924033
+      }
+    },
+    "error": null
+  },
+  "request_started": 198950.851092576,
+  "request_finished": 198961.924811554,
+  "wall_seconds": 11.073718978004763,
+  "upload_seconds": 0.018634845997439697
+}

@@ -1,0 +1,72 @@
+{
+  "status": "passed",
+  "summary": {
+    "rows": 60,
+    "maximum_seconds_per_ten_seconds": 16.353306493508903,
+    "median_seconds_per_ten_seconds": 10.038471354629769,
+    "budget_seconds_per_ten_seconds": 120,
+    "budget_passed": true,
+    "median_polling_overhead_seconds": 0.4246953134861542,
+    "maximum_polling_overhead_seconds": 0.9840215410222299,
+    "per_video_maximum_seconds_per_ten_seconds": {
+      "11902527296": 13.865037674820073,
+      "3710887216": 16.353306493508903,
+      "4565232312": 14.1131896391078,
+      "4567868868": 12.663317652363736,
+      "4652600104": 10.095794356887353,
+      "5268797415": 8.79244258874678,
+      "5564209652": 10.077164303178186,
+      "5633788395": 10.043784842654189,
+      "5869559051": 11.298167754740552,
+      "6047579133": 10.080186693303913,
+      "6648629457": 10.031460335919368,
+      "6917745987": 10.095169621614936,
+      "7177427229": 8.895301589681887,
+      "7517202292": 11.28990051324695,
+      "8252040986": 10.11969148478145,
+      "8331470149": 10.03347065687723,
+      "8495275628": 10.082841689546804,
+      "8563986596": 10.105727719769654,
+      "8729448612": 10.095566394309419,
+      "9812351333": 10.040871397732493
+    }
+  },
+  "cadence": {
+    "fast_seconds": 1.0,
+    "slow_seconds": 3.0,
+    "fast_window_seconds": 30.0,
+    "deadline_seconds": 600.0
+  },
+  "image_id": "sha256:85a3e58c672186cb2f896e49ffecc395715dff26d88e4e55b11e4fa38e6aeb8a",
+  "container_id": "643588b267574c545297ce98a96e368c364cfa4fe4b391061a787a1ce940bdb6",
+  "bindings": {
+    "configs/serving.yaml": "9c252757b4ab1013d0723f6aa54e0b306605052f11a10500a049767c1988bbb0",
+    "data/splits/phase0_konvid_ids.txt": "5efbfd5c72f0353a6d78f9d5ce13a8d36db7f67486c474b163a4c0edd5874dd7",
+    "configs/phase0.yaml": "ff290dc34eb9a660e82b44ad82392e3a3deab6afac0e70c449a3e47870815881",
+    "results/phase4a/research_snapshot.json": "ccf3dee9ba98d1d046cc086382d27492e9de3fb2a41c912443035531b7f01cd8",
+    "results/phase3/phase_gate.json": "12b191fe6d67c66ed9e3de3ee053e397b167a568d38c19d40bd2f7c3f7bfb59d",
+    "results/phase3/deployment.json": "8d39157721046737211b17da17195ac8f0f0145be742c453700fdd9ef3e3c727",
+    "configs/features_v2.yaml": "8397ea636c79e69a382e88a7238f798b398dafd91774edd6b50555f7bb62777c",
+    "cache/v2/meta.json": "27af097a62ed3472519367ab50c2b6deb32af26788986d8fccdd886f1d9dfb3c",
+    "cache/v2/manifest.csv": "311ae067d92f2077ed1adf93006d7da991f23f94c0845fd1f6063a90025c9ab3",
+    "data/manifests/konvid.csv": "6b1d792204a111563cc103888c3e5deded62fbdec63cb97bb976c8361e812e5b",
+    "env/serving.lock": "6abc6f6a6dfeb53e88703bb3c16412c7f68a36904523b5651d11fc121c5dbc3a",
+    "results/phase4a/packaging_amendment.json": "01267d2d14e43d4126ca8ce2454e727213645086f91a323cb9f349e0a0e57f77"
+  },
+  "parity_sha256": "d74db1b3de10ce175f9a4d0269d4f74a51e612d49571f3cc7e1b41608530d1a5",
+  "raw_sha256": "f6b22bab11eaa104fac6c693bcf148f60e498a204e501d763e3bb55f6e95e506",
+  "cold_sha256": "973da889922fd17fa33a51001b064c58079369b34820ee4d218164dba5d8b878",
+  "warmup_sha256": "34ece2e18f956a3834c4bd786ae7a1f437e8ac83ebb5fefed181f464ed1e9197",
+  "measurement_tool_sha256": "c29a9c986d211ac1d79091c77c370063dc680d329af920a3828f0382a9d5b53f",
+  "platform": "Linux-7.2.9-2-cachyos-x86_64-with-glibc2.44",
+  "cpu": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           39 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  12\nOn-line CPU(s) list:                     0-11\nVendor ID:                               GenuineIntel\nModel name:                              12th Gen Intel(R) Core(TM) i5-12450HX\nCPU family:                              6\nModel:                                   151\nThread(s) per core:                      2\nCore(s) per socket:                      8\nSocket(s):                               1\nStepping:                                2\nMicrocode version:                       0x3e\nCPU(s) scaling MHz:                      82%\nCPU max MHz:                             4400.0000\nCPU min MHz:                             800.0000\nBogoMIPS:                                5376.00\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb intel_pt sha_ni xsaveopt xsavec xgetbv1 xsaves split_lock_detect user_shstk avx_vnni dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp hwp_pkg_req hfi vnmi umip pku ospke waitpkg gfni vaes vpclmulqdq rdpid movdiri movdir64b fsrm md_clear serialize arch_lbr ibt flush_l1d arch_capabilities\nVirtualization:                          VT-x\nL1d cache:                               320 KiB (8 instances)\nL1i cache:                               384 KiB (8 instances)\nL2 cache:                                7 MiB (5 instances)\nL3 cache:                                12 MiB (1 instance)\nNUMA node(s):                            1\nNUMA node0 CPU(s):                       0-11\nVulnerability Gather data sampling:      Not affected\nVulnerability Ghostwrite:                Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Old microcode:             Not affected\nVulnerability Reg file data sampling:    Mitigation; Clear Register File\nVulnerability Retbleed:                  Not affected\nVulnerability Spec rstack overflow:      Not affected\nVulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl\nVulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; BHI BHI_DIS_S\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Not affected\nVulnerability Tsx async abort:           Not affected\nVulnerability Vmscape:                   Mitigation; IBPB before exit to userspace\n",
+  "resource_caps": [
+    "--cpus=4",
+    "--memory=4g",
+    "--pids-limit=128",
+    "--read-only",
+    "--tmpfs",
+    "/tmp:rw,nosuid,size=256m"
+  ],
+  "cpu_threads": 4
+}
