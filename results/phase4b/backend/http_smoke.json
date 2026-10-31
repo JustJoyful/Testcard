@@ -1,0 +1,103 @@
+{
+  "url": "http://127.0.0.1:8001",
+  "video_id": "11902527296",
+  "validation": "host backend checkpoint; not rebuilt-image parity or latency",
+  "poll_seconds": 0.05,
+  "accepted": {
+    "status": 202,
+    "body": {
+      "task_id": "3634d340e3ed4207a90188b07065e992"
+    }
+  },
+  "busy": {
+    "/predict": {
+      "status": 503,
+      "body": {
+        "error": "Busy processing another video; retry later."
+      }
+    },
+    "/upload": {
+      "status": 503,
+      "body": {
+        "error": {
+          "code": "busy",
+          "message": "Busy processing another video; retry later."
+        }
+      }
+    }
+  },
+  "health_during_job": {
+    "status": "ready",
+    "verified": {
+      "model_sha256": "4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3",
+      "weights_sha256": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca",
+      "weights_enum": "ResNet50_Weights.IMAGENET1K_V2",
+      "preprocessing_sha256": "acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b",
+      "cpu_threads": 4
+    }
+  },
+  "states": [
+    [
+      "processing",
+      "extract"
+    ],
+    [
+      "done",
+      null
+    ]
+  ],
+  "status": {
+    "task_id": "3634d340e3ed4207a90188b07065e992",
+    "state": "done",
+    "stage": null,
+    "result": {
+      "task_id": "3634d340e3ed4207a90188b07065e992",
+      "filename": "\u6771\u4eac.mp4",
+      "clip_seconds": 8.008,
+      "created_at": "2026-10-30T20:16:48.204687Z",
+      "prediction": {
+        "score": 3.4206814401750743,
+        "timings_seconds": {
+          "extraction": 9.657558569000685,
+          "head": 0.00012337199586909264,
+          "total": 9.657682585995644
+        },
+        "verified": {
+          "model_sha256": "4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3",
+          "weights_sha256": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca",
+          "weights_enum": "ResNet50_Weights.IMAGENET1K_V2",
+          "preprocessing_sha256": "acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b",
+          "cpu_threads": 4
+        },
+        "startup_seconds": 1.5234967870055698
+      }
+    },
+    "error": null
+  },
+  "upload_to_terminal_seconds": 9.72013194700412,
+  "private_video_cleanup": true,
+  "predict": {
+    "score": 3.4206814401750743,
+    "timings_seconds": {
+      "extraction": 6.269419955002377,
+      "head": 8.610700024291873e-05,
+      "total": 6.2695063069986645
+    },
+    "verified": {
+      "model_sha256": "4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3",
+      "weights_sha256": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca",
+      "weights_enum": "ResNet50_Weights.IMAGENET1K_V2",
+      "preprocessing_sha256": "acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b",
+      "cpu_threads": 4
+    },
+    "startup_seconds": 1.5234967870055698
+  },
+  "absolute_score_difference": 0.0,
+  "source_sha256": {
+    "serving/app.py": "f5c23c13b1891e0657f55662e3563aa28267a85f6bf42b40eb0c2286f1262c21",
+    "serving/jobs.py": "85c8e52f972cc83d29fcec4d960ae6ea557000a13db32cbb5ac6ab6c48361fe3",
+    "src/predict.py": "afb3aa37268b399d2d50e56bb31d4ba85ade60eb0fcfd0817c184ce26361831a",
+    "src/serving_bundle.py": "fcce484bf0101fb45592ebbff4d59183505fe1e1fb6081d5ac81a9058c78eda6"
+  },
+  "status_check": "passed"
+}

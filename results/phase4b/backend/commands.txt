@@ -1,0 +1,8 @@
+# Run from /home/joydeep/Projects/VQA/.worktrees/phase4b-demo
+.venv-serving/bin/python -m scripts.15_demo_check --mode baseline
+.venv-serving/bin/python -m pytest tests/test_demo_evidence.py tests/test_serving_bundle.py -q
+.venv-serving/bin/python -m pytest tests/test_demo_jobs.py tests/test_demo_api.py tests/test_serving_api.py tests/test_predict_cli.py tests/test_serving_bundle.py -q
+.venv-serving/bin/python -m uvicorn serving.app:create_app --factory --workers 1 --host 127.0.0.1 --port 8001 > results/phase4b/backend/server.log 2>&1
+# In a second shell, after health is ready:
+.venv-serving/bin/python -m results.phase4b.backend.http_smoke > results/phase4b/backend/http_smoke.log 2>&1
+# Stopped only the temporary uvicorn PID after the smoke check; Phase 4a container was left running.

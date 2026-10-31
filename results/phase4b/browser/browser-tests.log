@@ -1,0 +1,34 @@
+npm notice run npx
+npm notice run 'playwright' test
+
+Running 27 tests using 6 workers
+
+  ✓   6 tests/browser/demo.spec.js:90:1 › production mock: built ?mock uses the real /upload and ships no fixture (645ms)
+  ✓   1 tests/browser/demo.spec.js:107:1 › plain flow: upload errors and terminal errors show the right copy and allow a retry (973ms)
+  ✓   2 tests/browser/demo.spec.js:138:1 › result keeps unknown fields and small times (1.2s)
+  ✓   7 tests/browser/demo.spec.js:164:3 › result score 0.4 is unclipped, range note true (1.1s)
+  ✓   8 tests/browser/demo.spec.js:164:3 › result score 1 is unclipped, range note false (1.1s)
+  ✓   9 tests/browser/demo.spec.js:164:3 › result score 5 is unclipped, range note false (1.1s)
+  ✓  12 tests/browser/demo.spec.js:174:1 › result with only a score omits optional rows and never claims Verified (306ms)
+  ✓  10 tests/browser/demo.spec.js:164:3 › result score 5.25 is unclipped, range note true (1.1s)
+  ✓   4 tests/browser/demo.spec.js:60:1 › plain flow: keyboard upload through the real transport, then reset (3.1s)
+  ✓  11 tests/browser/demo.spec.js:164:3 › result score -0.25 is unclipped, range note true (1.2s)
+  ✓  13 tests/browser/demo.spec.js:185:1 › result values are text, not HTML (716ms)
+  ✓  14 tests/browser/demo.spec.js:197:1 › result with an invalid score goes to the recoverable error flow (376ms)
+  ✓  18 tests/browser/demo.spec.js:303:3 › responsive no horizontal scroll at 360px (845ms)
+  ✓  17 tests/browser/demo.spec.js:293:1 › static hero error state shows NO SIGNAL (1.2s)
+  ✓  19 tests/browser/demo.spec.js:303:3 › responsive no horizontal scroll at 640px (683ms)
+  ✓  20 tests/browser/demo.spec.js:303:3 › responsive no horizontal scroll at 1024px (703ms)
+  ✓  22 tests/browser/demo.spec.js:318:1 › mobile: tapping the tape opens the picker, no drag-only instruction (223ms)
+  ✓  21 tests/browser/demo.spec.js:303:3 › responsive no horizontal scroll at 1440px (685ms)
+  ✓  15 tests/browser/demo.spec.js:205:1 › result tabs: keyboard navigation, JSON copy and download preserve the exact object (2.7s)
+  ✓  23 tests/browser/demo.spec.js:332:1 › motion: done during insert skips stale states (1.0s)
+  ✓  16 tests/browser/demo.spec.js:236:1 › static hero all states (3.6s)
+  ✓  24 tests/browser/demo.spec.js:343:1 › motion: reset during the done burst ignores old callbacks (1.9s)
+  ✓  25 tests/browser/demo.spec.js:355:1 › motion: noise pauses when hidden and after dispose (1.9s)
+  ✓  26 tests/browser/demo.spec.js:388:1 › reduced motion: same text and keyboard flow, no motion (2.9s)
+  ✓   3 tests/browser/demo.spec.js:83:1 › plain flow: dev mock reaches the summary with a badge (10.2s)
+  ✓   5 tests/browser/demo.spec.js:121:1 › plain flow: real backend, when one is running (11.4s)
+  ✓  27 tests/browser/demo.spec.js:411:1 › announcements: 25 percent upload buckets, then plain-word states (9.6s)
+
+  27 passed (17.3s)

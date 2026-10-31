@@ -1,0 +1,1059 @@
+........................................................................ [ 19%]
+F....................................................................... [ 38%]
+......................F................................................. [ 57%]
+........................................................................ [ 76%]
+.F............................................F.FFFFF..F............F... [ 95%]
+.F.....F.........                                                        [100%]
+=================================== FAILURES ===================================
+________ test_slowfast_matches_installed_reference_on_synthetic_pixels _________
+
+    def test_slowfast_matches_installed_reference_on_synthetic_pixels():
+        import importlib.util
+        from pathlib import Path
+>       import pytorchvideo
+E       ModuleNotFoundError: No module named 'pytorchvideo'
+
+tests/test_phase0_preprocess.py:102: ModuleNotFoundError
+________ test_cli_repairs_interrupted_protocol_freeze_without_refitting ________
+
+tmp_path = PosixPath('/tmp/pytest-of-joydeep/pytest-65/test_cli_repairs_interrupted_p0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fa531a72b10>
+
+    def test_cli_repairs_interrupted_protocol_freeze_without_refitting(tmp_path,monkeypatch):
+        import json
+        import sys
+        import torch
+        import yaml
+        from pathlib import Path
+        script=importlib.import_module('scripts.05_train')
+        protocol=yaml.safe_load(Path('configs/protocol.yaml').read_text())
+        protocol.update(device='cpu',max_epochs=2,patience=2,cpu_threads=2,results_root=str(tmp_path))
+        generator=torch.Generator().manual_seed(12)
+        data=[{'video_id':str(i),'features':torch.randn(2,1536,generator=generator),'mos':float(i)} for i in range(8)]
+        monkeypatch.setattr(script,'role_data',lambda *a:data)
+        monkeypatch.setattr(script,'require_control',lambda *a:None)
+        pilot=script.pilot_runs(protocol,{'code_commit':'a'})
+        original=script.atomic_json
+        original(tmp_path/'extraction.json',{'invocations':[{'wall_seconds':10.}]})
+        for seed in range(5):
+            original(tmp_path/'control_initial_v2'/f'seed{seed}'/'run.json',{'wall_seconds':1.})
+        config_path=tmp_path/'protocol.yaml'
+        config_path.write_text(yaml.safe_dump(protocol))
+        def interrupted(path,value):
+            if Path(path)==tmp_path/'runtime_budget.json':
+                raise OSError('interrupted budget publication')
+            original(path,value)
+        monkeypatch.setattr(script,'atomic_json',interrupted)
+        with pytest.raises(OSError):
+            script.freeze_protocol(protocol,config_path,{'code_commit':'a'},pilot)
+        assert yaml.safe_load(config_path.read_text())['status']=='frozen'
+        monkeypatch.setattr(script,'atomic_json',original)
+        monkeypatch.setattr(script,'fit_one',lambda *a,**kw:pytest.fail('CLI repair refitted pilot'))
+        monkeypatch.setattr(script,'prerequisites',lambda *a:{'code_commit':'b'})
+        monkeypatch.setattr(sys,'argv',['05_train.py','--mode','pilot','--config',str(config_path),'--features','configs/features_v1.yaml'])
+>       script.main()
+
+tests/test_phase1_pilot.py:133: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/05_train.py:447: in main
+    freeze_protocol(protocol,args.config,provenance,pilot)
+scripts/05_train.py:189: in freeze_protocol
+    calendar_gate(pilot['completed_at'])
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+pilot_completed = '2026-10-31T01:49:39.038148+05:30'
+
+    def calendar_gate(pilot_completed=None):
+        deadline=datetime(2026,10,28,23,59,59,tzinfo=ZoneInfo('Asia/Kolkata'))
+        observed=pilot_completed or datetime.now(ZoneInfo('Asia/Kolkata')).isoformat()
+        if datetime.fromisoformat(observed)>deadline:
+>           raise ValueError('October 28 pilot checkpoint missed: record concrete scope cut/revised schedule before tuning')
+E           ValueError: October 28 pilot checkpoint missed: record concrete scope cut/revised schedule before tuning
+
+src/tuning.py:167: ValueError
+______________ test_cpu_fp32_four_threads_and_exact_shared_calls _______________
+
+snapshot = {'source_code_sha256': '68a001f55650d758a69b09e789d6be55a6a0646b23baea2808bd8e9770841c56', 'source_files': {'src/__ini...e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b', ...}, 'phase3_status': 'passed with qualification', ...}
+root = PosixPath('/home/joydeep/Projects/VQA/.worktrees/phase4b-demo')
+
+    def verify_snapshot(snapshot, root=ROOT):
+        for name, expected in {**snapshot['source_files'], **snapshot['bindings']}.items():
+            try:
+                path = Path(root) / name
+                amendment_path = Path(root) / 'results/phase4a/packaging_amendment.json'
+                if name == 'DECISIONS.md' and amendment_path.is_file():
+                    amendment = json.loads(amendment_path.read_text())
+                    content = path.read_bytes()
+                    cut = amendment['prefix_bytes']
+                    second_path = Path(root) / 'results/phase4b/decision_amendment.json'
+                    end = len(content)
+                    second = None
+                    if second_path.is_file():
+                        second = json.loads(second_path.read_text())
+                        verify_file(amendment_path, second['packaging_amendment_sha256'])
+                        end = second['prefix_bytes']
+                        if (not isinstance(end, int) or not cut < end < len(content) or
+                                second['before_sha256'] != amendment['after_sha256'] or
+                                hashlib.sha256(content[:end]).hexdigest() != second['before_sha256'] or
+                                hashlib.sha256(content[end:]).hexdigest() != second['appended_sha256']):
+>                           raise ValueError('unapproved demo decision-log change')
+E                           ValueError: unapproved demo decision-log change
+
+src/serving_bundle.py:89: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-joydeep/pytest-65/test_cpu_fp32_four_threads_and0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fa52f07dc50>
+
+    def test_cpu_fp32_four_threads_and_exact_shared_calls(tmp_path, monkeypatch):
+        p = importlib.import_module('src.predict')
+        prepare = importlib.import_module('scripts.12_prepare_serving')
+>       prepare.prepare_bundle(Path('configs/serving.yaml'), tmp_path)
+
+tests/test_predict_cli.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/12_prepare_serving.py:20: in prepare_bundle
+    verify_snapshot(snapshot)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+snapshot = {'source_code_sha256': '68a001f55650d758a69b09e789d6be55a6a0646b23baea2808bd8e9770841c56', 'source_files': {'src/__ini...e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b', ...}, 'phase3_status': 'passed with qualification', ...}
+root = PosixPath('/home/joydeep/Projects/VQA/.worktrees/phase4b-demo')
+
+    def verify_snapshot(snapshot, root=ROOT):
+        for name, expected in {**snapshot['source_files'], **snapshot['bindings']}.items():
+            try:
+                path = Path(root) / name
+                amendment_path = Path(root) / 'results/phase4a/packaging_amendment.json'
+                if name == 'DECISIONS.md' and amendment_path.is_file():
+                    amendment = json.loads(amendment_path.read_text())
+                    content = path.read_bytes()
+                    cut = amendment['prefix_bytes']
+                    second_path = Path(root) / 'results/phase4b/decision_amendment.json'
+                    end = len(content)
+                    second = None
+                    if second_path.is_file():
+                        second = json.loads(second_path.read_text())
+                        verify_file(amendment_path, second['packaging_amendment_sha256'])
+                        end = second['prefix_bytes']
+                        if (not isinstance(end, int) or not cut < end < len(content) or
+                                second['before_sha256'] != amendment['after_sha256'] or
+                                hashlib.sha256(content[:end]).hexdigest() != second['before_sha256'] or
+                                hashlib.sha256(content[end:]).hexdigest() != second['appended_sha256']):
+                            raise ValueError('unapproved demo decision-log change')
+                    if (not isinstance(cut, int) or not 0 < cut < end or
+                            amendment['before_sha256'] != expected or
+                            hashlib.sha256(content[:cut]).hexdigest() != expected or
+                            hashlib.sha256(content[cut:end]).hexdigest() != amendment['appended_sha256'] or
+                            hashlib.sha256(content[:end]).hexdigest() != amendment['after_sha256']):
+                        raise ValueError('unapproved decision-log change')
+                    verify_file(path, second['after_sha256'] if second else amendment['after_sha256'])
+                else:
+                    verify_file(path, expected)
+            except (ValueError, KeyError, TypeError) as exc:
+>               raise ValueError(f'historical identity changed: {name}') from exc
+E               ValueError: historical identity changed: DECISIONS.md
+
+src/serving_bundle.py:100: ValueError
+______________ test_runtime_bundle_needs_no_cache_labels_or_dino _______________
+
+snapshot = {'source_code_sha256': '68a001f55650d758a69b09e789d6be55a6a0646b23baea2808bd8e9770841c56', 'source_files': {'src/__ini...e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b', ...}, 'phase3_status': 'passed with qualification', ...}
+root = PosixPath('/home/joydeep/Projects/VQA/.worktrees/phase4b-demo')
+
+    def verify_snapshot(snapshot, root=ROOT):
+        for name, expected in {**snapshot['source_files'], **snapshot['bindings']}.items():
+            try:
+                path = Path(root) / name
+                amendment_path = Path(root) / 'results/phase4a/packaging_amendment.json'
+                if name == 'DECISIONS.md' and amendment_path.is_file():
+                    amendment = json.loads(amendment_path.read_text())
+                    content = path.read_bytes()
+                    cut = amendment['prefix_bytes']
+                    second_path = Path(root) / 'results/phase4b/decision_amendment.json'
+                    end = len(content)
+                    second = None
+                    if second_path.is_file():
+                        second = json.loads(second_path.read_text())
+                        verify_file(amendment_path, second['packaging_amendment_sha256'])
+                        end = second['prefix_bytes']
+                        if (not isinstance(end, int) or not cut < end < len(content) or
+                                second['before_sha256'] != amendment['after_sha256'] or
+                                hashlib.sha256(content[:end]).hexdigest() != second['before_sha256'] or
+                                hashlib.sha256(content[end:]).hexdigest() != second['appended_sha256']):
+>                           raise ValueError('unapproved demo decision-log change')
+E                           ValueError: unapproved demo decision-log change
+
+src/serving_bundle.py:89: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-joydeep/pytest-65/test_runtime_bundle_needs_no_c0')
+
+    def test_runtime_bundle_needs_no_cache_labels_or_dino(tmp_path):
+        module = bundle_module()
+        prepare = importlib.import_module('scripts.12_prepare_serving')
+        output = tmp_path / 'bundle'
+>       manifest = prepare.prepare_bundle(Path('configs/serving.yaml'), output)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_serving_bundle.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/12_prepare_serving.py:20: in prepare_bundle
+    verify_snapshot(snapshot)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+snapshot = {'source_code_sha256': '68a001f55650d758a69b09e789d6be55a6a0646b23baea2808bd8e9770841c56', 'source_files': {'src/__ini...e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b', ...}, 'phase3_status': 'passed with qualification', ...}
+root = PosixPath('/home/joydeep/Projects/VQA/.worktrees/phase4b-demo')
+
+    def verify_snapshot(snapshot, root=ROOT):
+        for name, expected in {**snapshot['source_files'], **snapshot['bindings']}.items():
+            try:
+                path = Path(root) / name
+                amendment_path = Path(root) / 'results/phase4a/packaging_amendment.json'
+                if name == 'DECISIONS.md' and amendment_path.is_file():
+                    amendment = json.loads(amendment_path.read_text())
+                    content = path.read_bytes()
+                    cut = amendment['prefix_bytes']
+                    second_path = Path(root) / 'results/phase4b/decision_amendment.json'
+                    end = len(content)
+                    second = None
+                    if second_path.is_file():
+                        second = json.loads(second_path.read_text())
+                        verify_file(amendment_path, second['packaging_amendment_sha256'])
+                        end = second['prefix_bytes']
+                        if (not isinstance(end, int) or not cut < end < len(content) or
+                                second['before_sha256'] != amendment['after_sha256'] or
+                                hashlib.sha256(content[:end]).hexdigest() != second['before_sha256'] or
+                                hashlib.sha256(content[end:]).hexdigest() != second['appended_sha256']):
+                            raise ValueError('unapproved demo decision-log change')
+                    if (not isinstance(cut, int) or not 0 < cut < end or
+                            amendment['before_sha256'] != expected or
+                            hashlib.sha256(content[:cut]).hexdigest() != expected or
+                            hashlib.sha256(content[cut:end]).hexdigest() != amendment['appended_sha256'] or
+                            hashlib.sha256(content[:end]).hexdigest() != amendment['after_sha256']):
+                        raise ValueError('unapproved decision-log change')
+                    verify_file(path, second['after_sha256'] if second else amendment['after_sha256'])
+                else:
+                    verify_file(path, expected)
+            except (ValueError, KeyError, TypeError) as exc:
+>               raise ValueError(f'historical identity changed: {name}') from exc
+E               ValueError: historical identity changed: DECISIONS.md
+
+src/serving_bundle.py:100: ValueError
+_____________ test_manifest_cannot_rebind_preprocessing_or_sources _____________
+
+snapshot = {'source_code_sha256': '68a001f55650d758a69b09e789d6be55a6a0646b23baea2808bd8e9770841c56', 'source_files': {'src/__ini...e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b', ...}, 'phase3_status': 'passed with qualification', ...}
+root = PosixPath('/home/joydeep/Projects/VQA/.worktrees/phase4b-demo')
+
+    def verify_snapshot(snapshot, root=ROOT):
+        for name, expected in {**snapshot['source_files'], **snapshot['bindings']}.items():
+            try:
+                path = Path(root) / name
+                amendment_path = Path(root) / 'results/phase4a/packaging_amendment.json'
+                if name == 'DECISIONS.md' and amendment_path.is_file():
+                    amendment = json.loads(amendment_path.read_text())
+                    content = path.read_bytes()
+                    cut = amendment['prefix_bytes']
+                    second_path = Path(root) / 'results/phase4b/decision_amendment.json'
+                    end = len(content)
+                    second = None
+                    if second_path.is_file():
+                        second = json.loads(second_path.read_text())
+                        verify_file(amendment_path, second['packaging_amendment_sha256'])
+                        end = second['prefix_bytes']
+                        if (not isinstance(end, int) or not cut < end < len(content) or
+                                second['before_sha256'] != amendment['after_sha256'] or
+                                hashlib.sha256(content[:end]).hexdigest() != second['before_sha256'] or
+                                hashlib.sha256(content[end:]).hexdigest() != second['appended_sha256']):
+>                           raise ValueError('unapproved demo decision-log change')
+E                           ValueError: unapproved demo decision-log change
+
+src/serving_bundle.py:89: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-joydeep/pytest-65/test_manifest_cannot_rebind_pr0')
+
+    def test_manifest_cannot_rebind_preprocessing_or_sources(tmp_path):
+        module = bundle_module()
+        prepare = importlib.import_module('scripts.12_prepare_serving')
+        output = tmp_path / 'bundle'
+>       manifest = prepare.prepare_bundle(Path('configs/serving.yaml'), output)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_serving_bundle.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/12_prepare_serving.py:20: in prepare_bundle
+    verify_snapshot(snapshot)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+snapshot = {'source_code_sha256': '68a001f55650d758a69b09e789d6be55a6a0646b23baea2808bd8e9770841c56', 'source_files': {'src/__ini...e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b', ...}, 'phase3_status': 'passed with qualification', ...}
+root = PosixPath('/home/joydeep/Projects/VQA/.worktrees/phase4b-demo')
+
+    def verify_snapshot(snapshot, root=ROOT):
+        for name, expected in {**snapshot['source_files'], **snapshot['bindings']}.items():
+            try:
+                path = Path(root) / name
+                amendment_path = Path(root) / 'results/phase4a/packaging_amendment.json'
+                if name == 'DECISIONS.md' and amendment_path.is_file():
+                    amendment = json.loads(amendment_path.read_text())
+                    content = path.read_bytes()
+                    cut = amendment['prefix_bytes']
+                    second_path = Path(root) / 'results/phase4b/decision_amendment.json'
+                    end = len(content)
+                    second = None
+                    if second_path.is_file():
+                        second = json.loads(second_path.read_text())
+                        verify_file(amendment_path, second['packaging_amendment_sha256'])
+                        end = second['prefix_bytes']
+                        if (not isinstance(end, int) or not cut < end < len(content) or
+                                second['before_sha256'] != amendment['after_sha256'] or
+                                hashlib.sha256(content[:end]).hexdigest() != second['before_sha256'] or
+                                hashlib.sha256(content[end:]).hexdigest() != second['appended_sha256']):
+                            raise ValueError('unapproved demo decision-log change')
+                    if (not isinstance(cut, int) or not 0 < cut < end or
+                            amendment['before_sha256'] != expected or
+                            hashlib.sha256(content[:cut]).hexdigest() != expected or
+                            hashlib.sha256(content[cut:end]).hexdigest() != amendment['appended_sha256'] or
+                            hashlib.sha256(content[:end]).hexdigest() != amendment['after_sha256']):
+                        raise ValueError('unapproved decision-log change')
+                    verify_file(path, second['after_sha256'] if second else amendment['after_sha256'])
+                else:
+                    verify_file(path, expected)
+            except (ValueError, KeyError, TypeError) as exc:
+>               raise ValueError(f'historical identity changed: {name}') from exc
+E               ValueError: historical identity changed: DECISIONS.md
+
+src/serving_bundle.py:100: ValueError
+___ test_portable_bundle_rejects_corrupt_or_unbound_artifacts[weights_bytes] ___
+
+snapshot = {'source_code_sha256': '68a001f55650d758a69b09e789d6be55a6a0646b23baea2808bd8e9770841c56', 'source_files': {'src/__ini...e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b', ...}, 'phase3_status': 'passed with qualification', ...}
+root = PosixPath('/home/joydeep/Projects/VQA/.worktrees/phase4b-demo')
+
+    def verify_snapshot(snapshot, root=ROOT):
+        for name, expected in {**snapshot['source_files'], **snapshot['bindings']}.items():
+            try:
+                path = Path(root) / name
+                amendment_path = Path(root) / 'results/phase4a/packaging_amendment.json'
+                if name == 'DECISIONS.md' and amendment_path.is_file():
+                    amendment = json.loads(amendment_path.read_text())
+                    content = path.read_bytes()
+                    cut = amendment['prefix_bytes']
+                    second_path = Path(root) / 'results/phase4b/decision_amendment.json'
+                    end = len(content)
+                    second = None
+                    if second_path.is_file():
+                        second = json.loads(second_path.read_text())
+                        verify_file(amendment_path, second['packaging_amendment_sha256'])
+                        end = second['prefix_bytes']
+                        if (not isinstance(end, int) or not cut < end < len(content) or
+                                second['before_sha256'] != amendment['after_sha256'] or
+                                hashlib.sha256(content[:end]).hexdigest() != second['before_sha256'] or
+                                hashlib.sha256(content[end:]).hexdigest() != second['appended_sha256']):
+>                           raise ValueError('unapproved demo decision-log change')
+E                           ValueError: unapproved demo decision-log change
+
+src/serving_bundle.py:89: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-joydeep/pytest-65/test_portable_bundle_rejects_c0')
+change = 'weights_bytes'
+
+    @pytest.mark.parametrize('change', ['weights_bytes', 'missing_weights_hash', 'missing_model_hash', 'unsupported_winner'])
+    def test_portable_bundle_rejects_corrupt_or_unbound_artifacts(tmp_path, change):
+        module = bundle_module()
+        prepare = importlib.import_module('scripts.12_prepare_serving')
+>       manifest = prepare.prepare_bundle(Path('configs/serving.yaml'), tmp_path)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_serving_bundle.py:121: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/12_prepare_serving.py:20: in prepare_bundle
+    verify_snapshot(snapshot)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+snapshot = {'source_code_sha256': '68a001f55650d758a69b09e789d6be55a6a0646b23baea2808bd8e9770841c56', 'source_files': {'src/__ini...e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b', ...}, 'phase3_status': 'passed with qualification', ...}
+root = PosixPath('/home/joydeep/Projects/VQA/.worktrees/phase4b-demo')
+
+    def verify_snapshot(snapshot, root=ROOT):
+        for name, expected in {**snapshot['source_files'], **snapshot['bindings']}.items():
+            try:
+                path = Path(root) / name
+                amendment_path = Path(root) / 'results/phase4a/packaging_amendment.json'
+                if name == 'DECISIONS.md' and amendment_path.is_file():
+                    amendment = json.loads(amendment_path.read_text())
+                    content = path.read_bytes()
+                    cut = amendment['prefix_bytes']
+                    second_path = Path(root) / 'results/phase4b/decision_amendment.json'
+                    end = len(content)
+                    second = None
+                    if second_path.is_file():
+                        second = json.loads(second_path.read_text())
+                        verify_file(amendment_path, second['packaging_amendment_sha256'])
+                        end = second['prefix_bytes']
+                        if (not isinstance(end, int) or not cut < end < len(content) or
+                                second['before_sha256'] != amendment['after_sha256'] or
+                                hashlib.sha256(content[:end]).hexdigest() != second['before_sha256'] or
+                                hashlib.sha256(content[end:]).hexdigest() != second['appended_sha256']):
+                            raise ValueError('unapproved demo decision-log change')
+                    if (not isinstance(cut, int) or not 0 < cut < end or
+                            amendment['before_sha256'] != expected or
+                            hashlib.sha256(content[:cut]).hexdigest() != expected or
+                            hashlib.sha256(content[cut:end]).hexdigest() != amendment['appended_sha256'] or
+                            hashlib.sha256(content[:end]).hexdigest() != amendment['after_sha256']):
+                        raise ValueError('unapproved decision-log change')
+                    verify_file(path, second['after_sha256'] if second else amendment['after_sha256'])
+                else:
+                    verify_file(path, expected)
+            except (ValueError, KeyError, TypeError) as exc:
+>               raise ValueError(f'historical identity changed: {name}') from exc
+E               ValueError: historical identity changed: DECISIONS.md
+
+src/serving_bundle.py:100: ValueError
+_ test_portable_bundle_rejects_corrupt_or_unbound_artifacts[missing_weights_hash] _
+
+snapshot = {'source_code_sha256': '68a001f55650d758a69b09e789d6be55a6a0646b23baea2808bd8e9770841c56', 'source_files': {'src/__ini...e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b', ...}, 'phase3_status': 'passed with qualification', ...}
+root = PosixPath('/home/joydeep/Projects/VQA/.worktrees/phase4b-demo')
+
+    def verify_snapshot(snapshot, root=ROOT):
+        for name, expected in {**snapshot['source_files'], **snapshot['bindings']}.items():
+            try:
+                path = Path(root) / name
+                amendment_path = Path(root) / 'results/phase4a/packaging_amendment.json'
+                if name == 'DECISIONS.md' and amendment_path.is_file():
+                    amendment = json.loads(amendment_path.read_text())
+                    content = path.read_bytes()
+                    cut = amendment['prefix_bytes']
+                    second_path = Path(root) / 'results/phase4b/decision_amendment.json'
+                    end = len(content)
+                    second = None
+                    if second_path.is_file():
+                        second = json.loads(second_path.read_text())
+                        verify_file(amendment_path, second['packaging_amendment_sha256'])
+                        end = second['prefix_bytes']
+                        if (not isinstance(end, int) or not cut < end < len(content) or
+                                second['before_sha256'] != amendment['after_sha256'] or
+                                hashlib.sha256(content[:end]).hexdigest() != second['before_sha256'] or
+                                hashlib.sha256(content[end:]).hexdigest() != second['appended_sha256']):
+>                           raise ValueError('unapproved demo decision-log change')
+E                           ValueError: unapproved demo decision-log change
+
+src/serving_bundle.py:89: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-joydeep/pytest-65/test_portable_bundle_rejects_c1')
+change = 'missing_weights_hash'
+
+    @pytest.mark.parametrize('change', ['weights_bytes', 'missing_weights_hash', 'missing_model_hash', 'unsupported_winner'])
+    def test_portable_bundle_rejects_corrupt_or_unbound_artifacts(tmp_path, change):
+        module = bundle_module()
+        prepare = importlib.import_module('scripts.12_prepare_serving')
+>       manifest = prepare.prepare_bundle(Path('configs/serving.yaml'), tmp_path)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_serving_bundle.py:121: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/12_prepare_serving.py:20: in prepare_bundle
+    verify_snapshot(snapshot)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+snapshot = {'source_code_sha256': '68a001f55650d758a69b09e789d6be55a6a0646b23baea2808bd8e9770841c56', 'source_files': {'src/__ini...e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b', ...}, 'phase3_status': 'passed with qualification', ...}
+root = PosixPath('/home/joydeep/Projects/VQA/.worktrees/phase4b-demo')
+
+    def verify_snapshot(snapshot, root=ROOT):
+        for name, expected in {**snapshot['source_files'], **snapshot['bindings']}.items():
+            try:
+                path = Path(root) / name
+                amendment_path = Path(root) / 'results/phase4a/packaging_amendment.json'
+                if name == 'DECISIONS.md' and amendment_path.is_file():
+                    amendment = json.loads(amendment_path.read_text())
+                    content = path.read_bytes()
+                    cut = amendment['prefix_bytes']
+                    second_path = Path(root) / 'results/phase4b/decision_amendment.json'
+                    end = len(content)
+                    second = None
+                    if second_path.is_file():
+                        second = json.loads(second_path.read_text())
+                        verify_file(amendment_path, second['packaging_amendment_sha256'])
+                        end = second['prefix_bytes']
+                        if (not isinstance(end, int) or not cut < end < len(content) or
+                                second['before_sha256'] != amendment['after_sha256'] or
+                                hashlib.sha256(content[:end]).hexdigest() != second['before_sha256'] or
+                                hashlib.sha256(content[end:]).hexdigest() != second['appended_sha256']):
+                            raise ValueError('unapproved demo decision-log change')
+                    if (not isinstance(cut, int) or not 0 < cut < end or
+                            amendment['before_sha256'] != expected or
+                            hashlib.sha256(content[:cut]).hexdigest() != expected or
+                            hashlib.sha256(content[cut:end]).hexdigest() != amendment['appended_sha256'] or
+                            hashlib.sha256(content[:end]).hexdigest() != amendment['after_sha256']):
+                        raise ValueError('unapproved decision-log change')
+                    verify_file(path, second['after_sha256'] if second else amendment['after_sha256'])
+                else:
+                    verify_file(path, expected)
+            except (ValueError, KeyError, TypeError) as exc:
+>               raise ValueError(f'historical identity changed: {name}') from exc
+E               ValueError: historical identity changed: DECISIONS.md
+
+src/serving_bundle.py:100: ValueError
+_ test_portable_bundle_rejects_corrupt_or_unbound_artifacts[missing_model_hash] _
+
+snapshot = {'source_code_sha256': '68a001f55650d758a69b09e789d6be55a6a0646b23baea2808bd8e9770841c56', 'source_files': {'src/__ini...e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b', ...}, 'phase3_status': 'passed with qualification', ...}
+root = PosixPath('/home/joydeep/Projects/VQA/.worktrees/phase4b-demo')
+
+    def verify_snapshot(snapshot, root=ROOT):
+        for name, expected in {**snapshot['source_files'], **snapshot['bindings']}.items():
+            try:
+                path = Path(root) / name
+                amendment_path = Path(root) / 'results/phase4a/packaging_amendment.json'
+                if name == 'DECISIONS.md' and amendment_path.is_file():
+                    amendment = json.loads(amendment_path.read_text())
+                    content = path.read_bytes()
+                    cut = amendment['prefix_bytes']
+                    second_path = Path(root) / 'results/phase4b/decision_amendment.json'
+                    end = len(content)
+                    second = None
+                    if second_path.is_file():
+                        second = json.loads(second_path.read_text())
+                        verify_file(amendment_path, second['packaging_amendment_sha256'])
+                        end = second['prefix_bytes']
+                        if (not isinstance(end, int) or not cut < end < len(content) or
+                                second['before_sha256'] != amendment['after_sha256'] or
+                                hashlib.sha256(content[:end]).hexdigest() != second['before_sha256'] or
+                                hashlib.sha256(content[end:]).hexdigest() != second['appended_sha256']):
+>                           raise ValueError('unapproved demo decision-log change')
+E                           ValueError: unapproved demo decision-log change
+
+src/serving_bundle.py:89: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-joydeep/pytest-65/test_portable_bundle_rejects_c2')
+change = 'missing_model_hash'
+
+    @pytest.mark.parametrize('change', ['weights_bytes', 'missing_weights_hash', 'missing_model_hash', 'unsupported_winner'])
+    def test_portable_bundle_rejects_corrupt_or_unbound_artifacts(tmp_path, change):
+        module = bundle_module()
+        prepare = importlib.import_module('scripts.12_prepare_serving')
+>       manifest = prepare.prepare_bundle(Path('configs/serving.yaml'), tmp_path)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_serving_bundle.py:121: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/12_prepare_serving.py:20: in prepare_bundle
+    verify_snapshot(snapshot)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+snapshot = {'source_code_sha256': '68a001f55650d758a69b09e789d6be55a6a0646b23baea2808bd8e9770841c56', 'source_files': {'src/__ini...e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b', ...}, 'phase3_status': 'passed with qualification', ...}
+root = PosixPath('/home/joydeep/Projects/VQA/.worktrees/phase4b-demo')
+
+    def verify_snapshot(snapshot, root=ROOT):
+        for name, expected in {**snapshot['source_files'], **snapshot['bindings']}.items():
+            try:
+                path = Path(root) / name
+                amendment_path = Path(root) / 'results/phase4a/packaging_amendment.json'
+                if name == 'DECISIONS.md' and amendment_path.is_file():
+                    amendment = json.loads(amendment_path.read_text())
+                    content = path.read_bytes()
+                    cut = amendment['prefix_bytes']
+                    second_path = Path(root) / 'results/phase4b/decision_amendment.json'
+                    end = len(content)
+                    second = None
+                    if second_path.is_file():
+                        second = json.loads(second_path.read_text())
+                        verify_file(amendment_path, second['packaging_amendment_sha256'])
+                        end = second['prefix_bytes']
+                        if (not isinstance(end, int) or not cut < end < len(content) or
+                                second['before_sha256'] != amendment['after_sha256'] or
+                                hashlib.sha256(content[:end]).hexdigest() != second['before_sha256'] or
+                                hashlib.sha256(content[end:]).hexdigest() != second['appended_sha256']):
+                            raise ValueError('unapproved demo decision-log change')
+                    if (not isinstance(cut, int) or not 0 < cut < end or
+                            amendment['before_sha256'] != expected or
+                            hashlib.sha256(content[:cut]).hexdigest() != expected or
+                            hashlib.sha256(content[cut:end]).hexdigest() != amendment['appended_sha256'] or
+                            hashlib.sha256(content[:end]).hexdigest() != amendment['after_sha256']):
+                        raise ValueError('unapproved decision-log change')
+                    verify_file(path, second['after_sha256'] if second else amendment['after_sha256'])
+                else:
+                    verify_file(path, expected)
+            except (ValueError, KeyError, TypeError) as exc:
+>               raise ValueError(f'historical identity changed: {name}') from exc
+E               ValueError: historical identity changed: DECISIONS.md
+
+src/serving_bundle.py:100: ValueError
+_ test_portable_bundle_rejects_corrupt_or_unbound_artifacts[unsupported_winner] _
+
+snapshot = {'source_code_sha256': '68a001f55650d758a69b09e789d6be55a6a0646b23baea2808bd8e9770841c56', 'source_files': {'src/__ini...e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b', ...}, 'phase3_status': 'passed with qualification', ...}
+root = PosixPath('/home/joydeep/Projects/VQA/.worktrees/phase4b-demo')
+
+    def verify_snapshot(snapshot, root=ROOT):
+        for name, expected in {**snapshot['source_files'], **snapshot['bindings']}.items():
+            try:
+                path = Path(root) / name
+                amendment_path = Path(root) / 'results/phase4a/packaging_amendment.json'
+                if name == 'DECISIONS.md' and amendment_path.is_file():
+                    amendment = json.loads(amendment_path.read_text())
+                    content = path.read_bytes()
+                    cut = amendment['prefix_bytes']
+                    second_path = Path(root) / 'results/phase4b/decision_amendment.json'
+                    end = len(content)
+                    second = None
+                    if second_path.is_file():
+                        second = json.loads(second_path.read_text())
+                        verify_file(amendment_path, second['packaging_amendment_sha256'])
+                        end = second['prefix_bytes']
+                        if (not isinstance(end, int) or not cut < end < len(content) or
+                                second['before_sha256'] != amendment['after_sha256'] or
+                                hashlib.sha256(content[:end]).hexdigest() != second['before_sha256'] or
+                                hashlib.sha256(content[end:]).hexdigest() != second['appended_sha256']):
+>                           raise ValueError('unapproved demo decision-log change')
+E                           ValueError: unapproved demo decision-log change
+
+src/serving_bundle.py:89: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-joydeep/pytest-65/test_portable_bundle_rejects_c3')
+change = 'unsupported_winner'
+
+    @pytest.mark.parametrize('change', ['weights_bytes', 'missing_weights_hash', 'missing_model_hash', 'unsupported_winner'])
+    def test_portable_bundle_rejects_corrupt_or_unbound_artifacts(tmp_path, change):
+        module = bundle_module()
+        prepare = importlib.import_module('scripts.12_prepare_serving')
+>       manifest = prepare.prepare_bundle(Path('configs/serving.yaml'), tmp_path)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_serving_bundle.py:121: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/12_prepare_serving.py:20: in prepare_bundle
+    verify_snapshot(snapshot)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+snapshot = {'source_code_sha256': '68a001f55650d758a69b09e789d6be55a6a0646b23baea2808bd8e9770841c56', 'source_files': {'src/__ini...e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b', ...}, 'phase3_status': 'passed with qualification', ...}
+root = PosixPath('/home/joydeep/Projects/VQA/.worktrees/phase4b-demo')
+
+    def verify_snapshot(snapshot, root=ROOT):
+        for name, expected in {**snapshot['source_files'], **snapshot['bindings']}.items():
+            try:
+                path = Path(root) / name
+                amendment_path = Path(root) / 'results/phase4a/packaging_amendment.json'
+                if name == 'DECISIONS.md' and amendment_path.is_file():
+                    amendment = json.loads(amendment_path.read_text())
+                    content = path.read_bytes()
+                    cut = amendment['prefix_bytes']
+                    second_path = Path(root) / 'results/phase4b/decision_amendment.json'
+                    end = len(content)
+                    second = None
+                    if second_path.is_file():
+                        second = json.loads(second_path.read_text())
+                        verify_file(amendment_path, second['packaging_amendment_sha256'])
+                        end = second['prefix_bytes']
+                        if (not isinstance(end, int) or not cut < end < len(content) or
+                                second['before_sha256'] != amendment['after_sha256'] or
+                                hashlib.sha256(content[:end]).hexdigest() != second['before_sha256'] or
+                                hashlib.sha256(content[end:]).hexdigest() != second['appended_sha256']):
+                            raise ValueError('unapproved demo decision-log change')
+                    if (not isinstance(cut, int) or not 0 < cut < end or
+                            amendment['before_sha256'] != expected or
+                            hashlib.sha256(content[:cut]).hexdigest() != expected or
+                            hashlib.sha256(content[cut:end]).hexdigest() != amendment['appended_sha256'] or
+                            hashlib.sha256(content[:end]).hexdigest() != amendment['after_sha256']):
+                        raise ValueError('unapproved decision-log change')
+                    verify_file(path, second['after_sha256'] if second else amendment['after_sha256'])
+                else:
+                    verify_file(path, expected)
+            except (ValueError, KeyError, TypeError) as exc:
+>               raise ValueError(f'historical identity changed: {name}') from exc
+E               ValueError: historical identity changed: DECISIONS.md
+
+src/serving_bundle.py:100: ValueError
+_________________ test_bundle_portable_from_other_working_tree _________________
+
+snapshot = {'source_code_sha256': '68a001f55650d758a69b09e789d6be55a6a0646b23baea2808bd8e9770841c56', 'source_files': {'src/__ini...e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b', ...}, 'phase3_status': 'passed with qualification', ...}
+root = PosixPath('/home/joydeep/Projects/VQA/.worktrees/phase4b-demo')
+
+    def verify_snapshot(snapshot, root=ROOT):
+        for name, expected in {**snapshot['source_files'], **snapshot['bindings']}.items():
+            try:
+                path = Path(root) / name
+                amendment_path = Path(root) / 'results/phase4a/packaging_amendment.json'
+                if name == 'DECISIONS.md' and amendment_path.is_file():
+                    amendment = json.loads(amendment_path.read_text())
+                    content = path.read_bytes()
+                    cut = amendment['prefix_bytes']
+                    second_path = Path(root) / 'results/phase4b/decision_amendment.json'
+                    end = len(content)
+                    second = None
+                    if second_path.is_file():
+                        second = json.loads(second_path.read_text())
+                        verify_file(amendment_path, second['packaging_amendment_sha256'])
+                        end = second['prefix_bytes']
+                        if (not isinstance(end, int) or not cut < end < len(content) or
+                                second['before_sha256'] != amendment['after_sha256'] or
+                                hashlib.sha256(content[:end]).hexdigest() != second['before_sha256'] or
+                                hashlib.sha256(content[end:]).hexdigest() != second['appended_sha256']):
+>                           raise ValueError('unapproved demo decision-log change')
+E                           ValueError: unapproved demo decision-log change
+
+src/serving_bundle.py:89: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-joydeep/pytest-65/test_bundle_portable_from_othe0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fa52f2a70d0>
+
+    def test_bundle_portable_from_other_working_tree(tmp_path, monkeypatch):
+        import shutil
+        module = bundle_module()
+        prepare = importlib.import_module('scripts.12_prepare_serving')
+        source = tmp_path / 'source'
+>       prepare.prepare_bundle(Path('configs/serving.yaml'), source)
+
+tests/test_serving_bundle.py:194: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/12_prepare_serving.py:20: in prepare_bundle
+    verify_snapshot(snapshot)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+snapshot = {'source_code_sha256': '68a001f55650d758a69b09e789d6be55a6a0646b23baea2808bd8e9770841c56', 'source_files': {'src/__ini...e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b', ...}, 'phase3_status': 'passed with qualification', ...}
+root = PosixPath('/home/joydeep/Projects/VQA/.worktrees/phase4b-demo')
+
+    def verify_snapshot(snapshot, root=ROOT):
+        for name, expected in {**snapshot['source_files'], **snapshot['bindings']}.items():
+            try:
+                path = Path(root) / name
+                amendment_path = Path(root) / 'results/phase4a/packaging_amendment.json'
+                if name == 'DECISIONS.md' and amendment_path.is_file():
+                    amendment = json.loads(amendment_path.read_text())
+                    content = path.read_bytes()
+                    cut = amendment['prefix_bytes']
+                    second_path = Path(root) / 'results/phase4b/decision_amendment.json'
+                    end = len(content)
+                    second = None
+                    if second_path.is_file():
+                        second = json.loads(second_path.read_text())
+                        verify_file(amendment_path, second['packaging_amendment_sha256'])
+                        end = second['prefix_bytes']
+                        if (not isinstance(end, int) or not cut < end < len(content) or
+                                second['before_sha256'] != amendment['after_sha256'] or
+                                hashlib.sha256(content[:end]).hexdigest() != second['before_sha256'] or
+                                hashlib.sha256(content[end:]).hexdigest() != second['appended_sha256']):
+                            raise ValueError('unapproved demo decision-log change')
+                    if (not isinstance(cut, int) or not 0 < cut < end or
+                            amendment['before_sha256'] != expected or
+                            hashlib.sha256(content[:cut]).hexdigest() != expected or
+                            hashlib.sha256(content[cut:end]).hexdigest() != amendment['appended_sha256'] or
+                            hashlib.sha256(content[:end]).hexdigest() != amendment['after_sha256']):
+                        raise ValueError('unapproved decision-log change')
+                    verify_file(path, second['after_sha256'] if second else amendment['after_sha256'])
+                else:
+                    verify_file(path, expected)
+            except (ValueError, KeyError, TypeError) as exc:
+>               raise ValueError(f'historical identity changed: {name}') from exc
+E               ValueError: historical identity changed: DECISIONS.md
+
+src/serving_bundle.py:100: ValueError
+_______________ test_reference_uses_full_refit_ridge_without_mos _______________
+
+snapshot = {'source_code_sha256': '68a001f55650d758a69b09e789d6be55a6a0646b23baea2808bd8e9770841c56', 'source_files': {'src/__ini...e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b', ...}, 'phase3_status': 'passed with qualification', ...}
+root = PosixPath('/home/joydeep/Projects/VQA/.worktrees/phase4b-demo')
+
+    def verify_snapshot(snapshot, root=ROOT):
+        for name, expected in {**snapshot['source_files'], **snapshot['bindings']}.items():
+            try:
+                path = Path(root) / name
+                amendment_path = Path(root) / 'results/phase4a/packaging_amendment.json'
+                if name == 'DECISIONS.md' and amendment_path.is_file():
+                    amendment = json.loads(amendment_path.read_text())
+                    content = path.read_bytes()
+                    cut = amendment['prefix_bytes']
+                    second_path = Path(root) / 'results/phase4b/decision_amendment.json'
+                    end = len(content)
+                    second = None
+                    if second_path.is_file():
+                        second = json.loads(second_path.read_text())
+                        verify_file(amendment_path, second['packaging_amendment_sha256'])
+                        end = second['prefix_bytes']
+                        if (not isinstance(end, int) or not cut < end < len(content) or
+                                second['before_sha256'] != amendment['after_sha256'] or
+                                hashlib.sha256(content[:end]).hexdigest() != second['before_sha256'] or
+                                hashlib.sha256(content[end:]).hexdigest() != second['appended_sha256']):
+>                           raise ValueError('unapproved demo decision-log change')
+E                           ValueError: unapproved demo decision-log change
+
+src/serving_bundle.py:89: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-joydeep/pytest-65/test_reference_uses_full_refit0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fa52f35db10>
+
+    def test_reference_uses_full_refit_ridge_without_mos(tmp_path, monkeypatch):
+        m = tool()
+        from src.serving_bundle import read_settings
+        config = read_settings(Path('configs/serving.yaml'))
+        monkeypatch.setattr(m, 'OUT', tmp_path)
+        original = m.load_sources
+        class NoMOS(dict):
+            def __getitem__(self, key):
+                assert key != 'mos', 'serving reference accessed MOS'
+                return super().__getitem__(key)
+        monkeypatch.setattr(m, 'load_sources', lambda path: {k: NoMOS(v) for k, v in original(path).items()})
+>       record = m.make_reference(config)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_serving_evidence.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/14_serving_check.py:116: in make_reference
+    context = research_inputs(config)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+scripts/14_serving_check.py:83: in research_inputs
+    verify_snapshot(snapshot)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+snapshot = {'source_code_sha256': '68a001f55650d758a69b09e789d6be55a6a0646b23baea2808bd8e9770841c56', 'source_files': {'src/__ini...e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b', ...}, 'phase3_status': 'passed with qualification', ...}
+root = PosixPath('/home/joydeep/Projects/VQA/.worktrees/phase4b-demo')
+
+    def verify_snapshot(snapshot, root=ROOT):
+        for name, expected in {**snapshot['source_files'], **snapshot['bindings']}.items():
+            try:
+                path = Path(root) / name
+                amendment_path = Path(root) / 'results/phase4a/packaging_amendment.json'
+                if name == 'DECISIONS.md' and amendment_path.is_file():
+                    amendment = json.loads(amendment_path.read_text())
+                    content = path.read_bytes()
+                    cut = amendment['prefix_bytes']
+                    second_path = Path(root) / 'results/phase4b/decision_amendment.json'
+                    end = len(content)
+                    second = None
+                    if second_path.is_file():
+                        second = json.loads(second_path.read_text())
+                        verify_file(amendment_path, second['packaging_amendment_sha256'])
+                        end = second['prefix_bytes']
+                        if (not isinstance(end, int) or not cut < end < len(content) or
+                                second['before_sha256'] != amendment['after_sha256'] or
+                                hashlib.sha256(content[:end]).hexdigest() != second['before_sha256'] or
+                                hashlib.sha256(content[end:]).hexdigest() != second['appended_sha256']):
+                            raise ValueError('unapproved demo decision-log change')
+                    if (not isinstance(cut, int) or not 0 < cut < end or
+                            amendment['before_sha256'] != expected or
+                            hashlib.sha256(content[:cut]).hexdigest() != expected or
+                            hashlib.sha256(content[cut:end]).hexdigest() != amendment['appended_sha256'] or
+                            hashlib.sha256(content[:end]).hexdigest() != amendment['after_sha256']):
+                        raise ValueError('unapproved decision-log change')
+                    verify_file(path, second['after_sha256'] if second else amendment['after_sha256'])
+                else:
+                    verify_file(path, expected)
+            except (ValueError, KeyError, TypeError) as exc:
+>               raise ValueError(f'historical identity changed: {name}') from exc
+E               ValueError: historical identity changed: DECISIONS.md
+
+src/serving_bundle.py:100: ValueError
+___________________ test_historical_evidence_never_rewritten ___________________
+
+snapshot = {'source_code_sha256': '68a001f55650d758a69b09e789d6be55a6a0646b23baea2808bd8e9770841c56', 'source_files': {'src/__ini...e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b', ...}, 'phase3_status': 'passed with qualification', ...}
+root = PosixPath('/home/joydeep/Projects/VQA/.worktrees/phase4b-demo')
+
+    def verify_snapshot(snapshot, root=ROOT):
+        for name, expected in {**snapshot['source_files'], **snapshot['bindings']}.items():
+            try:
+                path = Path(root) / name
+                amendment_path = Path(root) / 'results/phase4a/packaging_amendment.json'
+                if name == 'DECISIONS.md' and amendment_path.is_file():
+                    amendment = json.loads(amendment_path.read_text())
+                    content = path.read_bytes()
+                    cut = amendment['prefix_bytes']
+                    second_path = Path(root) / 'results/phase4b/decision_amendment.json'
+                    end = len(content)
+                    second = None
+                    if second_path.is_file():
+                        second = json.loads(second_path.read_text())
+                        verify_file(amendment_path, second['packaging_amendment_sha256'])
+                        end = second['prefix_bytes']
+                        if (not isinstance(end, int) or not cut < end < len(content) or
+                                second['before_sha256'] != amendment['after_sha256'] or
+                                hashlib.sha256(content[:end]).hexdigest() != second['before_sha256'] or
+                                hashlib.sha256(content[end:]).hexdigest() != second['appended_sha256']):
+>                           raise ValueError('unapproved demo decision-log change')
+E                           ValueError: unapproved demo decision-log change
+
+src/serving_bundle.py:89: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-joydeep/pytest-65/test_historical_evidence_never0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fa52f1d0050>
+
+    def test_historical_evidence_never_rewritten(tmp_path, monkeypatch):
+        m = tool()
+        from src.serving_bundle import read_settings
+        from src.features import sha256
+        config = read_settings(Path('configs/serving.yaml'))
+        paths = ['results/phase3/phase_gate.json', 'results/phase3/deployment.json',
+                 'results/phase4a/research_snapshot.json', 'DECISIONS.md', 'src/preprocess.py',
+                 'src/features.py', 'src/baselines.py', 'env/requirements.lock']
+        before = {p: sha256(p) for p in paths}
+        monkeypatch.setattr(m, 'OUT', tmp_path)
+>       m.make_reference(config)
+
+tests/test_serving_evidence.py:106: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/14_serving_check.py:116: in make_reference
+    context = research_inputs(config)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+scripts/14_serving_check.py:83: in research_inputs
+    verify_snapshot(snapshot)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+snapshot = {'source_code_sha256': '68a001f55650d758a69b09e789d6be55a6a0646b23baea2808bd8e9770841c56', 'source_files': {'src/__ini...e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b', ...}, 'phase3_status': 'passed with qualification', ...}
+root = PosixPath('/home/joydeep/Projects/VQA/.worktrees/phase4b-demo')
+
+    def verify_snapshot(snapshot, root=ROOT):
+        for name, expected in {**snapshot['source_files'], **snapshot['bindings']}.items():
+            try:
+                path = Path(root) / name
+                amendment_path = Path(root) / 'results/phase4a/packaging_amendment.json'
+                if name == 'DECISIONS.md' and amendment_path.is_file():
+                    amendment = json.loads(amendment_path.read_text())
+                    content = path.read_bytes()
+                    cut = amendment['prefix_bytes']
+                    second_path = Path(root) / 'results/phase4b/decision_amendment.json'
+                    end = len(content)
+                    second = None
+                    if second_path.is_file():
+                        second = json.loads(second_path.read_text())
+                        verify_file(amendment_path, second['packaging_amendment_sha256'])
+                        end = second['prefix_bytes']
+                        if (not isinstance(end, int) or not cut < end < len(content) or
+                                second['before_sha256'] != amendment['after_sha256'] or
+                                hashlib.sha256(content[:end]).hexdigest() != second['before_sha256'] or
+                                hashlib.sha256(content[end:]).hexdigest() != second['appended_sha256']):
+                            raise ValueError('unapproved demo decision-log change')
+                    if (not isinstance(cut, int) or not 0 < cut < end or
+                            amendment['before_sha256'] != expected or
+                            hashlib.sha256(content[:cut]).hexdigest() != expected or
+                            hashlib.sha256(content[cut:end]).hexdigest() != amendment['appended_sha256'] or
+                            hashlib.sha256(content[:end]).hexdigest() != amendment['after_sha256']):
+                        raise ValueError('unapproved decision-log change')
+                    verify_file(path, second['after_sha256'] if second else amendment['after_sha256'])
+                else:
+                    verify_file(path, expected)
+            except (ValueError, KeyError, TypeError) as exc:
+>               raise ValueError(f'historical identity changed: {name}') from exc
+E               ValueError: historical identity changed: DECISIONS.md
+
+src/serving_bundle.py:100: ValueError
+____________ test_parity_failure_stops_and_preserves_failing_video _____________
+
+snapshot = {'source_code_sha256': '68a001f55650d758a69b09e789d6be55a6a0646b23baea2808bd8e9770841c56', 'source_files': {'src/__ini...e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b', ...}, 'phase3_status': 'passed with qualification', ...}
+root = PosixPath('/home/joydeep/Projects/VQA/.worktrees/phase4b-demo')
+
+    def verify_snapshot(snapshot, root=ROOT):
+        for name, expected in {**snapshot['source_files'], **snapshot['bindings']}.items():
+            try:
+                path = Path(root) / name
+                amendment_path = Path(root) / 'results/phase4a/packaging_amendment.json'
+                if name == 'DECISIONS.md' and amendment_path.is_file():
+                    amendment = json.loads(amendment_path.read_text())
+                    content = path.read_bytes()
+                    cut = amendment['prefix_bytes']
+                    second_path = Path(root) / 'results/phase4b/decision_amendment.json'
+                    end = len(content)
+                    second = None
+                    if second_path.is_file():
+                        second = json.loads(second_path.read_text())
+                        verify_file(amendment_path, second['packaging_amendment_sha256'])
+                        end = second['prefix_bytes']
+                        if (not isinstance(end, int) or not cut < end < len(content) or
+                                second['before_sha256'] != amendment['after_sha256'] or
+                                hashlib.sha256(content[:end]).hexdigest() != second['before_sha256'] or
+                                hashlib.sha256(content[end:]).hexdigest() != second['appended_sha256']):
+>                           raise ValueError('unapproved demo decision-log change')
+E                           ValueError: unapproved demo decision-log change
+
+src/serving_bundle.py:89: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-joydeep/pytest-65/test_parity_failure_stops_and_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fa52f274310>
+
+    def test_parity_failure_stops_and_preserves_failing_video(tmp_path, monkeypatch):
+        import json
+        m = tool()
+        from src.serving_bundle import read_settings
+        config = read_settings(Path('configs/serving.yaml'))
+        monkeypatch.setattr(m, 'OUT', tmp_path)
+>       reference = m.make_reference(config)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_serving_evidence.py:171: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/14_serving_check.py:116: in make_reference
+    context = research_inputs(config)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+scripts/14_serving_check.py:83: in research_inputs
+    verify_snapshot(snapshot)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+snapshot = {'source_code_sha256': '68a001f55650d758a69b09e789d6be55a6a0646b23baea2808bd8e9770841c56', 'source_files': {'src/__ini...e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b', ...}, 'phase3_status': 'passed with qualification', ...}
+root = PosixPath('/home/joydeep/Projects/VQA/.worktrees/phase4b-demo')
+
+    def verify_snapshot(snapshot, root=ROOT):
+        for name, expected in {**snapshot['source_files'], **snapshot['bindings']}.items():
+            try:
+                path = Path(root) / name
+                amendment_path = Path(root) / 'results/phase4a/packaging_amendment.json'
+                if name == 'DECISIONS.md' and amendment_path.is_file():
+                    amendment = json.loads(amendment_path.read_text())
+                    content = path.read_bytes()
+                    cut = amendment['prefix_bytes']
+                    second_path = Path(root) / 'results/phase4b/decision_amendment.json'
+                    end = len(content)
+                    second = None
+                    if second_path.is_file():
+                        second = json.loads(second_path.read_text())
+                        verify_file(amendment_path, second['packaging_amendment_sha256'])
+                        end = second['prefix_bytes']
+                        if (not isinstance(end, int) or not cut < end < len(content) or
+                                second['before_sha256'] != amendment['after_sha256'] or
+                                hashlib.sha256(content[:end]).hexdigest() != second['before_sha256'] or
+                                hashlib.sha256(content[end:]).hexdigest() != second['appended_sha256']):
+                            raise ValueError('unapproved demo decision-log change')
+                    if (not isinstance(cut, int) or not 0 < cut < end or
+                            amendment['before_sha256'] != expected or
+                            hashlib.sha256(content[:cut]).hexdigest() != expected or
+                            hashlib.sha256(content[cut:end]).hexdigest() != amendment['appended_sha256'] or
+                            hashlib.sha256(content[:end]).hexdigest() != amendment['after_sha256']):
+                        raise ValueError('unapproved decision-log change')
+                    verify_file(path, second['after_sha256'] if second else amendment['after_sha256'])
+                else:
+                    verify_file(path, expected)
+            except (ValueError, KeyError, TypeError) as exc:
+>               raise ValueError(f'historical identity changed: {name}') from exc
+E               ValueError: historical identity changed: DECISIONS.md
+
+src/serving_bundle.py:100: ValueError
+=============================== warnings summary ===============================
+tests/test_demo_api.py::test_unknown_id_is_404
+  /home/joydeep/Projects/VQA/.worktrees/phase4b-demo/.venv-serving/lib/python3.11/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_phase0_preprocess.py::test_slowfast_matches_installed_reference_on_synthetic_pixels
+FAILED tests/test_phase1_pilot.py::test_cli_repairs_interrupted_protocol_freeze_without_refitting
+FAILED tests/test_predict_cli.py::test_cpu_fp32_four_threads_and_exact_shared_calls
+FAILED tests/test_serving_bundle.py::test_runtime_bundle_needs_no_cache_labels_or_dino
+FAILED tests/test_serving_bundle.py::test_manifest_cannot_rebind_preprocessing_or_sources
+FAILED tests/test_serving_bundle.py::test_portable_bundle_rejects_corrupt_or_unbound_artifacts[weights_bytes]
+FAILED tests/test_serving_bundle.py::test_portable_bundle_rejects_corrupt_or_unbound_artifacts[missing_weights_hash]
+FAILED tests/test_serving_bundle.py::test_portable_bundle_rejects_corrupt_or_unbound_artifacts[missing_model_hash]
+FAILED tests/test_serving_bundle.py::test_portable_bundle_rejects_corrupt_or_unbound_artifacts[unsupported_winner]
+FAILED tests/test_serving_bundle.py::test_bundle_portable_from_other_working_tree
+FAILED tests/test_serving_evidence.py::test_reference_uses_full_refit_ridge_without_mos
+FAILED tests/test_serving_evidence.py::test_historical_evidence_never_rewritten
+FAILED tests/test_serving_evidence.py::test_parity_failure_stops_and_preserves_failing_video
+13 failed, 364 passed, 1 warning in 46.77s

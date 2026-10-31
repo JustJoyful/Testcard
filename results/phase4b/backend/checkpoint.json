@@ -1,0 +1,78 @@
+{
+  "status": "backend_verified_frontend_paused",
+  "phase4b_complete": false,
+  "generated_at": "2026-10-30T20:27:36.673554Z",
+  "branch": "phase4b-demo",
+  "worktree": "/home/joydeep/Projects/VQA/.worktrees/phase4b-demo",
+  "commits_created": false,
+  "baseline_manifest_sha256": "024aa7cbee3e454ab5b4ff4e475eee60841e48e4b45f2708c526e7f46bf2569d",
+  "phase4a_gate_sha256": "8ac1fd35d6fc108c01cab5f22c711f6b58eee49e81b756d1993d45973f56df59",
+  "original_image_id": "sha256:7414a60bd7fe92ffe8fa5f8c5fde06bae0f33ba2b0f8d7fc2b57ab783e9e1950",
+  "tests": {
+    "command": ".venv-serving/bin/python -m pytest -q -k 'not slowfast_matches_installed_reference_on_synthetic_pixels and not cli_repairs_interrupted_protocol_freeze_without_refitting'",
+    "exit_code": 0,
+    "summary": "380 passed, 2 deselected, 1 warning in 33.73s",
+    "log_sha256": "cbab19ad47c8c239059a2baf799c4e5feedf81e5737d944eb126a6c7e289f887",
+    "focused_summary": "129 passed, 1 warning in 30.77s",
+    "full_suite_unqualified": true,
+    "exclusions": [
+      {
+        "test": "tests/test_phase0_preprocess.py::test_slowfast_matches_installed_reference_on_synthetic_pixels",
+        "reason": "pytorchvideo is not installed in the serving environment"
+      },
+      {
+        "test": "tests/test_phase1_pilot.py::test_cli_repairs_interrupted_protocol_freeze_without_refitting",
+        "reason": "Existing test hits the real October 28 deadline and appends to repository DECISIONS; exact approved log bytes restored"
+      }
+    ]
+  },
+  "smoke": {
+    "log_sha256": "150bacf5492a98291c60a8134691935f4a515057624f39563ec1869fee86e96d",
+    "json_sha256": "97c1ad06069306f5868b493a3fe4d767d2336d2a9f468b4e359078ee58460c1a",
+    "score_absolute_difference": 0.0,
+    "private_video_cleanup": true
+  },
+  "review": {
+    "fresh_reviewer": "gpt-6-astra",
+    "important_findings": 2,
+    "fixed": 2,
+    "deferred_minors": []
+  },
+  "source_sha256": {
+    "scripts/15_demo_check.py": "e5c47c3a130daf9b01f37640205cdc62c1e819fffd3db9197fa8ad0781fd233e",
+    "serving/app.py": "f5c23c13b1891e0657f55662e3563aa28267a85f6bf42b40eb0c2286f1262c21",
+    "serving/jobs.py": "85c8e52f972cc83d29fcec4d960ae6ea557000a13db32cbb5ac6ab6c48361fe3",
+    "src/serving_bundle.py": "fcce484bf0101fb45592ebbff4d59183505fe1e1fb6081d5ac81a9058c78eda6",
+    "src/predict.py": "afb3aa37268b399d2d50e56bb31d4ba85ade60eb0fcfd0817c184ce26361831a",
+    "serving/index.html": "e84e5ccf8a8d7135a019e02c183f314af953b3cd2596ea69f7688dddd4fdbbe7",
+    "tests/test_demo_api.py": "e50f71c19bf60381ae61d39d59ce1d9ad2e4d177b9670bf04a6d0cdf2a738566",
+    "tests/test_demo_jobs.py": "cf71c23b8ade468d2b9550e61f5fb36e292486a5102f1b005c1ea3dea32ea721",
+    "tests/test_demo_evidence.py": "f388f1c467eb82869e76719f45d13edc8fe4d0db3c0c500abadb5a787d640ba2",
+    "tests/test_serving_api.py": "dc559c62d97aa5f515ca938073fe33aaca96b0f30986d003318fa5a8bb8294aa",
+    "tests/test_serving_bundle.py": "896a59697a020af571860e71f0d8f0f7a841e3cee8b4a7a0f4cdcc352874947b",
+    "pytest.ini": "c809c969ec7e11b9ff37784e9c6fcc0b7c5148d168e18b05aed797e03fbd6ead",
+    "DESIGN.md": "65e998342b1712f0d16b6380ca798dd622671f1bff592d05c159bfd7885e7574",
+    "PHASES.md": "f64d7dedd3134d018c5aaea3c7ef2f4bd2b4d87053dfff73da9c3bb007ee3b7c",
+    "DECISIONS.md": "e4e88ab96770266454fb6c70890fc7d630534d6c6a41eedbebf32b53d0bee4a3",
+    "docs/phase4b-contract.md": "d7e6aadfcb61002620a625a52245eb13facda723ece5128b4552c092394ac352",
+    "results/phase4b/decision_amendment.json": "11982eb1ac2c1279e8cf3674ac61a935a0ff04327e7cf115f9b7453033b385ae"
+  },
+  "artifact_sha256": {
+    "results/phase4b/backend/broad-tests.log": "cbab19ad47c8c239059a2baf799c4e5feedf81e5737d944eb126a6c7e289f887",
+    "results/phase4b/backend/commands.txt": "cb9a6f47f02f81be309af44148f59b9cbd22c4a60fe83a6983a7711d020d47fc",
+    "results/phase4b/backend/full-suite-diagnostic.log": "244f5c1c8b31471456c720de6d0c3a92a4e3be57b689970db9bf66a7d9a0d0a6",
+    "results/phase4b/backend/http_smoke.json": "97c1ad06069306f5868b493a3fe4d767d2336d2a9f468b4e359078ee58460c1a",
+    "results/phase4b/backend/http_smoke.log": "150bacf5492a98291c60a8134691935f4a515057624f39563ec1869fee86e96d",
+    "results/phase4b/backend/http_smoke.py": "d42d230756389aa06370063737915ba3e42645745b10f82c5d8e1ebc1680cee6",
+    "results/phase4b/backend/navigation_check.json": "a9b69ec1795665e46154f42bf226614cd810bb55d774ddcf301ea463aa706ffe",
+    "results/phase4b/backend/review-fixes-red.log": "e29d2f87de00f81ed7a4bfde53936b3aebfad0747ccf49dfe99b3368d1fd2d93",
+    "results/phase4b/backend/review.md": "de2fe8f43cb818cbdec1de0162a5c39f28a9312871532a20ec80cc5743a2d630",
+    "results/phase4b/backend/server.log": "7080960e068574104acc2524bbde522dc6bc467205d06cf79e4653a8ed4b3a13",
+    "results/phase4b/backend/task1-tests.log": "e2f484fad6f83edd22b75fecac8ac1b49c66726445643f9370e2a00b096e7d24",
+    "results/phase4b/backend/tests.log": "74e1574adeabaa2bba4ac5d6fefaeed6c5e095c0164e182b9dc3bc562ee4aa90"
+  },
+  "frontend_resume_received": false,
+  "frontend_directory_exists": false,
+  "phase3_status": "passed with qualification",
+  "control_status": "failed"
+}

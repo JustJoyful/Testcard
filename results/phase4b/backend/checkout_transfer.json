@@ -1,0 +1,23 @@
+{
+  "source_worktree": "/home/joydeep/Projects/VQA/.worktrees/phase4b-demo",
+  "destination_checkout": "/home/joydeep/Projects/VQA",
+  "branch": "main",
+  "source_sha256": {
+    "DECISIONS.md": "e4e88ab96770266454fb6c70890fc7d630534d6c6a41eedbebf32b53d0bee4a3",
+    "serving/app.py": "f5c23c13b1891e0657f55662e3563aa28267a85f6bf42b40eb0c2286f1262c21",
+    "src/serving_bundle.py": "fcce484bf0101fb45592ebbff4d59183505fe1e1fb6081d5ac81a9058c78eda6",
+    "tests/test_serving_api.py": "dc559c62d97aa5f515ca938073fe33aaca96b0f30986d003318fa5a8bb8294aa",
+    "tests/test_serving_bundle.py": "896a59697a020af571860e71f0d8f0f7a841e3cee8b4a7a0f4cdcc352874947b",
+    "DESIGN.md": "65e998342b1712f0d16b6380ca798dd622671f1bff592d05c159bfd7885e7574",
+    "PHASES.md": "f64d7dedd3134d018c5aaea3c7ef2f4bd2b4d87053dfff73da9c3bb007ee3b7c",
+    "docs/phase4b-contract.md": "d7e6aadfcb61002620a625a52245eb13facda723ece5128b4552c092394ac352",
+    "pytest.ini": "c809c969ec7e11b9ff37784e9c6fcc0b7c5148d168e18b05aed797e03fbd6ead",
+    "scripts/15_demo_check.py": "e5c47c3a130daf9b01f37640205cdc62c1e819fffd3db9197fa8ad0781fd233e",
+    "serving/jobs.py": "85c8e52f972cc83d29fcec4d960ae6ea557000a13db32cbb5ac6ab6c48361fe3",
+    "tests/test_demo_api.py": "e50f71c19bf60381ae61d39d59ce1d9ad2e4d177b9670bf04a6d0cdf2a738566",
+    "tests/test_demo_evidence.py": "f388f1c467eb82869e76719f45d13edc8fe4d0db3c0c500abadb5a787d640ba2",
+    "tests/test_demo_jobs.py": "cf71c23b8ade468d2b9550e61f5fb36e292486a5102f1b005c1ea3dea32ea721"
+  },
+  "original_checkpoint_sha256": "7fb52532b3650616130afb7ba50da4c79c9e970b8679781a60cba309ad848eca",
+  "historical_evidence_preserved": true
+}

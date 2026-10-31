@@ -1,0 +1,12 @@
+{
+  "repository": "https://github.com/JustJoyful/VQA",
+  "remote_verified": true,
+  "private": true,
+  "default_branch": "main",
+  "readme_remote_status": 404,
+  "local_readme_anchor": "research-reports",
+  "proposed_results_target": "in-page Results section linking saved reports; needs explicit checkpoint agreement",
+  "proposed_method_target": "in-page Method section; needs explicit checkpoint agreement",
+  "github_target": "https://github.com/JustJoyful/VQA",
+  "frontend_resume_received": false
+}

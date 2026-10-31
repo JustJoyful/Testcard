@@ -1,0 +1,149 @@
+......FFFFF                                                              [100%]
+=================================== FAILURES ===================================
+______ test_existing_baseline_rederives_required_bindings[source_roster] _______
+
+baseline_tree = (PosixPath('/tmp/pytest-of-joydeep/pytest-68/test_existing_baseline_rederiv0/repo'), {'status': 'passed', 'image_id': ...badd'}, 'documentation_sha256': {'NOTES.md': 'ab5aa97074c454a0632057e704220d9a6678fbf773a0a5806fc09b8173b07309'}, ...})
+tmp_path = PosixPath('/tmp/pytest-of-joydeep/pytest-68/test_existing_baseline_rederiv0')
+change = 'source_roster'
+
+    @pytest.mark.parametrize('change', ['source_roster', 'reference_roster', 'different_gate', 'rehashed_source'])
+    def test_existing_baseline_rederives_required_bindings(baseline_tree, tmp_path, change):
+        root, _ = baseline_tree
+        module = importlib.import_module('scripts.15_demo_check')
+        destination = tmp_path / 'baseline'
+        module.capture_baseline(root, destination)
+        record = destination / 'manifest.json'
+        manifest = json.loads(record.read_text())
+        if change == 'source_roster':
+            del manifest['files_sha256']['src/original.py']
+            (destination / 'files/src/original.py').unlink()
+        if change == 'reference_roster':
+            manifest['references_sha256'] = {}
+        if change == 'rehashed_source':
+            source = destination / 'files/src/original.py'
+            source.write_text('altered source')
+            manifest['files_sha256']['src/original.py'] = sha256(source)
+        if change == 'different_gate':
+            gate = json.loads((root / 'results/phase4a/phase_gate.json').read_text())
+            gate['image_id'] = 'sha256:' + '2' * 64
+            (root / 'results/phase4a/phase_gate.json').write_text(json.dumps(gate))
+        record.write_text(json.dumps(manifest))
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_demo_evidence.py:96: Failed
+_____ test_existing_baseline_rederives_required_bindings[reference_roster] _____
+
+baseline_tree = (PosixPath('/tmp/pytest-of-joydeep/pytest-68/test_existing_baseline_rederiv1/repo'), {'status': 'passed', 'image_id': ...badd'}, 'documentation_sha256': {'NOTES.md': 'ab5aa97074c454a0632057e704220d9a6678fbf773a0a5806fc09b8173b07309'}, ...})
+tmp_path = PosixPath('/tmp/pytest-of-joydeep/pytest-68/test_existing_baseline_rederiv1')
+change = 'reference_roster'
+
+    @pytest.mark.parametrize('change', ['source_roster', 'reference_roster', 'different_gate', 'rehashed_source'])
+    def test_existing_baseline_rederives_required_bindings(baseline_tree, tmp_path, change):
+        root, _ = baseline_tree
+        module = importlib.import_module('scripts.15_demo_check')
+        destination = tmp_path / 'baseline'
+        module.capture_baseline(root, destination)
+        record = destination / 'manifest.json'
+        manifest = json.loads(record.read_text())
+        if change == 'source_roster':
+            del manifest['files_sha256']['src/original.py']
+            (destination / 'files/src/original.py').unlink()
+        if change == 'reference_roster':
+            manifest['references_sha256'] = {}
+        if change == 'rehashed_source':
+            source = destination / 'files/src/original.py'
+            source.write_text('altered source')
+            manifest['files_sha256']['src/original.py'] = sha256(source)
+        if change == 'different_gate':
+            gate = json.loads((root / 'results/phase4a/phase_gate.json').read_text())
+            gate['image_id'] = 'sha256:' + '2' * 64
+            (root / 'results/phase4a/phase_gate.json').write_text(json.dumps(gate))
+        record.write_text(json.dumps(manifest))
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_demo_evidence.py:96: Failed
+______ test_existing_baseline_rederives_required_bindings[different_gate] ______
+
+baseline_tree = (PosixPath('/tmp/pytest-of-joydeep/pytest-68/test_existing_baseline_rederiv2/repo'), {'status': 'passed', 'image_id': ...badd'}, 'documentation_sha256': {'NOTES.md': 'ab5aa97074c454a0632057e704220d9a6678fbf773a0a5806fc09b8173b07309'}, ...})
+tmp_path = PosixPath('/tmp/pytest-of-joydeep/pytest-68/test_existing_baseline_rederiv2')
+change = 'different_gate'
+
+    @pytest.mark.parametrize('change', ['source_roster', 'reference_roster', 'different_gate', 'rehashed_source'])
+    def test_existing_baseline_rederives_required_bindings(baseline_tree, tmp_path, change):
+        root, _ = baseline_tree
+        module = importlib.import_module('scripts.15_demo_check')
+        destination = tmp_path / 'baseline'
+        module.capture_baseline(root, destination)
+        record = destination / 'manifest.json'
+        manifest = json.loads(record.read_text())
+        if change == 'source_roster':
+            del manifest['files_sha256']['src/original.py']
+            (destination / 'files/src/original.py').unlink()
+        if change == 'reference_roster':
+            manifest['references_sha256'] = {}
+        if change == 'rehashed_source':
+            source = destination / 'files/src/original.py'
+            source.write_text('altered source')
+            manifest['files_sha256']['src/original.py'] = sha256(source)
+        if change == 'different_gate':
+            gate = json.loads((root / 'results/phase4a/phase_gate.json').read_text())
+            gate['image_id'] = 'sha256:' + '2' * 64
+            (root / 'results/phase4a/phase_gate.json').write_text(json.dumps(gate))
+        record.write_text(json.dumps(manifest))
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_demo_evidence.py:96: Failed
+_____ test_existing_baseline_rederives_required_bindings[rehashed_source] ______
+
+baseline_tree = (PosixPath('/tmp/pytest-of-joydeep/pytest-68/test_existing_baseline_rederiv3/repo'), {'status': 'passed', 'image_id': ...badd'}, 'documentation_sha256': {'NOTES.md': 'ab5aa97074c454a0632057e704220d9a6678fbf773a0a5806fc09b8173b07309'}, ...})
+tmp_path = PosixPath('/tmp/pytest-of-joydeep/pytest-68/test_existing_baseline_rederiv3')
+change = 'rehashed_source'
+
+    @pytest.mark.parametrize('change', ['source_roster', 'reference_roster', 'different_gate', 'rehashed_source'])
+    def test_existing_baseline_rederives_required_bindings(baseline_tree, tmp_path, change):
+        root, _ = baseline_tree
+        module = importlib.import_module('scripts.15_demo_check')
+        destination = tmp_path / 'baseline'
+        module.capture_baseline(root, destination)
+        record = destination / 'manifest.json'
+        manifest = json.loads(record.read_text())
+        if change == 'source_roster':
+            del manifest['files_sha256']['src/original.py']
+            (destination / 'files/src/original.py').unlink()
+        if change == 'reference_roster':
+            manifest['references_sha256'] = {}
+        if change == 'rehashed_source':
+            source = destination / 'files/src/original.py'
+            source.write_text('altered source')
+            manifest['files_sha256']['src/original.py'] = sha256(source)
+        if change == 'different_gate':
+            gate = json.loads((root / 'results/phase4a/phase_gate.json').read_text())
+            gate['image_id'] = 'sha256:' + '2' * 64
+            (root / 'results/phase4a/phase_gate.json').write_text(json.dumps(gate))
+        record.write_text(json.dumps(manifest))
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_demo_evidence.py:96: Failed
+____________ test_initial_baseline_rejects_unapproved_weight_bytes _____________
+
+baseline_tree = (PosixPath('/tmp/pytest-of-joydeep/pytest-68/test_initial_baseline_rejects_0/repo'), {'status': 'passed', 'image_id': ...badd'}, 'documentation_sha256': {'NOTES.md': 'ab5aa97074c454a0632057e704220d9a6678fbf773a0a5806fc09b8173b07309'}, ...})
+tmp_path = PosixPath('/tmp/pytest-of-joydeep/pytest-68/test_initial_baseline_rejects_0')
+
+    def test_initial_baseline_rejects_unapproved_weight_bytes(baseline_tree, tmp_path):
+        root, _ = baseline_tree
+        (root / 'weights.pth').write_bytes(b'corrupt backbone')
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_demo_evidence.py:103: Failed
+=========================== short test summary info ============================
+FAILED tests/test_demo_evidence.py::test_existing_baseline_rederives_required_bindings[source_roster]
+FAILED tests/test_demo_evidence.py::test_existing_baseline_rederives_required_bindings[reference_roster]
+FAILED tests/test_demo_evidence.py::test_existing_baseline_rederives_required_bindings[different_gate]
+FAILED tests/test_demo_evidence.py::test_existing_baseline_rederives_required_bindings[rehashed_source]
+FAILED tests/test_demo_evidence.py::test_initial_baseline_rejects_unapproved_weight_bytes
+5 failed, 6 passed in 1.70s

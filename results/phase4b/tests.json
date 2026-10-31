@@ -1,0 +1,157 @@
+{
+  "runs": {
+    "serving": {
+      "command": [
+        ".venv-serving/bin/python",
+        "-m",
+        "pytest",
+        "tests/test_predict_cli.py",
+        "tests/test_serving_bundle.py",
+        "tests/test_serving_api.py",
+        "tests/test_serving_evidence.py",
+        "tests/test_demo_jobs.py",
+        "tests/test_demo_api.py",
+        "tests/test_demo_evidence.py",
+        "-q"
+      ],
+      "cwd": ".",
+      "environment": [],
+      "exit_code": 0,
+      "log": "results/phase4b/tests/serving.log",
+      "log_sha256": "31c4e1501a4dc9d6751d77dde0648818563418f31f4fa49ecc49839f672ce1e8",
+      "summary": [
+        "",
+        "-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html",
+        "146 passed, 1 warning in 27.66s"
+      ]
+    },
+    "node": {
+      "command": [
+        "npm",
+        "test"
+      ],
+      "cwd": "serving/web",
+      "environment": [],
+      "exit_code": 0,
+      "log": "results/phase4b/tests/node.log",
+      "log_sha256": "dc0199a20202b0222c61b9df53d8d6d410d5f4a59fadb7c2f9aa88c82518c9cd",
+      "summary": [
+        "\u2139 skipped 0",
+        "\u2139 todo 0",
+        "\u2139 duration_ms 83.978146"
+      ]
+    },
+    "browser": {
+      "command": [
+        "npx",
+        "playwright",
+        "test"
+      ],
+      "cwd": "serving/web",
+      "environment": [],
+      "exit_code": 0,
+      "log": "results/phase4b/tests/browser.log",
+      "log_sha256": "0e700ec1678d96d278eaaec90f58d0485c40a7365790e6db3d9fb34ae69c3cf1",
+      "summary": [
+        "",
+        "  1 skipped",
+        "  34 passed (19.0s)"
+      ]
+    },
+    "container_browser": {
+      "command": [
+        "npx",
+        "playwright",
+        "test"
+      ],
+      "cwd": "serving/web",
+      "environment": [
+        "VQA_CONTAINER_URL",
+        "VQA_REAL_VIDEO"
+      ],
+      "exit_code": 0,
+      "log": "results/phase4b/tests/container_browser.log",
+      "log_sha256": "9788ec4375d1c72e7c8b7a60f560a5976565e1bfa581c8e1603a23dbc44d2e3d",
+      "summary": [
+        "  \u2713  3 tests/browser/container.spec.js:39:1 \u203a a real clip is scored end to end offline (10.7s)",
+        "",
+        "  3 passed (11.3s)"
+      ]
+    },
+    "lighthouse": {
+      "command": [
+        "npx",
+        "lighthouse",
+        "http://127.0.0.1:8001/",
+        "--only-categories=accessibility",
+        "--preset=desktop",
+        "--output=json",
+        "--output-path=/home/joydeep/Projects/VQA/results/phase4b/lighthouse.json",
+        "--chrome-flags=--headless=new",
+        "--quiet"
+      ],
+      "cwd": "serving/web",
+      "environment": [
+        "CHROME_PATH"
+      ],
+      "exit_code": 0,
+      "log": "results/phase4b/tests/lighthouse.log",
+      "log_sha256": "9cc5521ed2a590bd72b3a256bccd5481a621bb59ef431f58fb8c30979c47aa92",
+      "summary": []
+    }
+  },
+  "playwright": "Version 1.64.1",
+  "chromium": "/home/joydeep/.cache/ms-playwright/chromium-1248/chrome-linux64/chrome",
+  "tested_sha256": {
+    "src/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/preprocess.py": "804c8d89cb5e8b163d6dc6e97d5d618a53c198c6aa6e4c9915dc5428ee46320b",
+    "src/features.py": "a5ec35b5c3896b53e6fd59bbcc7c52db31409292d667ceff83a8302dc616eabc",
+    "src/baselines.py": "df7bb24968bae095b195802d0227b991e832ff748a4c2b23d4ab9afb9cac53b1",
+    "src/metrics.py": "7027757f69425b33b5fd7f34ca0bba9f7fc00c03c31ba5b957d55a78795d47d9",
+    "src/cache.py": "e774d745bd6a0afceba405d300495bdf2e2be2793a8e26613cc0a8253ea8d72c",
+    "src/serving_bundle.py": "1c7c8d0b06e5523bf189598f96db657e2920ecfdbddd7ec2c305dcde0e89cf74",
+    "src/predict.py": "afb3aa37268b399d2d50e56bb31d4ba85ade60eb0fcfd0817c184ce26361831a",
+    "serving/__init__.py": "d4fa20189cc8e6dc05cdd676576016f616d1f5cceeb1aeae947933e0d59d5960",
+    "serving/app.py": "44b89719fe5009cadf643e4b283da766892afa8d6a22734b0f404e53d60033ef",
+    "serving/index.html": "e84e5ccf8a8d7135a019e02c183f314af953b3cd2596ea69f7688dddd4fdbbe7",
+    "serving/jobs.py": "85c8e52f972cc83d29fcec4d960ae6ea557000a13db32cbb5ac6ab6c48361fe3",
+    "tests/test_predict_cli.py": "65b2d3cd44164354c590336bd9944be54ae3607ccbda7b83dc7a587143e1492c",
+    "tests/test_serving_bundle.py": "603a01104897a83ffcec33c156ac3cc7ae6f82db017bec62f1c4e80fb7a5709d",
+    "tests/test_serving_api.py": "82c4990064b51124f7fa4e6fe0b084679e22471e5b3a9278fd4c8746e67660c6",
+    "tests/test_serving_evidence.py": "5c5ceceae740461f03d6b0fbf48b28fecfb8db56719dc20d4869d211b7084adb",
+    "tests/test_demo_jobs.py": "cf71c23b8ade468d2b9550e61f5fb36e292486a5102f1b005c1ea3dea32ea721",
+    "tests/test_demo_api.py": "441a8184f46298ceb5d93d71cc39686e9039bd96605a8504a6854c23e87799fe",
+    "tests/test_demo_evidence.py": "91df2ac4bbe68423e5304add37f8fed4f63056d2ed7354fcd7f9408ddce10699",
+    "Dockerfile": "e1042b223bae139c37f40b38f140895003bdfd67a5c1273310465bfb6f1bc9a5",
+    ".dockerignore": "226fdef91e9a0adbeee6b828954a02aec5d9e39f1346e379b8060ac954a336da",
+    "env/serving.lock": "6abc6f6a6dfeb53e88703bb3c16412c7f68a36904523b5651d11fc121c5dbc3a",
+    "configs/serving.yaml": "9c252757b4ab1013d0723f6aa54e0b306605052f11a10500a049767c1988bbb0",
+    "artifacts/serving/manifest.json": "96ea41ecb8818c147611a058700de9f44ca0acd5c8009eec9c8c4f3372e31ce1",
+    "DESIGN.md": "65e998342b1712f0d16b6380ca798dd622671f1bff592d05c159bfd7885e7574",
+    "DECISIONS.md": "5552961812ed51c44b8e3d13900c92116cb635a54633d12e36836d0a90d4e58b",
+    "results/phase4b/decision_amendment.json": "11982eb1ac2c1279e8cf3674ac61a935a0ff04327e7cf115f9b7453033b385ae",
+    "results/phase4b/frontend_checkpoint.json": "31648360445c62e59960b306e035922254fac20287a1a7119102ec4bcf1b4b84",
+    "serving/web/.env": "41cd1178eb5254f85f69b5e99c084660f28af68184c1efd7f6c8de7f979c09a8",
+    "serving/web/index.html": "a18b011bb702500e54b3bf02560001b81ca8974b785671aeb0aea1898fb4e373",
+    "serving/web/package.json": "61cbe2013266a226978c401c6deb8bc9b1a02d757a86eeec7c554321f4a27801",
+    "serving/web/package-lock.json": "9b7e683c832b73bab5f8efc7d31812b5182dcf757c20310fc6cf4450cd6fe9b3",
+    "serving/web/vite.config.js": "b6bf9de2d430f6cae682c13360abf9686b4ec76d1de66c7a8d9463e809b8ce96",
+    "serving/web/src/styles.css": "15809660d5bc13df6cbd2c64a13d52e98f59e5ec89c3f04e222879682e058967",
+    "serving/web/src/main.js": "f3489f447f531fceacf2daaaf41e66411399610022b331d655d46696e2b92107",
+    "serving/web/src/state.js": "ec80b32adcbeff6ba7f4da768df9f9953c91eefce72dffc3f408d51e9c4170bb",
+    "serving/web/src/api.js": "727b6ae7868172bdcea32ca8ef785369921b26cc68e87e250b156f5fe7588681",
+    "serving/web/src/mock.js": "6112c2a5060641cc190423d00e3eb2fbfa316a88efc622295e9cf50f8cd408e1",
+    "serving/web/src/format.js": "70b263e60365de4968ed04d02d213f3f58cc5461ebd271beab7182c1deba8b6f",
+    "serving/web/src/result.js": "920a7b43feb2e30fc53c1e8e650e24cebfad3c85dbc8a15d597521a57446edbf",
+    "serving/web/src/json-view.js": "297752912e6f225791a91ffb40c3133717ba8a6011e316a23318e39b4c7a9ec0",
+    "serving/web/src/tv.js": "d18382b4eed2b2150641524af349d568867f389fcfdc142a82c3875fe6aca57d",
+    "scripts/14_serving_check.py": "17246ac941e1efcf41d6e468e98393cc598553b0ae4b90080f3706f420284aa6",
+    "scripts/15_demo_check.py": "c29a9c986d211ac1d79091c77c370063dc680d329af920a3828f0382a9d5b53f",
+    "serving/web/playwright.config.js": "5d10833e28a94a335543a3a35b72bd0bc7f2528bccb1fb5e98e2da07dc738bba",
+    "serving/web/tests/api.test.js": "04af49b32a440866b2e97b0557b100213bb474ad21647f7f330dee965538236a",
+    "serving/web/tests/browser/container.spec.js": "e81740dded12b5dfc879e3cd7ba32a7cc0147943be59c0c1918213af5dce98ac",
+    "serving/web/tests/browser/demo.spec.js": "1b90284c3f9cd7e54efefd54009d343d8b33f921bfcd64bdf02dcb2f52e3a22e",
+    "serving/web/tests/format.test.js": "bc44c9e5beb237002fa8c17dea9f47abf6f80bf3b6e4bed06e1c31a374a7a23d",
+    "serving/web/tests/state.test.js": "90d79aa28d4fb7aa2efde8d20469c792f4afb710b1705ac4cda9f1853c5158d0"
+  }
+}

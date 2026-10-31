@@ -1,0 +1,26 @@
+npm notice run test
+npm notice run node --test tests/
+✔ empty_mime_still_allows_supported_extension (0.65234ms)
+✔ happy path reports progress, status and returns the exact result (20.653108ms)
+✔ lost_202_never_reposts (0.389758ms)
+✔ nested upload errors map to DESIGN.md copy or the server wording (0.478833ms)
+✔ polling_backoff_and_deadline (5.365571ms)
+✔ a non-finite score becomes a recoverable error, not NaN on screen (0.393557ms)
+✔ abort stops client activity without another request (0.443306ms)
+✔ scores round for display only and are never clamped (0.832326ms)
+✔ seconds use two decimals and a floor marker for the head (0.126719ms)
+✔ hashes, filenames and clocks (0.208746ms)
+✔ state has exactly the DESIGN.md fields (1.185526ms)
+✔ stale_generation_cannot_replace_new_selection (0.415802ms)
+✔ a second selection while busy is ignored, so no second submission starts (0.148254ms)
+✔ status maps queued and processing with unknown stage kept as null (0.158067ms)
+✔ invalid leaves on the next user action and drag does not interrupt a request (0.200309ms)
+✔ reset from done returns to a blank idle and invalidates the old generation (0.175675ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 81.491552

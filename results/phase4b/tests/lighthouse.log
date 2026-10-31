@@ -1,0 +1,2 @@
+npm notice run npx
+npm notice run 'lighthouse' http://127.0.0.1:8001/ --only-categories=accessibility --preset=desktop --output=json --output-path=/home/joydeep/Projects/VQA/results/phase4b/lighthouse.json --chrome-flags=--headless=new --quiet
