@@ -217,7 +217,7 @@ The served container is slower than these host numbers. For the deployed configu
 
 ## Quickstart and reproduction
 
-**Run the demo with Docker.** These are the exact commands from the [clean-machine build](results/phase4/clean_build.md), run in a fresh clone. The clone URL is a placeholder until the repository is public.
+**Run the demo with Docker.** These are the exact commands from the [clean-machine build](results/phase4/clean_build.md), run in a fresh clone. Clone the public repository first.
 
 ```bash
 {{clean_steps}}
@@ -280,8 +280,8 @@ KoNViD-1k and LIVE-VQC were used under their owners' terms, recorded in [docs/da
 @misc{testcard,
   title  = {Testcard: Where does the quality signal live? Cached features versus temporal heads for no-reference video quality},
   author = {TODO},
-  year   = {TODO},
-  url    = {TODO},
+  year   = {2026},
+  url    = {https://github.com/JustJoyful/Testcard},
   note   = {Code and results}
 }
 ```

@@ -322,8 +322,8 @@ def build():
     V.update(release_tag=release['tag'], release_image=release['image_id'][:19], model_name=release['model_name'])
     steps = {s['step']: s['command'] for s in clean['steps']}
     V['clean_steps'] = '\n'.join([
-        'git clone TODO-public-clone-url VQA   # TODO: no public remote yet',
-        'cd VQA', steps['lfs_install'], steps['lfs_model'], steps['lfs_phase3'], steps['venv'], steps['install'], steps['prepare_bundle'],
+        'git clone https://github.com/JustJoyful/Testcard.git',
+        'cd Testcard', steps['lfs_install'], steps['lfs_model'], steps['lfs_phase3'], steps['venv'], steps['install'], steps['prepare_bundle'],
         steps['docker_build'].replace(' vqa:clean ', f" {release['tag']} "),
         steps['docker_run'].replace('vqa-clean-test', 'testcard-demo').replace(':8002:', ':8001:').replace(' vqa:clean', f" {release['tag']}")])
 
