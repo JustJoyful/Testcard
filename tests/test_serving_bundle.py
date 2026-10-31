@@ -204,8 +204,13 @@ def test_decoder_checksum_mismatch_fails_before_extraction(tmp_path):
     assert len(source) == 3, 'missing decoder builder stage'
     stage = 'FROM python:' + source[1]
     stage = stage.replace('83537b0f6a97905f325080f6f5916e70ec252d1ef3e4ce4746f755b88720cbf5', '0' * 64)
+    # A checksum-rejection test must reach the checksum even when GitHub is unavailable.
+    stage = '\n'.join(line for line in stage.splitlines() if not line.startswith('RUN apt-get'))
+    download = next(line for line in stage.splitlines() if line.startswith('RUN curl'))
+    stage = stage.replace(download, 'COPY checksum-fixture /tmp/ffmpeg.tar.xz\nRUN true \\')
+    (tmp_path / 'checksum-fixture').write_bytes(b'not the approved archive')
     (tmp_path / 'Dockerfile').write_text(stage)
-    result = subprocess.run(['docker', 'build', str(tmp_path)], capture_output=True, text=True)
+    result = subprocess.run(['docker', 'build', '--network=none', str(tmp_path)], capture_output=True, text=True)
     assert result.returncode != 0
     assert 'FAILED' in result.stdout + result.stderr and 'sha256sum' in result.stdout + result.stderr
 
@@ -229,3 +234,74 @@ def test_image_default_user_can_verify_bundle_offline():
     result = subprocess.run(['docker', 'run', '--rm', '--network', 'none', '--read-only',
         '--tmpfs', '/tmp:rw,nosuid,size=256m', '--entrypoint', 'python', 'vqa:phase4a', '-c', code], capture_output=True, text=True)
     assert result.returncode == 0, result.stderr
+
+
+@pytest.mark.parametrize('change', [None, 'research', 'packaging', 'demo', 'link', 'length', 'missing', 'reordered', 'extra'])
+def test_second_decision_append_preserves_both_prefixes(tmp_path, change):
+    import hashlib
+    digest = lambda data: hashlib.sha256(data).hexdigest()
+    original, packaging, demo = b'research\n', b'packaging approval\n', b'demo approval\n'
+    decision = tmp_path / 'DECISIONS.md'
+    decision.write_bytes(original + packaging + demo)
+    first = tmp_path / 'results/phase4a/packaging_amendment.json'
+    first.parent.mkdir(parents=True)
+    first.write_text(json.dumps(dict(before_sha256=digest(original), prefix_bytes=len(original),
+        appended_sha256=digest(packaging), after_sha256=digest(original + packaging))))
+    second = tmp_path / 'results/phase4b/decision_amendment.json'
+    second.parent.mkdir(parents=True)
+    record = dict(before_sha256=digest(original + packaging), prefix_bytes=len(original + packaging),
+        appended_sha256=digest(demo), after_sha256=digest(original + packaging + demo),
+        packaging_amendment_sha256=digest(first.read_bytes()))
+    if change in ('research', 'packaging', 'demo'):
+        decision.write_bytes(decision.read_bytes().replace(dict(research=original, packaging=packaging, demo=demo)[change], b'changed\n'))
+    if change == 'link': record['packaging_amendment_sha256'] = '0' * 64
+    if change == 'length': record['prefix_bytes'] += 1
+    if change == 'reordered': decision.write_bytes(original + demo + packaging)
+    if change == 'extra': decision.write_bytes(decision.read_bytes() + b'unrecorded\n')
+    if change != 'missing': second.write_text(json.dumps(record))
+    snapshot = dict(source_files={}, bindings={'DECISIONS.md': digest(original)}, outputs_sha256={})
+    if change is None:
+        bundle_module().verify_snapshot(snapshot, tmp_path)
+        assert digest(decision.read_bytes()[:len(original)]) == digest(original)
+        assert digest(decision.read_bytes()[:len(original + packaging)]) == record['before_sha256']
+    else:
+        with pytest.raises(ValueError, match='historical'):
+            bundle_module().verify_snapshot(snapshot, tmp_path)
+
+
+def test_recorded_posthoc_decision_append_is_the_only_extra_append(tmp_path):
+    import hashlib
+    from src.features import sha256
+    module = bundle_module()
+    decision = tmp_path / 'DECISIONS.md'
+    parts = [b'historical decision\n', b'\nApproved decoder amendment.\n', b'\nApproved demo amendment.\n',
+             b'\nPost-hoc exploratory DINO pre-declaration.\n']
+    def digest(data):
+        return hashlib.sha256(data).hexdigest()
+    def record(index, **extra):
+        prefix = b''.join(parts[:index])
+        return dict(before_sha256=digest(prefix), prefix_bytes=len(prefix), appended_sha256=digest(parts[index]),
+                    after_sha256=digest(prefix + parts[index]), **extra)
+    paths = [tmp_path / 'results/phase4a/packaging_amendment.json', tmp_path / 'results/phase4b/decision_amendment.json',
+             tmp_path / 'results/posthoc_dino/decision_append.json']
+    for path in paths:
+        path.parent.mkdir(parents=True, exist_ok=True)
+    paths[0].write_text(json.dumps(record(1)))
+    paths[1].write_text(json.dumps(record(2, packaging_amendment_sha256=sha256(paths[0]))))
+    paths[2].write_text(json.dumps(record(3, previous_amendment_sha256=sha256(paths[1]))))
+    snapshot = {'source_files': {}, 'bindings': {'DECISIONS.md': digest(parts[0])}, 'outputs_sha256': {}}
+    decision.write_bytes(b''.join(parts))
+    module.verify_snapshot(snapshot, tmp_path)
+    decision.write_bytes(b''.join(parts[:3]) + b'\nEdited post-hoc pre-declaration.\n')
+    with pytest.raises(ValueError, match='historical'):
+        module.verify_snapshot(snapshot, tmp_path)
+    decision.write_bytes(b''.join(parts) + b'\nAdded after seeing results.\n')
+    with pytest.raises(ValueError, match='historical'):
+        module.verify_snapshot(snapshot, tmp_path)
+    decision.write_bytes(b''.join(parts))
+    paths[2].write_text(json.dumps(record(3, previous_amendment_sha256='0' * 64)))
+    with pytest.raises(ValueError, match='historical'):
+        module.verify_snapshot(snapshot, tmp_path)
+    paths[2].unlink()
+    with pytest.raises(ValueError, match='historical'):
+        module.verify_snapshot(snapshot, tmp_path)
