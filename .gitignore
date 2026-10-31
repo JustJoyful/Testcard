@@ -46,3 +46,4 @@ __pycache__/
 /results/**/rulings.md
 /results/readme_inputs.md
 /results/phase4b/baseline/files/docs/
+/hf_release/
