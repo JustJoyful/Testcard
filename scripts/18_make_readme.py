@@ -317,6 +317,10 @@ def build():
              clean_score=num(result['status']['result']['prediction']['score'], 4),
              clean_total=num(result['status']['result']['prediction']['timings_seconds']['total'], 2))
     release = load('results/phase4/testcard_tag.json')
+    published = load('results/phase4/hf_space.json')
+    if published['local_image_id'] != gate4b['image_id']:
+        raise SystemExit('published image is not the gated image')
+    V.update(pinned_image=published['pinned_reference'], pinned_tag=published['image'])
     if release['image_id'] != gate4b['image_id']:
         raise SystemExit('testcard tag does not point at the gated image')
     V.update(release_tag=release['tag'], release_image=release['image_id'][:19], model_name=release['model_name'])

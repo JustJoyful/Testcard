@@ -5,6 +5,14 @@
 
 A controlled comparison of four temporal heads and a ridge baseline on frozen, cached backbone features for no-reference video quality assessment (NR-VQA). The models were trained on KoNViD-1k and tested on LIVE-VQC, and a small CPU demo scores an uploaded clip.
 
+**Try it without cloning.** Anyone with Docker can run the exact gated demo image; no clone, Git LFS or build is needed:
+
+```bash
+docker run --rm -p 127.0.0.1:8001:8000 ghcr.io/justjoyful/testcard@sha256:cea6b009c05a18522c44889df72407a916b020cbec51086e859f4dcf9907b4ef
+```
+
+Then open <http://127.0.0.1:8001/>. The model checkpoint and its card are on Hugging Face: [JustJoyful/testcard-r50-ridge](https://huggingface.co/JustJoyful/testcard-r50-ridge).
+
 ![The demo after scoring a clip from the real Docker build](results/phase4b/browser/container-real-result.png)
 
 ## TL;DR
@@ -285,7 +293,7 @@ The published protocols differ from this project's: 5-fold cross-validation with
 
 The demo is a single-page app served by one FastAPI process from one Docker image. You insert a video "tape"; the page uploads it, polls the job and shows the predicted MOS on a TV screen. The score is rounded to two decimals and unclamped, on the KoNViD 1–5 scale. Below the score the page shows the analysis time, the verified model, weights and preprocessing hashes, and the full JSON result. The server processes one upload at a time and deletes the video after scoring, and the page makes no external requests. All 9 frontend acceptance items passed ([acceptance](results/phase4/frontend_acceptance.md)).
 
-**Deployed model.** `testcard-r50-ridge` (recorded in results as `resnet50/ridge`): ResNet-50 features and ridge regression with alpha 1000, fitted once on all of KoNViD-1k. It is a single deterministic fit, with no seed and no fold. The hashes below are truncated; the full values are in [results/phase3/deployment.json](results/phase3/deployment.json), and the API logs them at startup.
+**Deployed model.** `testcard-r50-ridge` (recorded in results as `resnet50/ridge`; checkpoint and model card on [Hugging Face](https://huggingface.co/JustJoyful/testcard-r50-ridge)): ResNet-50 features and ridge regression with alpha 1000, fitted once on all of KoNViD-1k. It is a single deterministic fit, with no seed and no fold. The hashes below are truncated; the full values are in [results/phase3/deployment.json](results/phase3/deployment.json), and the API logs them at startup.
 
 | Artifact | SHA256 (prefix) |
 |---|---|
@@ -312,7 +320,15 @@ The served container is slower than these host numbers. For the deployed configu
 
 ## Quickstart and reproduction
 
-**Run the demo with Docker.** These are the exact commands from the [clean-machine build](results/phase4/clean_build.md), run in a fresh clone. Clone the public repository first.
+**Run the demo from the published image (recommended).** The gated image is published on the GitHub Container Registry and pinned by digest, so this runs exactly what passed the Phase 4b gate, with the same resource caps:
+
+```bash
+docker run --rm --cpus=4 --memory=4g --pids-limit=128 --read-only --tmpfs /tmp:rw,nosuid,size=256m -p 127.0.0.1:8001:8000 ghcr.io/justjoyful/testcard@sha256:cea6b009c05a18522c44889df72407a916b020cbec51086e859f4dcf9907b4ef
+```
+
+The digest is recorded in [results/phase4/hf_space.json](results/phase4/hf_space.json); the tag `ghcr.io/justjoyful/testcard:0.1.0` points to the same image. The image runs the API and the page in one process, logs the verified hashes at startup, and needs no other files.
+
+**Build from source.** These are the exact commands from the [clean-machine build](results/phase4/clean_build.md), run in a fresh clone. Building is only needed to change the code or to reproduce the image.
 
 ```bash
 git clone https://github.com/JustJoyful/Testcard.git
