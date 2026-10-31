@@ -10,7 +10,7 @@ import pytest
 
 
 @pytest.fixture
-def api(monkeypatch):
+def api(monkeypatch, tmp_path):
     module = importlib.import_module('serving.app')
     from src.serving_bundle import LIMITS
     runtime = SimpleNamespace(limits=dict(LIMITS))
@@ -27,7 +27,8 @@ def api(monkeypatch):
         return dict(result)
     monkeypatch.setattr(module, 'load_runtime', lambda bundle: runtime)
     monkeypatch.setattr(module, 'predict_video', predict)
-    app = module.create_app()
+    # No built frontend: the plain page fallback used for backend development.
+    app = module.create_app(web=tmp_path / 'no-dist')
     return module, app, runtime, result, seen
 
 
@@ -60,16 +61,16 @@ def test_form_explains_unclipped_konvid_mos(api):
     assert 'Predictions are unclipped and may fall slightly outside 1–5.' in page
 
 
-def scope(headers=()):
-    return dict(type='http', asgi={'version': '3.0'}, method='POST', path='/predict',
-                raw_path=b'/predict', root_path='', scheme='http', query_string=b'',
+def scope(headers=(), path='/predict', method='POST'):
+    return dict(type='http', asgi={'version': '3.0'}, method=method, path=path,
+                raw_path=path.encode(), root_path='', scheme='http', query_string=b'',
                 headers=list(headers), client=('127.0.0.1', 1), server=('test', 80), http_version='1.1')
 
 
-async def asgi_request(app, receive, headers=()):
+async def asgi_request(app, receive, headers=(), path='/predict', method='POST'):
     messages = []
     async def send(message): messages.append(message)
-    await app(scope(headers), receive, send)
+    await app(scope(headers, path, method), receive, send)
     return messages
 
 
