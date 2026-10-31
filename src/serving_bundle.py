@@ -66,23 +66,48 @@ def read_model(path):
         raise ValueError(f'invalid ridge artifact: {exc}') from exc
 
 
+# Each approved append to the decision log, in order, pinned to the record before it.
+DECISION_APPENDS = (('results/phase4a/packaging_amendment.json', None),
+                    ('results/phase4b/decision_amendment.json', 'packaging_amendment_sha256'),
+                    ('results/posthoc_dino/decision_append.json', 'previous_amendment_sha256'))
+
+
+def verify_decision_chain(content, expected, root):
+    """The log must be the historical prefix plus exactly the recorded appends, nothing else."""
+    records, previous = [], None
+    for relative, pin in DECISION_APPENDS:
+        path = Path(root) / relative
+        if not path.is_file():
+            break
+        record = json.loads(path.read_text())
+        if pin:
+            verify_file(previous, record[pin])
+        records.append(record)
+        previous = path
+    before = expected
+    for index, record in enumerate(records):
+        start = record['prefix_bytes']
+        end = records[index + 1]['prefix_bytes'] if index + 1 < len(records) else len(content)
+        if (not isinstance(start, int) or not isinstance(end, int) or not 0 < start < end <= len(content)
+                or record['before_sha256'] != before
+                or hashlib.sha256(content[:start]).hexdigest() != before
+                or hashlib.sha256(content[start:end]).hexdigest() != record['appended_sha256']
+                or hashlib.sha256(content[:end]).hexdigest() != record['after_sha256']):
+            raise ValueError('unapproved decision-log change')
+        before = record['after_sha256']
+    if hashlib.sha256(content).hexdigest() != before:
+        raise ValueError('unapproved decision-log change')
+
+
 def verify_snapshot(snapshot, root=ROOT):
     for name, expected in {**snapshot['source_files'], **snapshot['bindings']}.items():
         try:
             path = Path(root) / name
-            amendment_path = Path(root) / 'results/phase4a/packaging_amendment.json'
-            if name == 'DECISIONS.md' and amendment_path.is_file():
-                amendment = json.loads(amendment_path.read_text())
-                content = path.read_bytes()
-                cut = amendment['prefix_bytes']
-                if (amendment['before_sha256'] != expected or
-                        hashlib.sha256(content[:cut]).hexdigest() != expected or
-                        hashlib.sha256(content[cut:]).hexdigest() != amendment['appended_sha256']):
-                    raise ValueError('unapproved decision-log change')
-                verify_file(path, amendment['after_sha256'])
+            if name == 'DECISIONS.md' and (Path(root) / DECISION_APPENDS[0][0]).is_file():
+                verify_decision_chain(path.read_bytes(), expected, root)
             else:
                 verify_file(path, expected)
-        except ValueError as exc:
+        except (ValueError, KeyError, TypeError) as exc:
             raise ValueError(f'historical identity changed: {name}') from exc
     for name, expected in snapshot['outputs_sha256'].items():
         verify_file(Path(root) / 'results/phase3' / name, expected)
