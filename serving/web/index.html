@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Insert a video and get a predicted mean opinion score from a model trained on human quality ratings." />
+    <meta name="color-scheme" content="dark" />
+    <title>vqa/lab · video quality, scored</title>
+    <link rel="icon" href="data:," />
+  </head>
+  <body data-state="idle">
+    <a class="skip-link" href="#main">Skip to the TV</a>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="/"><span class="brand-bars" aria-hidden="true"></span>vqa<span class="brand-slash">/</span>lab</a>
+        <span id="mock-badge" class="mock-badge" hidden>Mock backend</span>
+        <!-- Repository links use VITE_REPO_URL from .env; change it there if the repository is renamed. -->
+        <nav class="nav" aria-label="Primary">
+          <a href="%VITE_REPO_URL%/blob/main/ARCHITECTURE.md">Method</a>
+          <a href="%VITE_REPO_URL%/tree/main/results">Results</a>
+          <a href="%VITE_REPO_URL%">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="stage" tabindex="-1">
+      <h1 class="sr-only">Video quality, scored</h1>
+      <div class="spill" aria-hidden="true"></div>
+      <div id="set" class="set"></div>
+
+      <div class="helper-line">
+        <p id="helper" class="helper">Drop a video on the TV, or click the tape.<br />MP4, MOV, or WEBM, up to 100 MiB.</p>
+        <p id="error-text" class="error-text" tabindex="-1" hidden></p>
+      </div>
+
+      <div id="details" class="details" hidden></div>
+
+      <input id="file" class="sr-only" type="file" tabindex="-1" aria-hidden="true"
+        accept=".mp4,.mov,.webm,video/mp4,video/quicktime,video/webm" />
+      <p id="live" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+    </main>
+
+    <footer class="footer">
+      <p>Predictions are model estimates, not ground-truth ratings · <a href="%VITE_REPO_URL%">GitHub</a></p>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
