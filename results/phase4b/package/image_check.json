@@ -1,0 +1,253 @@
+{
+  "image": "vqa:phase4b",
+  "url": "http://127.0.0.1:8001",
+  "video": "11902527296.mp4",
+  "scope": "Task 7 packaging smoke; formal parity/latency is Task 8",
+  "image_id": "sha256:81ca6d65eaaef07b6c75facca96523131f962e15fb1a49051ca429096644b691",
+  "config": {
+    "user": "10001:10001",
+    "cmd": [
+      "uvicorn",
+      "serving.app:create_app",
+      "--factory",
+      "--workers",
+      "1",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000"
+    ],
+    "exposed": [
+      "8000/tcp"
+    ]
+  },
+  "inside": {
+    "uid": 10001,
+    "gid": 10001,
+    "torch": "2.14.1+cpu",
+    "cuda": null,
+    "cuda_available": false,
+    "node": null,
+    "npm": null,
+    "files_sha256": {
+      "/app/src/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "/app/src/__pycache__/__init__.cpython-311.pyc": "adf6b1fff9f0a0dba5360f30b81ed41a4fa5e1a8265fa8a28eff58ef0eef015d",
+      "/app/src/__pycache__/features.cpython-311.pyc": "03b1c2b26029a19e3e20f53d00572122b8668020b420c6620dfd60c3120cb9d3",
+      "/app/src/__pycache__/serving_bundle.cpython-311.pyc": "01f77eb8d70ab6b1b20c5e2cee107812e8afa3f6f93bbe71f77449f5d3356b37",
+      "/app/src/baselines.py": "df7bb24968bae095b195802d0227b991e832ff748a4c2b23d4ab9afb9cac53b1",
+      "/app/src/cache.py": "e774d745bd6a0afceba405d300495bdf2e2be2793a8e26613cc0a8253ea8d72c",
+      "/app/src/features.py": "a5ec35b5c3896b53e6fd59bbcc7c52db31409292d667ceff83a8302dc616eabc",
+      "/app/src/metrics.py": "7027757f69425b33b5fd7f34ca0bba9f7fc00c03c31ba5b957d55a78795d47d9",
+      "/app/src/predict.py": "afb3aa37268b399d2d50e56bb31d4ba85ade60eb0fcfd0817c184ce26361831a",
+      "/app/src/preprocess.py": "804c8d89cb5e8b163d6dc6e97d5d618a53c198c6aa6e4c9915dc5428ee46320b",
+      "/app/src/serving_bundle.py": "fcce484bf0101fb45592ebbff4d59183505fe1e1fb6081d5ac81a9058c78eda6",
+      "/app/serving/__init__.py": "d4fa20189cc8e6dc05cdd676576016f616d1f5cceeb1aeae947933e0d59d5960",
+      "/app/serving/app.py": "44b89719fe5009cadf643e4b283da766892afa8d6a22734b0f404e53d60033ef",
+      "/app/serving/index.html": "e84e5ccf8a8d7135a019e02c183f314af953b3cd2596ea69f7688dddd4fdbbe7",
+      "/app/serving/jobs.py": "85c8e52f972cc83d29fcec4d960ae6ea557000a13db32cbb5ac6ab6c48361fe3",
+      "/app/serving/web/dist/assets/index-CY1iBoyR.js": "9cfffbecea39df0d7cb579f81b1bb371292ae8fcab5071078a74a6d2b06ceeed",
+      "/app/serving/web/dist/assets/index-CcWvla66.css": "ade5a7527fe0c21beb7dae2370079672e6bbf508c026239d6fed5407d6e2c76d",
+      "/app/serving/web/dist/assets/inter-cyrillic-400-normal-HOLc17fK.woff": "6e441a6c94788318fa02b6d0a633aa29eebe27b69c6567eb1e59b4edc68ed70e",
+      "/app/serving/web/dist/assets/inter-cyrillic-400-normal-obahsSVq.woff2": "f0bb586459ce8f09b238285040f17e3e9e9538b2c5a7aae0775194e33c36c3c3",
+      "/app/serving/web/dist/assets/inter-cyrillic-500-normal-BasfLYem.woff2": "b77a86ec16aadc157f4a99e8898d71cd75ea264753d9bdf13f962f8c3988cbb0",
+      "/app/serving/web/dist/assets/inter-cyrillic-500-normal-CxZf_p3X.woff": "5be18e0345781cb882a267798518553c0e915174fc70731ab5f085ca64ba1ebc",
+      "/app/serving/web/dist/assets/inter-cyrillic-ext-400-normal-BQZuk6qB.woff2": "ef572f9187a8be018d9d9c2c6b77c1f6cb2af4199f02fc16c292ea10ab25a2cc",
+      "/app/serving/web/dist/assets/inter-cyrillic-ext-400-normal-DQukG94-.woff": "5cb2f1cc0936f89a42ceae34f5a5720248dc5b8114c12b1c33a7d2ef01a9b6b9",
+      "/app/serving/web/dist/assets/inter-cyrillic-ext-500-normal-B0yAr1jD.woff2": "1c2db92d3cd9b237ca7c9c07af556d542f28ded1db54cd4382cf776501c5291f",
+      "/app/serving/web/dist/assets/inter-cyrillic-ext-500-normal-BmqWE9Dz.woff": "e250c05aebcf49971e0b25f476992dd463c28c0292ebb204d9db542fb5066ca7",
+      "/app/serving/web/dist/assets/inter-greek-400-normal-B4URO6DV.woff2": "c15ddd00a9927b56f5c655a41f976f79bd848a20cce91fc14227751872a1cc27",
+      "/app/serving/web/dist/assets/inter-greek-400-normal-q2sYcFCs.woff": "bdae9d28729e8c68587d5d54e216d771a40d7a6800e824586a6e2f570c2f10df",
+      "/app/serving/web/dist/assets/inter-greek-500-normal-BIZE56-Y.woff2": "cc197d79d33a3615a047baae85f4d1957f6f98b8898313658e160b1d519b1b6f",
+      "/app/serving/web/dist/assets/inter-greek-500-normal-Xzm54t5V.woff": "86d55a4b1b9cbced7e61e76d5d44cf49d0bd1c814d3df2de67b7136ab4fdcece",
+      "/app/serving/web/dist/assets/inter-greek-ext-400-normal-DGGRlc-M.woff2": "eadedd9e13c2582430a9fb1519eb86152fdabb483a6f66d90f8d8a52e977a1b7",
+      "/app/serving/web/dist/assets/inter-greek-ext-400-normal-KugGGMne.woff": "4f2b6f92ddfece8812e79774d446218aa6e0773ff8c2d31130fe2bdc23bd22d0",
+      "/app/serving/web/dist/assets/inter-greek-ext-500-normal-2j5mBUwD.woff": "c85d11bde719108cc9a4f6f5b008087f6c36493b47395580d4f5336182b0f0c7",
+      "/app/serving/web/dist/assets/inter-greek-ext-500-normal-C4iEst2y.woff2": "75a9ec9383a3b7a7bf7cfb94f64edf38d9cfdc5f7ffa0cbed2733627a6e4426d",
+      "/app/serving/web/dist/assets/inter-latin-400-normal-C38fXH4l.woff2": "8909904ab6c872eb994093482a88a28eca2cd95912d7b6fecd72103b0dc07edc",
+      "/app/serving/web/dist/assets/inter-latin-400-normal-CyCys3Eg.woff": "e20fa0b4fd2dd26e4d14b3ac3cc922509c3a63fa5e910e90c614544aa042dd45",
+      "/app/serving/web/dist/assets/inter-latin-500-normal-BL9OpVg8.woff": "9b42c108da48b5ed55a3072e815ffee2d271562e6c0dd6998910e8f9c09e0a3d",
+      "/app/serving/web/dist/assets/inter-latin-500-normal-Cerq10X2.woff2": "f3779f1efccc4bdcdf9c0a02ab95bf6bd092ed09c48c08cedc725889edd1d19f",
+      "/app/serving/web/dist/assets/inter-latin-ext-400-normal-77YHD8bZ.woff": "22ae8360fbad24d2af7c6c9898a346c881774dc87f7cf94bd262c48ad58d7116",
+      "/app/serving/web/dist/assets/inter-latin-ext-400-normal-C1nco2VV.woff2": "6744a7f509ebc6ab220a6cd4ea77e898adf014f03d88dcda5d45d8a9feefb4e9",
+      "/app/serving/web/dist/assets/inter-latin-ext-500-normal-BxGbmqWO.woff": "30d2903ce97f8a89ea0e9c083b42cb8bf97e7bbb5607e7f00352815f19cb0d5b",
+      "/app/serving/web/dist/assets/inter-latin-ext-500-normal-CV4jyFjo.woff2": "2c6fbc42d315528beb06c1096df45487bf4186c4b78b8111d12c9c951f8acca2",
+      "/app/serving/web/dist/assets/inter-vietnamese-400-normal-Bbgyi5SW.woff": "54aa42d325bcdfd623ecb9eac4a5e3c6420c63d7b86e9d8545fb479f653beb57",
+      "/app/serving/web/dist/assets/inter-vietnamese-400-normal-DMkecbls.woff2": "547ad9fdaeb0ae43487f4b8a02e47c36553c0c0cb73c8aa98f93b7b615f6b55d",
+      "/app/serving/web/dist/assets/inter-vietnamese-500-normal-DOriooB6.woff2": "44e36aa5a8f12130029a29bb0e6695d0262b67446ce321e878b1fb56162b5de6",
+      "/app/serving/web/dist/assets/inter-vietnamese-500-normal-mJboJaSs.woff": "18a4a09f751671cd8929d7c66e8fe7d820b511c36e51cf6047ffceab88eec4a4",
+      "/app/serving/web/dist/assets/jetbrains-mono-cyrillic-400-normal-BEIGL1Tu.woff2": "522f5827308102a9c0ea7860b5a11306043610ecf03d150ba32056a06e8c56e2",
+      "/app/serving/web/dist/assets/jetbrains-mono-cyrillic-400-normal-ugxPyKxw.woff": "67c9cc7864b4940dbfb246c7b452c1de8e96f140f334d363fcdd87dbfeadab72",
+      "/app/serving/web/dist/assets/jetbrains-mono-greek-400-normal-B9oWc5Lo.woff": "09f89e8369d7745ac5fe92e62a9ea13f66f40fd95b5495fac014c54b3a1ca6cc",
+      "/app/serving/web/dist/assets/jetbrains-mono-greek-400-normal-C190GLew.woff2": "365b7a8eaff022b13ed0561fde3890a04a30507d773ecd5adb3aca8e766a285c",
+      "/app/serving/web/dist/assets/jetbrains-mono-latin-400-normal-6-qcROiO.woff": "658b9ee07b0249cf910a8d6f3d812d46c962bae81d7379a0355b1db35c61586f",
+      "/app/serving/web/dist/assets/jetbrains-mono-latin-400-normal-V6pRDFza.woff2": "14425ba9c695763c1547f48a206b7aa60350a33ae23de09f0407877f3fcd89eb",
+      "/app/serving/web/dist/assets/jetbrains-mono-latin-ext-400-normal-Bc8Ftmh3.woff2": "505dfba8ecbe77e82765f36d317ed7ef4ac42719dc5f4ae68d1c483fd22d0d14",
+      "/app/serving/web/dist/assets/jetbrains-mono-latin-ext-400-normal-fXTG6kC5.woff": "e7131bbf591e1ed9b74e44e162f6a39affa00ac21654cb683585d085733f6355",
+      "/app/serving/web/dist/assets/jetbrains-mono-vietnamese-400-normal-CqNFfHCs.woff": "1dfe0f740fa86409034058e49474b01126ae9ea8c1ecda905917b90d57f03b00",
+      "/app/serving/web/dist/assets/permanent-marker-latin-400-normal-BF23djCy.woff2": "4884fec2c73aa52a2461073c1b87d1ceb80f400520391b43f97ca7d3c39eeb24",
+      "/app/serving/web/dist/assets/permanent-marker-latin-400-normal-BnZj5c41.woff": "ab8ac2bb72d48e089e37d8eefbacdfe2d74ccd48ae786d952fce9874837d2b2b",
+      "/app/serving/web/dist/assets/vt323-latin-400-normal-Dqn9ZSPj.woff": "4bf46256dbaa7b6531febc80268b117fb6f71a56ccd9f859de9211b06fd5337c",
+      "/app/serving/web/dist/assets/vt323-latin-400-normal-wDgJuOC9.woff2": "8ddbebcc1048154132e1d78eb9b1f7850bca1b7d857035ccf1cb4318ebc615b6",
+      "/app/serving/web/dist/assets/vt323-latin-ext-400-normal-DqOq58ri.woff": "eb8626daea90085942f2d50ef2f5300be73299b9d1bb7cc3aaf95b3724867742",
+      "/app/serving/web/dist/assets/vt323-latin-ext-400-normal-iUdYUaX4.woff2": "4435f062ebe744d097d0d618ac5ad6b8ea25ee3bd6004c5369c24518e70af1f0",
+      "/app/serving/web/dist/assets/vt323-vietnamese-400-normal-D0VnvwZ9.woff2": "84b335a53b55c33f919f11b5cf83d857f053097171461eaba10d44be1c623609",
+      "/app/serving/web/dist/assets/vt323-vietnamese-400-normal-D_5Q7Vcv.woff": "17536a351f6e3d7c0e686434d48ff44cc48a2b487a57611be0995987ac338f7c",
+      "/app/serving/web/dist/index.html": "937e0ae36e3d9cc6e51102e2d9714400dbf45e528cbfa0e117f254e928831e05"
+    }
+  },
+  "caps": {
+    "nano_cpus": 4000000000,
+    "memory": 4294967296,
+    "pids_limit": 128,
+    "read_only": true,
+    "tmpfs": {
+      "/tmp": "rw,nosuid,size=256m"
+    },
+    "ports": {
+      "8000/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "8001"
+        }
+      ]
+    }
+  },
+  "ready_seconds": 6.0,
+  "served_assets": {
+    "/assets/index-CY1iBoyR.js": "text/javascript; charset=utf-8",
+    "/assets/index-CcWvla66.css": "text/css; charset=utf-8",
+    "/assets/inter-cyrillic-ext-400-normal-BQZuk6qB.woff2": "font/woff2",
+    "/assets/inter-cyrillic-400-normal-obahsSVq.woff2": "font/woff2",
+    "/assets/inter-greek-ext-400-normal-DGGRlc-M.woff2": "font/woff2",
+    "/assets/inter-greek-400-normal-B4URO6DV.woff2": "font/woff2",
+    "/assets/inter-vietnamese-400-normal-DMkecbls.woff2": "font/woff2",
+    "/assets/inter-latin-ext-400-normal-C1nco2VV.woff2": "font/woff2",
+    "/assets/inter-latin-400-normal-C38fXH4l.woff2": "font/woff2",
+    "/assets/inter-cyrillic-ext-500-normal-B0yAr1jD.woff2": "font/woff2",
+    "/assets/inter-cyrillic-500-normal-BasfLYem.woff2": "font/woff2",
+    "/assets/inter-greek-ext-500-normal-C4iEst2y.woff2": "font/woff2",
+    "/assets/inter-greek-500-normal-BIZE56-Y.woff2": "font/woff2",
+    "/assets/inter-vietnamese-500-normal-DOriooB6.woff2": "font/woff2",
+    "/assets/inter-latin-ext-500-normal-CV4jyFjo.woff2": "font/woff2",
+    "/assets/inter-latin-500-normal-Cerq10X2.woff2": "font/woff2",
+    "/assets/jetbrains-mono-cyrillic-400-normal-BEIGL1Tu.woff2": "font/woff2",
+    "/assets/jetbrains-mono-greek-400-normal-C190GLew.woff2": "font/woff2",
+    "/assets/jetbrains-mono-latin-ext-400-normal-Bc8Ftmh3.woff2": "font/woff2",
+    "/assets/jetbrains-mono-latin-400-normal-V6pRDFza.woff2": "font/woff2",
+    "/assets/vt323-vietnamese-400-normal-D0VnvwZ9.woff2": "font/woff2",
+    "/assets/vt323-latin-ext-400-normal-iUdYUaX4.woff2": "font/woff2",
+    "/assets/vt323-latin-400-normal-wDgJuOC9.woff2": "font/woff2",
+    "/assets/permanent-marker-latin-400-normal-BF23djCy.woff2": "font/woff2"
+  },
+  "front_doors": {
+    "predict": {
+      "score": 3.4206814401750743,
+      "timings_seconds": {
+        "extraction": 10.492543011991074,
+        "head": 0.0001942790113389492,
+        "total": 10.492738264001673
+      },
+      "verified": {
+        "model_sha256": "4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3",
+        "weights_sha256": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca",
+        "weights_enum": "ResNet50_Weights.IMAGENET1K_V2",
+        "preprocessing_sha256": "acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b",
+        "cpu_threads": 4
+      },
+      "startup_seconds": 1.530199895001715
+    },
+    "status": {
+      "score": 3.4206814401750743,
+      "timings_seconds": {
+        "extraction": 8.398432109010173,
+        "head": 8.15139792393893e-05,
+        "total": 8.398513869004091
+      },
+      "verified": {
+        "model_sha256": "4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3",
+        "weights_sha256": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca",
+        "weights_enum": "ResNet50_Weights.IMAGENET1K_V2",
+        "preprocessing_sha256": "acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b",
+        "cpu_threads": 4
+      },
+      "startup_seconds": 1.530199895001715
+    },
+    "cli": {
+      "score": 3.4206814401750743,
+      "timings_seconds": {
+        "extraction": 12.58536153298337,
+        "head": 0.003947940014768392,
+        "total": 12.589311013987754
+      },
+      "verified": {
+        "model_sha256": "4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3",
+        "weights_sha256": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca",
+        "weights_enum": "ResNet50_Weights.IMAGENET1K_V2",
+        "preprocessing_sha256": "acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b",
+        "cpu_threads": 4
+      },
+      "startup_seconds": 1.4452669610036537
+    }
+  },
+  "status_outer": {
+    "task_id": "f3ccd2643d23424ab8f010ba19e6b00b",
+    "filename": "11902527296.mp4",
+    "clip_seconds": 8.008,
+    "created_at": "2026-10-30T23:08:00.381530Z"
+  },
+  "scores": {
+    "predict": 3.4206814401750743,
+    "status": 3.4206814401750743,
+    "cli": 3.4206814401750743
+  },
+  "dist_sha256": {
+    "assets/index-CY1iBoyR.js": "9cfffbecea39df0d7cb579f81b1bb371292ae8fcab5071078a74a6d2b06ceeed",
+    "assets/index-CcWvla66.css": "ade5a7527fe0c21beb7dae2370079672e6bbf508c026239d6fed5407d6e2c76d",
+    "assets/inter-cyrillic-400-normal-HOLc17fK.woff": "6e441a6c94788318fa02b6d0a633aa29eebe27b69c6567eb1e59b4edc68ed70e",
+    "assets/inter-cyrillic-400-normal-obahsSVq.woff2": "f0bb586459ce8f09b238285040f17e3e9e9538b2c5a7aae0775194e33c36c3c3",
+    "assets/inter-cyrillic-500-normal-BasfLYem.woff2": "b77a86ec16aadc157f4a99e8898d71cd75ea264753d9bdf13f962f8c3988cbb0",
+    "assets/inter-cyrillic-500-normal-CxZf_p3X.woff": "5be18e0345781cb882a267798518553c0e915174fc70731ab5f085ca64ba1ebc",
+    "assets/inter-cyrillic-ext-400-normal-BQZuk6qB.woff2": "ef572f9187a8be018d9d9c2c6b77c1f6cb2af4199f02fc16c292ea10ab25a2cc",
+    "assets/inter-cyrillic-ext-400-normal-DQukG94-.woff": "5cb2f1cc0936f89a42ceae34f5a5720248dc5b8114c12b1c33a7d2ef01a9b6b9",
+    "assets/inter-cyrillic-ext-500-normal-B0yAr1jD.woff2": "1c2db92d3cd9b237ca7c9c07af556d542f28ded1db54cd4382cf776501c5291f",
+    "assets/inter-cyrillic-ext-500-normal-BmqWE9Dz.woff": "e250c05aebcf49971e0b25f476992dd463c28c0292ebb204d9db542fb5066ca7",
+    "assets/inter-greek-400-normal-B4URO6DV.woff2": "c15ddd00a9927b56f5c655a41f976f79bd848a20cce91fc14227751872a1cc27",
+    "assets/inter-greek-400-normal-q2sYcFCs.woff": "bdae9d28729e8c68587d5d54e216d771a40d7a6800e824586a6e2f570c2f10df",
+    "assets/inter-greek-500-normal-BIZE56-Y.woff2": "cc197d79d33a3615a047baae85f4d1957f6f98b8898313658e160b1d519b1b6f",
+    "assets/inter-greek-500-normal-Xzm54t5V.woff": "86d55a4b1b9cbced7e61e76d5d44cf49d0bd1c814d3df2de67b7136ab4fdcece",
+    "assets/inter-greek-ext-400-normal-DGGRlc-M.woff2": "eadedd9e13c2582430a9fb1519eb86152fdabb483a6f66d90f8d8a52e977a1b7",
+    "assets/inter-greek-ext-400-normal-KugGGMne.woff": "4f2b6f92ddfece8812e79774d446218aa6e0773ff8c2d31130fe2bdc23bd22d0",
+    "assets/inter-greek-ext-500-normal-2j5mBUwD.woff": "c85d11bde719108cc9a4f6f5b008087f6c36493b47395580d4f5336182b0f0c7",
+    "assets/inter-greek-ext-500-normal-C4iEst2y.woff2": "75a9ec9383a3b7a7bf7cfb94f64edf38d9cfdc5f7ffa0cbed2733627a6e4426d",
+    "assets/inter-latin-400-normal-C38fXH4l.woff2": "8909904ab6c872eb994093482a88a28eca2cd95912d7b6fecd72103b0dc07edc",
+    "assets/inter-latin-400-normal-CyCys3Eg.woff": "e20fa0b4fd2dd26e4d14b3ac3cc922509c3a63fa5e910e90c614544aa042dd45",
+    "assets/inter-latin-500-normal-BL9OpVg8.woff": "9b42c108da48b5ed55a3072e815ffee2d271562e6c0dd6998910e8f9c09e0a3d",
+    "assets/inter-latin-500-normal-Cerq10X2.woff2": "f3779f1efccc4bdcdf9c0a02ab95bf6bd092ed09c48c08cedc725889edd1d19f",
+    "assets/inter-latin-ext-400-normal-77YHD8bZ.woff": "22ae8360fbad24d2af7c6c9898a346c881774dc87f7cf94bd262c48ad58d7116",
+    "assets/inter-latin-ext-400-normal-C1nco2VV.woff2": "6744a7f509ebc6ab220a6cd4ea77e898adf014f03d88dcda5d45d8a9feefb4e9",
+    "assets/inter-latin-ext-500-normal-BxGbmqWO.woff": "30d2903ce97f8a89ea0e9c083b42cb8bf97e7bbb5607e7f00352815f19cb0d5b",
+    "assets/inter-latin-ext-500-normal-CV4jyFjo.woff2": "2c6fbc42d315528beb06c1096df45487bf4186c4b78b8111d12c9c951f8acca2",
+    "assets/inter-vietnamese-400-normal-Bbgyi5SW.woff": "54aa42d325bcdfd623ecb9eac4a5e3c6420c63d7b86e9d8545fb479f653beb57",
+    "assets/inter-vietnamese-400-normal-DMkecbls.woff2": "547ad9fdaeb0ae43487f4b8a02e47c36553c0c0cb73c8aa98f93b7b615f6b55d",
+    "assets/inter-vietnamese-500-normal-DOriooB6.woff2": "44e36aa5a8f12130029a29bb0e6695d0262b67446ce321e878b1fb56162b5de6",
+    "assets/inter-vietnamese-500-normal-mJboJaSs.woff": "18a4a09f751671cd8929d7c66e8fe7d820b511c36e51cf6047ffceab88eec4a4",
+    "assets/jetbrains-mono-cyrillic-400-normal-BEIGL1Tu.woff2": "522f5827308102a9c0ea7860b5a11306043610ecf03d150ba32056a06e8c56e2",
+    "assets/jetbrains-mono-cyrillic-400-normal-ugxPyKxw.woff": "67c9cc7864b4940dbfb246c7b452c1de8e96f140f334d363fcdd87dbfeadab72",
+    "assets/jetbrains-mono-greek-400-normal-B9oWc5Lo.woff": "09f89e8369d7745ac5fe92e62a9ea13f66f40fd95b5495fac014c54b3a1ca6cc",
+    "assets/jetbrains-mono-greek-400-normal-C190GLew.woff2": "365b7a8eaff022b13ed0561fde3890a04a30507d773ecd5adb3aca8e766a285c",
+    "assets/jetbrains-mono-latin-400-normal-6-qcROiO.woff": "658b9ee07b0249cf910a8d6f3d812d46c962bae81d7379a0355b1db35c61586f",
+    "assets/jetbrains-mono-latin-400-normal-V6pRDFza.woff2": "14425ba9c695763c1547f48a206b7aa60350a33ae23de09f0407877f3fcd89eb",
+    "assets/jetbrains-mono-latin-ext-400-normal-Bc8Ftmh3.woff2": "505dfba8ecbe77e82765f36d317ed7ef4ac42719dc5f4ae68d1c483fd22d0d14",
+    "assets/jetbrains-mono-latin-ext-400-normal-fXTG6kC5.woff": "e7131bbf591e1ed9b74e44e162f6a39affa00ac21654cb683585d085733f6355",
+    "assets/jetbrains-mono-vietnamese-400-normal-CqNFfHCs.woff": "1dfe0f740fa86409034058e49474b01126ae9ea8c1ecda905917b90d57f03b00",
+    "assets/permanent-marker-latin-400-normal-BF23djCy.woff2": "4884fec2c73aa52a2461073c1b87d1ceb80f400520391b43f97ca7d3c39eeb24",
+    "assets/permanent-marker-latin-400-normal-BnZj5c41.woff": "ab8ac2bb72d48e089e37d8eefbacdfe2d74ccd48ae786d952fce9874837d2b2b",
+    "assets/vt323-latin-400-normal-Dqn9ZSPj.woff": "4bf46256dbaa7b6531febc80268b117fb6f71a56ccd9f859de9211b06fd5337c",
+    "assets/vt323-latin-400-normal-wDgJuOC9.woff2": "8ddbebcc1048154132e1d78eb9b1f7850bca1b7d857035ccf1cb4318ebc615b6",
+    "assets/vt323-latin-ext-400-normal-DqOq58ri.woff": "eb8626daea90085942f2d50ef2f5300be73299b9d1bb7cc3aaf95b3724867742",
+    "assets/vt323-latin-ext-400-normal-iUdYUaX4.woff2": "4435f062ebe744d097d0d618ac5ad6b8ea25ee3bd6004c5369c24518e70af1f0",
+    "assets/vt323-vietnamese-400-normal-D0VnvwZ9.woff2": "84b335a53b55c33f919f11b5cf83d857f053097171461eaba10d44be1c623609",
+    "assets/vt323-vietnamese-400-normal-D_5Q7Vcv.woff": "17536a351f6e3d7c0e686434d48ff44cc48a2b487a57611be0995987ac338f7c",
+    "index.html": "937e0ae36e3d9cc6e51102e2d9714400dbf45e528cbfa0e117f254e928831e05"
+  }
+}

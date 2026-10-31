@@ -1,0 +1,31 @@
+{
+  "candidate_id": "resnet50/ridge",
+  "feature_set": "resnet50",
+  "head": "ridge",
+  "seed": null,
+  "checkpoint_sha256": "4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3",
+  "checkpoint_path": "results/phase3/refit/resnet50/ridge/seedNone/model.npz",
+  "live_seed0": {
+    "feature_set": "resnet50",
+    "head": "ridge",
+    "seed": null,
+    "analysis": "secondary",
+    "srcc": 0.6438873840598539,
+    "krcc": 0.46048021449739035,
+    "plcc_raw": 0.6927283009882099,
+    "plcc_mapped": 0.7064749272075334,
+    "mapping_status": "ok",
+    "mapping_coefficients": [
+      83.75068169781962,
+      6.846076129603597,
+      2.7228838855388817,
+      0.6523269088976394
+    ],
+    "mapping_convergence": "`ftol` termination condition is satisfied.",
+    "mapping_domain": "LIVE-VQC target labels"
+  },
+  "live_five_seed": null,
+  "cpu_eligibility_sha256": "b5f54aecaddac1f641d949336915548ad9df002b98ba8f949980f06db4405b90",
+  "cpu_threads": 4,
+  "serving": "single FastAPI process; set torch.set_num_threads(4) before model work; remeasure end-to-end latency"
+}

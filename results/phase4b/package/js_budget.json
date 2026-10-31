@@ -1,0 +1,13 @@
+{
+  "image_id": "sha256:81ca6d65eaaef07b6c75facca96523131f962e15fb1a49051ca429096644b691",
+  "js_chunks": {
+    "assets/index-CY1iBoyR.js": {
+      "bytes": 22978,
+      "gzip9_bytes": 9032
+    }
+  },
+  "gzip_total": 9032,
+  "budget": 30000,
+  "passed": true,
+  "note": "gzip level 9 of every shipped .js under /app/serving/web/dist, fonts excluded"
+}

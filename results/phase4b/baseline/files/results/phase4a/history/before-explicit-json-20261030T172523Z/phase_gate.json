@@ -1,0 +1,162 @@
+{
+  "status": "passed",
+  "fixed_videos": 20,
+  "image_id": "sha256:7e98d3fa13066c7b401f2c4587d7cfd162cfcc7fa152c7143153b353d55445d5",
+  "bundle_manifest_sha256": "96ea41ecb8818c147611a058700de9f44ca0acd5c8009eec9c8c4f3372e31ce1",
+  "original_source_roster_verified": true,
+  "original_source_sha256": "68a001f55650d758a69b09e789d6be55a6a0646b23baea2808bd8e9770841c56",
+  "minimum_cosine": 0.9998409678411763,
+  "maximum_cached_score_difference": 0.004849441528531173,
+  "maximum_cli_api_difference": 0.0,
+  "latency": {
+    "maximum_seconds_per_ten_seconds": 10.647046344112752,
+    "median_seconds_per_ten_seconds": 8.825357230267441,
+    "budget_seconds_per_ten_seconds": 120,
+    "budget_passed": true,
+    "per_video": {
+      "11902527296": {
+        "maximum": 8.515819019728745,
+        "median": 8.312156719525762
+      },
+      "3710887216": {
+        "maximum": 9.135649820177992,
+        "median": 8.980144438065727
+      },
+      "4565232312": {
+        "maximum": 9.512353292963667,
+        "median": 8.911308901101199
+      },
+      "4567868868": {
+        "maximum": 10.047834485521163,
+        "median": 9.07038003871011
+      },
+      "4652600104": {
+        "maximum": 8.827796728264394,
+        "median": 8.662166718287617
+      },
+      "5268797415": {
+        "maximum": 8.141314716258421,
+        "median": 8.126336798750344
+      },
+      "5564209652": {
+        "maximum": 8.668274328177556,
+        "median": 8.538307964537543
+      },
+      "5633788395": {
+        "maximum": 9.315191267484302,
+        "median": 8.73203455418982
+      },
+      "5869559051": {
+        "maximum": 10.186014739005048,
+        "median": 9.500766462289839
+      },
+      "6047579133": {
+        "maximum": 10.352264495498629,
+        "median": 8.859424577923319
+      },
+      "6648629457": {
+        "maximum": 8.98215993381221,
+        "median": 8.688613190559165
+      },
+      "6917745987": {
+        "maximum": 9.113418708785412,
+        "median": 8.822917732270488
+      },
+      "7177427229": {
+        "maximum": 9.052342973275035,
+        "median": 8.947924370622824
+      },
+      "7517202292": {
+        "maximum": 10.139920133613826,
+        "median": 8.625836853144092
+      },
+      "8252040986": {
+        "maximum": 9.843164509245955,
+        "median": 9.5093755407107
+      },
+      "8331470149": {
+        "maximum": 9.181814406843474,
+        "median": 9.031841984267942
+      },
+      "8495275628": {
+        "maximum": 9.507854401854239,
+        "median": 9.131478369130816
+      },
+      "8563986596": {
+        "maximum": 9.644669336919836,
+        "median": 9.07316761364022
+      },
+      "8729448612": {
+        "maximum": 8.83876358515374,
+        "median": 8.72347201825726
+      },
+      "9812351333": {
+        "maximum": 10.647046344112752,
+        "median": 9.154219225309207
+      }
+    }
+  },
+  "evidence_sha256": {
+    "results/phase4a/build.json": "93dd150db18a5f34951b666ce1863dc7aec2fbee9532e821f5b556965052f003",
+    "results/phase4a/image_sources.json": "f4ce8b671beca6f7ed8a86edb70d8960d236d452bf2450b518d7145bf3fc2b56",
+    "results/phase4a/decoder_versions.json": "e0759fb906e3f958cb5119f12e292607d2071d6b8145f06c3e4a89f22b480109",
+    "results/phase4a/reference.meta.json": "2f37675f39bbbd5cd8f386d77fe675c4512a09870ed90c2b44ff8f803a59931e",
+    "results/phase4a/reference_predictions.csv": "60c23dc4fc9bd98243b65fe726c5b90883428960687567cc6c2f7191fae5f43c",
+    "results/phase4a/parity.json": "80ecd7e6de06014ad19d41b01be26429708b5c5f24d1b4c79d20beef8f589627",
+    "results/phase4a/parity.csv": "5bd623069dd410aa616626fbbc3115057c894391841908d87a3959eb2224d6f5",
+    "results/phase4a/latency.json": "a53ddee8101dc260e69632ae3a6704c4db46608a0b4577974b93d8c5998f9295",
+    "results/phase4a/latency.raw.json": "c214cf561923a55e04a73f6c9e8fc43c49f6cc5dbeb337ef15d6b3db556a6555",
+    "results/phase4a/latency.csv": "bb9ce1e5319fdfa710b9d977bd5dbc635e780e7938e0d7b37b37612fdc0da1f1",
+    "results/phase4a/cold.json": "ee92c798d33ddd9d9dd57f55c2759b26e0a98c8f3f785882e2a8d7f9aee01dda",
+    "results/phase4a/warmup.json": "5bb12a7a4ee750c35b48a81711154618463228ce42428bee3e17c9ac26d20695",
+    "results/phase4a/tests.json": "37175157db844c62c2191b674149ed21793f7cc91e4143fc947cd0cbadf9549d",
+    "results/phase4a/packaging_amendment.json": "01267d2d14e43d4126ca8ce2454e727213645086f91a323cb9f349e0a0e57f77"
+  },
+  "documentation_sha256": {
+    "NOTES.md": "ffc86296fc3c19d55575cc031760a38ee0725af24077bd4f190d27701c7b72bb",
+    "docs/phase4a-operations.md": "b8eab133afad31db39d0922880054db2b45f487ecb4055e1ef8e1d14f20922af"
+  },
+  "research_bindings": {
+    "configs/serving.yaml": "9c252757b4ab1013d0723f6aa54e0b306605052f11a10500a049767c1988bbb0",
+    "data/splits/phase0_konvid_ids.txt": "5efbfd5c72f0353a6d78f9d5ce13a8d36db7f67486c474b163a4c0edd5874dd7",
+    "configs/phase0.yaml": "ff290dc34eb9a660e82b44ad82392e3a3deab6afac0e70c449a3e47870815881",
+    "results/phase4a/research_snapshot.json": "ccf3dee9ba98d1d046cc086382d27492e9de3fb2a41c912443035531b7f01cd8",
+    "results/phase3/phase_gate.json": "12b191fe6d67c66ed9e3de3ee053e397b167a568d38c19d40bd2f7c3f7bfb59d",
+    "results/phase3/deployment.json": "8d39157721046737211b17da17195ac8f0f0145be742c453700fdd9ef3e3c727",
+    "configs/features_v2.yaml": "8397ea636c79e69a382e88a7238f798b398dafd91774edd6b50555f7bb62777c",
+    "cache/v2/meta.json": "27af097a62ed3472519367ab50c2b6deb32af26788986d8fccdd886f1d9dfb3c",
+    "cache/v2/manifest.csv": "311ae067d92f2077ed1adf93006d7da991f23f94c0845fd1f6063a90025c9ab3",
+    "data/manifests/konvid.csv": "6b1d792204a111563cc103888c3e5deded62fbdec63cb97bb976c8361e812e5b",
+    "env/serving.lock": "6abc6f6a6dfeb53e88703bb3c16412c7f68a36904523b5651d11fc121c5dbc3a",
+    "results/phase4a/packaging_amendment.json": "01267d2d14e43d4126ca8ce2454e727213645086f91a323cb9f349e0a0e57f77"
+  },
+  "serving_source_sha256": {
+    "src/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/preprocess.py": "804c8d89cb5e8b163d6dc6e97d5d618a53c198c6aa6e4c9915dc5428ee46320b",
+    "src/features.py": "a5ec35b5c3896b53e6fd59bbcc7c52db31409292d667ceff83a8302dc616eabc",
+    "src/baselines.py": "df7bb24968bae095b195802d0227b991e832ff748a4c2b23d4ab9afb9cac53b1",
+    "src/metrics.py": "7027757f69425b33b5fd7f34ca0bba9f7fc00c03c31ba5b957d55a78795d47d9",
+    "src/cache.py": "e774d745bd6a0afceba405d300495bdf2e2be2793a8e26613cc0a8253ea8d72c",
+    "src/serving_bundle.py": "8b52b69b597630613999fb47e10d15a935e133e70c0c0975d3dadc0871a05da9",
+    "src/predict.py": "85feef77244114bfcd4734866152f7e1271fd726841d6cde18fe282f2924af00",
+    "serving/__init__.py": "d4fa20189cc8e6dc05cdd676576016f616d1f5cceeb1aeae947933e0d59d5960",
+    "serving/app.py": "382106107ac061077ca0a32b4d86279768f2c5ca588fa6e84dd7be87e5f57518",
+    "serving/index.html": "e84e5ccf8a8d7135a019e02c183f314af953b3cd2596ea69f7688dddd4fdbbe7",
+    "scripts/12_prepare_serving.py": "38505c2eed0d6415f1759880cb188f0ce15766d747ee3a9405669ebb201ac9bb",
+    "scripts/14_serving_check.py": "1a778ca3fcc8bf65366c283a64e0e4e7bd77fb325b791508951e47d97fa01ff3",
+    "Dockerfile": "57e1fa33c323076eec11140d570695ca2368ff45ac77d5057610473ea00d7c46",
+    ".dockerignore": "ba1f10623544ac3a36bfce2592f0c15611e90bfca0f13d009590bf28b8d46772",
+    "configs/serving.yaml": "9c252757b4ab1013d0723f6aa54e0b306605052f11a10500a049767c1988bbb0",
+    "env/serving.in": "7427c22169de45037d046699272d1aa74472ed565d9ab20ed87b6dee04970dbf",
+    "env/serving.lock": "6abc6f6a6dfeb53e88703bb3c16412c7f68a36904523b5651d11fc121c5dbc3a",
+    "env/serving-test.in": "d6afcf8aa74cfb8fad2c4ae4822eca0921e0b9e66de6d3f2ba13da4e54109840",
+    "env/serving-test.lock": "f6e6c129a3d3570a0ca5c2e162f88e05d43357b257f2d30e6f292b6acbdda28c",
+    "tests/test_serving_bundle.py": "b4a8d97ac6acfff4865c7ad99fbe21eec9c7665cea44278a90db48902e1ef3d3",
+    "tests/test_predict_cli.py": "6b1c79f6f5428d56df36e98c7bff07840d18d8abf4afc38cf12f02be97c8c445",
+    "tests/test_serving_api.py": "ce661cffbab92fa4f0df590b1510fc26bf647d24fb3a8117edde4592c8d9b21b",
+    "tests/test_serving_evidence.py": "ed6e68ff607650bd55d390258e921f89085073aa4d19def3f25ed2e85fb6da87"
+  },
+  "phase3_status": "passed with qualification",
+  "control_status": "failed",
+  "report_sha256": "2f46919a45a632bf216a65eaa53f9d0c27427cc71efe01f141369a3651dbbe7f"
+}

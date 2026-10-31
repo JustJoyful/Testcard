@@ -1,0 +1,28 @@
+{
+  "status": "verified",
+  "historical_source_sha256": "68a001f55650d758a69b09e789d6be55a6a0646b23baea2808bd8e9770841c56",
+  "original_source_count": 40,
+  "phase3_output_count": 198,
+  "snapshot_sha256": "ccf3dee9ba98d1d046cc086382d27492e9de3fb2a41c912443035531b7f01cd8",
+  "bundle_manifest_sha256": "7837d66660b467a01e7b08bca01b5aa4ac807764709bd06e6c30913bd7a4a1b2",
+  "source_code_sha256": {
+    "src/serving_bundle.py": "f3f11a1ecff57db9db83917935594de33a5f6c4c1366f83a65b22e712330905c",
+    "src/predict.py": "85feef77244114bfcd4734866152f7e1271fd726841d6cde18fe282f2924af00",
+    "scripts/12_prepare_serving.py": "3ebf7fae24e2992b1b52d7bcfe2f21fa27e08d44138f1485ff4328b9926728d6",
+    "serving/__init__.py": "d4fa20189cc8e6dc05cdd676576016f616d1f5cceeb1aeae947933e0d59d5960",
+    "serving/app.py": "382106107ac061077ca0a32b4d86279768f2c5ca588fa6e84dd7be87e5f57518",
+    "serving/index.html": "e84e5ccf8a8d7135a019e02c183f314af953b3cd2596ea69f7688dddd4fdbbe7",
+    "configs/serving.yaml": "9c252757b4ab1013d0723f6aa54e0b306605052f11a10500a049767c1988bbb0",
+    "env/serving.in": "7427c22169de45037d046699272d1aa74472ed565d9ab20ed87b6dee04970dbf",
+    "env/serving.lock": "6abc6f6a6dfeb53e88703bb3c16412c7f68a36904523b5651d11fc121c5dbc3a",
+    "env/serving-test.in": "d6afcf8aa74cfb8fad2c4ae4822eca0921e0b9e66de6d3f2ba13da4e54109840",
+    "env/serving-test.lock": "f6e6c129a3d3570a0ca5c2e162f88e05d43357b257f2d30e6f292b6acbdda28c",
+    "tests/test_serving_bundle.py": "3f315e44471ef7f4c3475c5d479d1ba4929125045005540c6ac6f69b76b5ef1f",
+    "tests/test_predict_cli.py": "6b1c79f6f5428d56df36e98c7bff07840d18d8abf4afc38cf12f02be97c8c445",
+    "tests/test_serving_api.py": "ce661cffbab92fa4f0df590b1510fc26bf647d24fb3a8117edde4592c8d9b21b",
+    "docs/phase4a-operations.md": "3a868d7d650af6b0fb2f20b1ae7a20914b2431a0428829d706df7c7756ac7042"
+  },
+  "phase3_status": "passed with qualification",
+  "control_status": "failed",
+  "code_commit": "1be3308a4f022c0a9e9303867e72dcab59daf979"
+}

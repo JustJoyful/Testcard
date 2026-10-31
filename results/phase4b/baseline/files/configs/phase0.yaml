@@ -1,0 +1,131 @@
+seed: 0
+cache_version: phase0-unfrozen
+datasets:
+  konvid:
+    archive: KoNViD_1k_videos.zip
+    labels: KoNViD_1k_metadata.zip
+    labels_member: KoNViD_1k_mos.csv
+    raw_dir: data/raw/konvid
+    mos_scale:
+    - 1
+    - 5
+  livevqc:
+    archive: LIVE_Video_Quality_Challeng_(VQC)_Database.zip
+    labels_member: LIVE Video Quality Challenge (VQC) Database/data.mat
+    raw_dir: data/raw/livevqc
+    mos_scale:
+    - 0
+    - 100
+samples:
+  konvid:
+  - '11902527296'
+  - '3710887216'
+  - '4565232312'
+  - '4567868868'
+  - '4652600104'
+  - '5268797415'
+  - '5564209652'
+  - '5633788395'
+  - '5869559051'
+  - '6047579133'
+  - '6648629457'
+  - '6917745987'
+  - '7177427229'
+  - '7517202292'
+  - '8252040986'
+  - '8331470149'
+  - '8495275628'
+  - '8563986596'
+  - '8729448612'
+  - '9812351333'
+  livevqc_portrait:
+  - E001
+  - G001
+  - G002
+decoder:
+  name: ffmpeg
+  ffmpeg: ffmpeg
+  ffprobe: ffprobe
+  confirmed: true
+backbones:
+  dino:
+    architecture: dinov2_vitb14
+    hub_commit: 7764ea0f912e53c92e82eb78a2a1631e92725fc8
+    weights_sha256: 0b8b82f85de91b424aded121c7e1dcc2b7bc6d0adeea651bf73a13307fad8c73
+    blocks:
+    - 6
+    - 9
+    - 12
+    norm: true
+    patch_std_correction: 0
+    confirmed: true
+    weights_bytes: 346378731
+    feature_dimensions:
+      cls: 768
+      patchmean_L6: 768
+      patchstd_L6: 768
+      patchmean_L9: 768
+      patchstd_L9: 768
+      patchmean_L12: 768
+      patchstd_L12: 768
+  resnet50:
+    weights: ResNet50_Weights.IMAGENET1K_V2
+    weights_sha256: 11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca
+    confirmed: true
+    weights_bytes: 102540417
+    feature_dimensions:
+      pooled: 2048
+  motion:
+    candidate: slowfast_r50
+    hub_commit: null
+    weights_sha256: 454f39e1c1f985df2bee2aa27887ed53ff56e74ed8b8cca11203a1a1264d7cc2
+    confirmed: true
+    package_version: 0.1.5
+    source_sha256: 165e12ec4a5997a6944b8a356f8dffc44ac462e9b456272fbad78510698b5649
+    reference_transform: 32 offsets (arange(32)-15.5)*2/30; normalize .45/.225; short-side
+      256 bilinear align_corners=False; center crop 256; linspace slow indices
+    weights_bytes: 277138115
+    feature_dimensions:
+      pooled: 2304
+preprocessing:
+  frozen: false
+  spatial_fps: 4
+  spatial_crop: 448
+  motion_transform: null
+  spatial_interpolation: bicubic
+  spatial_antialias: true
+  spatial_mean:
+  - 0.485
+  - 0.456
+  - 0.406
+  spatial_std:
+  - 0.229
+  - 0.224
+  - 0.225
+timing:
+  warmup: 1
+  repeats: 3
+  cpu_threads: 4
+  cpu_budget_seconds_per_10s: 120
+feasibility:
+  deadline: '2026-11-04'
+  timezone: Asia/Kolkata
+  unattended_compute_note: User supplied ~10 GPU h/night over 10 planning nights;
+    approximately 100 h total.
+  weekly_hours: 56
+  available_compute_hours: 100
+  reserve_disk_bytes: 5368709120
+  working_hours_note: User supplied ~8 h/day for the 10-day scope.
+  remaining_phase0_labor_hours: 1
+  remaining_phase0_labor_note: Engineering allowance for remaining Phase 0 final review/documentation
+    only; not a measured estimate for later development or training.
+  hands_on_hours_per_day: 8
+  unattended_gpu_hours_per_night: 10
+  planning_days: 10
+  total_hands_on_hours: 80
+ugc:
+  status: skipped
+  cloud_status: cut
+  metadata_selection_status: cut
+  reason: User cut all YouTube-UGC work for the 10-day deadline; no metadata selection,
+    notebook, cloud smoke or length experiment.

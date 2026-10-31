@@ -1,0 +1,10 @@
+# Task 7 packaging evidence, run from /home/joydeep/Projects/VQA on 2026-10-31. Not Task 8 parity/latency.
+.venv-serving/bin/python -m pytest tests/test_demo_api.py tests/test_serving_api.py tests/test_demo_evidence.py -q
+# Actual context listing (alpine COPY . with this .dockerignore) -> build_context.txt (34 files == test roster)
+docker build --no-cache -t vqa:phase4b .   > build.log   (legacy builder; no buildx, so no --progress=plain)
+.venv-serving/bin/python -m results.phase4b.package.image_check > image_check.log   # starts vqa-phase4b-check on 127.0.0.1:8001 with caps
+docker cp vqa-phase4b-check:/app/serving/web/dist <tmp>  -> js_budget.json (gzip -9 of every shipped .js)
+cd serving/web && VQA_CONTAINER_URL=http://127.0.0.1:8001 VQA_REAL_VIDEO=<repo>/data/raw/konvid/11902527296.mp4 npx playwright test > browser-container.log
+cd serving/web && npx playwright test > browser-demo.log && npm test > node-tests.log
+cd serving/web && CHROME_PATH=~/.cache/ms-playwright/chromium-1248/chrome-linux*/chrome npx lighthouse http://127.0.0.1:8001/ --only-categories=accessibility --preset=desktop --output=json --output-path=results/phase4b/package/lighthouse-container.json --chrome-flags=--headless=new
+# Phase 4a container (vqa:phase4a, 127.0.0.1:8000) left running throughout.

@@ -1,0 +1,62 @@
+{
+  "status": "passed",
+  "clean_build": true,
+  "command": [
+    "docker",
+    "build",
+    "--no-cache",
+    "-t",
+    "vqa:phase4b",
+    "."
+  ],
+  "image": "vqa:phase4b",
+  "image_id": "sha256:85a3e58c672186cb2f896e49ffecc395715dff26d88e4e55b11e4fa38e6aeb8a",
+  "build_log": "results/phase4b/package/build.log",
+  "build_log_sha256": "2b35217c54850710c16accecd7a1918841a5bfba5b363c6b8934c6744529442b",
+  "node_image": "node:22.22.2-bookworm-slim@sha256:9f6d5975c7dca860947d3915877f85607946403fc55349f39b4bc3688448bb6e",
+  "archive_url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2026-10-29-19-17/ffmpeg-n9.0.2-37-gae19868753-linux64-gpl-9.0.tar.xz",
+  "archive_sha256": "83537b0f6a97905f325080f6f5916e70ec252d1ef3e4ce4746f755b88720cbf5",
+  "environment": {
+    "python": "3.11.15",
+    "torch": "2.14.1+cpu",
+    "torchvision": "0.29.1+cpu",
+    "cuda": null,
+    "cuda_available": false,
+    "uid": 10001,
+    "node": null,
+    "npm": null
+  },
+  "resource_caps": [
+    "--cpus=4",
+    "--memory=4g",
+    "--pids-limit=128",
+    "--read-only",
+    "--tmpfs",
+    "/tmp:rw,nosuid,size=256m"
+  ],
+  "bindings": {
+    "Dockerfile": "e1042b223bae139c37f40b38f140895003bdfd67a5c1273310465bfb6f1bc9a5",
+    ".dockerignore": "226fdef91e9a0adbeee6b828954a02aec5d9e39f1346e379b8060ac954a336da",
+    "env/serving.lock": "6abc6f6a6dfeb53e88703bb3c16412c7f68a36904523b5651d11fc121c5dbc3a",
+    "configs/serving.yaml": "9c252757b4ab1013d0723f6aa54e0b306605052f11a10500a049767c1988bbb0",
+    "artifacts/serving/manifest.json": "96ea41ecb8818c147611a058700de9f44ca0acd5c8009eec9c8c4f3372e31ce1",
+    "DESIGN.md": "65e998342b1712f0d16b6380ca798dd622671f1bff592d05c159bfd7885e7574",
+    "DECISIONS.md": "5552961812ed51c44b8e3d13900c92116cb635a54633d12e36836d0a90d4e58b",
+    "results/phase4b/decision_amendment.json": "11982eb1ac2c1279e8cf3674ac61a935a0ff04327e7cf115f9b7453033b385ae",
+    "results/phase4b/frontend_checkpoint.json": "31648360445c62e59960b306e035922254fac20287a1a7119102ec4bcf1b4b84",
+    "serving/web/.env": "41cd1178eb5254f85f69b5e99c084660f28af68184c1efd7f6c8de7f979c09a8",
+    "serving/web/index.html": "a18b011bb702500e54b3bf02560001b81ca8974b785671aeb0aea1898fb4e373",
+    "serving/web/package.json": "61cbe2013266a226978c401c6deb8bc9b1a02d757a86eeec7c554321f4a27801",
+    "serving/web/package-lock.json": "9b7e683c832b73bab5f8efc7d31812b5182dcf757c20310fc6cf4450cd6fe9b3",
+    "serving/web/vite.config.js": "b6bf9de2d430f6cae682c13360abf9686b4ec76d1de66c7a8d9463e809b8ce96",
+    "serving/web/src/styles.css": "15809660d5bc13df6cbd2c64a13d52e98f59e5ec89c3f04e222879682e058967",
+    "serving/web/src/main.js": "f3489f447f531fceacf2daaaf41e66411399610022b331d655d46696e2b92107",
+    "serving/web/src/state.js": "ec80b32adcbeff6ba7f4da768df9f9953c91eefce72dffc3f408d51e9c4170bb",
+    "serving/web/src/api.js": "727b6ae7868172bdcea32ca8ef785369921b26cc68e87e250b156f5fe7588681",
+    "serving/web/src/mock.js": "6112c2a5060641cc190423d00e3eb2fbfa316a88efc622295e9cf50f8cd408e1",
+    "serving/web/src/format.js": "70b263e60365de4968ed04d02d213f3f58cc5461ebd271beab7182c1deba8b6f",
+    "serving/web/src/result.js": "920a7b43feb2e30fc53c1e8e650e24cebfad3c85dbc8a15d597521a57446edbf",
+    "serving/web/src/json-view.js": "297752912e6f225791a91ffb40c3133717ba8a6011e316a23318e39b4c7a9ec0",
+    "serving/web/src/tv.js": "d18382b4eed2b2150641524af349d568867f389fcfdc142a82c3875fe6aca57d"
+  }
+}

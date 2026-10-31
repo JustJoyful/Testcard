@@ -1,0 +1,47 @@
+{
+  "command": [
+    "docker",
+    "run",
+    "--rm",
+    "--network",
+    "none",
+    "--cpus=4",
+    "--memory=4g",
+    "--pids-limit=128",
+    "--read-only",
+    "--tmpfs",
+    "/tmp:rw,nosuid,size=256m",
+    "--user",
+    "1000:1000",
+    "--mount",
+    "type=bind,src=/home/joydeep/Projects/VQA/data/raw/konvid/8252040986.mp4,dst=/input/video.mp4,readonly",
+    "--mount",
+    "type=bind,src=/tmp/vqa-export-l5wt01m8,dst=/output",
+    "--entrypoint",
+    "python",
+    "vqa:phase4a",
+    "-m",
+    "src.predict",
+    "/input/video.mp4",
+    "--features-out",
+    "/output/features.npy"
+  ],
+  "exit_code": 0,
+  "stderr": "/app/src/preprocess.py:130: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)\n  tensor = torch.from_numpy(np.ascontiguousarray(frame)).permute(2, 0, 1).float() / 255\n",
+  "response": {
+    "score": 3.551226228693376,
+    "timings_seconds": {
+      "extraction": 7.322383746999549,
+      "head": 0.00010420200123917311,
+      "total": 7.322836136998376
+    },
+    "verified": {
+      "model_sha256": "4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3",
+      "weights_sha256": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca",
+      "weights_enum": "ResNet50_Weights.IMAGENET1K_V2",
+      "preprocessing_sha256": "acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b",
+      "cpu_threads": 4
+    },
+    "startup_seconds": 1.1248885320019326
+  }
+}

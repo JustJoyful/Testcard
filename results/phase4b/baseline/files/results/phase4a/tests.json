@@ -1,0 +1,92 @@
+{
+  "runs": {
+    "serving": {
+      "command": [
+        ".venv-serving/bin/python",
+        "-m",
+        "pytest",
+        "tests/test_predict_cli.py",
+        "tests/test_serving_api.py",
+        "tests/test_serving_bundle.py",
+        "tests/test_serving_evidence.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "log": "results/phase4a/cli_refresh_serving_tests.log",
+      "log_sha256": "89660cf107a2b4009efeeafcb0e7b6ad4a38c057275e4642a1e486c9ee466307",
+      "summary": "75 passed, 1 warning in 44.96s"
+    },
+    "research": {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "--ignore",
+        "tests/test_predict_cli.py",
+        "--ignore",
+        "tests/test_serving_api.py",
+        "--ignore",
+        "tests/test_serving_bundle.py",
+        "--ignore",
+        "tests/test_serving_evidence.py",
+        "--deselect",
+        "tests/test_phase1_pilot.py::test_cli_repairs_interrupted_protocol_freeze_without_refitting"
+      ],
+      "exit_code": 0,
+      "log": "results/phase4a/amended_research_tests.log",
+      "log_sha256": "90a2ac4fc220e3548c4e8bf3eb891e24266338b564c7d1ce1dc2a1740c00e010",
+      "summary": "256 passed, 1 deselected in 29.20s"
+    },
+    "shared": {
+      "command": [
+        ".venv-serving/bin/python",
+        "-m",
+        "pytest",
+        "tests/test_phase0_preprocess.py",
+        "tests/test_phase0_features.py",
+        "tests/test_phase1_ridge.py",
+        "tests/test_phase1_parity.py",
+        "tests/test_phase3_gate.py",
+        "--deselect",
+        "tests/test_phase0_preprocess.py::test_slowfast_matches_installed_reference_on_synthetic_pixels",
+        "-q"
+      ],
+      "exit_code": 0,
+      "log": "results/phase4a/amended_shared_tests.log",
+      "log_sha256": "2f6c4334952fe4fa4e8d447036ac1fe722ac912db5b68b2d1f1032d33fe207c8",
+      "summary": "35 passed, 1 deselected in 5.94s"
+    }
+  },
+  "serving_source_sha256": {
+    "src/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/preprocess.py": "804c8d89cb5e8b163d6dc6e97d5d618a53c198c6aa6e4c9915dc5428ee46320b",
+    "src/features.py": "a5ec35b5c3896b53e6fd59bbcc7c52db31409292d667ceff83a8302dc616eabc",
+    "src/baselines.py": "df7bb24968bae095b195802d0227b991e832ff748a4c2b23d4ab9afb9cac53b1",
+    "src/metrics.py": "7027757f69425b33b5fd7f34ca0bba9f7fc00c03c31ba5b957d55a78795d47d9",
+    "src/cache.py": "e774d745bd6a0afceba405d300495bdf2e2be2793a8e26613cc0a8253ea8d72c",
+    "src/serving_bundle.py": "8b52b69b597630613999fb47e10d15a935e133e70c0c0975d3dadc0871a05da9",
+    "src/predict.py": "afb3aa37268b399d2d50e56bb31d4ba85ade60eb0fcfd0817c184ce26361831a",
+    "serving/__init__.py": "d4fa20189cc8e6dc05cdd676576016f616d1f5cceeb1aeae947933e0d59d5960",
+    "serving/app.py": "382106107ac061077ca0a32b4d86279768f2c5ca588fa6e84dd7be87e5f57518",
+    "serving/index.html": "e84e5ccf8a8d7135a019e02c183f314af953b3cd2596ea69f7688dddd4fdbbe7",
+    "scripts/12_prepare_serving.py": "38505c2eed0d6415f1759880cb188f0ce15766d747ee3a9405669ebb201ac9bb",
+    "scripts/14_serving_check.py": "17246ac941e1efcf41d6e468e98393cc598553b0ae4b90080f3706f420284aa6",
+    "Dockerfile": "57e1fa33c323076eec11140d570695ca2368ff45ac77d5057610473ea00d7c46",
+    ".dockerignore": "ba1f10623544ac3a36bfce2592f0c15611e90bfca0f13d009590bf28b8d46772",
+    "configs/serving.yaml": "9c252757b4ab1013d0723f6aa54e0b306605052f11a10500a049767c1988bbb0",
+    "env/serving.in": "7427c22169de45037d046699272d1aa74472ed565d9ab20ed87b6dee04970dbf",
+    "env/serving.lock": "6abc6f6a6dfeb53e88703bb3c16412c7f68a36904523b5651d11fc121c5dbc3a",
+    "env/serving-test.in": "d6afcf8aa74cfb8fad2c4ae4822eca0921e0b9e66de6d3f2ba13da4e54109840",
+    "env/serving-test.lock": "f6e6c129a3d3570a0ca5c2e162f88e05d43357b257f2d30e6f292b6acbdda28c",
+    "tests/test_serving_bundle.py": "b4a8d97ac6acfff4865c7ad99fbe21eec9c7665cea44278a90db48902e1ef3d3",
+    "tests/test_predict_cli.py": "65b2d3cd44164354c590336bd9944be54ae3607ccbda7b83dc7a587143e1492c",
+    "tests/test_serving_api.py": "ce661cffbab92fa4f0df590b1510fc26bf647d24fb3a8117edde4592c8d9b21b",
+    "tests/test_serving_evidence.py": "5c5ceceae740461f03d6b0fbf48b28fecfb8db56719dc20d4869d211b7084adb"
+  },
+  "known_existing_failure": "tests/test_phase1_pilot.py::test_cli_repairs_interrupted_protocol_freeze_without_refitting",
+  "known_failure_reason": "Historical October 28 deadline passed; original test mutates real DECISIONS.md, so it is disclosed and excluded from final research run.",
+  "motion_test_environment": "Legacy SlowFast reference passes in research environment; excluded only from minimal CPU serving environment.",
+  "review_sha256": "9cffd8b8f7bc7632658026691b7088616ec29a04f768825b28e3eab05edd0a71",
+  "scope": "Current serving source and formats tested by serving run; prior original-research/shared checks retained only because those frozen files/environment remain unchanged and verified."
+}

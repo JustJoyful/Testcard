@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Video quality prediction</title>
+<h1>Video quality prediction</h1>
+<p>Predicted MOS (KoNViD 1–5 scale)</p>
+<p>Predictions are unclipped and may fall slightly outside 1–5.</p>
+<p>Upload one MP4, MOV or WebM: at most 100 MiB, 30 seconds, 1920 pixels per side,
+2073600 source pixels and 60 fps. Multipart receipt limit: 101 MiB and 60 seconds.
+One video is processed at a time; busy requests are rejected. Uploads are deleted after processing (zero retention).</p>
+<form action="/predict" method="post" enctype="multipart/form-data">
+<label for="video">Video file</label>
+<input id="video" name="file" type="file" accept="video/mp4,video/quicktime,video/webm" required>
+<button type="submit">Predict quality</button>
+</form>
+<pre id="result" role="status" aria-live="polite"></pre>
+<script>
+const form = document.querySelector('form');
+const result = document.getElementById('result');
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const button = form.querySelector('button');
+  button.disabled = true;
+  result.textContent = 'Processing video…';
+  try {
+    const response = await fetch(form.action, {method: 'POST', body: new FormData(form)});
+    const data = await response.json();
+    result.textContent = response.ok
+      ? `Predicted MOS (KoNViD 1–5 scale): ${data.score}\nTimings (seconds): ${JSON.stringify(data.timings_seconds)}`
+      : data.error || 'Upload failed.';
+  } catch (error) {
+    result.textContent = 'Request failed. Check your connection and retry.';
+  } finally {
+    button.disabled = false;
+  }
+});
+</script>
+</html>
