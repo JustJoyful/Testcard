@@ -14,7 +14,7 @@ A controlled comparison of four temporal heads and a ridge baseline on frozen, c
 - **Features.** ResNet-50 beats the DINOv2 last-layer representation for 5 of 5 heads, by the paired bootstrap and the ±0.01 margin rule.
 - **Layers (post-hoc, exploratory, unadjusted).** Patch statistics from DINOv2 block 6 beat the ResNet-50 ridge (Δ SRCC +0.0592, 95% CI [+0.0406, +0.0787]). This was robust under a predeclared check with the ridge alpha grid extended to 1e6. The DINOv2 deficit was specific to the last layer used in the declared protocol.
 - **Cross-dataset.** Trained on KoNViD-1k and tested on LIVE-VQC, 6 of 6 head pairs show no detectable difference on LIVE-VQC. The deployed ridge reached SRCC 0.644 on LIVE-VQC.
-- **SOTA.** These cached-feature regressors sit below end-to-end trained models; the gap to published end-to-end models is stated once the cited values are verified.
+- **SOTA.** These cached-feature regressors sit below end-to-end trained models; published end-to-end models report KoNViD-1k SRCC up to 0.909 under their own protocols, against 0.780 here.
 
 ## Contents
 
@@ -236,7 +236,24 @@ ResNet-50 is the most distortion-sensitive, yet it loses to L6, so raw sensitivi
 
 Published numbers come only from the original papers, with their split and protocol, as listed in [results/sota_citations.csv](results/sota_citations.csv).
 
-> The comparison table is withheld: 16 of 16 rows in [results/sota_citations.csv](results/sota_citations.csv) are not yet verified against the original papers. It is generated automatically once every row is marked verified.
+| Model | Dataset | Protocol | Metric | Value | Source |
+|---|---|---|---|---|---|
+| FAST-VQA | KoNViD-1k | trained end-to-end on LSVQ train; evaluated cross-dataset on the full target set (no target training) | SRCC | 0.859 | [Table 3, p. 9](https://arxiv.org/abs/2207.02595) |
+| FAST-VQA | KoNViD-1k | trained end-to-end on LSVQ train; evaluated cross-dataset on the full target set (no target training) | PLCC | 0.855 | [Table 3, p. 9](https://arxiv.org/abs/2207.02595) |
+| FAST-VQA | LIVE-VQC | trained end-to-end on LSVQ train; evaluated cross-dataset on the full target set (no target training) | SRCC | 0.823 | [Table 3, p. 9](https://arxiv.org/abs/2207.02595) |
+| FAST-VQA | LIVE-VQC | trained end-to-end on LSVQ train; evaluated cross-dataset on the full target set (no target training) | PLCC | 0.844 | [Table 3, p. 9](https://arxiv.org/abs/2207.02595) |
+| FAST-VQA | KoNViD-1k | pretrained on LSVQ; fine-tuned end-to-end on the target; average over 10 random train/test splits | SRCC | 0.891 | [Table 5, p. 11](https://arxiv.org/abs/2207.02595) |
+| FAST-VQA | KoNViD-1k | pretrained on LSVQ; fine-tuned end-to-end on the target; average over 10 random train/test splits | PLCC | 0.892 | [Table 5, p. 11](https://arxiv.org/abs/2207.02595) |
+| FAST-VQA | LIVE-VQC | pretrained on LSVQ; fine-tuned end-to-end on the target; average over 10 random train/test splits | SRCC | 0.849 | [Table 5, p. 11](https://arxiv.org/abs/2207.02595) |
+| FAST-VQA | LIVE-VQC | pretrained on LSVQ; fine-tuned end-to-end on the target; average over 10 random train/test splits | PLCC | 0.865 | [Table 5, p. 11](https://arxiv.org/abs/2207.02595) |
+| DOVER | KoNViD-1k | trained end-to-end on LSVQ train; evaluated cross-dataset on the full target set (no target training) | SRCC | 0.884 | [Table 4, p. 7](https://arxiv.org/abs/2211.04894) |
+| DOVER | KoNViD-1k | trained end-to-end on LSVQ train; evaluated cross-dataset on the full target set (no target training) | PLCC | 0.883 | [Table 4, p. 7](https://arxiv.org/abs/2211.04894) |
+| DOVER | LIVE-VQC | trained end-to-end on LSVQ train; evaluated cross-dataset on the full target set (no target training) | SRCC | 0.832 | [Table 4, p. 7](https://arxiv.org/abs/2211.04894) |
+| DOVER | LIVE-VQC | trained end-to-end on LSVQ train; evaluated cross-dataset on the full target set (no target training) | PLCC | 0.855 | [Table 4, p. 7](https://arxiv.org/abs/2211.04894) |
+| DOVER | KoNViD-1k | pretrained on LSVQ; fine-tuned end-to-end on the target; average over 10 random train/test splits | SRCC | 0.909 | [Table 5, p. 7](https://arxiv.org/abs/2211.04894) |
+| DOVER | KoNViD-1k | pretrained on LSVQ; fine-tuned end-to-end on the target; average over 10 random train/test splits | PLCC | 0.906 | [Table 5, p. 7](https://arxiv.org/abs/2211.04894) |
+| DOVER | LIVE-VQC | pretrained on LSVQ; fine-tuned end-to-end on the target; average over 10 random train/test splits | SRCC | 0.860 | [Table 5, p. 7](https://arxiv.org/abs/2211.04894) |
+| DOVER | LIVE-VQC | pretrained on LSVQ; fine-tuned end-to-end on the target; average over 10 random train/test splits | PLCC | 0.875 | [Table 5, p. 7](https://arxiv.org/abs/2211.04894) |
 
 The published protocols differ from this project's: 5-fold cross-validation within KoNViD-1k, plus a single KoNViD→LIVE-VQC transfer. The comparison is therefore indicative rather than paired. There are four reasons for the gap:
 - **Training data:** the published models train end-to-end on the large LSVQ dataset, while this project regresses on frozen, cached features using KoNViD-1k alone.
