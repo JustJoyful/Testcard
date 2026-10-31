@@ -190,7 +190,7 @@ Not done. YouTube-UGC, and with it RQ5 (length extrapolation), was cut from the 
 
 ## Post-hoc analysis: why DINOv2 lost to ResNet-50
 
-Everything in this section is **post-hoc, exploratory and unadjusted**, chosen after the Phase 1–3 results were known. Both parts were predeclared in [DECISIONS.md](DECISIONS.md) before any computation: the layer analysis in commit `448efe2` and the alpha-grid follow-up in commit `fbe046c`. Nothing here changed the deployed model or any phase result, because choosing a model from these held-out results would be test-set selection.
+Everything in this section is **post-hoc, exploratory and unadjusted**, chosen after the Phase 1–3 results were known. Both parts were predeclared in [DECISIONS.md](DECISIONS.md) before any computation: the layer analysis in commit `cc19a24` and the alpha-grid follow-up in commit `72c5eaa`. Nothing here changed the deployed model or any phase result, because choosing a model from these held-out results would be test-set selection.
 
 **Part A (post-hoc, exploratory, unadjusted).** Five DINOv2 variants were fitted with the Phase 1/2 ridge protocol. Variant A0 reproduced the original DINOv2 ridge in every fold (maximum absolute SRCC difference 0), so the comparison is like-for-like. The table shows the five variants under the original alpha grid.
 

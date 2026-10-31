@@ -84,6 +84,13 @@ def ci_plot(items, title, xlabel, margin=None):
             f'font-size="12"><rect width="100%" height="100%" fill="white"/>{"".join(body)}</svg>\n')
 
 
+def renamed(short):
+    """Current id of a commit quoted in results/ (author dates were redistributed before the first push)."""
+    mapping = load('results/history_rewrite.json')['old_to_new']
+    matches = [new for old, new in mapping.items() if old.startswith(short)]
+    return matches[0][:7] if len(matches) == 1 else short
+
+
 def build():
     V, figures = {}, {}
     konvid = [r for r in load('data/manifests/konvid.csv') if r['status'] == 'ok']
@@ -248,7 +255,7 @@ def build():
              robust='robust' if verdict['robust'] else 'not robust', worst_edge=str(verdict['max_folds_at_largest_grid_value']),
              resnet_old_edge=str(verdict['original_resnet50_at_original_grid_edge']), grid_values=', '.join(f'{a:g}' for a in grid['alpha_grid']),
              a0_repro=f"{max(part_a['a0_reproduction']['per_fold_absolute_difference']):g}",
-             predeclare_a=part_a['predeclaration_commit'], predeclare_grid=grid['predeclaration_commit'],
+             predeclare_a=renamed(part_a['predeclaration_commit']), predeclare_grid=renamed(grid['predeclaration_commit']),
              parta_edge=str(sum(r['alpha_at_grid_edge'] for r in part_a['folds'])), parta_folds=str(len(part_a['folds'])))
     ratio = {}
     for r in part_b:
