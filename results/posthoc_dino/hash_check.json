@@ -1,0 +1,39 @@
+{
+  "results/phase1/phase_gate.json": {
+    "checked": 21,
+    "changed": [],
+    "unresolved": []
+  },
+  "results/phase2/phase_gate.json": {
+    "checked": 228,
+    "changed": [],
+    "unresolved": []
+  },
+  "results/phase3/phase_gate.json": {
+    "checked": 198,
+    "changed": [],
+    "unresolved": []
+  },
+  "results/phase4a/phase_gate.json": {
+    "checked": 51,
+    "changed": [
+      "NOTES.md",
+      "src/serving_bundle.py",
+      "serving/app.py",
+      ".dockerignore",
+      "tests/test_serving_bundle.py",
+      "tests/test_serving_api.py"
+    ],
+    "unresolved": []
+  },
+  "all_unchanged": false,
+  "phase4a_changes_attribution": {
+    "NOTES.md": "changed by Phase 4b documentation before this analysis; original preserved in results/phase4b/baseline/files/",
+    "serving/app.py": "changed by Phase 4b Tasks 2/7 before this analysis; original preserved in results/phase4b/baseline/files/",
+    ".dockerignore": "changed by Phase 4b Task 7 before this analysis; original preserved in results/phase4b/baseline/files/",
+    "tests/test_serving_api.py": "changed by Phase 4b Tasks 2/7 before this analysis; original preserved in results/phase4b/baseline/files/",
+    "src/serving_bundle.py": "changed by Phase 4b Task 1, then by the user-approved strict decision-chain verifier (commit 5e18468) that precedes this analysis",
+    "tests/test_serving_bundle.py": "changed by Phase 4b Task 1, then by the verifier test (commit b143654)"
+  },
+  "analysis_scripts_touched_gate_files": false
+}

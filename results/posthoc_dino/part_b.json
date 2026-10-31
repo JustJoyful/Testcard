@@ -1,0 +1,618 @@
+{
+  "status": "complete",
+  "label": "post-hoc exploratory",
+  "predeclaration_commit": "448efe2",
+  "frames": [
+    {
+      "video_id": "11902527296",
+      "sample_index": 1
+    },
+    {
+      "video_id": "11902527296",
+      "sample_index": 3
+    },
+    {
+      "video_id": "11902527296",
+      "sample_index": 5
+    },
+    {
+      "video_id": "11902527296",
+      "sample_index": 10
+    },
+    {
+      "video_id": "11902527296",
+      "sample_index": 14
+    },
+    {
+      "video_id": "11902527296",
+      "sample_index": 18
+    },
+    {
+      "video_id": "11902527296",
+      "sample_index": 21
+    },
+    {
+      "video_id": "11902527296",
+      "sample_index": 25
+    },
+    {
+      "video_id": "3710887216",
+      "sample_index": 13
+    },
+    {
+      "video_id": "3710887216",
+      "sample_index": 18
+    },
+    {
+      "video_id": "3710887216",
+      "sample_index": 24
+    },
+    {
+      "video_id": "4565232312",
+      "sample_index": 15
+    },
+    {
+      "video_id": "4567868868",
+      "sample_index": 9
+    },
+    {
+      "video_id": "4567868868",
+      "sample_index": 13
+    },
+    {
+      "video_id": "5268797415",
+      "sample_index": 0
+    },
+    {
+      "video_id": "5268797415",
+      "sample_index": 4
+    },
+    {
+      "video_id": "5268797415",
+      "sample_index": 9
+    },
+    {
+      "video_id": "5268797415",
+      "sample_index": 24
+    },
+    {
+      "video_id": "5268797415",
+      "sample_index": 28
+    },
+    {
+      "video_id": "5633788395",
+      "sample_index": 19
+    },
+    {
+      "video_id": "5633788395",
+      "sample_index": 32
+    },
+    {
+      "video_id": "5869559051",
+      "sample_index": 11
+    },
+    {
+      "video_id": "6047579133",
+      "sample_index": 15
+    },
+    {
+      "video_id": "6047579133",
+      "sample_index": 16
+    },
+    {
+      "video_id": "6047579133",
+      "sample_index": 17
+    },
+    {
+      "video_id": "6648629457",
+      "sample_index": 11
+    },
+    {
+      "video_id": "6648629457",
+      "sample_index": 15
+    },
+    {
+      "video_id": "6648629457",
+      "sample_index": 20
+    },
+    {
+      "video_id": "6648629457",
+      "sample_index": 22
+    },
+    {
+      "video_id": "6648629457",
+      "sample_index": 23
+    },
+    {
+      "video_id": "6917745987",
+      "sample_index": 15
+    },
+    {
+      "video_id": "6917745987",
+      "sample_index": 27
+    },
+    {
+      "video_id": "7177427229",
+      "sample_index": 0
+    },
+    {
+      "video_id": "7177427229",
+      "sample_index": 7
+    },
+    {
+      "video_id": "7177427229",
+      "sample_index": 10
+    },
+    {
+      "video_id": "7177427229",
+      "sample_index": 28
+    },
+    {
+      "video_id": "7177427229",
+      "sample_index": 30
+    },
+    {
+      "video_id": "7517202292",
+      "sample_index": 11
+    },
+    {
+      "video_id": "7517202292",
+      "sample_index": 27
+    },
+    {
+      "video_id": "8252040986",
+      "sample_index": 5
+    },
+    {
+      "video_id": "8252040986",
+      "sample_index": 26
+    },
+    {
+      "video_id": "8331470149",
+      "sample_index": 9
+    },
+    {
+      "video_id": "8331470149",
+      "sample_index": 20
+    },
+    {
+      "video_id": "8331470149",
+      "sample_index": 24
+    },
+    {
+      "video_id": "8495275628",
+      "sample_index": 14
+    },
+    {
+      "video_id": "8495275628",
+      "sample_index": 17
+    },
+    {
+      "video_id": "8495275628",
+      "sample_index": 28
+    },
+    {
+      "video_id": "8563986596",
+      "sample_index": 6
+    },
+    {
+      "video_id": "8563986596",
+      "sample_index": 28
+    },
+    {
+      "video_id": "8729448612",
+      "sample_index": 12
+    }
+  ],
+  "conditions": [
+    [
+      "clean",
+      null
+    ],
+    [
+      "blur",
+      1
+    ],
+    [
+      "blur",
+      2
+    ],
+    [
+      "blur",
+      4
+    ],
+    [
+      "noise",
+      5
+    ],
+    [
+      "noise",
+      15
+    ],
+    [
+      "noise",
+      30
+    ],
+    [
+      "jpeg",
+      50
+    ],
+    [
+      "jpeg",
+      20
+    ],
+    [
+      "jpeg",
+      5
+    ]
+  ],
+  "device": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+  "script_sha256": "56440f9f4d16745287a5fa3337c07fbd0e49ed18ce75ba8cac64a38ab0425864",
+  "config_sha256": "8397ea636c79e69a382e88a7238f798b398dafd91774edd6b50555f7bb62777c",
+  "outputs_sha256": {
+    "part_b.csv": "21b5d5b6a2ada6edffc56a0b08b38a7347469f760a344128169a4bdfd37cdc85",
+    "part_b_features.npz": "5bf7038e5c894ca7e0af519f7c2e0efa4080bd0c338f00fb758527503906cefa"
+  },
+  "results": [
+    {
+      "branch": "resnet50",
+      "distortion": "blur",
+      "level": 1,
+      "distortion_distance": 0.03832708072183237,
+      "content_distance": 0.7100313179059876,
+      "ratio": 0.053979422815976556
+    },
+    {
+      "branch": "resnet50",
+      "distortion": "blur",
+      "level": 2,
+      "distortion_distance": 0.1267026180701719,
+      "content_distance": 0.7100313179059876,
+      "ratio": 0.17844652042087544
+    },
+    {
+      "branch": "resnet50",
+      "distortion": "blur",
+      "level": 4,
+      "distortion_distance": 0.3647337152502892,
+      "content_distance": 0.7100313179059876,
+      "ratio": 0.5136867995146407
+    },
+    {
+      "branch": "resnet50",
+      "distortion": "noise",
+      "level": 5,
+      "distortion_distance": 0.08988417941678463,
+      "content_distance": 0.7100313179059876,
+      "ratio": 0.12659185186629449
+    },
+    {
+      "branch": "resnet50",
+      "distortion": "noise",
+      "level": 15,
+      "distortion_distance": 0.1964117110544489,
+      "content_distance": 0.7100313179059876,
+      "ratio": 0.27662401094321165
+    },
+    {
+      "branch": "resnet50",
+      "distortion": "noise",
+      "level": 30,
+      "distortion_distance": 0.31490550645237614,
+      "content_distance": 0.7100313179059876,
+      "ratio": 0.4435093192524101
+    },
+    {
+      "branch": "resnet50",
+      "distortion": "jpeg",
+      "level": 50,
+      "distortion_distance": 0.03644031496022875,
+      "content_distance": 0.7100313179059876,
+      "ratio": 0.051322123463085983
+    },
+    {
+      "branch": "resnet50",
+      "distortion": "jpeg",
+      "level": 20,
+      "distortion_distance": 0.09682022098105575,
+      "content_distance": 0.7100313179059876,
+      "ratio": 0.13636049359991093
+    },
+    {
+      "branch": "resnet50",
+      "distortion": "jpeg",
+      "level": 5,
+      "distortion_distance": 0.38924990425033523,
+      "content_distance": 0.7100313179059876,
+      "ratio": 0.5482151201418897
+    },
+    {
+      "branch": "dino_cls_L12",
+      "distortion": "blur",
+      "level": 1,
+      "distortion_distance": 0.0046468590890055995,
+      "content_distance": 0.8992288235544164,
+      "ratio": 0.0051676046933613416
+    },
+    {
+      "branch": "dino_cls_L12",
+      "distortion": "blur",
+      "level": 2,
+      "distortion_distance": 0.020001162474954964,
+      "content_distance": 0.8992288235544164,
+      "ratio": 0.022242572692338307
+    },
+    {
+      "branch": "dino_cls_L12",
+      "distortion": "blur",
+      "level": 4,
+      "distortion_distance": 0.1746064529953707,
+      "content_distance": 0.8992288235544164,
+      "ratio": 0.19417355007060055
+    },
+    {
+      "branch": "dino_cls_L12",
+      "distortion": "noise",
+      "level": 5,
+      "distortion_distance": 0.02619678804330382,
+      "content_distance": 0.8992288235544164,
+      "ratio": 0.02913250482758634
+    },
+    {
+      "branch": "dino_cls_L12",
+      "distortion": "noise",
+      "level": 15,
+      "distortion_distance": 0.08630421044087676,
+      "content_distance": 0.8992288235544164,
+      "ratio": 0.09597580524580916
+    },
+    {
+      "branch": "dino_cls_L12",
+      "distortion": "noise",
+      "level": 30,
+      "distortion_distance": 0.17538617448884147,
+      "content_distance": 0.8992288235544164,
+      "ratio": 0.19504065027140233
+    },
+    {
+      "branch": "dino_cls_L12",
+      "distortion": "jpeg",
+      "level": 50,
+      "distortion_distance": 0.022002082558354456,
+      "content_distance": 0.8992288235544164,
+      "ratio": 0.024467723878540702
+    },
+    {
+      "branch": "dino_cls_L12",
+      "distortion": "jpeg",
+      "level": 20,
+      "distortion_distance": 0.061112459830437275,
+      "content_distance": 0.8992288235544164,
+      "ratio": 0.06796096636323967
+    },
+    {
+      "branch": "dino_cls_L12",
+      "distortion": "jpeg",
+      "level": 5,
+      "distortion_distance": 0.3286809222400089,
+      "content_distance": 0.8992288235544164,
+      "ratio": 0.36551422021907526
+    },
+    {
+      "branch": "dino_patchmean_L6",
+      "distortion": "blur",
+      "level": 1,
+      "distortion_distance": 0.0021072516255408935,
+      "content_distance": 0.5043755022557931,
+      "ratio": 0.0041779420612546025
+    },
+    {
+      "branch": "dino_patchmean_L6",
+      "distortion": "blur",
+      "level": 2,
+      "distortion_distance": 0.010259701840801494,
+      "content_distance": 0.5043755022557931,
+      "ratio": 0.020341396033144974
+    },
+    {
+      "branch": "dino_patchmean_L6",
+      "distortion": "blur",
+      "level": 4,
+      "distortion_distance": 0.07363452100094825,
+      "content_distance": 0.5043755022557931,
+      "ratio": 0.14599146998936646
+    },
+    {
+      "branch": "dino_patchmean_L6",
+      "distortion": "noise",
+      "level": 5,
+      "distortion_distance": 0.03194317380919136,
+      "content_distance": 0.5043755022557931,
+      "ratio": 0.06333212788156281
+    },
+    {
+      "branch": "dino_patchmean_L6",
+      "distortion": "noise",
+      "level": 15,
+      "distortion_distance": 0.11045554417827487,
+      "content_distance": 0.5043755022557931,
+      "ratio": 0.21899466505464327
+    },
+    {
+      "branch": "dino_patchmean_L6",
+      "distortion": "noise",
+      "level": 30,
+      "distortion_distance": 0.23618466218687853,
+      "content_distance": 0.5043755022557931,
+      "ratio": 0.4682714785522988
+    },
+    {
+      "branch": "dino_patchmean_L6",
+      "distortion": "jpeg",
+      "level": 50,
+      "distortion_distance": 0.00844359760412354,
+      "content_distance": 0.5043755022557931,
+      "ratio": 0.016740697290728815
+    },
+    {
+      "branch": "dino_patchmean_L6",
+      "distortion": "jpeg",
+      "level": 20,
+      "distortion_distance": 0.04369820440054521,
+      "content_distance": 0.5043755022557931,
+      "ratio": 0.08663823719650791
+    },
+    {
+      "branch": "dino_patchmean_L6",
+      "distortion": "jpeg",
+      "level": 5,
+      "distortion_distance": 0.22740717266188487,
+      "content_distance": 0.5043755022557931,
+      "ratio": 0.4508687905039364
+    },
+    {
+      "branch": "dino_patchmean_L9",
+      "distortion": "blur",
+      "level": 1,
+      "distortion_distance": 0.0007988658491031408,
+      "content_distance": 0.35037114372731265,
+      "ratio": 0.002280056058854217
+    },
+    {
+      "branch": "dino_patchmean_L9",
+      "distortion": "blur",
+      "level": 2,
+      "distortion_distance": 0.003769698695303776,
+      "content_distance": 0.35037114372731265,
+      "ratio": 0.010759158574536213
+    },
+    {
+      "branch": "dino_patchmean_L9",
+      "distortion": "blur",
+      "level": 4,
+      "distortion_distance": 0.028231347885028377,
+      "content_distance": 0.35037114372731265,
+      "ratio": 0.08057555078508495
+    },
+    {
+      "branch": "dino_patchmean_L9",
+      "distortion": "noise",
+      "level": 5,
+      "distortion_distance": 0.009066346236900356,
+      "content_distance": 0.35037114372731265,
+      "ratio": 0.025876406773831025
+    },
+    {
+      "branch": "dino_patchmean_L9",
+      "distortion": "noise",
+      "level": 15,
+      "distortion_distance": 0.02702446532024773,
+      "content_distance": 0.35037114372731265,
+      "ratio": 0.07713096755844816
+    },
+    {
+      "branch": "dino_patchmean_L9",
+      "distortion": "noise",
+      "level": 30,
+      "distortion_distance": 0.05854786824956126,
+      "content_distance": 0.35037114372731265,
+      "ratio": 0.16710242637769274
+    },
+    {
+      "branch": "dino_patchmean_L9",
+      "distortion": "jpeg",
+      "level": 50,
+      "distortion_distance": 0.004350702111778935,
+      "content_distance": 0.35037114372731265,
+      "ratio": 0.012417409908519765
+    },
+    {
+      "branch": "dino_patchmean_L9",
+      "distortion": "jpeg",
+      "level": 20,
+      "distortion_distance": 0.01693475863372912,
+      "content_distance": 0.35037114372731265,
+      "ratio": 0.04833377102227667
+    },
+    {
+      "branch": "dino_patchmean_L9",
+      "distortion": "jpeg",
+      "level": 5,
+      "distortion_distance": 0.11713488873757204,
+      "content_distance": 0.35037114372731265,
+      "ratio": 0.33431659779817924
+    },
+    {
+      "branch": "dino_patchmean_L12",
+      "distortion": "blur",
+      "level": 1,
+      "distortion_distance": 0.0017981168525012393,
+      "content_distance": 0.7539204275149167,
+      "ratio": 0.0023850220618483807
+    },
+    {
+      "branch": "dino_patchmean_L12",
+      "distortion": "blur",
+      "level": 2,
+      "distortion_distance": 0.007229250583456856,
+      "content_distance": 0.7539204275149167,
+      "ratio": 0.009588877445973993
+    },
+    {
+      "branch": "dino_patchmean_L12",
+      "distortion": "blur",
+      "level": 4,
+      "distortion_distance": 0.06286579986771525,
+      "content_distance": 0.7539204275149167,
+      "ratio": 0.08338519235370023
+    },
+    {
+      "branch": "dino_patchmean_L12",
+      "distortion": "noise",
+      "level": 5,
+      "distortion_distance": 0.013302374532650145,
+      "content_distance": 0.7539204275149167,
+      "ratio": 0.017644268608688084
+    },
+    {
+      "branch": "dino_patchmean_L12",
+      "distortion": "noise",
+      "level": 15,
+      "distortion_distance": 0.036951809152354964,
+      "content_distance": 0.7539204275149167,
+      "ratio": 0.04901287696124118
+    },
+    {
+      "branch": "dino_patchmean_L12",
+      "distortion": "noise",
+      "level": 30,
+      "distortion_distance": 0.07953722557346028,
+      "content_distance": 0.7539204275149167,
+      "ratio": 0.10549817019235308
+    },
+    {
+      "branch": "dino_patchmean_L12",
+      "distortion": "jpeg",
+      "level": 50,
+      "distortion_distance": 0.008861532832678463,
+      "content_distance": 0.7539204275149167,
+      "ratio": 0.011753936502142506
+    },
+    {
+      "branch": "dino_patchmean_L12",
+      "distortion": "jpeg",
+      "level": 20,
+      "distortion_distance": 0.0273738106975168,
+      "content_distance": 0.7539204275149167,
+      "ratio": 0.03630862051018666
+    },
+    {
+      "branch": "dino_patchmean_L12",
+      "distortion": "jpeg",
+      "level": 5,
+      "distortion_distance": 0.1805313393191836,
+      "content_distance": 0.7539204275149167,
+      "ratio": 0.23945675528948537
+    }
+  ]
+}
