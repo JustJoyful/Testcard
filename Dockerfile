@@ -8,6 +8,13 @@ RUN curl --fail --location --retry 3 https://github.com/BtbN/FFmpeg-Builds/relea
     && /decoder/ffmpeg -version | head -1 | grep -F 'ffmpeg version n9.0.2-37-gae19868753-20261029 ' \
     && /decoder/ffprobe -version | head -1 | grep -F 'ffprobe version n9.0.2-37-gae19868753-20261029 '
 
+FROM node:22.22.2-bookworm-slim@sha256:9f6d5975c7dca860947d3915877f85607946403fc55349f39b4bc3688448bb6e AS web
+WORKDIR /web
+COPY serving/web/package.json serving/web/package-lock.json ./
+RUN npm ci --no-audit --no-fund
+COPY serving/web/ ./
+RUN npm run build
+
 FROM python:3.11.15-slim-bookworm@sha256:d29f48a31a8b408ed19272ca1e7b10ebae13b240a27e862d3d4217c528e2e0c3 AS builder
 WORKDIR /app
 COPY env/serving.lock /tmp/serving.lock
@@ -15,7 +22,8 @@ RUN python -m venv /opt/venv \
     && /opt/venv/bin/pip install --no-cache-dir --require-hashes --only-binary=:all: --index-url https://pypi.org/simple --extra-index-url https://download.pytorch.org/whl/cpu -r /tmp/serving.lock \
     && /opt/venv/bin/pip check
 COPY src/ /app/src/
-COPY serving/ /app/serving/
+COPY serving/__init__.py serving/app.py serving/jobs.py serving/index.html /app/serving/
+COPY --from=web /web/dist/ /app/serving/web/dist/
 COPY artifacts/serving/ /app/artifacts/serving/
 RUN /opt/venv/bin/python -c "from pathlib import Path; import torch; from src.serving_bundle import verify_bundle; assert torch.version.cuda is None and not torch.cuda.is_available(); verify_bundle(Path('artifacts/serving/manifest.json'))"
 
