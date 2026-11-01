@@ -38,3 +38,9 @@ __pycache__/
 /serving/web/dist/
 /serving/web/test-results/
 /serving/web/playwright-report/
+/results/phase4a/implementation_status.md
+/results/phase4a/review.md
+/results/phase4a/rulings.md
+/results/**/implementation_status.md
+/results/**/review.md
+/results/**/rulings.md
