@@ -1,0 +1,8 @@
+{"row": "A0", "alphas": [1000.0, 1000.0, 1000.0, 10000.0, 1000.0]}
+{"row": "L6", "alphas": [1000.0, 1000.0, 1000.0, 1000.0, 1000.0]}
+{"row": "L9", "alphas": [1000.0, 1000.0, 1000.0, 1000.0, 1000.0]}
+{"row": "L12", "alphas": [1000.0, 10000.0, 1000.0, 1000.0, 1000.0]}
+{"row": "ALL", "alphas": [1000.0, 10000.0, 1000.0, 1000.0, 1000.0]}
+{"row": "ResNet-50", "alphas": [1000.0, 10000.0, 1000.0, 1000.0, 1000.0]}
+{"robust": true, "l6_minus_resnet_srcc_ci95": [0.04056088555660091, 0.07869516211767853], "ci_excludes_zero": true, "max_folds_at_largest_grid_value": 0, "edge_condition_met": true, "original_resnet50_alphas": [1000.0, 1000.0, 1000.0, 1000.0, 1000.0], "original_resnet50_at_original_grid_edge": 5, "original_dino_a0_alphas": [1000.0, 1000.0, 1000.0, 1000.0, 1000.0]}
+exit=0
