@@ -10,5 +10,9 @@
   {
     "record": "results/posthoc_dino/decision_append.json",
     "pin": "previous_amendment_sha256"
+  },
+  {
+    "record": "results/posthoc_dino/grid_followup/decision_append.json",
+    "pin": "previous_amendment_sha256"
   }
 ]

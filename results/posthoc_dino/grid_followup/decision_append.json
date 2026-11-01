@@ -1,0 +1,9 @@
+{
+  "date": "2026-11-01",
+  "label": "post-hoc exploratory DINO alpha-grid follow-up pre-declaration",
+  "before_sha256": "5552961812ed51c44b8e3d13900c92116cb635a54633d12e36836d0a90d4e58b",
+  "prefix_bytes": 62344,
+  "appended_sha256": "bae4b393eb9aef9831ed7b8b2cacf8ad3bf723c9adc7aba3061c8fd41475f271",
+  "after_sha256": "05bd4fc20c05559c450d098910920359e6bd30a9c1a432cbe1f53dbfd77f3d59",
+  "previous_amendment_sha256": "07c33f92fa2e3120b20a563bc4df3672a96f48d171f8c4e8abdc0289333a0c83"
+}

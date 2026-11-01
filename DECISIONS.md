@@ -417,3 +417,22 @@ Output: a CSV, plus one figure with the ratio against distortion level, one line
 - `NOTES.md` records the findings and limitations: post-hoc, multiple variants, alpha-grid edges and the A0 reproduction check.
 
 This entry is the only post-hoc append. Its prefix and bytes are pinned in `results/posthoc_dino/decision_append.json`, which `src/serving_bundle.verify_snapshot` checks.
+
+## 2026-11-01: Post-hoc exploratory pre-declaration — DINO alpha-grid follow-up
+
+**Post-hoc and exploratory.** This follows the 2026-10-31 DINO layer analysis, in which every variant-fold selected the largest alpha of the original grid (1000). It is diagnostic only and changes no frozen configuration, deployed model, fold or inner-validation index, cache, phase gate or Phase 1–3 result. Nothing here feeds back into the deployed model or any phase result. All outputs go to `results/posthoc_dino/grid_followup/`. No variant, grid value, metric or comparison may be added after any result below is computed. All comparisons are unadjusted.
+
+- **Extended ridge alpha grid** (log-spaced by decade): {0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000, 100000, 1000000}. That is the original grid plus 1e4, 1e5 and 1e6.
+- **Rerun with the extended grid:** A0, L6, L9, L12 and ALL, with the same branch definitions as the 2026-10-31 entry, and the ResNet-50 ridge baseline (pooled ResNet-50 features).
+  - Protocol, identical to the Phase 1/2 ridge: same immutable folds and inner-validation splits, float32 frames mean-pooled in float64, training-only standardization, alpha chosen per fold by inner-validation SRCC (smaller alpha wins ties), one deterministic fit per fold, test-role out-of-fold predictions.
+  - Each fold's selected alpha is recorded; selecting 1e6 is a grid-edge hit.
+- **Reported:**
+  - Per-fold SRCC and KRCC (mean ± SD) for all six rows.
+  - Paired bootstrap of pooled out-of-fold predictions: 10,000 draws, one shared seed-0 index bank over the KoNViD inventory order, SRCC and KRCC as A minus B, two-sided 95% CI, PRD §7 classification with margin 0.01. The comparisons are exactly nine, all against the extended-grid ResNet-50 ridge:
+    - L6, L9, L12 and ALL vs A0.
+    - A0, L6, L9, L12 and ALL vs ResNet-50 ridge.
+  - LIVE-VQC (exploratory) for all six rows, including ResNet-50: one full-KoNViD fit at the median of the five CV-selected alphas, evaluated on all 585 LIVE-VQC videos, with SRCC, KRCC and logistic-mapped PLCC fitted on LIVE labels.
+  - Whether the original Phase 2 ResNet-50 ridge (saved run records) also sat at the original grid edge.
+- **Robustness rule, fixed now:** the L6 finding is robust if the L6 − ResNet-50 SRCC 95% CI excludes 0 **and** no variant (the five DINO rows and ResNet-50) selects the largest grid value (1e6) in more than 1 of 5 folds. Otherwise it is not robust. The report states the verdict plainly, whichever way it goes.
+
+This append is pinned in `results/posthoc_dino/grid_followup/decision_append.json` and listed in `results/decision_appends.json`, which `src/serving_bundle.verify_snapshot` checks.
