@@ -574,7 +574,8 @@ def run_tests(config: dict, url: str) -> dict:
             node=(['npm', 'test'], str(WEB), {}),
             browser=(['npx', 'playwright', 'test'], str(WEB), {}),
             container_browser=(['npx', 'playwright', 'test'], str(WEB),
-                               dict(VQA_CONTAINER_URL=url, VQA_REAL_VIDEO=str(Path(video).resolve()))),
+                               dict(VQA_CONTAINER_URL=url, VQA_REAL_VIDEO=str(Path(video).resolve()),
+                                    VQA_ACCEPTANCE_OUT=str((OUT / 'tests').resolve()))),
             lighthouse=(['npx', 'lighthouse', url + '/', '--only-categories=accessibility', '--preset=desktop', '--output=json',
                          f'--output-path={(OUT / "lighthouse.json").resolve()}', '--chrome-flags=--headless=new', '--quiet'],
                         str(WEB), dict(CHROME_PATH=str(chrome[-1]))))
