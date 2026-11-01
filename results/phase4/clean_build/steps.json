@@ -1,0 +1,153 @@
+{
+  "steps": [
+    {
+      "step": "clone",
+      "command": "git clone /home/joydeep/Projects/VQA /home/joydeep/.claude/jobs/0a913494/tmp/clean-vqa/VQA",
+      "documented": false,
+      "note": "No public remote yet, so cloned from the local repository path. The run steps live in docs/, which is not committed.",
+      "exit_code": 0,
+      "seconds": 0.6,
+      "log": "results/phase4/clean_build/01_clone.log"
+    },
+    {
+      "step": "commit",
+      "command": "git rev-parse HEAD",
+      "documented": false,
+      "note": "records the tested commit",
+      "exit_code": 0,
+      "seconds": 0.0,
+      "log": "results/phase4/clean_build/02_commit.log"
+    },
+    {
+      "step": "lfs_install",
+      "command": "git lfs install --local",
+      "documented": false,
+      "note": "Without Git LFS filters configured, `git lfs pull` prints \"Skipping object checkout, Git LFS is not installed for this repository\" and leaves every LFS file (including the ridge model) as a pointer. Repo-local install used here.",
+      "exit_code": 0,
+      "seconds": 0.0,
+      "log": "results/phase4/clean_build/03_lfs_install.log"
+    },
+    {
+      "step": "lfs_model",
+      "command": "git lfs pull --include=results/phase3/refit/resnet50/ridge/seedNone/model.npz",
+      "documented": true,
+      "note": "",
+      "exit_code": 0,
+      "seconds": 0.5,
+      "log": "results/phase4/clean_build/04_lfs_model.log"
+    },
+    {
+      "step": "lfs_phase3",
+      "command": "git lfs pull --include=results/phase3/**",
+      "documented": false,
+      "note": "Script 12 verifies every Phase 3 output, including LFS neural checkpoints (best.pt); the documented pull fetches only the ridge model.npz, so preparation fails with \"LFS pointer requires materialization: best.pt\" without this pull.",
+      "exit_code": 0,
+      "seconds": 1.0,
+      "log": "results/phase4/clean_build/05_lfs_phase3.log"
+    },
+    {
+      "step": "venv",
+      "command": "uv venv --python 3.11.15 .venv-serving",
+      "documented": false,
+      "note": "Documented `uv venv --python .venv/bin/python` needs the research .venv, which a clone does not have; used a uv-managed CPython 3.11.15.",
+      "exit_code": 0,
+      "seconds": 0.1,
+      "log": "results/phase4/clean_build/06_venv.log"
+    },
+    {
+      "step": "install",
+      "command": "uv pip sync --python .venv-serving/bin/python --require-hashes --index-url https://pypi.org/simple --extra-index-url https://download.pytorch.org/whl/cpu --index-strategy unsafe-best-match env/serving.lock",
+      "documented": true,
+      "note": "",
+      "exit_code": 0,
+      "seconds": 29.2,
+      "log": "results/phase4/clean_build/07_install.log"
+    },
+    {
+      "step": "prepare_bundle",
+      "command": ".venv-serving/bin/python -m scripts.12_prepare_serving --config configs/serving.yaml --output artifacts/serving",
+      "documented": true,
+      "note": "downloads and SHA256-verifies the ResNet-50 weights",
+      "exit_code": 0,
+      "seconds": 16.1,
+      "log": "results/phase4/clean_build/08_prepare_bundle.log"
+    },
+    {
+      "step": "docker_build",
+      "command": "docker build --no-cache -t vqa:clean .",
+      "documented": true,
+      "note": "",
+      "exit_code": 0,
+      "seconds": 343.5,
+      "log": "results/phase4/clean_build/09_docker_build.log"
+    },
+    {
+      "step": "docker_run",
+      "command": "docker run -d --name vqa-clean-test --cpus=4 --memory=4g --pids-limit=128 --read-only --tmpfs /tmp:rw,nosuid,size=256m -p 127.0.0.1:8002:8000 vqa:clean",
+      "documented": true,
+      "note": "documented command uses --rm and port 8001; here -d, a name and port 8002 so the existing demo container keeps running",
+      "exit_code": 0,
+      "seconds": 0.2,
+      "log": "results/phase4/clean_build/10_docker_run.log"
+    },
+    {
+      "step": "upload",
+      "command": "curl -sS -F file=@/home/joydeep/Projects/VQA/data/raw/konvid/11902527296.mp4 http://127.0.0.1:8002/upload",
+      "documented": true,
+      "note": "",
+      "exit_code": 0,
+      "seconds": 0.1,
+      "log": "results/phase4/clean_build/11_upload.log"
+    }
+  ],
+  "result": {
+    "commit": "83bb77529cda08bbdefc9ec1d73751d079d78ebb",
+    "work_directory": "/home/joydeep/.claude/jobs/0a913494/tmp/clean-vqa",
+    "clip": "11902527296.mp4",
+    "image_size_bytes": 2458743769,
+    "build_seconds": 343.5,
+    "status": {
+      "task_id": "a9d41f6b22da4f47a06ee86645f3920e",
+      "state": "done",
+      "stage": null,
+      "result": {
+        "task_id": "a9d41f6b22da4f47a06ee86645f3920e",
+        "filename": "11902527296.mp4",
+        "clip_seconds": 8.008,
+        "created_at": "2026-10-31T19:05:37.905685Z",
+        "prediction": {
+          "score": 3.4206814401750743,
+          "timings_seconds": {
+            "extraction": 8.774903255980462,
+            "head": 0.00013480102643370628,
+            "total": 8.77503865599283
+          },
+          "verified": {
+            "model_sha256": "4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3",
+            "weights_sha256": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca",
+            "weights_enum": "ResNet50_Weights.IMAGENET1K_V2",
+            "preprocessing_sha256": "acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b",
+            "cpu_threads": 4
+          },
+          "startup_seconds": 1.1345380779821426
+        }
+      },
+      "error": null
+    },
+    "startup_log_line": "INFO:     verified runtime: {\"cpu_threads\": 4, \"model_sha256\": \"4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3\", \"preprocessing_sha256\": \"acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b\", \"weights_enum\": \"ResNet50_Weights.IMAGENET1K_V2\", \"weights_sha256\": \"11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca\"}",
+    "startup_verified": {
+      "cpu_threads": 4,
+      "model_sha256": "4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3",
+      "preprocessing_sha256": "acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b",
+      "weights_enum": "ResNet50_Weights.IMAGENET1K_V2",
+      "weights_sha256": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca"
+    },
+    "reported": {
+      "model_sha256": "4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3",
+      "weights_sha256": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca",
+      "preprocessing_sha256": "acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b"
+    },
+    "model_constant_matches_deployment": true,
+    "hashes_match": true
+  }
+}
