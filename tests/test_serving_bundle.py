@@ -133,6 +133,12 @@ def test_portable_bundle_rejects_corrupt_or_unbound_artifacts(tmp_path, change):
         module.verify_bundle(tmp_path / 'manifest.json')
 
 
+def write_append_list(root, entries):
+    path = root / 'results/decision_appends.json'
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps([dict(record=record, pin=pin) for record, pin in entries]))
+
+
 def test_authorized_decision_append_preserves_historical_prefix(tmp_path):
     from src.features import sha256
     module = bundle_module()
@@ -148,6 +154,7 @@ def test_authorized_decision_append_preserves_historical_prefix(tmp_path):
     record = tmp_path / 'results/phase4a/packaging_amendment.json'
     record.parent.mkdir(parents=True)
     record.write_text(json.dumps(amendment))
+    write_append_list(tmp_path, [('results/phase4a/packaging_amendment.json', None)])
     module.verify_snapshot(snapshot, tmp_path)
     decision.write_bytes(b'changed historical decision\n' + suffix)
     with pytest.raises(ValueError, match='historical'):
@@ -259,6 +266,8 @@ def test_second_decision_append_preserves_both_prefixes(tmp_path, change):
     if change == 'reordered': decision.write_bytes(original + demo + packaging)
     if change == 'extra': decision.write_bytes(decision.read_bytes() + b'unrecorded\n')
     if change != 'missing': second.write_text(json.dumps(record))
+    write_append_list(tmp_path, [('results/phase4a/packaging_amendment.json', None),
+                                 ('results/phase4b/decision_amendment.json', 'packaging_amendment_sha256')])
     snapshot = dict(source_files={}, bindings={'DECISIONS.md': digest(original)}, outputs_sha256={})
     if change is None:
         bundle_module().verify_snapshot(snapshot, tmp_path)
@@ -289,6 +298,9 @@ def test_recorded_posthoc_decision_append_is_the_only_extra_append(tmp_path):
     paths[0].write_text(json.dumps(record(1)))
     paths[1].write_text(json.dumps(record(2, packaging_amendment_sha256=sha256(paths[0]))))
     paths[2].write_text(json.dumps(record(3, previous_amendment_sha256=sha256(paths[1]))))
+    write_append_list(tmp_path, [(str(paths[0].relative_to(tmp_path)), None),
+                                 (str(paths[1].relative_to(tmp_path)), 'packaging_amendment_sha256'),
+                                 (str(paths[2].relative_to(tmp_path)), 'previous_amendment_sha256')])
     snapshot = {'source_files': {}, 'bindings': {'DECISIONS.md': digest(parts[0])}, 'outputs_sha256': {}}
     decision.write_bytes(b''.join(parts))
     module.verify_snapshot(snapshot, tmp_path)
@@ -303,5 +315,41 @@ def test_recorded_posthoc_decision_append_is_the_only_extra_append(tmp_path):
     with pytest.raises(ValueError, match='historical'):
         module.verify_snapshot(snapshot, tmp_path)
     paths[2].unlink()
+    with pytest.raises(ValueError, match='historical'):
+        module.verify_snapshot(snapshot, tmp_path)
+
+
+def test_listed_fourth_append_passes_and_unlisted_or_edited_appends_fail(tmp_path):
+    import hashlib
+    from src.features import sha256
+    module = bundle_module()
+    parts = [b'historical\n', b'\nfirst\n', b'\nsecond\n', b'\nthird\n', b'\nfourth: grid follow-up\n']
+    digest = lambda data: hashlib.sha256(data).hexdigest()
+    names = [f'results/a{i}.json' for i in range(1, 5)]
+    entries = []
+    for index, name in enumerate(names, start=1):
+        prefix = b''.join(parts[:index])
+        record = dict(before_sha256=digest(prefix), prefix_bytes=len(prefix), appended_sha256=digest(parts[index]),
+                      after_sha256=digest(prefix + parts[index]))
+        if index > 1:
+            record['previous_amendment_sha256'] = sha256(tmp_path / names[index - 2])
+        path = tmp_path / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(record))
+        entries.append((name, None if index == 1 else 'previous_amendment_sha256'))
+    write_append_list(tmp_path, entries)
+    decision = tmp_path / 'DECISIONS.md'
+    snapshot = {'source_files': {}, 'bindings': {'DECISIONS.md': digest(parts[0])}, 'outputs_sha256': {}}
+    decision.write_bytes(b''.join(parts))
+    module.verify_snapshot(snapshot, tmp_path)
+    for content in (b''.join(parts[:4]) + b'\nfourth: edited\n', b''.join(parts) + b'\nunrecorded fifth\n'):
+        decision.write_bytes(content)
+        with pytest.raises(ValueError, match='historical'):
+            module.verify_snapshot(snapshot, tmp_path)
+    decision.write_bytes(b''.join(parts))
+    write_append_list(tmp_path, entries[:3])
+    with pytest.raises(ValueError, match='historical'):
+        module.verify_snapshot(snapshot, tmp_path)
+    write_append_list(tmp_path, [entries[0], entries[2], entries[1], entries[3]])
     with pytest.raises(ValueError, match='historical'):
         module.verify_snapshot(snapshot, tmp_path)

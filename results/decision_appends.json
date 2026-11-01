@@ -1,0 +1,14 @@
+[
+  {
+    "record": "results/phase4a/packaging_amendment.json",
+    "pin": null
+  },
+  {
+    "record": "results/phase4b/decision_amendment.json",
+    "pin": "packaging_amendment_sha256"
+  },
+  {
+    "record": "results/posthoc_dino/decision_append.json",
+    "pin": "previous_amendment_sha256"
+  }
+]

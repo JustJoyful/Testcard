@@ -66,16 +66,16 @@ def read_model(path):
         raise ValueError(f'invalid ridge artifact: {exc}') from exc
 
 
-# Each approved append to the decision log, in order, pinned to the record before it.
-DECISION_APPENDS = (('results/phase4a/packaging_amendment.json', None),
-                    ('results/phase4b/decision_amendment.json', 'packaging_amendment_sha256'),
-                    ('results/posthoc_dino/decision_append.json', 'previous_amendment_sha256'))
+# Committed list of approved decision-log appends, in order; each entry names its record and the field
+# that pins it to the previous record. Adding an append means adding a record and one list entry.
+DECISION_APPENDS = 'results/decision_appends.json'
 
 
 def verify_decision_chain(content, expected, root):
     """The log must be the historical prefix plus exactly the recorded appends, nothing else."""
     records, previous = [], None
-    for relative, pin in DECISION_APPENDS:
+    for entry in json.loads((Path(root) / DECISION_APPENDS).read_text()):
+        relative, pin = entry['record'], entry['pin']
         path = Path(root) / relative
         if not path.is_file():
             break
@@ -103,7 +103,7 @@ def verify_snapshot(snapshot, root=ROOT):
     for name, expected in {**snapshot['source_files'], **snapshot['bindings']}.items():
         try:
             path = Path(root) / name
-            if name == 'DECISIONS.md' and (Path(root) / DECISION_APPENDS[0][0]).is_file():
+            if name == 'DECISIONS.md' and (Path(root) / DECISION_APPENDS).is_file():
                 verify_decision_chain(path.read_bytes(), expected, root)
             else:
                 verify_file(path, expected)
