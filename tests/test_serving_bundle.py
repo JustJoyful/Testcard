@@ -353,3 +353,21 @@ def test_listed_fourth_append_passes_and_unlisted_or_edited_appends_fail(tmp_pat
     write_append_list(tmp_path, [entries[0], entries[2], entries[1], entries[3]])
     with pytest.raises(ValueError, match='historical'):
         module.verify_snapshot(snapshot, tmp_path)
+
+
+def test_archive_root_without_list_uses_repository_list(tmp_path):
+    # The Phase 4b baseline archive holds the 4a-era log and record but no list file of its own.
+    import hashlib
+    module = bundle_module()
+    original, packaging = b'research\n', b'packaging approval\n'
+    digest = lambda data: hashlib.sha256(data).hexdigest()
+    (tmp_path / 'DECISIONS.md').write_bytes(original + packaging)
+    record = tmp_path / 'results/phase4a/packaging_amendment.json'
+    record.parent.mkdir(parents=True)
+    record.write_text(json.dumps(dict(before_sha256=digest(original), prefix_bytes=len(original),
+        appended_sha256=digest(packaging), after_sha256=digest(original + packaging))))
+    snapshot = dict(source_files={}, bindings={'DECISIONS.md': digest(original)}, outputs_sha256={})
+    module.verify_snapshot(snapshot, tmp_path)
+    (tmp_path / 'DECISIONS.md').write_bytes(original + packaging + b'unrecorded\n')
+    with pytest.raises(ValueError, match='historical'):
+        module.verify_snapshot(snapshot, tmp_path)

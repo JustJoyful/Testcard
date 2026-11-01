@@ -71,10 +71,16 @@ def read_model(path):
 DECISION_APPENDS = 'results/decision_appends.json'
 
 
+def approved_appends(root):
+    """The root's own list, else this repository's (archived roots such as the Phase 4b baseline carry none)."""
+    path = Path(root) / DECISION_APPENDS
+    return json.loads((path if path.is_file() else ROOT / DECISION_APPENDS).read_text())
+
+
 def verify_decision_chain(content, expected, root):
     """The log must be the historical prefix plus exactly the recorded appends, nothing else."""
     records, previous = [], None
-    for entry in json.loads((Path(root) / DECISION_APPENDS).read_text()):
+    for entry in approved_appends(root):
         relative, pin = entry['record'], entry['pin']
         path = Path(root) / relative
         if not path.is_file():
@@ -103,7 +109,7 @@ def verify_snapshot(snapshot, root=ROOT):
     for name, expected in {**snapshot['source_files'], **snapshot['bindings']}.items():
         try:
             path = Path(root) / name
-            if name == 'DECISIONS.md' and (Path(root) / DECISION_APPENDS).is_file():
+            if name == 'DECISIONS.md' and (Path(root) / approved_appends(root)[0]['record']).is_file():
                 verify_decision_chain(path.read_bytes(), expected, root)
             else:
                 verify_file(path, expected)
