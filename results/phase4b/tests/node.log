@@ -1,20 +1,20 @@
-✔ empty_mime_still_allows_supported_extension (0.723714ms)
-✔ happy path reports progress, status and returns the exact result (19.468866ms)
-✔ lost_202_never_reposts (0.413601ms)
-✔ nested upload errors map to DESIGN.md copy or the server wording (0.474174ms)
-✔ polling_backoff_and_deadline (4.963673ms)
-✔ a non-finite score becomes a recoverable error, not NaN on screen (0.369485ms)
-✔ abort stops client activity without another request (0.447845ms)
-✔ scores round for display only and are never clamped (0.694456ms)
-✔ seconds use two decimals and a floor marker for the head (0.147583ms)
-✔ hashes, filenames and clocks (0.20843ms)
-✔ state has exactly the DESIGN.md fields (4.755503ms)
-✔ stale_generation_cannot_replace_new_selection (0.380104ms)
-✔ a second selection while busy is ignored, so no second submission starts (0.132957ms)
-✔ status maps queued and processing with unknown stage kept as null (0.145051ms)
-✔ invalid leaves on the next user action and drag does not interrupt a request (0.193666ms)
-✔ reset from done returns to a blank idle and invalidates the old generation (0.173563ms)
-✔ standby: health failure parks only an idle screen; a tape offered offline never starts a request (0.123687ms)
+✔ empty_mime_still_allows_supported_extension (0.698573ms)
+✔ happy path reports progress, status and returns the exact result (21.27425ms)
+✔ lost_202_never_reposts (0.413809ms)
+✔ nested upload errors map to DESIGN.md copy or the server wording (0.50524ms)
+✔ polling_backoff_and_deadline (4.972331ms)
+✔ a non-finite score becomes a recoverable error, not NaN on screen (0.381804ms)
+✔ abort stops client activity without another request (0.461236ms)
+✔ scores round for display only and are never clamped (0.796683ms)
+✔ seconds use two decimals and a floor marker for the head (0.202829ms)
+✔ hashes, filenames and clocks (0.227203ms)
+✔ state has exactly the DESIGN.md fields (1.678689ms)
+✔ stale_generation_cannot_replace_new_selection (0.368081ms)
+✔ a second selection while busy is ignored, so no second submission starts (0.132941ms)
+✔ status maps queued and processing with unknown stage kept as null (0.152865ms)
+✔ invalid leaves on the next user action and drag does not interrupt a request (0.203865ms)
+✔ reset from done returns to a blank idle and invalidates the old generation (0.156448ms)
+✔ standby: health failure parks only an idle screen; a tape offered offline never starts a request (0.108148ms)
 ℹ tests 17
 ℹ suites 0
 ℹ pass 17
@@ -22,6 +22,6 @@
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 82.243737
+ℹ duration_ms 85.615333
 npm notice run test
 npm notice run node --test tests/

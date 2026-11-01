@@ -1,0 +1,9 @@
+{
+  "tag": "testcard:0.1.0",
+  "image_id": "sha256:cea6b009c05a18522c44889df72407a916b020cbec51086e859f4dcf9907b4ef",
+  "source_tag": "vqa:phase4b",
+  "gate_commit": "d1e863846433a5c88024819c28d6291f873ce039",
+  "model_name": "testcard-r50-ridge",
+  "deployed_candidate_id": "resnet50/ridge",
+  "note": "alias of the gated image; no rebuild"
+}

@@ -309,12 +309,16 @@ def build():
              build_minutes=num(result['build_seconds'] / 60, 1), image_gb=num(result['image_size_bytes'] / 1e9, 2),
              clean_score=num(result['status']['result']['prediction']['score'], 4),
              clean_total=num(result['status']['result']['prediction']['timings_seconds']['total'], 2))
+    release = load('results/phase4/testcard_tag.json')
+    if release['image_id'] != gate4b['image_id']:
+        raise SystemExit('testcard tag does not point at the gated image')
+    V.update(release_tag=release['tag'], release_image=release['image_id'][:19], model_name=release['model_name'])
     steps = {s['step']: s['command'] for s in clean['steps']}
     V['clean_steps'] = '\n'.join([
         'git clone TODO-public-clone-url VQA   # TODO: no public remote yet',
         'cd VQA', steps['lfs_install'], steps['lfs_model'], steps['lfs_phase3'], steps['venv'], steps['install'], steps['prepare_bundle'],
-        steps['docker_build'].replace(' vqa:clean ', ' vqa:phase4b '),
-        steps['docker_run'].replace('vqa-clean-test', 'vqa-demo').replace(':8002:', ':8001:').replace(' vqa:clean', ' vqa:phase4b')])
+        steps['docker_build'].replace(' vqa:clean ', f" {release['tag']} "),
+        steps['docker_run'].replace('vqa-clean-test', 'testcard-demo').replace(':8002:', ':8001:').replace(' vqa:clean', f" {release['tag']}")])
 
     # ---------- Hardware and time ----------
     V.update(gpu=load('results/posthoc_dino/part_b.json')['device'], gpu_hours_p1=num(time1['gpu_job_wall_hours'], 1),

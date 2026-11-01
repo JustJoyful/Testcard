@@ -7,4 +7,4 @@ tests/test_serving_api.py::test_upload_calls_shared_function_and_returns_same_co
     from starlette.testclient import TestClient as TestClient  # noqa
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-149 passed, 1 warning in 19.14s
+149 passed, 1 warning in 28.33s

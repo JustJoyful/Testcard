@@ -1,5 +1,5 @@
 {
-  "image_id": "sha256:850340b46f521dcf865a64431e4c3e734da025ff6af6144be630d25785aa4c14",
+  "image_id": "sha256:cea6b009c05a18522c44889df72407a916b020cbec51086e859f4dcf9907b4ef",
   "runtime_source_sha256": {
     "src/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/baselines.py": "df7bb24968bae095b195802d0227b991e832ff748a4c2b23d4ab9afb9cac53b1",
@@ -15,8 +15,8 @@
     "serving/jobs.py": "85c8e52f972cc83d29fcec4d960ae6ea557000a13db32cbb5ac6ab6c48361fe3"
   },
   "dist_sha256": {
-    "assets/index-CzW_9KOj.css": "6793f41ca8beff5bb1acacd94ac0887dad1ec0bb8820c3017f432f76995b222c",
-    "assets/index-rfFAnnS6.js": "16c221d0c3d824374fc59f3d2d89626995dc5e4aa92de7e55e9793841ad96de6",
+    "assets/index-BH3VVZDX.js": "664be8f86c5b58be9976f2f0b2bd78cd147ecfa5b0701345b7b3109012e1c8c5",
+    "assets/index-DhBF3xfb.css": "fc8c74653ad7ffb33c9d21145cc43e3e073d119bd3e4da0f622c934000275c55",
     "assets/inter-cyrillic-400-normal-HOLc17fK.woff": "6e441a6c94788318fa02b6d0a633aa29eebe27b69c6567eb1e59b4edc68ed70e",
     "assets/inter-cyrillic-400-normal-obahsSVq.woff2": "f0bb586459ce8f09b238285040f17e3e9e9538b2c5a7aae0775194e33c36c3c3",
     "assets/inter-cyrillic-500-normal-BasfLYem.woff2": "b77a86ec16aadc157f4a99e8898d71cd75ea264753d9bdf13f962f8c3988cbb0",
@@ -62,7 +62,7 @@
     "assets/vt323-latin-ext-400-normal-iUdYUaX4.woff2": "4435f062ebe744d097d0d618ac5ad6b8ea25ee3bd6004c5369c24518e70af1f0",
     "assets/vt323-vietnamese-400-normal-D0VnvwZ9.woff2": "84b335a53b55c33f919f11b5cf83d857f053097171461eaba10d44be1c623609",
     "assets/vt323-vietnamese-400-normal-D_5Q7Vcv.woff": "17536a351f6e3d7c0e686434d48ff44cc48a2b487a57611be0995987ac338f7c",
-    "index.html": "99eb25d3969b01b9f0c34139fa67f7be64131876554de92d6dc72db56e0926e5"
+    "index.html": "9736182d9369762d4b244b06d845858205d277fd72ce22cb41831c8e68b788fd"
   },
   "bytecode": [
     "src/__pycache__/__init__.cpython-311.pyc",
@@ -70,6 +70,6 @@
     "src/__pycache__/serving_bundle.cpython-311.pyc"
   ],
   "js_gzip_bytes": {
-    "assets/index-rfFAnnS6.js": 9087
+    "assets/index-BH3VVZDX.js": 9088
   }
 }

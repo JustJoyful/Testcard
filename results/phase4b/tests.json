@@ -18,11 +18,11 @@
       "environment": [],
       "exit_code": 0,
       "log": "results/phase4b/tests/serving.log",
-      "log_sha256": "b0194a79911d5915aa1e76cd8093d0233e5ef55b8f9c29afca75e4b35863ed09",
+      "log_sha256": "cac4f44180630bb74e045a01ee5de803547df7a164121b9d1ad9006dca101531",
       "summary": [
         "",
         "-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html",
-        "149 passed, 1 warning in 19.14s"
+        "149 passed, 1 warning in 28.33s"
       ]
     },
     "node": {
@@ -34,11 +34,11 @@
       "environment": [],
       "exit_code": 0,
       "log": "results/phase4b/tests/node.log",
-      "log_sha256": "342bfb9843eb34d8d7e8b40c1e14b9251f87f41712810e3c213da6f934f987f1",
+      "log_sha256": "42349d85312b39ada02eb0553d07c7a0cfb4b1087d1e46da7b7ad37b2d431fb9",
       "summary": [
         "\u2139 skipped 0",
         "\u2139 todo 0",
-        "\u2139 duration_ms 82.243737"
+        "\u2139 duration_ms 85.615333"
       ]
     },
     "browser": {
@@ -51,11 +51,11 @@
       "environment": [],
       "exit_code": 0,
       "log": "results/phase4b/tests/browser.log",
-      "log_sha256": "9d4f457b5ac55665db648c935ce1fee4a2e271d8971ef9ed68cfe7eec73b4039",
+      "log_sha256": "499d2ab855d0407758e920c26f443318afd6e0bb3131361db5433d8f07cd723c",
       "summary": [
         "",
         "  1 skipped",
-        "  34 passed (20.3s)"
+        "  34 passed (20.7s)"
       ]
     },
     "container_browser": {
@@ -72,11 +72,11 @@
       ],
       "exit_code": 0,
       "log": "results/phase4b/tests/container_browser.log",
-      "log_sha256": "555559fbaadfaa505cd369744e1f550f409c3e530174f1382c0cec025ce15c54",
+      "log_sha256": "a09c073618a8cc1aba36207ffe513efd825304346385bb1422e0613374cc6a72",
       "summary": [
-        "  \u2713  5 tests/browser/container.spec.js:90:1 \u203a 360 px: no horizontal scroll at idle or with a real result (8.9s)",
+        "  \u2713  5 tests/browser/container.spec.js:90:1 \u203a 360 px: no horizontal scroll at idle or with a real result (9.8s)",
         "",
-        "  5 passed (28.3s)"
+        "  5 passed (31.6s)"
       ]
     },
     "lighthouse": {
@@ -133,17 +133,17 @@
     "results/phase4b/decision_amendment.json": "11982eb1ac2c1279e8cf3674ac61a935a0ff04327e7cf115f9b7453033b385ae",
     "results/phase4b/frontend_checkpoint.json": "31648360445c62e59960b306e035922254fac20287a1a7119102ec4bcf1b4b84",
     "serving/web/.env": "41cd1178eb5254f85f69b5e99c084660f28af68184c1efd7f6c8de7f979c09a8",
-    "serving/web/index.html": "a18b011bb702500e54b3bf02560001b81ca8974b785671aeb0aea1898fb4e373",
-    "serving/web/package.json": "61cbe2013266a226978c401c6deb8bc9b1a02d757a86eeec7c554321f4a27801",
-    "serving/web/package-lock.json": "9b7e683c832b73bab5f8efc7d31812b5182dcf757c20310fc6cf4450cd6fe9b3",
+    "serving/web/index.html": "924641c916e07651f3a561e843d0d38e704a736f467ba567169a405d8e89d3c5",
+    "serving/web/package.json": "80201464f724756591f6230026053b1e290e04accecf9336216416753f21630e",
+    "serving/web/package-lock.json": "cf6136621b35e5b7dda6d55b98b06a131f233d68267925ff51ab09cddc38b7fc",
     "serving/web/vite.config.js": "b6bf9de2d430f6cae682c13360abf9686b4ec76d1de66c7a8d9463e809b8ce96",
-    "serving/web/src/styles.css": "15809660d5bc13df6cbd2c64a13d52e98f59e5ec89c3f04e222879682e058967",
+    "serving/web/src/styles.css": "5f35f9726c844f0cead45043a5fcb7892ab81eb136213ac615e414b4ab863c9c",
     "serving/web/src/main.js": "f3489f447f531fceacf2daaaf41e66411399610022b331d655d46696e2b92107",
     "serving/web/src/state.js": "ec80b32adcbeff6ba7f4da768df9f9953c91eefce72dffc3f408d51e9c4170bb",
     "serving/web/src/api.js": "727b6ae7868172bdcea32ca8ef785369921b26cc68e87e250b156f5fe7588681",
     "serving/web/src/mock.js": "6112c2a5060641cc190423d00e3eb2fbfa316a88efc622295e9cf50f8cd408e1",
     "serving/web/src/format.js": "70b263e60365de4968ed04d02d213f3f58cc5461ebd271beab7182c1deba8b6f",
-    "serving/web/src/result.js": "920a7b43feb2e30fc53c1e8e650e24cebfad3c85dbc8a15d597521a57446edbf",
+    "serving/web/src/result.js": "435f6b49a435ba21c5a0a1a126819350958c2eb1d97248028493e36985c46bc3",
     "serving/web/src/json-view.js": "297752912e6f225791a91ffb40c3133717ba8a6011e316a23318e39b4c7a9ec0",
     "serving/web/src/tv.js": "d18382b4eed2b2150641524af349d568867f389fcfdc142a82c3875fe6aca57d",
     "scripts/14_serving_check.py": "17246ac941e1efcf41d6e468e98393cc598553b0ae4b90080f3706f420284aa6",
@@ -151,7 +151,7 @@
     "serving/web/playwright.config.js": "5cabb5fe6dff44606d9509189fbf831f24f4dc57f2fd0b2efb8a26023eb5e36f",
     "serving/web/tests/api.test.js": "04af49b32a440866b2e97b0557b100213bb474ad21647f7f330dee965538236a",
     "serving/web/tests/browser/container.spec.js": "b3c68d3ab0c6863d5d09eb38ae4193968eb206abfecee6bf3e4f5682a24c468a",
-    "serving/web/tests/browser/demo.spec.js": "1b90284c3f9cd7e54efefd54009d343d8b33f921bfcd64bdf02dcb2f52e3a22e",
+    "serving/web/tests/browser/demo.spec.js": "b294fa789204e99fe88528f4bafa3716351717a0fe4bf68dd463647d77f5c38b",
     "serving/web/tests/browser/standby.spec.js": "34955dfcfd3f91e26cbac2cd673de16a25df9ac6c5546aecd3e6f96b82520735",
     "serving/web/tests/format.test.js": "bc44c9e5beb237002fa8c17dea9f47abf6f80bf3b6e4bed06e1c31a374a7a23d",
     "serving/web/tests/state.test.js": "90d79aa28d4fb7aa2efde8d20469c792f4afb710b1705ac4cda9f1853c5158d0"

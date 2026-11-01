@@ -1,6 +1,6 @@
 {
   "scoreText": "3.42",
-  "osdMeta": "ANALYSIS 7.67 S   ·   MODEL 4C9782AE   ·   VERIFIED",
+  "osdMeta": "ANALYSIS 8.86 S   ·   MODEL 4C9782AE   ·   VERIFIED",
   "hashRows": [
     {
       "text": "4c9782ae…",
@@ -16,16 +16,16 @@
     }
   ],
   "json": {
-    "task_id": "d460f58954ff4373ac6a07a37c93dccf",
+    "task_id": "8daf9a25fda8493995719abe031ac4a1",
     "filename": "11902527296.mp4",
     "clip_seconds": 8.008,
-    "created_at": "2026-10-31T20:41:18.085950Z",
+    "created_at": "2026-10-31T21:44:53.759150Z",
     "prediction": {
       "score": 3.4206814401750743,
       "timings_seconds": {
-        "extraction": 7.667640183004551,
-        "head": 0.00008085399167612195,
-        "total": 7.667721332021756
+        "extraction": 8.861656477994984,
+        "head": 0.00008096601231954992,
+        "total": 8.861737879982684
       },
       "verified": {
         "model_sha256": "4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3",
@@ -34,7 +34,7 @@
         "preprocessing_sha256": "acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b",
         "cpu_threads": 4
       },
-      "startup_seconds": 1.4489657249941956
+      "startup_seconds": 1.139827872015303
     }
   }
 }

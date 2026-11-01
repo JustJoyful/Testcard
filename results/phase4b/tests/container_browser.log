@@ -1,12 +1,12 @@
 
 Running 5 tests using 1 worker
 
-  ✓  1 tests/browser/container.spec.js:20:1 › built page and every font load from the image alone (339ms)
-  ✓  2 tests/browser/container.spec.js:33:1 › production ?mock still uses the real backend (132ms)
-  ✓  3 tests/browser/container.spec.js:40:1 › a real clip is scored end to end offline (9.2s)
-  ✓  4 tests/browser/container.spec.js:60:1 › keyboard only on the real backend: insert, result, details, JSON, eject (9.0s)
-  ✓  5 tests/browser/container.spec.js:90:1 › 360 px: no horizontal scroll at idle or with a real result (8.9s)
+  ✓  1 tests/browser/container.spec.js:20:1 › built page and every font load from the image alone (230ms)
+  ✓  2 tests/browser/container.spec.js:33:1 › production ?mock still uses the real backend (78ms)
+  ✓  3 tests/browser/container.spec.js:40:1 › a real clip is scored end to end offline (11.1s)
+  ✓  4 tests/browser/container.spec.js:60:1 › keyboard only on the real backend: insert, result, details, JSON, eject (10.0s)
+  ✓  5 tests/browser/container.spec.js:90:1 › 360 px: no horizontal scroll at idle or with a real result (9.8s)
 
-  5 passed (28.3s)
+  5 passed (31.6s)
 npm notice run npx
 npm notice run 'playwright' test

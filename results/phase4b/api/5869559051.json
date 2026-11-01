@@ -3,9 +3,9 @@
   "response": {
     "score": 2.480554145724514,
     "timings_seconds": {
-      "extraction": 6.874102312984178,
-      "head": 7.481098873540759e-05,
-      "total": 6.874177443998633
+      "extraction": 7.6494323250080924,
+      "head": 8.268500096164644e-05,
+      "total": 7.649515401019016
     },
     "verified": {
       "model_sha256": "4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3",
@@ -14,9 +14,9 @@
       "preprocessing_sha256": "acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b",
       "cpu_threads": 4
     },
-    "startup_seconds": 1.2635105790104717
+    "startup_seconds": 1.2147587400104385
   },
-  "request_started": 212053.672149112,
-  "request_finished": 212060.556890422,
-  "request_roundtrip_seconds": 6.884741310001118
+  "request_started": 215730.601135149,
+  "request_finished": 215738.261263101,
+  "request_roundtrip_seconds": 7.660127952025505
 }
