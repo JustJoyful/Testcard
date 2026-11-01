@@ -283,7 +283,7 @@ test('details tabs, JSON copy and download preserve the exact object', async ({ 
   await expect(copy).toHaveText('Copy', { timeout: 2500 });
 
   const [download] = await Promise.all([page.waitForEvent('download'), page.getByRole('button', { name: 'Download' }).click()]);
-  expect(download.suggestedFilename()).toBe('vqa-t1.json');
+  expect(download.suggestedFilename()).toBe('testcard-t1.json');
   expect(JSON.parse(readFileSync(await download.path(), 'utf8'))).toEqual(result);
 });
 

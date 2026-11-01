@@ -81,7 +81,6 @@ a { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 1px; 
     #b5b5b5 0 14.28%, #bdb768 0 28.57%, #6bb5b8 0 42.85%, #66a56a 0 57.14%,
     #a666a9 0 71.42%, #b0605e 0 85.71%, #6064a8 0);
 }
-.brand-slash { color: var(--color-muted); }
 .mock-badge { font-size: 0.75rem; color: var(--color-muted); border: 1px dashed var(--color-muted); border-radius: 999px; padding: 3px 9px; white-space: nowrap; }
 .nav { margin-left: auto; display: flex; gap: 28px; font-size: 0.875rem; }
 .nav a { color: var(--color-muted); text-decoration: none; }

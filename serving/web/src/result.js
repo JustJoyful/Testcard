@@ -90,7 +90,7 @@ function jsonPanel(result, note) {
       () => { flash(copy, 'Copy failed'); note.textContent = 'Copy failed. Use Download instead.'; },
     ),
   });
-  const name = `vqa-${String(result.task_id ?? 'result').replace(/[^\w-]/g, '')}.json`;
+  const name = `testcard-${String(result.task_id ?? 'result').replace(/[^\w-]/g, '')}.json`;
   return el('div', { class: 'json-panel' },
     el('div', { class: 'json-actions' }, copy,
       el('button', { type: 'button', class: 'btn-ghost', text: 'Download', onclick: () => downloadJson(name, text) })),
