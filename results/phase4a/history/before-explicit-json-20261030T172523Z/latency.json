@@ -1,0 +1,122 @@
+{
+  "status": "passed",
+  "summary": {
+    "maximum_seconds_per_ten_seconds": 10.647046344112752,
+    "median_seconds_per_ten_seconds": 8.825357230267441,
+    "budget_seconds_per_ten_seconds": 120,
+    "budget_passed": true,
+    "per_video": {
+      "11902527296": {
+        "maximum": 8.515819019728745,
+        "median": 8.312156719525762
+      },
+      "3710887216": {
+        "maximum": 9.135649820177992,
+        "median": 8.980144438065727
+      },
+      "4565232312": {
+        "maximum": 9.512353292963667,
+        "median": 8.911308901101199
+      },
+      "4567868868": {
+        "maximum": 10.047834485521163,
+        "median": 9.07038003871011
+      },
+      "4652600104": {
+        "maximum": 8.827796728264394,
+        "median": 8.662166718287617
+      },
+      "5268797415": {
+        "maximum": 8.141314716258421,
+        "median": 8.126336798750344
+      },
+      "5564209652": {
+        "maximum": 8.668274328177556,
+        "median": 8.538307964537543
+      },
+      "5633788395": {
+        "maximum": 9.315191267484302,
+        "median": 8.73203455418982
+      },
+      "5869559051": {
+        "maximum": 10.186014739005048,
+        "median": 9.500766462289839
+      },
+      "6047579133": {
+        "maximum": 10.352264495498629,
+        "median": 8.859424577923319
+      },
+      "6648629457": {
+        "maximum": 8.98215993381221,
+        "median": 8.688613190559165
+      },
+      "6917745987": {
+        "maximum": 9.113418708785412,
+        "median": 8.822917732270488
+      },
+      "7177427229": {
+        "maximum": 9.052342973275035,
+        "median": 8.947924370622824
+      },
+      "7517202292": {
+        "maximum": 10.139920133613826,
+        "median": 8.625836853144092
+      },
+      "8252040986": {
+        "maximum": 9.843164509245955,
+        "median": 9.5093755407107
+      },
+      "8331470149": {
+        "maximum": 9.181814406843474,
+        "median": 9.031841984267942
+      },
+      "8495275628": {
+        "maximum": 9.507854401854239,
+        "median": 9.131478369130816
+      },
+      "8563986596": {
+        "maximum": 9.644669336919836,
+        "median": 9.07316761364022
+      },
+      "8729448612": {
+        "maximum": 8.83876358515374,
+        "median": 8.72347201825726
+      },
+      "9812351333": {
+        "maximum": 10.647046344112752,
+        "median": 9.154219225309207
+      }
+    }
+  },
+  "bindings": {
+    "configs/serving.yaml": "9c252757b4ab1013d0723f6aa54e0b306605052f11a10500a049767c1988bbb0",
+    "data/splits/phase0_konvid_ids.txt": "5efbfd5c72f0353a6d78f9d5ce13a8d36db7f67486c474b163a4c0edd5874dd7",
+    "configs/phase0.yaml": "ff290dc34eb9a660e82b44ad82392e3a3deab6afac0e70c449a3e47870815881",
+    "results/phase4a/research_snapshot.json": "ccf3dee9ba98d1d046cc086382d27492e9de3fb2a41c912443035531b7f01cd8",
+    "results/phase3/phase_gate.json": "12b191fe6d67c66ed9e3de3ee053e397b167a568d38c19d40bd2f7c3f7bfb59d",
+    "results/phase3/deployment.json": "8d39157721046737211b17da17195ac8f0f0145be742c453700fdd9ef3e3c727",
+    "configs/features_v2.yaml": "8397ea636c79e69a382e88a7238f798b398dafd91774edd6b50555f7bb62777c",
+    "cache/v2/meta.json": "27af097a62ed3472519367ab50c2b6deb32af26788986d8fccdd886f1d9dfb3c",
+    "cache/v2/manifest.csv": "311ae067d92f2077ed1adf93006d7da991f23f94c0845fd1f6063a90025c9ab3",
+    "data/manifests/konvid.csv": "6b1d792204a111563cc103888c3e5deded62fbdec63cb97bb976c8361e812e5b",
+    "env/serving.lock": "6abc6f6a6dfeb53e88703bb3c16412c7f68a36904523b5651d11fc121c5dbc3a",
+    "results/phase4a/packaging_amendment.json": "01267d2d14e43d4126ca8ce2454e727213645086f91a323cb9f349e0a0e57f77"
+  },
+  "image_id": "sha256:7e98d3fa13066c7b401f2c4587d7cfd162cfcc7fa152c7143153b353d55445d5",
+  "container_id": "8d5432d40836b58794bc7dc1df2a119fa9950a1e06eab098eb39c4a5440c82da",
+  "parity_sha256": "80ecd7e6de06014ad19d41b01be26429708b5c5f24d1b4c79d20beef8f589627",
+  "raw_sha256": "c214cf561923a55e04a73f6c9e8fc43c49f6cc5dbeb337ef15d6b3db556a6555",
+  "cold_sha256": "ee92c798d33ddd9d9dd57f55c2759b26e0a98c8f3f785882e2a8d7f9aee01dda",
+  "warmup_sha256": "5bb12a7a4ee750c35b48a81711154618463228ce42428bee3e17c9ac26d20695",
+  "measurement_tool_sha256": "8355d7eb81d4dd21c80f8b47babf4ca0339d01bff0acde00708878f3e974e066",
+  "platform": "Linux-7.2.9-2-cachyos-x86_64-with-glibc2.44",
+  "cpu": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           39 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  12\nOn-line CPU(s) list:                     0-11\nVendor ID:                               GenuineIntel\nModel name:                              12th Gen Intel(R) Core(TM) i5-12450HX\nCPU family:                              6\nModel:                                   151\nThread(s) per core:                      2\nCore(s) per socket:                      8\nSocket(s):                               1\nStepping:                                2\nMicrocode version:                       0x3e\nCPU(s) scaling MHz:                      55%\nCPU max MHz:                             4400.0000\nCPU min MHz:                             800.0000\nBogoMIPS:                                5376.00\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb intel_pt sha_ni xsaveopt xsavec xgetbv1 xsaves split_lock_detect user_shstk avx_vnni dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp hwp_pkg_req hfi vnmi umip pku ospke waitpkg gfni vaes vpclmulqdq rdpid movdiri movdir64b fsrm md_clear serialize arch_lbr ibt flush_l1d arch_capabilities\nVirtualization:                          VT-x\nL1d cache:                               320 KiB (8 instances)\nL1i cache:                               384 KiB (8 instances)\nL2 cache:                                7 MiB (5 instances)\nL3 cache:                                12 MiB (1 instance)\nNUMA node(s):                            1\nNUMA node0 CPU(s):                       0-11\nVulnerability Gather data sampling:      Not affected\nVulnerability Ghostwrite:                Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Old microcode:             Not affected\nVulnerability Reg file data sampling:    Mitigation; Clear Register File\nVulnerability Retbleed:                  Not affected\nVulnerability Spec rstack overflow:      Not affected\nVulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl\nVulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; BHI BHI_DIS_S\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Not affected\nVulnerability Tsx async abort:           Not affected\nVulnerability Vmscape:                   Mitigation; IBPB before exit to userspace\n",
+  "resource_caps": {
+    "cpus": 4,
+    "memory_bytes": 4294967296,
+    "pids": 128,
+    "readonly": true,
+    "tmpfs_bytes": 268435456
+  },
+  "cpu_threads": 4
+}

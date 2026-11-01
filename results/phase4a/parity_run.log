@@ -1,0 +1,21 @@
+{"video_id": "11902527296", "status": "passed", "minimum_cosine": 0.9999912079711457, "cached_to_cli_absolute": 3.926222082739628e-05, "cli_api_absolute": 0.0}
+{"video_id": "3710887216", "status": "passed", "minimum_cosine": 0.9999843873098666, "cached_to_cli_absolute": 0.0005716361874132936, "cli_api_absolute": 0.0}
+{"video_id": "4565232312", "status": "passed", "minimum_cosine": 0.9999633445972265, "cached_to_cli_absolute": 0.0027873815369132693, "cli_api_absolute": 0.0}
+{"video_id": "4567868868", "status": "passed", "minimum_cosine": 0.9999849493572776, "cached_to_cli_absolute": 3.647773002635191e-05, "cli_api_absolute": 0.0}
+{"video_id": "4652600104", "status": "passed", "minimum_cosine": 0.9999835237190008, "cached_to_cli_absolute": 0.0007128989946427744, "cli_api_absolute": 0.0}
+{"video_id": "5268797415", "status": "passed", "minimum_cosine": 0.9999766157286873, "cached_to_cli_absolute": 0.00045645242798197927, "cli_api_absolute": 0.0}
+{"video_id": "5564209652", "status": "passed", "minimum_cosine": 0.9999771111538585, "cached_to_cli_absolute": 8.399090148536459e-05, "cli_api_absolute": 0.0}
+{"video_id": "5633788395", "status": "passed", "minimum_cosine": 0.9999638505674775, "cached_to_cli_absolute": 0.001278111874312593, "cli_api_absolute": 0.0}
+{"video_id": "5869559051", "status": "passed", "minimum_cosine": 0.9999615426914704, "cached_to_cli_absolute": 0.004849441528531173, "cli_api_absolute": 0.0}
+{"video_id": "6047579133", "status": "passed", "minimum_cosine": 0.9998409678411763, "cached_to_cli_absolute": 0.0008267511141988315, "cli_api_absolute": 0.0}
+{"video_id": "6648629457", "status": "passed", "minimum_cosine": 0.9999691558677668, "cached_to_cli_absolute": 0.000841468771209275, "cli_api_absolute": 0.0}
+{"video_id": "6917745987", "status": "passed", "minimum_cosine": 0.9999770989902849, "cached_to_cli_absolute": 0.0015486106215032436, "cli_api_absolute": 0.0}
+{"video_id": "7177427229", "status": "passed", "minimum_cosine": 0.9999714572516842, "cached_to_cli_absolute": 9.462900197743096e-05, "cli_api_absolute": 0.0}
+{"video_id": "7517202292", "status": "passed", "minimum_cosine": 0.9999827389658636, "cached_to_cli_absolute": 0.0007284404995653304, "cli_api_absolute": 0.0}
+{"video_id": "8252040986", "status": "passed", "minimum_cosine": 0.9999933512830304, "cached_to_cli_absolute": 0.0005199215909472699, "cli_api_absolute": 0.0}
+{"video_id": "8331470149", "status": "passed", "minimum_cosine": 0.9999713734558494, "cached_to_cli_absolute": 0.00013107183013216783, "cli_api_absolute": 0.0}
+{"video_id": "8495275628", "status": "passed", "minimum_cosine": 0.99998686247225, "cached_to_cli_absolute": 0.00011550379225555574, "cli_api_absolute": 0.0}
+{"video_id": "8563986596", "status": "passed", "minimum_cosine": 0.9999884756378716, "cached_to_cli_absolute": 0.0017017365059732725, "cli_api_absolute": 0.0}
+{"video_id": "8729448612", "status": "passed", "minimum_cosine": 0.999973054157864, "cached_to_cli_absolute": 0.0008746870627454051, "cli_api_absolute": 0.0}
+{"video_id": "9812351333", "status": "passed", "minimum_cosine": 0.9999916165269194, "cached_to_cli_absolute": 4.836706202970831e-05, "cli_api_absolute": 0.0}
+{"mode": "parity", "status": "passed"}

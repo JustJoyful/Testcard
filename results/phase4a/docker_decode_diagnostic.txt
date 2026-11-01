@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/app/src/predict.py", line 89, in predict_video
+    validate_media(video, runtime.limits)
+  File "/app/src/predict.py", line 56, in validate_media
+    with video.open('rb') as handle:
+         ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: '/input/video.mp4'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/app/src/predict.py", line 115, in predict_video
+    raise PredictionError('Video decoding or feature extraction failed; check the media file.') from exc
+src.predict.PredictionError: Video decoding or feature extraction failed; check the media file.

@@ -1,0 +1,1 @@
+Previous serving evidence preserved byte-for-byte before the explicit-JSON refresh. Relative evidence paths retain their original names. Raw feature arrays are excluded from this archive; their hashes remain in parity records.

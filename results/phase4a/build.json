@@ -1,0 +1,166 @@
+{
+  "architecture": "amd64",
+  "cli_smoke_sha256": "9794053b5def90bcb48d438aaa9c278a6359adf191cc478cd02c40a02b66e893",
+  "api_smoke_sha256": "6df4d23c69fe1f944ee9dace72604b3c524be22b04a8ea0164a54a9857b4d87f",
+  "page_sha256": "e84e5ccf8a8d7135a019e02c183f314af953b3cd2596ea69f7688dddd4fdbbe7",
+  "status": "passed",
+  "clean_build": true,
+  "command": [
+    "docker",
+    "build",
+    "--no-cache",
+    "-t",
+    "vqa:phase4a",
+    "."
+  ],
+  "image": "vqa:phase4a",
+  "image_id": "sha256:7414a60bd7fe92ffe8fa5f8c5fde06bae0f33ba2b0f8d7fc2b57ab783e9e1950",
+  "python_image_digest": "sha256:d29f48a31a8b408ed19272ca1e7b10ebae13b240a27e862d3d4217c528e2e0c3",
+  "archive_url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2026-10-29-19-17/ffmpeg-n9.0.2-37-gae19868753-linux64-gpl-9.0.tar.xz",
+  "archive_sha256": "83537b0f6a97905f325080f6f5916e70ec252d1ef3e4ce4746f755b88720cbf5",
+  "environment": {
+    "python": "3.11.15",
+    "torch": "2.14.1+cpu",
+    "torchvision": "0.29.1+cpu",
+    "cuda": null,
+    "cuda_available": false,
+    "uid": 10001
+  },
+  "packages": [
+    {
+      "name": "annotated-doc",
+      "version": "0.0.5"
+    },
+    {
+      "name": "annotated-types",
+      "version": "0.8.0"
+    },
+    {
+      "name": "anyio",
+      "version": "4.15.1"
+    },
+    {
+      "name": "click",
+      "version": "8.5.0"
+    },
+    {
+      "name": "fastapi",
+      "version": "0.162.0"
+    },
+    {
+      "name": "filelock",
+      "version": "4.2.4"
+    },
+    {
+      "name": "fsspec",
+      "version": "2026.9.0"
+    },
+    {
+      "name": "h11",
+      "version": "0.16.0"
+    },
+    {
+      "name": "idna",
+      "version": "3.20"
+    },
+    {
+      "name": "Jinja2",
+      "version": "3.1.6"
+    },
+    {
+      "name": "MarkupSafe",
+      "version": "3.0.4"
+    },
+    {
+      "name": "mpmath",
+      "version": "1.3.0"
+    },
+    {
+      "name": "networkx",
+      "version": "3.6.1"
+    },
+    {
+      "name": "numpy",
+      "version": "2.4.6"
+    },
+    {
+      "name": "opentelemetry-api",
+      "version": "1.45.2"
+    },
+    {
+      "name": "pillow",
+      "version": "13.0.0"
+    },
+    {
+      "name": "pip",
+      "version": "24.0"
+    },
+    {
+      "name": "pydantic",
+      "version": "2.14.2"
+    },
+    {
+      "name": "pydantic_core",
+      "version": "2.50.2"
+    },
+    {
+      "name": "python-multipart",
+      "version": "0.0.32"
+    },
+    {
+      "name": "PyYAML",
+      "version": "6.0.3"
+    },
+    {
+      "name": "scipy",
+      "version": "1.17.1"
+    },
+    {
+      "name": "setuptools",
+      "version": "84.2.1"
+    },
+    {
+      "name": "starlette",
+      "version": "1.10.0"
+    },
+    {
+      "name": "sympy",
+      "version": "1.14.0"
+    },
+    {
+      "name": "torch",
+      "version": "2.14.1+cpu"
+    },
+    {
+      "name": "torchvision",
+      "version": "0.29.1+cpu"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0"
+    },
+    {
+      "name": "typing-inspection",
+      "version": "0.4.4"
+    },
+    {
+      "name": "uvicorn",
+      "version": "0.54.0"
+    }
+  ],
+  "pip_check": "No broken requirements found.\n",
+  "resource_caps": {
+    "cpus": 4,
+    "memory_bytes": 4294967296,
+    "pids": 128,
+    "readonly": true,
+    "tmpfs_bytes": 268435456
+  },
+  "runtime_lock_sha256": "6abc6f6a6dfeb53e88703bb3c16412c7f68a36904523b5651d11fc121c5dbc3a",
+  "dockerfile_sha256": "57e1fa33c323076eec11140d570695ca2368ff45ac77d5057610473ea00d7c46",
+  "dockerignore_sha256": "ba1f10623544ac3a36bfce2592f0c15611e90bfca0f13d009590bf28b8d46772",
+  "manifest_sha256": "96ea41ecb8818c147611a058700de9f44ca0acd5c8009eec9c8c4f3372e31ce1",
+  "amendment_sha256": "01267d2d14e43d4126ca8ce2454e727213645086f91a323cb9f349e0a0e57f77",
+  "decoder_versions_sha256": "2489884e730657f0a0ec3b5224d603923e62e28d867635989dfdc044829933c3",
+  "build_log_sha256": "1e117e8445de6fa73e580aaba46e8e96e5465172c4fb04614b2b9dc49e9c374f"
+}

@@ -1,0 +1,92 @@
+{
+  "runs": {
+    "serving": {
+      "command": [
+        ".venv-serving/bin/python",
+        "-m",
+        "pytest",
+        "tests/test_serving_bundle.py",
+        "tests/test_predict_cli.py",
+        "tests/test_serving_api.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 7.056262120000611,
+      "log": "results/phase4a/final_serving_tests.log",
+      "log_sha256": "087db1b2b509de062915d08819aca80b3286cda51693bcb9811bee8ce6a4ee58",
+      "tail": [
+        "................................................                         [100%]",
+        "=============================== warnings summary ===============================",
+        "tests/test_serving_api.py::test_upload_calls_shared_function_and_returns_same_contract[-0.25]",
+        "  /home/joydeep/Projects/VQA/.venv-serving/lib/python3.11/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.",
+        "    from starlette.testclient import TestClient as TestClient  # noqa",
+        "",
+        "-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html",
+        "48 passed, 1 warning in 6.16s"
+      ]
+    },
+    "cpu_shared": {
+      "command": [
+        ".venv-serving/bin/python",
+        "-m",
+        "pytest",
+        "tests/test_serving_api.py",
+        "tests/test_predict_cli.py",
+        "tests/test_serving_bundle.py",
+        "tests/test_phase0_preprocess.py",
+        "tests/test_phase0_features.py",
+        "tests/test_phase1_ridge.py",
+        "tests/test_phase1_parity.py",
+        "tests/test_phase3_gate.py",
+        "--deselect",
+        "tests/test_phase0_preprocess.py::test_slowfast_matches_installed_reference_on_synthetic_pixels",
+        "-q"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 10.696895337998285,
+      "log": "results/phase4a/final_cpu_shared_tests.log",
+      "log_sha256": "eb753f9fa1dce08f3b34bb7c9fd418caed52bea6bb62fcbce8f004f2114d3397",
+      "tail": [
+        "........................................................................ [ 87%]",
+        "..........                                                               [100%]",
+        "=============================== warnings summary ===============================",
+        "tests/test_serving_api.py::test_upload_calls_shared_function_and_returns_same_contract",
+        "  /home/joydeep/Projects/VQA/.venv-serving/lib/python3.11/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.",
+        "    from starlette.testclient import TestClient as TestClient  # noqa",
+        "",
+        "-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html",
+        "82 passed, 1 deselected, 1 warning in 9.83s"
+      ]
+    },
+    "research": {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "--ignore",
+        "tests/test_predict_cli.py",
+        "--ignore",
+        "tests/test_serving_api.py",
+        "--ignore",
+        "tests/test_serving_bundle.py",
+        "--deselect",
+        "tests/test_phase1_pilot.py::test_cli_repairs_interrupted_protocol_freeze_without_refitting"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 28.25102232900099,
+      "log": "results/phase4a/final_research_tests.log",
+      "log_sha256": "92933eaeeb7881a2a22b8dd6b62defd201aea596cfa6f38d9eda5343eaed2d01",
+      "tail": [
+        "........................................................................ [ 28%]",
+        "........................................................................ [ 56%]",
+        "........................................................................ [ 84%]",
+        "........................................                                 [100%]",
+        "256 passed, 1 deselected in 27.16s"
+      ]
+    }
+  },
+  "known_existing_failure": "tests/test_phase1_pilot.py::test_cli_repairs_interrupted_protocol_freeze_without_refitting",
+  "known_failure_reason": "Calendar cutoff passed; CLI test appends to real DECISIONS.md. Historical source left unchanged.",
+  "motion_test_environment": "Legacy SlowFast reference is checked in research environment; intentionally unavailable in CPU serving lock."
+}

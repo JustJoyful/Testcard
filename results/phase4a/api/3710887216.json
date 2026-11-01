@@ -1,0 +1,22 @@
+{
+  "http_status": 200,
+  "response": {
+    "score": 2.692562971444866,
+    "timings_seconds": {
+      "extraction": 7.476168114997563,
+      "head": 9.094900451600552e-05,
+      "total": 7.476259286995628
+    },
+    "verified": {
+      "model_sha256": "4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3",
+      "weights_sha256": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca",
+      "weights_enum": "ResNet50_Weights.IMAGENET1K_V2",
+      "preprocessing_sha256": "acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b",
+      "cpu_threads": 4
+    },
+    "startup_seconds": 1.1061434020084562
+  },
+  "request_started": 115077.072862777,
+  "request_finished": 115084.563966768,
+  "request_roundtrip_seconds": 7.491103990992997
+}

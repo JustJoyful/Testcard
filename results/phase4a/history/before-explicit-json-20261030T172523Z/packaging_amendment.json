@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-30",
+  "before_sha256": "7deda051f15aeddf7199280305ca88f47aaa9779f6caa7090e91fdc57e7f7e6a",
+  "prefix_bytes": 53231,
+  "appended_sha256": "211e3cf72110f50da6ab8beeb3dac712471b2bbc60ac7d57d14d4663b2bd5df5",
+  "after_sha256": "9fc18ea998e2be4958266f51ec6a3eb28810b9d519d9641c3b0152c926b8bce9",
+  "archive_url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2026-10-29-19-17/ffmpeg-n9.0.2-37-gae19868753-linux64-gpl-9.0.tar.xz",
+  "archive_sha256": "83537b0f6a97905f325080f6f5916e70ec252d1ef3e4ce4746f755b88720cbf5",
+  "host_version": "n9.0.2",
+  "image_version": "n9.0.2-37-gae19868753-20261029",
+  "parity_thresholds_unchanged": true,
+  "on_parity_failure": "stop and report; fallback builds tag n9.0.2 from source in Docker builder stage"
+}

@@ -1,0 +1,29 @@
+{
+  "image_id": "sha256:7e98d3fa13066c7b401f2c4587d7cfd162cfcc7fa152c7143153b353d55445d5",
+  "command": [
+    "docker",
+    "run",
+    "--rm",
+    "--network",
+    "none",
+    "--read-only",
+    "--entrypoint",
+    "python",
+    "sha256:7e98d3fa13066c7b401f2c4587d7cfd162cfcc7fa152c7143153b353d55445d5",
+    "-c",
+    "import hashlib,json; from pathlib import Path; names=('src/__init__.py', 'src/preprocess.py', 'src/features.py', 'src/baselines.py', 'src/metrics.py', 'src/cache.py', 'src/serving_bundle.py', 'src/predict.py', 'serving/__init__.py', 'serving/app.py', 'serving/index.html'); print(json.dumps({p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in names}))"
+  ],
+  "runtime_source_sha256": {
+    "src/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/preprocess.py": "804c8d89cb5e8b163d6dc6e97d5d618a53c198c6aa6e4c9915dc5428ee46320b",
+    "src/features.py": "a5ec35b5c3896b53e6fd59bbcc7c52db31409292d667ceff83a8302dc616eabc",
+    "src/baselines.py": "df7bb24968bae095b195802d0227b991e832ff748a4c2b23d4ab9afb9cac53b1",
+    "src/metrics.py": "7027757f69425b33b5fd7f34ca0bba9f7fc00c03c31ba5b957d55a78795d47d9",
+    "src/cache.py": "e774d745bd6a0afceba405d300495bdf2e2be2793a8e26613cc0a8253ea8d72c",
+    "src/serving_bundle.py": "8b52b69b597630613999fb47e10d15a935e133e70c0c0975d3dadc0871a05da9",
+    "src/predict.py": "85feef77244114bfcd4734866152f7e1271fd726841d6cde18fe282f2924af00",
+    "serving/__init__.py": "d4fa20189cc8e6dc05cdd676576016f616d1f5cceeb1aeae947933e0d59d5960",
+    "serving/app.py": "382106107ac061077ca0a32b4d86279768f2c5ca588fa6e84dd7be87e5f57518",
+    "serving/index.html": "e84e5ccf8a8d7135a019e02c183f314af953b3cd2596ea69f7688dddd4fdbbe7"
+  }
+}
