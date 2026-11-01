@@ -1,0 +1,51 @@
+/home/joydeep/Projects/VQA/src/preprocess.py:130: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)
+  tensor = torch.from_numpy(np.ascontiguousarray(frame)).permute(2, 0, 1).float() / 255
+{"feature": "resnet50", "video": "11902527296", "extraction": 5.751864827005193}
+{"feature": "resnet50", "video": "3710887216", "extraction": 5.932434841000941}
+{"feature": "resnet50", "video": "4565232312", "extraction": 5.052618054003688}
+{"feature": "resnet50", "video": "4567868868", "extraction": 5.447169432009105}
+{"feature": "resnet50", "video": "4652600104", "extraction": 5.401987265999196}
+{"feature": "resnet50", "video": "5268797415", "extraction": 5.031676263024565}
+{"feature": "resnet50", "video": "5564209652", "extraction": 5.280666225007735}
+{"feature": "resnet50", "video": "5633788395", "extraction": 5.791825416992651}
+{"feature": "resnet50", "video": "5869559051", "extraction": 5.180488660000265}
+{"feature": "resnet50", "video": "6047579133", "extraction": 5.185220251994906}
+{"feature": "resnet50", "video": "6648629457", "extraction": 4.8721762990171555}
+{"feature": "resnet50", "video": "6917745987", "extraction": 5.298078730003908}
+{"feature": "resnet50", "video": "7177427229", "extraction": 4.995829571998911}
+{"feature": "resnet50", "video": "7517202292", "extraction": 5.056009043997619}
+{"feature": "resnet50", "video": "8252040986", "extraction": 5.22630847201799}
+{"feature": "resnet50", "video": "8331470149", "extraction": 5.134638674004236}
+{"feature": "resnet50", "video": "8495275628", "extraction": 5.290583327994682}
+{"feature": "resnet50", "video": "8563986596", "extraction": 5.397302536002826}
+{"feature": "resnet50", "video": "8729448612", "extraction": 4.972442722006235}
+{"feature": "resnet50", "video": "9812351333", "extraction": 5.330013853003038}
+Using cache found in weights/torch/facebookresearch_dinov2_7764ea0f912e53c92e82eb78a2a1631e92725fc8
+/home/joydeep/Projects/VQA/weights/torch/facebookresearch_dinov2_7764ea0f912e53c92e82eb78a2a1631e92725fc8/dinov2/layers/swiglu_ffn.py:51: UserWarning: xFormers is not available (SwiGLU)
+  warnings.warn("xFormers is not available (SwiGLU)")
+/home/joydeep/Projects/VQA/weights/torch/facebookresearch_dinov2_7764ea0f912e53c92e82eb78a2a1631e92725fc8/dinov2/layers/attention.py:33: UserWarning: xFormers is not available (Attention)
+  warnings.warn("xFormers is not available (Attention)")
+/home/joydeep/Projects/VQA/weights/torch/facebookresearch_dinov2_7764ea0f912e53c92e82eb78a2a1631e92725fc8/dinov2/layers/block.py:40: UserWarning: xFormers is not available (Block)
+  warnings.warn("xFormers is not available (Block)")
+{"feature": "dino", "video": "11902527296", "extraction": 19.423950925003737}
+{"feature": "dino", "video": "3710887216", "extraction": 19.976808554987656}
+{"feature": "dino", "video": "4565232312", "extraction": 19.551879909995478}
+{"feature": "dino", "video": "4567868868", "extraction": 19.840301153017208}
+{"feature": "dino", "video": "4652600104", "extraction": 19.91460412699962}
+{"feature": "dino", "video": "5268797415", "extraction": 19.293444690003525}
+{"feature": "dino", "video": "5564209652", "extraction": 19.903594365983736}
+{"feature": "dino", "video": "5633788395", "extraction": 19.727925080020213}
+{"feature": "dino", "video": "5869559051", "extraction": 19.63100521999877}
+{"feature": "dino", "video": "6047579133", "extraction": 19.53508357598912}
+{"feature": "dino", "video": "6648629457", "extraction": 19.606793476996245}
+{"feature": "dino", "video": "6917745987", "extraction": 19.753754019009648}
+{"feature": "dino", "video": "7177427229", "extraction": 19.860771553008817}
+{"feature": "dino", "video": "7517202292", "extraction": 19.921366511989618}
+{"feature": "dino", "video": "8252040986", "extraction": 21.3371051849972}
+{"feature": "dino", "video": "8331470149", "extraction": 33.744991269981256}
+{"feature": "dino", "video": "8495275628", "extraction": 22.835639455995988}
+{"feature": "dino", "video": "8563986596", "extraction": 21.372389502997976}
+{"feature": "dino", "video": "8729448612", "extraction": 20.557199573988328}
+{"feature": "dino", "video": "9812351333", "extraction": 20.940583037998294}
+{"serving_source": "results/phase4b/latency.raw.json", "serving_median_extraction_seconds": 7.156558786999085, "script_median_extraction_seconds": 5.253487348512863, "relative_difference": 0.2659199057993381, "flagged": true, "threshold": 0.2}
+exit=0
