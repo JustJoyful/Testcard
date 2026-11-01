@@ -44,3 +44,5 @@ __pycache__/
 /results/**/implementation_status.md
 /results/**/review.md
 /results/**/rulings.md
+/results/readme_inputs.md
+/results/phase4b/baseline/files/docs/
