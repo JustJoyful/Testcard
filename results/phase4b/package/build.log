@@ -1,4 +1,4 @@
-2026-10-31T16:41:16Z
+2026-10-31T20:00:34Z
 DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
             Install the buildx component to build images with BuildKit:
             https://docs.docker.com/go/buildx/
@@ -7,14 +7,14 @@ Sending build context to Docker daemon  102.9MB
 Step 1/28 : FROM python:3.11.15-slim-bookworm@sha256:d29f48a31a8b408ed19272ca1e7b10ebae13b240a27e862d3d4217c528e2e0c3 AS decoder
  ---> d29f48a31a8b
 Step 2/28 : RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl xz-utils && rm -rf /var/lib/apt/lists/*
- ---> Running in 4da80c4fdbf0
+ ---> Running in 6ae47045dd65
 Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
 Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
 Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [34.8 kB]
 Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8790 kB]
 Get:5 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [6924 B]
 Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [359 kB]
-Fetched 9398 kB in 2s (4190 kB/s)
+Fetched 9398 kB in 2s (6014 kB/s)
 Reading package lists...
 Reading package lists...
 Building dependency tree...
@@ -46,7 +46,7 @@ Get:11 http://deb.debian.org/debian-security bookworm-security/main amd64 libssh
 Get:12 http://deb.debian.org/debian bookworm/main amd64 libcurl4 amd64 7.88.1-10+deb12u15 [392 kB]
 Get:13 http://deb.debian.org/debian bookworm/main amd64 curl amd64 7.88.1-10+deb12u15 [316 kB]
 [91mdebconf: delaying package configuration, since apt-utils is not installed
-[0mFetched 2452 kB in 1s (2084 kB/s)
+[0mFetched 2452 kB in 0s (8267 kB/s)
 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6695 files and directories currently installed.)
 Preparing to unpack .../liblzma5_5.4.1-1+deb12u2_amd64.deb ...
 Unpacking liblzma5:amd64 (5.4.1-1+deb12u2) over (5.4.1-1+deb12u1) ...
@@ -125,42 +125,42 @@ Updating certificates in /etc/ssl/certs...
 0 added, 0 removed; done.
 Running hooks in /etc/ca-certificates/update.d...
 done.
- ---> Removed intermediate container 4da80c4fdbf0
- ---> 04aea9e251b7
+ ---> Removed intermediate container 6ae47045dd65
+ ---> 18fc82197e5b
 Step 3/28 : RUN curl --fail --location --retry 3 https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2026-10-29-19-17/ffmpeg-n9.0.2-37-gae19868753-linux64-gpl-9.0.tar.xz -o /tmp/ffmpeg.tar.xz     && echo '83537b0f6a97905f325080f6f5916e70ec252d1ef3e4ce4746f755b88720cbf5  /tmp/ffmpeg.tar.xz' | sha256sum --check -     && mkdir -p /decoder /unpack     && tar -xJf /tmp/ffmpeg.tar.xz -C /unpack --strip-components=1     && cp /unpack/bin/ffmpeg /unpack/bin/ffprobe /decoder/     && /decoder/ffmpeg -version | head -1 | grep -F 'ffmpeg version n9.0.2-37-gae19868753-20261029 '     && /decoder/ffprobe -version | head -1 | grep -F 'ffprobe version n9.0.2-37-gae19868753-20261029 '
- ---> Running in a1031761da36
+ ---> Running in 605b5a48ce51
 [91m  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0[0m[91m  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-[0m[91m  3  146M    3 5365k    0     0  5496k      0  0:00:27 --:--:--  0:00:27 5496k[0m[91m 11  146M   11 16.4M    0     0  8516k      0  0:00:17  0:00:01  0:00:16 11.1M[0m[91m 18  146M   18 27.6M    0     0  9497k      0  0:00:15  0:00:02  0:00:13 11.1M[0m[91m 26  146M   26 38.8M    0     0  9992k      0  0:00:14  0:00:03  0:00:11 11.1M[0m[91m 34  146M   34 50.0M    0     0  10.0M      0  0:00:14  0:00:04  0:00:10 11.1M[0m[91m 41  146M   41 61.1M    0     0  10.2M      0  0:00:14  0:00:05  0:00:09 11.1M[0m[91m 48  146M   48 70.7M    0     0  10.1M      0  0:00:14  0:00:06  0:00:08 10.8M[0m[91m 54  146M   54 80.0M    0     0  10.0M      0  0:00:14  0:00:07  0:00:07 10.4M[0m[91m 61  146M   61 89.5M    0     0   9.9M      0  0:00:14  0:00:08  0:00:06 10.1M[0m[91m 67  146M   67 99.1M    0     0   9.9M      0  0:00:14  0:00:09  0:00:05  9.8M[0m[91m 74  146M   74  108M    0     0   9.9M      0  0:00:14  0:00:10  0:00:04 9745k[0m[91m 80  146M   80  118M    0     0   9.8M      0  0:00:14  0:00:11  0:00:03 9724k[0m[91m 87  146M   87  127M    0     0   9.8M      0  0:00:14  0:00:12  0:00:02 9688k[0m[91m 93  146M   93  137M    0     0   9.8M      0  0:00:14  0:00:13  0:00:01 9723k[0m[91m[0m[91m 99  146M   99  144M    0     0  9890k      0  0:00:15  0:00:14  0:00:01 9318k[0m[91m100  146M  100  146M    0     0  9903k      0  0:00:15  0:00:15 --:--:-- 9280k
+  0     0    0     0    0     0      0      0 --:--:-- -[0m[91m-:--:-- --:--:--     0[0m[91m  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+[0m[91m  1  146M    1 2802k    0     0  4013k      0  0:00:37 --:--:--  0:00:37 4013k[0m[91m  9  146M    9 13.9M    0     0  8396k      0  0:00:17  0:00:01  0:00:16 11.1M[0m[91m 17  146M   17 25.1M    0     0  9530k      0  0:00:15  0:00:02  0:00:13 11.1M[0m[91m 24  146M   24 36.3M    0     0   9.8M      0  0:00:14  0:00:03  0:00:11 11.1M[0m[91m 32  146M   32 47.5M    0     0  10.1M      0  0:00:14  0:00:04  0:00:10 11.1M[0m[91m 39  146M   39 58.3M    0     0  10.2M      0  0:00:14  0:00:05  0:00:09 11.0M[0m[91m 46  146M   46 68.2M    0     0  10.1M      0  0:00:14  0:00:06  0:00:08 10.8M[0m[91m 53  146M   53 78.0M    0     0  10.1M      0  0:00:14  0:00:07  0:00:07 10.5M[0m[91m 59  146M   59 87.4M    0     0  10.0M      0  0:00:14  0:00:08  0:00:06 10.2M[0m[91m 66  146M   66 96.8M    0     0   9.9M      0  0:00:14  0:00:09  0:00:05  9.8M[0m[91m 72  146M   72  106M    0     0   9.9M      0  0:00:14  0:00:10  0:00:04 9889k[0m[91m 79  146M   79  115M    0     0   9.8M      0  0:00:14  0:00:11  0:00:03 9728k[0m[91m 85  146M   85  125M    0     0   9.8M      0  0:00:14  0:00:12  0:00:02 9683k[0m[91m 92  146M   92  134M    0     0   9.8M      0  0:00:14  0:00:13  0:00:01 9722k[0m[91m 98  146M   98  144M    0     0   9.8M      0  0:00:14  0:00:14 --:--:-- 9716k[0m[91m100  146M  100  146M    0     0   9.8M      0  0:00:14  0:00:14 --:--:-- 9709k
 [0m/tmp/ffmpeg.tar.xz: OK
 ffmpeg version n9.0.2-37-gae19868753-20261029 Copyright (c) 2000-2026 the FFmpeg developers
 ffprobe version n9.0.2-37-gae19868753-20261029 Copyright (c) 2007-2026 the FFmpeg developers
- ---> Removed intermediate container a1031761da36
- ---> 03a62f4b60f7
+ ---> Removed intermediate container 605b5a48ce51
+ ---> 38ff15402d79
 Step 4/28 : FROM node:22.22.2-bookworm-slim@sha256:9f6d5975c7dca860947d3915877f85607946403fc55349f39b4bc3688448bb6e AS web
  ---> 9f6d5975c7dc
 Step 5/28 : WORKDIR /web
- ---> Running in b856521703b4
- ---> Removed intermediate container b856521703b4
- ---> 23b75a3c5f58
+ ---> Running in 0f2e830726c7
+ ---> Removed intermediate container 0f2e830726c7
+ ---> d39f2abfeab6
 Step 6/28 : COPY serving/web/package.json serving/web/package-lock.json ./
- ---> 290b729b3455
+ ---> 64a95d1676bf
 Step 7/28 : RUN npm ci --no-audit --no-fund
- ---> Running in f14ba249b3d6
+ ---> Running in 7cb647f3d6fa
 
-added 155 packages in 8s
+added 155 packages in 7s
 [91mnpm notice
 npm notice New major version of npm available! 10.9.7 -> 12.2.1
 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
 npm notice To update run: npm install -g npm@12.2.1
 npm notice
-[0m ---> Removed intermediate container f14ba249b3d6
- ---> b97a1e1c6896
+[0m ---> Removed intermediate container 7cb647f3d6fa
+ ---> 51224f5352c9
 Step 8/28 : COPY serving/web/ ./
- ---> 92b020487f70
+ ---> 840d622a2f5b
 Step 9/28 : RUN npm run build
- ---> Running in d1405dba65ab
+ ---> Running in 5e8bb432f265
 
 > build
 > vite build
@@ -219,19 +219,19 @@ dist/assets/inter-latin-ext-500-normal-BxGbmqWO.woff            48.49 kB
 dist/assets/index-CzW_9KOj.css                                  41.41 kB │ gzip: 15.74 kB
 dist/assets/index-rfFAnnS6.js                                   23.10 kB │ gzip:  9.17 kB
 
-✓ built in 321ms
- ---> Removed intermediate container d1405dba65ab
- ---> 6d028191a11e
+✓ built in 254ms
+ ---> Removed intermediate container 5e8bb432f265
+ ---> 42082bf86f30
 Step 10/28 : FROM python:3.11.15-slim-bookworm@sha256:d29f48a31a8b408ed19272ca1e7b10ebae13b240a27e862d3d4217c528e2e0c3 AS builder
  ---> d29f48a31a8b
 Step 11/28 : WORKDIR /app
- ---> Running in a115cb693d99
- ---> Removed intermediate container a115cb693d99
- ---> 22e2624c4de2
+ ---> Running in ac803d8241b0
+ ---> Removed intermediate container ac803d8241b0
+ ---> 9d734fcedba8
 Step 12/28 : COPY env/serving.lock /tmp/serving.lock
- ---> 2662ebbbe4c5
+ ---> 4db37202f6eb
 Step 13/28 : RUN python -m venv /opt/venv     && /opt/venv/bin/pip install --no-cache-dir --require-hashes --only-binary=:all: --index-url https://pypi.org/simple --extra-index-url https://download.pytorch.org/whl/cpu -r /tmp/serving.lock     && /opt/venv/bin/pip check
- ---> Running in 6ccaa15a9cf2
+ ---> Running in 3c995c4654b7
 Looking in indexes: https://pypi.org/simple, https://download.pytorch.org/whl/cpu
 Collecting annotated-doc==0.0.5 (from -r /tmp/serving.lock (line 3))
   Downloading annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
@@ -239,47 +239,47 @@ Collecting annotated-types==0.8.0 (from -r /tmp/serving.lock (line 7))
   Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
 Collecting anyio==4.15.1 (from -r /tmp/serving.lock (line 11))
   Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 132.1/132.1 kB 944.4 kB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 132.1/132.1 kB 9.5 MB/s eta 0:00:00
 Collecting click==8.5.0 (from -r /tmp/serving.lock (line 15))
   Downloading click-8.5.0-py3-none-any.whl (125 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 125.3/125.3 kB 5.5 MB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 125.3/125.3 kB 13.1 MB/s eta 0:00:00
 Collecting fastapi==0.162.0 (from -r /tmp/serving.lock (line 19))
   Downloading fastapi-0.162.0-py3-none-any.whl (148 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 148.9/148.9 kB 5.9 MB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 148.9/148.9 kB 14.9 MB/s eta 0:00:00
 Collecting filelock==4.2.4 (from -r /tmp/serving.lock (line 23))
   Downloading filelock-4.2.4-py3-none-any.whl (162 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 162.5/162.5 kB 5.9 MB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 162.5/162.5 kB 12.5 MB/s eta 0:00:00
 Collecting fsspec==2026.9.0 (from -r /tmp/serving.lock (line 27))
   Downloading fsspec-2026.9.0-py3-none-any.whl (221 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 221.7/221.7 kB 8.9 MB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 221.7/221.7 kB 10.4 MB/s eta 0:00:00
 Collecting h11==0.16.0 (from -r /tmp/serving.lock (line 31))
   Downloading h11-0.16.0-py3-none-any.whl (37 kB)
 Collecting idna==3.20 (from -r /tmp/serving.lock (line 35))
   Downloading idna-3.20-py3-none-any.whl (69 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 69.6/69.6 kB 12.1 MB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 69.6/69.6 kB 13.7 MB/s eta 0:00:00
 Collecting jinja2==3.1.6 (from -r /tmp/serving.lock (line 39))
   Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 134.9/134.9 kB 14.5 MB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 134.9/134.9 kB 12.5 MB/s eta 0:00:00
 Collecting markupsafe==3.0.4 (from -r /tmp/serving.lock (line 42))
   Downloading markupsafe-3.0.4-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
 Collecting mpmath==1.3.0 (from -r /tmp/serving.lock (line 195))
   Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 6.9 MB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 11.9 MB/s eta 0:00:00
 Collecting networkx==3.6.1 (from -r /tmp/serving.lock (line 199))
   Downloading networkx-3.6.1-py3-none-any.whl (2.1 MB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 11.6 MB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 12.2 MB/s eta 0:00:00
 Collecting numpy==2.4.6 (from -r /tmp/serving.lock (line 203))
   Downloading numpy-2.4.6-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.9 MB)
      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.9/16.9 MB 11.8 MB/s eta 0:00:00
 Collecting opentelemetry-api==1.45.2 (from -r /tmp/serving.lock (line 280))
   Downloading opentelemetry_api-1.45.2-py3-none-any.whl (60 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.3/60.3 kB 17.6 MB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.3/60.3 kB 60.3 MB/s eta 0:00:00
 Collecting pillow==13.0.0 (from -r /tmp/serving.lock (line 284))
   Downloading pillow-13.0.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (7.1 MB)
      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.1/7.1 MB 11.8 MB/s eta 0:00:00
 Collecting pydantic==2.14.2 (from -r /tmp/serving.lock (line 371))
   Downloading pydantic-2.14.2-py3-none-any.whl (490 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 490.4/490.4 kB 11.4 MB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 490.4/490.4 kB 11.9 MB/s eta 0:00:00
 Collecting pydantic-core==2.50.2 (from -r /tmp/serving.lock (line 375))
   Downloading pydantic_core-2.50.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (2.2 MB)
      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 11.8 MB/s eta 0:00:00
@@ -287,33 +287,33 @@ Collecting python-multipart==0.0.32 (from -r /tmp/serving.lock (line 518))
   Downloading python_multipart-0.0.32-py3-none-any.whl (30 kB)
 Collecting pyyaml==6.0.3 (from -r /tmp/serving.lock (line 522))
   Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (806 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 806.6/806.6 kB 11.8 MB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 806.6/806.6 kB 3.5 MB/s eta 0:00:00
 Collecting scipy==1.17.1 (from -r /tmp/serving.lock (line 597))
   Downloading scipy-1.17.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 7.0 MB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 11.8 MB/s eta 0:00:00
 Collecting setuptools==84.2.1 (from -r /tmp/serving.lock (line 660))
   Downloading setuptools-84.2.1-py3-none-any.whl (876 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 876.3/876.3 kB 7.9 MB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 876.3/876.3 kB 11.6 MB/s eta 0:00:00
 Collecting starlette==1.10.0 (from -r /tmp/serving.lock (line 664))
   Downloading starlette-1.10.0-py3-none-any.whl (80 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 80.6/80.6 kB 9.6 MB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 80.6/80.6 kB 13.5 MB/s eta 0:00:00
 Collecting sympy==1.14.0 (from -r /tmp/serving.lock (line 668))
   Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 7.5 MB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 11.9 MB/s eta 0:00:00
 Collecting torch==2.14.1+cpu (from -r /tmp/serving.lock (line 672))
   Downloading https://download-r2.pytorch.org/whl/cpu/torch-2.14.1%2Bcpu-cp311-cp311-manylinux_2_28_x86_64.whl (196.2 MB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 196.2/196.2 MB 6.7 MB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 196.2/196.2 MB 11.7 MB/s eta 0:00:00
 Collecting torchvision==0.29.1+cpu (from -r /tmp/serving.lock (line 709))
   Downloading https://download-r2.pytorch.org/whl/cpu/torchvision-0.29.1%2Bcpu-cp311-cp311-manylinux_2_28_x86_64.whl (1.7 MB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 6.7 MB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 12.0 MB/s eta 0:00:00
 Collecting typing-extensions==4.16.0 (from -r /tmp/serving.lock (line 735))
   Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.6/45.6 kB 11.1 MB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.6/45.6 kB 17.4 MB/s eta 0:00:00
 Collecting typing-inspection==0.4.4 (from -r /tmp/serving.lock (line 747))
   Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
 Collecting uvicorn==0.54.0 (from -r /tmp/serving.lock (line 753))
   Downloading uvicorn-0.54.0-py3-none-any.whl (87 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 87.4/87.4 kB 7.4 MB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 87.4/87.4 kB 24.8 MB/s eta 0:00:00
 Installing collected packages: mpmath, typing-extensions, sympy, setuptools, pyyaml, python-multipart, pillow, numpy, networkx, markupsafe, idna, h11, fsspec, filelock, click, annotated-types, annotated-doc, uvicorn, typing-inspection, scipy, pydantic-core, opentelemetry-api, jinja2, anyio, torch, starlette, pydantic, torchvision, fastapi
   Attempting uninstall: setuptools
     Found existing installation: setuptools 79.0.1
@@ -324,53 +324,53 @@ Successfully installed annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 cl
 [notice] A new release of pip is available: 24.0 -> 26.2.2
 [notice] To update, run: python -m pip install --upgrade pip
 [0mNo broken requirements found.
- ---> Removed intermediate container 6ccaa15a9cf2
- ---> 6fff8db1d910
+ ---> Removed intermediate container 3c995c4654b7
+ ---> 183c141ed29f
 Step 14/28 : COPY src/ /app/src/
- ---> bfd5eb5ee38c
+ ---> 63a5f80ed0cc
 Step 15/28 : COPY serving/__init__.py serving/app.py serving/jobs.py serving/index.html /app/serving/
- ---> 636dab31378d
+ ---> a90cb1172e0d
 Step 16/28 : COPY --from=web /web/dist/ /app/serving/web/dist/
- ---> e0eb8cd36428
+ ---> 62b606eb6daf
 Step 17/28 : COPY artifacts/serving/ /app/artifacts/serving/
- ---> d938c141e2df
+ ---> dc7f5fe03ef9
 Step 18/28 : RUN /opt/venv/bin/python -c "from pathlib import Path; import torch; from src.serving_bundle import verify_bundle; assert torch.version.cuda is None and not torch.cuda.is_available(); verify_bundle(Path('artifacts/serving/manifest.json'))"
- ---> Running in 361dc1248a51
- ---> Removed intermediate container 361dc1248a51
- ---> b5e1a878ef51
+ ---> Running in d900449c3324
+ ---> Removed intermediate container d900449c3324
+ ---> e5e77ef61247
 Step 19/28 : FROM python:3.11.15-slim-bookworm@sha256:d29f48a31a8b408ed19272ca1e7b10ebae13b240a27e862d3d4217c528e2e0c3
  ---> d29f48a31a8b
 Step 20/28 : ENV PATH=/opt/venv/bin:$PATH PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
- ---> Running in 3bc153688ab1
- ---> Removed intermediate container 3bc153688ab1
- ---> b74526ad6c2b
+ ---> Running in 8ab784a3b977
+ ---> Removed intermediate container 8ab784a3b977
+ ---> 199b234acdb2
 Step 21/28 : WORKDIR /app
- ---> Running in 2831f90f604b
- ---> Removed intermediate container 2831f90f604b
- ---> 87612f17f874
+ ---> Running in bce02385ceb6
+ ---> Removed intermediate container bce02385ceb6
+ ---> 8eb82829620b
 Step 22/28 : COPY --from=decoder /decoder/ /usr/local/bin/
- ---> c69566d05749
+ ---> 8c8edd5a55f1
 Step 23/28 : COPY --from=builder /opt/venv/ /opt/venv/
- ---> 6da166ad6f60
+ ---> 73102a3d02db
 Step 24/28 : COPY --chown=10001:10001 --from=builder /app/ /app/
- ---> e6532b51fbad
+ ---> 6ce510c51c4f
 Step 25/28 : RUN chmod -R a+rX /app
- ---> Running in 5262b18ed49a
- ---> Removed intermediate container 5262b18ed49a
- ---> 5e160d8288f0
+ ---> Running in ee107bb88b48
+ ---> Removed intermediate container ee107bb88b48
+ ---> ef0b6975a7e9
 Step 26/28 : USER 10001:10001
- ---> Running in dbaf37b63cd9
- ---> Removed intermediate container dbaf37b63cd9
- ---> e4dfd258e7de
+ ---> Running in 61eacfbbe287
+ ---> Removed intermediate container 61eacfbbe287
+ ---> 7bb471698220
 Step 27/28 : EXPOSE 8000
- ---> Running in f400d531d670
- ---> Removed intermediate container f400d531d670
- ---> 179d9f51c322
+ ---> Running in cc245017504c
+ ---> Removed intermediate container cc245017504c
+ ---> ee1a5d70107a
 Step 28/28 : CMD ["uvicorn", "serving.app:create_app", "--factory", "--workers", "1", "--host", "0.0.0.0", "--port", "8000"]
- ---> Running in 299429ec12cb
- ---> Removed intermediate container 299429ec12cb
- ---> 85a3e58c6721
-Successfully built 85a3e58c6721
+ ---> Running in 5e504f8434ae
+ ---> Removed intermediate container 5e504f8434ae
+ ---> 850340b46f52
+Successfully built 850340b46f52
 Successfully tagged vqa:phase4b
 exit=0
-2026-10-31T16:47:45Z
+2026-10-31T20:04:15Z

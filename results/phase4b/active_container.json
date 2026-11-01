@@ -1,7 +1,7 @@
 {
-  "container_id": "44ad59632b4c9420ea0a76641f28d06a0d1c53ecc386b0c755a710361ce7df00",
+  "container_id": "4bf020a1f1c19f411975b1738ac71666c88de091afdba307074a5ec308f06d82",
   "name": "vqa-phase4b-check",
-  "image_id": "sha256:85a3e58c672186cb2f896e49ffecc395715dff26d88e4e55b11e4fa38e6aeb8a",
+  "image_id": "sha256:850340b46f521dcf865a64431e4c3e734da025ff6af6144be630d25785aa4c14",
   "url": "http://127.0.0.1:8001",
   "caps": {
     "nano_cpus": 4000000000,

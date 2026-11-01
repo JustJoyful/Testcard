@@ -18,11 +18,11 @@
       "environment": [],
       "exit_code": 0,
       "log": "results/phase4b/tests/serving.log",
-      "log_sha256": "15f875679a9d278b8ba92f0cee5ee7e37f50eaaae0486b1c6223bce282af3e51",
+      "log_sha256": "b0194a79911d5915aa1e76cd8093d0233e5ef55b8f9c29afca75e4b35863ed09",
       "summary": [
         "",
         "-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html",
-        "146 passed, 1 warning in 21.40s"
+        "149 passed, 1 warning in 19.14s"
       ]
     },
     "node": {
@@ -34,11 +34,11 @@
       "environment": [],
       "exit_code": 0,
       "log": "results/phase4b/tests/node.log",
-      "log_sha256": "9757b2a3931fada1acae431f4dcb43e48ba6757d984f81fedce8bd649a4973d3",
+      "log_sha256": "342bfb9843eb34d8d7e8b40c1e14b9251f87f41712810e3c213da6f934f987f1",
       "summary": [
         "\u2139 skipped 0",
         "\u2139 todo 0",
-        "\u2139 duration_ms 126.066133"
+        "\u2139 duration_ms 82.243737"
       ]
     },
     "browser": {
@@ -51,11 +51,11 @@
       "environment": [],
       "exit_code": 0,
       "log": "results/phase4b/tests/browser.log",
-      "log_sha256": "85c9969fc0cb6c0350982d7311b335d201faebfbdd92d484f5d1e67797ce33df",
+      "log_sha256": "9d4f457b5ac55665db648c935ce1fee4a2e271d8971ef9ed68cfe7eec73b4039",
       "summary": [
         "",
         "  1 skipped",
-        "  34 passed (20.0s)"
+        "  34 passed (20.3s)"
       ]
     },
     "container_browser": {
@@ -66,16 +66,17 @@
       ],
       "cwd": "serving/web",
       "environment": [
+        "VQA_ACCEPTANCE_OUT",
         "VQA_CONTAINER_URL",
         "VQA_REAL_VIDEO"
       ],
       "exit_code": 0,
       "log": "results/phase4b/tests/container_browser.log",
-      "log_sha256": "36519bbabf5a0793509b93f5597dcde4566bf22188a6cee1e82b72ec91c16a28",
+      "log_sha256": "555559fbaadfaa505cd369744e1f550f409c3e530174f1382c0cec025ce15c54",
       "summary": [
-        "  \u2713  2 tests/browser/container.spec.js:39:1 \u203a a real clip is scored end to end offline (9.4s)",
+        "  \u2713  5 tests/browser/container.spec.js:90:1 \u203a 360 px: no horizontal scroll at idle or with a real result (8.9s)",
         "",
-        "  3 passed (9.8s)"
+        "  5 passed (28.3s)"
       ]
     },
     "lighthouse": {
@@ -109,15 +110,15 @@
     "src/baselines.py": "df7bb24968bae095b195802d0227b991e832ff748a4c2b23d4ab9afb9cac53b1",
     "src/metrics.py": "7027757f69425b33b5fd7f34ca0bba9f7fc00c03c31ba5b957d55a78795d47d9",
     "src/cache.py": "e774d745bd6a0afceba405d300495bdf2e2be2793a8e26613cc0a8253ea8d72c",
-    "src/serving_bundle.py": "1c7c8d0b06e5523bf189598f96db657e2920ecfdbddd7ec2c305dcde0e89cf74",
+    "src/serving_bundle.py": "f5e27eb27b3e923468cd29eca01f6fdf1dca3004cb73dd346098501da2a9af18",
     "src/predict.py": "afb3aa37268b399d2d50e56bb31d4ba85ade60eb0fcfd0817c184ce26361831a",
     "serving/__init__.py": "d4fa20189cc8e6dc05cdd676576016f616d1f5cceeb1aeae947933e0d59d5960",
-    "serving/app.py": "44b89719fe5009cadf643e4b283da766892afa8d6a22734b0f404e53d60033ef",
+    "serving/app.py": "98b64217fefd9e4b5822e0070e4eaf6810b619eda79289af790abc425f09a231",
     "serving/index.html": "e84e5ccf8a8d7135a019e02c183f314af953b3cd2596ea69f7688dddd4fdbbe7",
     "serving/jobs.py": "85c8e52f972cc83d29fcec4d960ae6ea557000a13db32cbb5ac6ab6c48361fe3",
     "tests/test_predict_cli.py": "65b2d3cd44164354c590336bd9944be54ae3607ccbda7b83dc7a587143e1492c",
-    "tests/test_serving_bundle.py": "603a01104897a83ffcec33c156ac3cc7ae6f82db017bec62f1c4e80fb7a5709d",
-    "tests/test_serving_api.py": "82c4990064b51124f7fa4e6fe0b084679e22471e5b3a9278fd4c8746e67660c6",
+    "tests/test_serving_bundle.py": "ce676aa5b1884e2c4783bcb3f1ee345b81ef346a58ec8f916da73a6386e600e6",
+    "tests/test_serving_api.py": "f269dab27f58c3f6c1d878470060342f49c74405551578af5573addaa5e4059c",
     "tests/test_serving_evidence.py": "5c5ceceae740461f03d6b0fbf48b28fecfb8db56719dc20d4869d211b7084adb",
     "tests/test_demo_jobs.py": "cf71c23b8ade468d2b9550e61f5fb36e292486a5102f1b005c1ea3dea32ea721",
     "tests/test_demo_api.py": "441a8184f46298ceb5d93d71cc39686e9039bd96605a8504a6854c23e87799fe",
@@ -128,7 +129,7 @@
     "configs/serving.yaml": "9c252757b4ab1013d0723f6aa54e0b306605052f11a10500a049767c1988bbb0",
     "artifacts/serving/manifest.json": "96ea41ecb8818c147611a058700de9f44ca0acd5c8009eec9c8c4f3372e31ce1",
     "DESIGN.md": "65e998342b1712f0d16b6380ca798dd622671f1bff592d05c159bfd7885e7574",
-    "DECISIONS.md": "5552961812ed51c44b8e3d13900c92116cb635a54633d12e36836d0a90d4e58b",
+    "DECISIONS.md": "05bd4fc20c05559c450d098910920359e6bd30a9c1a432cbe1f53dbfd77f3d59",
     "results/phase4b/decision_amendment.json": "11982eb1ac2c1279e8cf3674ac61a935a0ff04327e7cf115f9b7453033b385ae",
     "results/phase4b/frontend_checkpoint.json": "31648360445c62e59960b306e035922254fac20287a1a7119102ec4bcf1b4b84",
     "serving/web/.env": "41cd1178eb5254f85f69b5e99c084660f28af68184c1efd7f6c8de7f979c09a8",
@@ -146,11 +147,12 @@
     "serving/web/src/json-view.js": "297752912e6f225791a91ffb40c3133717ba8a6011e316a23318e39b4c7a9ec0",
     "serving/web/src/tv.js": "d18382b4eed2b2150641524af349d568867f389fcfdc142a82c3875fe6aca57d",
     "scripts/14_serving_check.py": "17246ac941e1efcf41d6e468e98393cc598553b0ae4b90080f3706f420284aa6",
-    "scripts/15_demo_check.py": "c29a9c986d211ac1d79091c77c370063dc680d329af920a3828f0382a9d5b53f",
-    "serving/web/playwright.config.js": "5d10833e28a94a335543a3a35b72bd0bc7f2528bccb1fb5e98e2da07dc738bba",
+    "scripts/15_demo_check.py": "bb9fa8c7427721fbaecc8e8d9238e0387c771f52ed82c301f73bde1c74237103",
+    "serving/web/playwright.config.js": "5cabb5fe6dff44606d9509189fbf831f24f4dc57f2fd0b2efb8a26023eb5e36f",
     "serving/web/tests/api.test.js": "04af49b32a440866b2e97b0557b100213bb474ad21647f7f330dee965538236a",
-    "serving/web/tests/browser/container.spec.js": "e81740dded12b5dfc879e3cd7ba32a7cc0147943be59c0c1918213af5dce98ac",
+    "serving/web/tests/browser/container.spec.js": "b3c68d3ab0c6863d5d09eb38ae4193968eb206abfecee6bf3e4f5682a24c468a",
     "serving/web/tests/browser/demo.spec.js": "1b90284c3f9cd7e54efefd54009d343d8b33f921bfcd64bdf02dcb2f52e3a22e",
+    "serving/web/tests/browser/standby.spec.js": "34955dfcfd3f91e26cbac2cd673de16a25df9ac6c5546aecd3e6f96b82520735",
     "serving/web/tests/format.test.js": "bc44c9e5beb237002fa8c17dea9f47abf6f80bf3b6e4bed06e1c31a374a7a23d",
     "serving/web/tests/state.test.js": "90d79aa28d4fb7aa2efde8d20469c792f4afb710b1705ac4cda9f1853c5158d0"
   }

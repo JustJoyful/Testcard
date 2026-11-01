@@ -16,10 +16,10 @@
     "--mount",
     "type=bind,src=/home/joydeep/Projects/VQA/data/raw/konvid/5564209652.mp4,dst=/input/video.mp4,readonly",
     "--mount",
-    "type=bind,src=/tmp/vqa-export-99c5wrvz,dst=/output",
+    "type=bind,src=/tmp/vqa-export-4n7yo486,dst=/output",
     "--entrypoint",
     "python",
-    "sha256:85a3e58c672186cb2f896e49ffecc395715dff26d88e4e55b11e4fa38e6aeb8a",
+    "sha256:850340b46f521dcf865a64431e4c3e734da025ff6af6144be630d25785aa4c14",
     "-m",
     "src.predict",
     "/input/video.mp4",
@@ -32,9 +32,9 @@
   "response": {
     "score": 2.2580761830106995,
     "timings_seconds": {
-      "extraction": 7.05384941000375,
-      "head": 0.00012572199921123683,
-      "total": 7.054397161002271
+      "extraction": 7.002470395993441,
+      "head": 0.00010690101771615446,
+      "total": 7.002960346988402
     },
     "verified": {
       "model_sha256": "4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3",
@@ -43,6 +43,6 @@
       "preprocessing_sha256": "acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b",
       "cpu_threads": 4
     },
-    "startup_seconds": 1.3908105660229921
+    "startup_seconds": 1.123657407995779
   }
 }

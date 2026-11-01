@@ -1,74 +1,68 @@
 {
   "http_status": 202,
   "accepted": {
-    "task_id": "3642449f7199463fbc1c4e153684304a"
+    "task_id": "884b06c05231422283e511610454a50a"
   },
   "filename": "5268797415.mp4",
   "polls": [
     {
-      "at_seconds": 0.02005420799832791,
+      "at_seconds": 0.024551559996325523,
       "http_status": 200,
       "state": "processing",
       "stage": "extract"
     },
     {
-      "at_seconds": 1.0222044689871836,
+      "at_seconds": 1.0263823689892888,
       "http_status": 200,
       "state": "processing",
       "stage": "extract"
     },
     {
-      "at_seconds": 2.023936010984471,
+      "at_seconds": 2.028096321999328,
       "http_status": 200,
       "state": "processing",
       "stage": "extract"
     },
     {
-      "at_seconds": 3.025823386007687,
+      "at_seconds": 3.03000567300478,
       "http_status": 200,
       "state": "processing",
       "stage": "extract"
     },
     {
-      "at_seconds": 4.027835682005389,
+      "at_seconds": 4.0317245479964186,
       "http_status": 200,
       "state": "processing",
       "stage": "extract"
     },
     {
-      "at_seconds": 5.029995507997228,
+      "at_seconds": 5.033838348987047,
       "http_status": 200,
       "state": "processing",
       "stage": "extract"
     },
     {
-      "at_seconds": 6.031810180982575,
-      "http_status": 200,
-      "state": "processing",
-      "stage": "extract"
-    },
-    {
-      "at_seconds": 7.033485288004158,
+      "at_seconds": 6.036374443996465,
       "http_status": 200,
       "state": "done",
       "stage": null
     }
   ],
   "final": {
-    "task_id": "3642449f7199463fbc1c4e153684304a",
+    "task_id": "884b06c05231422283e511610454a50a",
     "state": "done",
     "stage": null,
     "result": {
-      "task_id": "3642449f7199463fbc1c4e153684304a",
+      "task_id": "884b06c05231422283e511610454a50a",
       "filename": "5268797415.mp4",
       "clip_seconds": 8.0,
-      "created_at": "2026-10-31T18:05:03.102813Z",
+      "created_at": "2026-10-31T20:26:05.383871Z",
       "prediction": {
         "score": 2.5107129634481566,
         "timings_seconds": {
-          "extraction": 6.598206324997591,
-          "head": 7.304901373572648e-05,
-          "total": 6.5982796940079425
+          "extraction": 5.877262589026941,
+          "head": 7.976900087669492e-05,
+          "total": 5.877342839026824
         },
         "verified": {
           "model_sha256": "4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3",
@@ -77,13 +71,13 @@
           "preprocessing_sha256": "acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b",
           "cpu_threads": 4
         },
-        "startup_seconds": 1.1480688940209802
+        "startup_seconds": 1.2635105790104717
       }
     },
     "error": null
   },
-  "request_started": 203520.924447294,
-  "request_finished": 203527.957934527,
-  "wall_seconds": 7.033487232984044,
-  "upload_seconds": 0.018938278983114287
+  "request_started": 211983.200817128,
+  "request_finished": 211989.237194385,
+  "wall_seconds": 6.036377256998094,
+  "upload_seconds": 0.023534857988124713
 }

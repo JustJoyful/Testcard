@@ -1,80 +1,74 @@
 {
   "http_status": 202,
   "accepted": {
-    "task_id": "6ebdba3591b74affafa47531fccf4337"
+    "task_id": "7a180d45c0364e7e987ccd0a3e4528a2"
   },
   "filename": "6917745987.mp4",
   "polls": [
     {
-      "at_seconds": 0.028652182983933017,
+      "at_seconds": 0.024923260003561154,
       "http_status": 200,
       "state": "processing",
       "stage": "extract"
     },
     {
-      "at_seconds": 1.0303507350035943,
+      "at_seconds": 1.0270427430223208,
       "http_status": 200,
       "state": "processing",
       "stage": "extract"
     },
     {
-      "at_seconds": 2.0323623989825137,
+      "at_seconds": 2.0293459340173285,
       "http_status": 200,
       "state": "processing",
       "stage": "extract"
     },
     {
-      "at_seconds": 3.034455975983292,
+      "at_seconds": 3.031200081022689,
       "http_status": 200,
       "state": "processing",
       "stage": "extract"
     },
     {
-      "at_seconds": 4.036727872007759,
+      "at_seconds": 4.033001959003741,
       "http_status": 200,
       "state": "processing",
       "stage": "extract"
     },
     {
-      "at_seconds": 5.039219604979735,
+      "at_seconds": 5.0352596000011545,
       "http_status": 200,
       "state": "processing",
       "stage": "extract"
     },
     {
-      "at_seconds": 6.041387083998416,
+      "at_seconds": 6.037584810022963,
       "http_status": 200,
       "state": "processing",
       "stage": "extract"
     },
     {
-      "at_seconds": 7.04402506898623,
-      "http_status": 200,
-      "state": "processing",
-      "stage": "extract"
-    },
-    {
-      "at_seconds": 8.045781445980538,
+      "at_seconds": 7.039854784001363,
       "http_status": 200,
       "state": "done",
       "stage": null
     }
   ],
   "final": {
-    "task_id": "6ebdba3591b74affafa47531fccf4337",
+    "task_id": "7a180d45c0364e7e987ccd0a3e4528a2",
     "state": "done",
     "stage": null,
     "result": {
-      "task_id": "6ebdba3591b74affafa47531fccf4337",
+      "task_id": "7a180d45c0364e7e987ccd0a3e4528a2",
       "filename": "6917745987.mp4",
       "clip_seconds": 8.008,
-      "created_at": "2026-10-31T18:07:33.285928Z",
+      "created_at": "2026-10-31T20:28:38.610578Z",
       "prediction": {
         "score": 2.442235273970251,
         "timings_seconds": {
-          "extraction": 7.107695855986094,
-          "head": 8.331600110977888e-05,
-          "total": 7.107779502985068
+          "extraction": 6.977596309006913,
+          "head": 7.526500849053264e-05,
+          "total": 6.977671897999244
         },
         "verified": {
           "model_sha256": "4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3",
@@ -83,13 +77,13 @@
           "preprocessing_sha256": "acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b",
           "cpu_threads": 4
         },
-        "startup_seconds": 1.1480688940209802
+        "startup_seconds": 1.2635105790104717
       }
     },
     "error": null
   },
-  "request_started": 203671.099496484,
-  "request_finished": 203679.145279089,
-  "wall_seconds": 8.045782604982378,
-  "upload_seconds": 0.027177710988325998
+  "request_started": 212136.427252723,
+  "request_finished": 212143.467108861,
+  "wall_seconds": 7.039856137998868,
+  "upload_seconds": 0.023995905998162925
 }

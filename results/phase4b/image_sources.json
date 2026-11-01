@@ -1,5 +1,5 @@
 {
-  "image_id": "sha256:85a3e58c672186cb2f896e49ffecc395715dff26d88e4e55b11e4fa38e6aeb8a",
+  "image_id": "sha256:850340b46f521dcf865a64431e4c3e734da025ff6af6144be630d25785aa4c14",
   "runtime_source_sha256": {
     "src/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/baselines.py": "df7bb24968bae095b195802d0227b991e832ff748a4c2b23d4ab9afb9cac53b1",
@@ -8,9 +8,9 @@
     "src/metrics.py": "7027757f69425b33b5fd7f34ca0bba9f7fc00c03c31ba5b957d55a78795d47d9",
     "src/predict.py": "afb3aa37268b399d2d50e56bb31d4ba85ade60eb0fcfd0817c184ce26361831a",
     "src/preprocess.py": "804c8d89cb5e8b163d6dc6e97d5d618a53c198c6aa6e4c9915dc5428ee46320b",
-    "src/serving_bundle.py": "1c7c8d0b06e5523bf189598f96db657e2920ecfdbddd7ec2c305dcde0e89cf74",
+    "src/serving_bundle.py": "f5e27eb27b3e923468cd29eca01f6fdf1dca3004cb73dd346098501da2a9af18",
     "serving/__init__.py": "d4fa20189cc8e6dc05cdd676576016f616d1f5cceeb1aeae947933e0d59d5960",
-    "serving/app.py": "44b89719fe5009cadf643e4b283da766892afa8d6a22734b0f404e53d60033ef",
+    "serving/app.py": "98b64217fefd9e4b5822e0070e4eaf6810b619eda79289af790abc425f09a231",
     "serving/index.html": "e84e5ccf8a8d7135a019e02c183f314af953b3cd2596ea69f7688dddd4fdbbe7",
     "serving/jobs.py": "85c8e52f972cc83d29fcec4d960ae6ea557000a13db32cbb5ac6ab6c48361fe3"
   },
