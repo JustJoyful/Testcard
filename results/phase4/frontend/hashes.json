@@ -1,0 +1,39 @@
+{
+  "page": {
+    "model_sha256": "4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3",
+    "weights_sha256": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca",
+    "weights_enum": "ResNet50_Weights.IMAGENET1K_V2",
+    "preprocessing_sha256": "acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b",
+    "cpu_threads": 4
+  },
+  "page_short": [
+    {
+      "text": "4c9782ae\u2026",
+      "full": "4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3"
+    },
+    {
+      "text": "11ad3fa6\u2026",
+      "full": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca"
+    },
+    {
+      "text": "acc2e85d\u2026",
+      "full": "acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b"
+    }
+  ],
+  "osd_meta": "ANALYSIS 7.46 S   \u00b7   MODEL 4C9782AE   \u00b7   VERIFIED",
+  "cli": {
+    "model_sha256": "4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3",
+    "weights_sha256": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca",
+    "weights_enum": "ResNet50_Weights.IMAGENET1K_V2",
+    "preprocessing_sha256": "acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b",
+    "cpu_threads": 4
+  },
+  "startup_log_line": "INFO:     verified runtime: {\"cpu_threads\": 4, \"model_sha256\": \"4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3\", \"preprocessing_sha256\": \"acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b\", \"weights_enum\": \"ResNet50_Weights.IMAGENET1K_V2\", \"weights_sha256\": \"11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca\"}",
+  "health": {
+    "model_sha256": "4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3",
+    "weights_sha256": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca",
+    "weights_enum": "ResNet50_Weights.IMAGENET1K_V2",
+    "preprocessing_sha256": "acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b",
+    "cpu_threads": 4
+  }
+}

@@ -1,5 +1,6 @@
 """One-process upload API, with admission and byte limits before parsing."""
 import asyncio
+import json
 import logging
 import mimetypes
 import tempfile
@@ -78,6 +79,8 @@ def create_app(bundle: Path = Path('artifacts/serving/manifest.json'),
     @asynccontextmanager
     async def lifespan(app):
         app.state.runtime = load_runtime(bundle)
+        # Rule 28: the verified checkpoint, weights and preprocessing hashes appear in the startup log.
+        logging.getLogger('uvicorn.error').info('verified runtime: %s', json.dumps(app.state.runtime.verified, sort_keys=True))
         try:
             yield
         finally:

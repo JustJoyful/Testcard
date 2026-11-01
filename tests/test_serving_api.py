@@ -226,3 +226,13 @@ def test_untrusted_filename_and_useful_errors(api):
         response = client.post('/predict', files={'file': ('../../untrusted.mp4', b'v')})
         assert response.status_code == 200
     assert seen and 'untrusted' not in str(seen[0])
+
+
+def test_startup_logs_verified_hashes(api, caplog):
+    import logging
+    from fastapi.testclient import TestClient
+    _, app, runtime, _, _ = api
+    with caplog.at_level(logging.INFO, logger='uvicorn.error'), TestClient(app):
+        pass
+    line = next(r.getMessage() for r in caplog.records if 'verified runtime' in r.getMessage())
+    assert json.loads(line.split('verified runtime: ', 1)[1]) == runtime.verified

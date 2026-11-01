@@ -1,0 +1,7 @@
+
+Running 1 test using 1 worker
+
+[1/1] tests/browser/standby.spec.js:4:1 › backend stopped: the TV shows standby and nothing is ever uploaded
+  1 passed (1.5s)
+npm notice run npx
+npm notice run 'playwright' test --reporter=json

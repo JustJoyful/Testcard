@@ -1,0 +1,108 @@
+{
+  "image_id": "sha256:0f97429492a695df310a956374bc162727789aa664a9a9ca92efb7f3bbc923a8",
+  "clip": "11902527296.mp4",
+  "items": [
+    {
+      "item": "Hashes shown equal `src.predict --json` and the API startup log",
+      "status": "pass",
+      "how": "JSON tab, summary hash rows (short text and full title) and OSD prefix compared with CLI `--json` on the same clip in the same image and with the `verified runtime:` line in `docker logs`",
+      "evidence": "frontend/hashes.json"
+    },
+    {
+      "item": "Score equals `prediction.score` rounded to two decimals, unclamped",
+      "status": "pass",
+      "how": "on-screen `3.42` vs `3.4206814401750743` in the JSON tab; `scoreText(5.256)`, `scoreText(-0.254)` stay outside 1\u20135",
+      "evidence": "frontend/ui_result.json"
+    },
+    {
+      "item": "Full flow idle \u2192 result \u2192 details \u2192 JSON \u2192 eject by keyboard only",
+      "status": "pass",
+      "how": "Playwright on the running image: Tab to the tape, Enter, real upload, Enter / ArrowRight / End, focus back on the tape",
+      "evidence": "frontend/container.log"
+    },
+    {
+      "item": "Built page makes no requests to external domains",
+      "status": "pass",
+      "how": "every non-origin request aborted and recorded; all fonts loaded and a real clip scored with zero blocked requests",
+      "evidence": "frontend/container.log"
+    },
+    {
+      "item": "No horizontal scroll at 360 px",
+      "status": "pass",
+      "how": "360\u00d7780 touch viewport: `scrollWidth` \u2264 360 at idle and after a real result with the JSON tab open",
+      "evidence": "frontend/container.log"
+    },
+    {
+      "item": "Backend stopped: page shows standby and never uploads",
+      "status": "pass",
+      "how": "built dist/ previewed with its API proxy pointed at a closed port; every request to `/upload` recorded (none)",
+      "evidence": "frontend/standby.log"
+    },
+    {
+      "item": "Mock mode cannot activate in a production build",
+      "status": "pass",
+      "how": "grep of /app/serving/web/dist in the image for the mock transport, its fixture timing and module name (no match), plus `/?mock` on the image keeps the badge hidden and uses the real backend",
+      "evidence": "frontend/mock_grep.log"
+    },
+    {
+      "item": "Lighthouse accessibility \u2265 95",
+      "status": "pass",
+      "how": "Lighthouse accessibility on the running image: 100",
+      "evidence": "frontend/lighthouse.json"
+    },
+    {
+      "item": "Full browser suite: states, errors and retry, reduced motion, noise pauses when hidden, JSON copy/download, phone",
+      "status": "pass",
+      "how": "34 passed, 1 skipped (the dev-server real-backend test, covered above on the image)",
+      "evidence": "frontend/demo.log"
+    }
+  ],
+  "passed": true,
+  "container_tests": {
+    "built page and every font load from the image alone": "passed",
+    "production ?mock still uses the real backend": "passed",
+    "a real clip is scored end to end offline": "passed",
+    "keyboard only on the real backend: insert, result, details, JSON, eject": "passed",
+    "360 px: no horizontal scroll at idle or with a real result": "passed"
+  },
+  "standby_tests": {
+    "backend stopped: the TV shows standby and nothing is ever uploaded": "passed"
+  },
+  "demo_tests": {
+    "keyboard only: insert, result, details, JSON, eject": "passed",
+    "dev mock reaches the score screen with a badge": "passed",
+    "production build: ?mock uses the real /upload and ships no fixture": "passed",
+    "errors show a short reason on screen, the full sentence below, and allow a retry": "passed",
+    "busy server shows NO SIGNAL with its reason": "passed",
+    "real backend, when one is running": "skipped",
+    "standby: with the model offline the TV says so and nothing is uploaded": "passed",
+    "details keep unknown fields and small times; summary has no second score": "passed",
+    "score 0.4 is unclipped, out-of-range line true": "passed",
+    "score 1 is unclipped, out-of-range line false": "passed",
+    "score 5 is unclipped, out-of-range line false": "passed",
+    "score 5.25 is unclipped, out-of-range line true": "passed",
+    "score -0.25 is unclipped, out-of-range line true": "passed",
+    "a result with only a score never claims VERIFIED": "passed",
+    "result values are text, not HTML": "passed",
+    "an invalid score goes to the error flow": "passed",
+    "details tabs, JSON copy and download preserve the exact object": "passed",
+    "screen states": "passed",
+    "the object and helper line fit at 1920x1080": "passed",
+    "the object and helper line fit at 1440x900": "passed",
+    "no horizontal scroll at 360px": "passed",
+    "no horizontal scroll at 640px": "passed",
+    "no horizontal scroll at 1024px": "passed",
+    "no horizontal scroll at 1440px": "passed",
+    "phone: tapping the tape opens the picker, no drag-only instruction": "passed",
+    "only the listed elements live outside the object": "passed",
+    "motion: done during insert skips stale states": "passed",
+    "motion: eject during the done burst ignores old callbacks": "passed",
+    "motion: noise pauses when hidden and after dispose": "passed",
+    "reduced motion: same screens and keyboard flow, nothing moves": "passed",
+    "announcements say what the screen shows, upload at 25 percent steps": "passed",
+    "Ctrl O opens the picker and a drop anywhere loads the tape": "passed",
+    "the screen light follows state": "passed",
+    "motion: the tape travels into the slot when a file is chosen": "passed",
+    "opening details or JSON brings the panel on screen": "passed"
+  }
+}

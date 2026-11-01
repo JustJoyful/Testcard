@@ -1,0 +1,11 @@
+{
+ "Hashes shown equal `src.predict --json` and the API startup log": "pass",
+ "Score equals `prediction.score` rounded to two decimals, unclamped": "pass",
+ "Full flow idle \u2192 result \u2192 details \u2192 JSON \u2192 eject by keyboard only": "pass",
+ "Built page makes no requests to external domains": "pass",
+ "No horizontal scroll at 360 px": "pass",
+ "Backend stopped: page shows standby and never uploads": "pass",
+ "Mock mode cannot activate in a production build": "pass",
+ "Lighthouse accessibility \u2265 95": "pass",
+ "Full browser suite: states, errors and retry, reduced motion, noise pauses when hidden, JSON copy/download, phone": "pass"
+}

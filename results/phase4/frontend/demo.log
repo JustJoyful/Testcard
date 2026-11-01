@@ -1,0 +1,54 @@
+
+
+
+
+
+
+
+Running 35 tests using 6 workers
+
+[1/35] tests/browser/demo.spec.js:155:1 › real backend, when one is running
+[2/35] tests/browser/demo.spec.js:146:1 › busy server shows NO SIGNAL with its reason
+[3/35] tests/browser/demo.spec.js:126:1 › errors show a short reason on screen, the full sentence below, and allow a retry
+[4/35] tests/browser/demo.spec.js:72:1 › keyboard only: insert, result, details, JSON, eject
+[5/35] tests/browser/demo.spec.js:102:1 › dev mock reaches the score screen with a badge
+[6/35] tests/browser/demo.spec.js:109:1 › production build: ?mock uses the real /upload and ships no fixture
+[7/35] tests/browser/demo.spec.js:173:1 › standby: with the model offline the TV says so and nothing is uploaded
+[8/35] tests/browser/demo.spec.js:193:1 › details keep unknown fields and small times; summary has no second score
+[9/35] tests/browser/demo.spec.js:222:3 › score 0.4 is unclipped, out-of-range line true
+[10/35] tests/browser/demo.spec.js:222:3 › score 1 is unclipped, out-of-range line false
+[11/35] tests/browser/demo.spec.js:222:3 › score 5 is unclipped, out-of-range line false
+[12/35] tests/browser/demo.spec.js:222:3 › score 5.25 is unclipped, out-of-range line true
+[13/35] tests/browser/demo.spec.js:222:3 › score -0.25 is unclipped, out-of-range line true
+[14/35] tests/browser/demo.spec.js:232:1 › a result with only a score never claims VERIFIED
+[15/35] tests/browser/demo.spec.js:244:1 › result values are text, not HTML
+[16/35] tests/browser/demo.spec.js:256:1 › an invalid score goes to the error flow
+[17/35] tests/browser/demo.spec.js:264:1 › details tabs, JSON copy and download preserve the exact object
+[18/35] tests/browser/demo.spec.js:292:1 › screen states
+[19/35] tests/browser/demo.spec.js:352:3 › the object and helper line fit at 1920x1080
+[20/35] tests/browser/demo.spec.js:352:3 › the object and helper line fit at 1440x900
+[21/35] tests/browser/demo.spec.js:367:3 › no horizontal scroll at 360px
+[22/35] tests/browser/demo.spec.js:367:3 › no horizontal scroll at 640px
+[23/35] tests/browser/demo.spec.js:367:3 › no horizontal scroll at 1024px
+[24/35] tests/browser/demo.spec.js:367:3 › no horizontal scroll at 1440px
+[25/35] tests/browser/demo.spec.js:381:1 › phone: tapping the tape opens the picker, no drag-only instruction
+[26/35] tests/browser/demo.spec.js:395:1 › only the listed elements live outside the object
+[27/35] tests/browser/demo.spec.js:412:1 › motion: done during insert skips stale states
+[28/35] tests/browser/demo.spec.js:423:1 › motion: eject during the done burst ignores old callbacks
+[29/35] tests/browser/demo.spec.js:436:1 › motion: noise pauses when hidden and after dispose
+[30/35] tests/browser/demo.spec.js:469:1 › reduced motion: same screens and keyboard flow, nothing moves
+[31/35] tests/browser/demo.spec.js:491:1 › announcements say what the screen shows, upload at 25 percent steps
+[32/35] tests/browser/demo.spec.js:508:1 › Ctrl O opens the picker and a drop anywhere loads the tape
+[33/35] tests/browser/demo.spec.js:519:1 › the screen light follows state
+[34/35] tests/browser/demo.spec.js:533:1 › motion: the tape travels into the slot when a file is chosen
+[35/35] tests/browser/demo.spec.js:555:1 › opening details or JSON brings the panel on screen
+  1 skipped
+  34 passed (19.3s)
+npm notice run npx
+npm notice run 'playwright' test --reporter=json
+[WebServer] npm notice run npx
+[WebServer] npm notice run 'vite'
+[WebServer] npm notice run npx
+[WebServer] npm notice run 'vite' build
+[WebServer] npm notice run npx
+[WebServer] npm notice run 'vite' preview
