@@ -18,11 +18,11 @@
       "environment": [],
       "exit_code": 0,
       "log": "results/phase4b/tests/serving.log",
-      "log_sha256": "31c4e1501a4dc9d6751d77dde0648818563418f31f4fa49ecc49839f672ce1e8",
+      "log_sha256": "15f875679a9d278b8ba92f0cee5ee7e37f50eaaae0486b1c6223bce282af3e51",
       "summary": [
         "",
         "-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html",
-        "146 passed, 1 warning in 27.66s"
+        "146 passed, 1 warning in 21.40s"
       ]
     },
     "node": {
@@ -34,11 +34,11 @@
       "environment": [],
       "exit_code": 0,
       "log": "results/phase4b/tests/node.log",
-      "log_sha256": "dc0199a20202b0222c61b9df53d8d6d410d5f4a59fadb7c2f9aa88c82518c9cd",
+      "log_sha256": "9757b2a3931fada1acae431f4dcb43e48ba6757d984f81fedce8bd649a4973d3",
       "summary": [
         "\u2139 skipped 0",
         "\u2139 todo 0",
-        "\u2139 duration_ms 83.978146"
+        "\u2139 duration_ms 126.066133"
       ]
     },
     "browser": {
@@ -51,11 +51,11 @@
       "environment": [],
       "exit_code": 0,
       "log": "results/phase4b/tests/browser.log",
-      "log_sha256": "0e700ec1678d96d278eaaec90f58d0485c40a7365790e6db3d9fb34ae69c3cf1",
+      "log_sha256": "85c9969fc0cb6c0350982d7311b335d201faebfbdd92d484f5d1e67797ce33df",
       "summary": [
         "",
         "  1 skipped",
-        "  34 passed (19.0s)"
+        "  34 passed (20.0s)"
       ]
     },
     "container_browser": {
@@ -71,11 +71,11 @@
       ],
       "exit_code": 0,
       "log": "results/phase4b/tests/container_browser.log",
-      "log_sha256": "9788ec4375d1c72e7c8b7a60f560a5976565e1bfa581c8e1603a23dbc44d2e3d",
+      "log_sha256": "36519bbabf5a0793509b93f5597dcde4566bf22188a6cee1e82b72ec91c16a28",
       "summary": [
-        "  \u2713  3 tests/browser/container.spec.js:39:1 \u203a a real clip is scored end to end offline (10.7s)",
+        "  \u2713  2 tests/browser/container.spec.js:39:1 \u203a a real clip is scored end to end offline (9.4s)",
         "",
-        "  3 passed (11.3s)"
+        "  3 passed (9.8s)"
       ]
     },
     "lighthouse": {

@@ -1,10 +1,10 @@
 
 Running 3 tests using 3 workers
 
-  ✓  2 tests/browser/container.spec.js:32:1 › production ?mock still uses the real backend (367ms)
-  ✓  1 tests/browser/container.spec.js:19:1 › built page and every font load from the image alone (558ms)
-  ✓  3 tests/browser/container.spec.js:39:1 › a real clip is scored end to end offline (10.7s)
+  ✓  3 tests/browser/container.spec.js:32:1 › production ?mock still uses the real backend (228ms)
+  ✓  1 tests/browser/container.spec.js:19:1 › built page and every font load from the image alone (311ms)
+  ✓  2 tests/browser/container.spec.js:39:1 › a real clip is scored end to end offline (9.4s)
 
-  3 passed (11.3s)
+  3 passed (9.8s)
 npm notice run npx
 npm notice run 'playwright' test

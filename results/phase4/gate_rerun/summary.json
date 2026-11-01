@@ -1,0 +1,64 @@
+{
+  "commit": "1dd3d6616ee66b07f930d770b780e565a14e1661",
+  "dirty_tracked_files": [],
+  "steps": {
+    "script_12_prepare_serving": {
+      "status": "passed",
+      "files": [
+        "manifest.json",
+        "model.npz",
+        "preprocessing.json",
+        "runtime.yaml",
+        "weights/torch/checkpoints/resnet50-11ad3fa6.pth"
+      ],
+      "identical_to_artifacts_serving": true
+    },
+    "script_14_serving_check": {
+      "status": "passed",
+      "reference_rows": 20,
+      "bindings": {
+        "configs/serving.yaml": "9c252757b4ab1013d0723f6aa54e0b306605052f11a10500a049767c1988bbb0",
+        "data/splits/phase0_konvid_ids.txt": "5efbfd5c72f0353a6d78f9d5ce13a8d36db7f67486c474b163a4c0edd5874dd7",
+        "configs/phase0.yaml": "ff290dc34eb9a660e82b44ad82392e3a3deab6afac0e70c449a3e47870815881",
+        "results/phase4a/research_snapshot.json": "ccf3dee9ba98d1d046cc086382d27492e9de3fb2a41c912443035531b7f01cd8",
+        "results/phase3/phase_gate.json": "12b191fe6d67c66ed9e3de3ee053e397b167a568d38c19d40bd2f7c3f7bfb59d",
+        "results/phase3/deployment.json": "8d39157721046737211b17da17195ac8f0f0145be742c453700fdd9ef3e3c727",
+        "configs/features_v2.yaml": "8397ea636c79e69a382e88a7238f798b398dafd91774edd6b50555f7bb62777c",
+        "cache/v2/meta.json": "27af097a62ed3472519367ab50c2b6deb32af26788986d8fccdd886f1d9dfb3c",
+        "cache/v2/manifest.csv": "311ae067d92f2077ed1adf93006d7da991f23f94c0845fd1f6063a90025c9ab3",
+        "data/manifests/konvid.csv": "6b1d792204a111563cc103888c3e5deded62fbdec63cb97bb976c8361e812e5b",
+        "env/serving.lock": "6abc6f6a6dfeb53e88703bb3c16412c7f68a36904523b5651d11fc121c5dbc3a",
+        "results/phase4a/packaging_amendment.json": "01267d2d14e43d4126ca8ce2454e727213645086f91a323cb9f349e0a0e57f77"
+      },
+      "phase3_status": "passed with qualification",
+      "control_status": "failed"
+    },
+    "script_15_parity": {
+      "status": "passed",
+      "exit_code": 0,
+      "log": "results/phase4/gate_rerun/script_15_parity.log",
+      "last_line": "{\"mode\": \"parity\", \"status\": \"passed\"}"
+    },
+    "script_15_latency": {
+      "status": "passed",
+      "exit_code": 0,
+      "log": "results/phase4/gate_rerun/script_15_latency.log",
+      "last_line": "{\"mode\": \"latency\", \"status\": \"passed\"}"
+    },
+    "script_15_tests": {
+      "status": "passed",
+      "exit_code": 0,
+      "log": "results/phase4/gate_rerun/script_15_tests.log",
+      "last_line": "{\"mode\": \"tests\", \"status\": \"passed\"}"
+    },
+    "script_15_report": {
+      "status": "passed",
+      "exit_code": 0,
+      "log": "results/phase4/gate_rerun/script_15_report.log",
+      "last_line": "{\"mode\": \"report\", \"status\": \"passed\"}"
+    }
+  },
+  "status": "passed",
+  "phase4b_gate_status": "passed",
+  "phase4b_image_id": "sha256:85a3e58c672186cb2f896e49ffecc395715dff26d88e4e55b11e4fa38e6aeb8a"
+}

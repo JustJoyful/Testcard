@@ -16,7 +16,7 @@
     "--mount",
     "type=bind,src=/home/joydeep/Projects/VQA/data/raw/konvid/8252040986.mp4,dst=/input/video.mp4,readonly",
     "--mount",
-    "type=bind,src=/tmp/vqa-export-hezkwdz6,dst=/output",
+    "type=bind,src=/tmp/vqa-export-o1tg0otz,dst=/output",
     "--entrypoint",
     "python",
     "sha256:85a3e58c672186cb2f896e49ffecc395715dff26d88e4e55b11e4fa38e6aeb8a",
@@ -32,9 +32,9 @@
   "response": {
     "score": 3.551226228693376,
     "timings_seconds": {
-      "extraction": 10.978979923005681,
-      "head": 0.00011955300578847528,
-      "total": 10.979490387020633
+      "extraction": 7.697498605004512,
+      "head": 0.00013043801300227642,
+      "total": 7.698054864013102
     },
     "verified": {
       "model_sha256": "4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3",
@@ -43,6 +43,6 @@
       "preprocessing_sha256": "acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b",
       "cpu_threads": 4
     },
-    "startup_seconds": 1.6073873220011592
+    "startup_seconds": 1.2719076799985487
   }
 }

@@ -1,85 +1,85 @@
 {
   "excluded_from_warm_summary": true,
   "image_id": "sha256:85a3e58c672186cb2f896e49ffecc395715dff26d88e4e55b11e4fa38e6aeb8a",
-  "container_id": "643588b267574c545297ce98a96e368c364cfa4fe4b391061a787a1ce940bdb6",
+  "container_id": "44ad59632b4c9420ea0a76641f28d06a0d1c53ecc386b0c755a710361ce7df00",
   "video_id": "11902527296",
   "envelope": {
     "http_status": 202,
     "accepted": {
-      "task_id": "f3b53adc271e44b2bb5eb16c0795d8ba"
+      "task_id": "3a84a16a8e554d79a4208b052c062d9c"
     },
     "filename": "11902527296.mp4",
     "polls": [
       {
-        "at_seconds": 0.33520601500640623,
+        "at_seconds": 0.01730978098930791,
         "http_status": 200,
         "state": "processing",
         "stage": "extract"
       },
       {
-        "at_seconds": 1.3367422159935813,
+        "at_seconds": 1.0186815240012947,
         "http_status": 200,
         "state": "processing",
         "stage": "extract"
       },
       {
-        "at_seconds": 2.338547891995404,
+        "at_seconds": 2.0202482269960456,
         "http_status": 200,
         "state": "processing",
         "stage": "extract"
       },
       {
-        "at_seconds": 3.3402925370028242,
+        "at_seconds": 3.0222657049889676,
         "http_status": 200,
         "state": "processing",
         "stage": "extract"
       },
       {
-        "at_seconds": 4.34192738099955,
+        "at_seconds": 4.023839390982175,
         "http_status": 200,
         "state": "processing",
         "stage": "extract"
       },
       {
-        "at_seconds": 5.344369322003331,
+        "at_seconds": 5.025852156977635,
         "http_status": 200,
         "state": "processing",
         "stage": "extract"
       },
       {
-        "at_seconds": 6.346514817007119,
+        "at_seconds": 6.027577286993619,
         "http_status": 200,
         "state": "processing",
         "stage": "extract"
       },
       {
-        "at_seconds": 7.348645599995507,
+        "at_seconds": 7.0297771399782505,
         "http_status": 200,
         "state": "processing",
         "stage": "extract"
       },
       {
-        "at_seconds": 8.350738623004872,
+        "at_seconds": 8.03152117098216,
         "http_status": 200,
         "state": "done",
         "stage": null
       }
     ],
     "final": {
-      "task_id": "f3b53adc271e44b2bb5eb16c0795d8ba",
+      "task_id": "3a84a16a8e554d79a4208b052c062d9c",
       "state": "done",
       "stage": null,
       "result": {
-        "task_id": "f3b53adc271e44b2bb5eb16c0795d8ba",
+        "task_id": "3a84a16a8e554d79a4208b052c062d9c",
         "filename": "11902527296.mp4",
         "clip_seconds": 8.008,
-        "created_at": "2026-10-31T17:02:38.925526Z",
+        "created_at": "2026-10-31T18:11:32.981902Z",
         "prediction": {
           "score": 3.4206814401750743,
           "timings_seconds": {
-            "extraction": 7.072763589996612,
-            "head": 8.839700603857636e-05,
-            "total": 7.072852231009165
+            "extraction": 7.058393303974299,
+            "head": 8.143202285282314e-05,
+            "total": 7.058475019002799
           },
           "verified": {
             "model_sha256": "4c9782aefca4b81da4d15da31681f11ca8ded4e890d36d67fb478663583327a3",
@@ -88,23 +88,23 @@
             "preprocessing_sha256": "acc2e85da8cce49f23d21d990af382111cd1a9352d2fdeeb4731d06e3fe1678b",
             "cpu_threads": 4
           },
-          "startup_seconds": 1.1480688940209802
+          "startup_seconds": 1.0795993610227015
         }
       },
       "error": null
     },
-    "request_started": 199776.432156419,
-    "request_finished": 199784.782898205,
-    "wall_seconds": 8.350741786009166,
-    "upload_seconds": 0.3338597310066689
+    "request_started": 203910.806413492,
+    "request_finished": 203918.837936459,
+    "wall_seconds": 8.031522966979537,
+    "upload_seconds": 0.016011753992643207
   },
-  "wall_seconds": 8.350741786009166,
-  "upload_seconds": 0.3338597310066689,
-  "extraction": 7.072763589996612,
-  "head": 8.839700603857636e-05,
-  "internal_total": 7.072852231009165,
-  "polling_overhead_seconds": 0.9440298239933327,
+  "wall_seconds": 8.031522966979537,
+  "upload_seconds": 0.016011753992643207,
+  "extraction": 7.058393303974299,
+  "head": 8.143202285282314e-05,
+  "internal_total": 7.058475019002799,
+  "polling_overhead_seconds": 0.957036193984095,
   "poll_count": 9,
-  "request_started": 199776.432156419,
-  "request_finished": 199784.782898205
+  "request_started": 203910.806413492,
+  "request_finished": 203918.837936459
 }

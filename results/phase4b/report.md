@@ -4,7 +4,7 @@ Status: **passed**. Phase 3: **passed with qualification**; control: **failed**.
 
 Fixed videos: 20, each through the CLI `--json`, `/predict` and `/upload`→`/status`. Minimum per-timestep cosine: 0.999840967841. Maximum cache/raw score difference: 0.00484944152853 MOS. Maximum front-door score difference: 0.
 
-Warm upload-to-result wall seconds per ten seconds of video (browser polling contract): maximum 16.3533; median 10.0385; budget 120. Polling overhead beyond upload and internal inference: median 0.425 s, maximum 0.984 s.
+Warm upload-to-result wall seconds per ten seconds of video (browser polling contract): maximum 12.7292; median 10.0395; budget 120. Polling overhead beyond upload and internal inference: median 0.595 s, maximum 0.974 s.
 
 Production JavaScript: 9087 bytes gzip (budget 30000, fonts excluded). Lighthouse accessibility on the built container: 1.00.
 

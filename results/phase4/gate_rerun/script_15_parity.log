@@ -1,0 +1,21 @@
+{"video_id": "11902527296", "status": "passed", "minimum_cosine": 0.9999912079711457, "maximum_door_difference": 0.0}
+{"video_id": "3710887216", "status": "passed", "minimum_cosine": 0.9999843873098666, "maximum_door_difference": 0.0}
+{"video_id": "4565232312", "status": "passed", "minimum_cosine": 0.9999633445972265, "maximum_door_difference": 0.0}
+{"video_id": "4567868868", "status": "passed", "minimum_cosine": 0.9999849493572776, "maximum_door_difference": 0.0}
+{"video_id": "4652600104", "status": "passed", "minimum_cosine": 0.9999835237190008, "maximum_door_difference": 0.0}
+{"video_id": "5268797415", "status": "passed", "minimum_cosine": 0.9999766157286873, "maximum_door_difference": 0.0}
+{"video_id": "5564209652", "status": "passed", "minimum_cosine": 0.9999771111538585, "maximum_door_difference": 0.0}
+{"video_id": "5633788395", "status": "passed", "minimum_cosine": 0.9999638505674775, "maximum_door_difference": 0.0}
+{"video_id": "5869559051", "status": "passed", "minimum_cosine": 0.9999615426914704, "maximum_door_difference": 0.0}
+{"video_id": "6047579133", "status": "passed", "minimum_cosine": 0.9998409678411763, "maximum_door_difference": 0.0}
+{"video_id": "6648629457", "status": "passed", "minimum_cosine": 0.9999691558677668, "maximum_door_difference": 0.0}
+{"video_id": "6917745987", "status": "passed", "minimum_cosine": 0.9999770989902849, "maximum_door_difference": 0.0}
+{"video_id": "7177427229", "status": "passed", "minimum_cosine": 0.9999714572516842, "maximum_door_difference": 0.0}
+{"video_id": "7517202292", "status": "passed", "minimum_cosine": 0.9999827389658636, "maximum_door_difference": 0.0}
+{"video_id": "8252040986", "status": "passed", "minimum_cosine": 0.9999933512830304, "maximum_door_difference": 0.0}
+{"video_id": "8331470149", "status": "passed", "minimum_cosine": 0.9999713734558494, "maximum_door_difference": 0.0}
+{"video_id": "8495275628", "status": "passed", "minimum_cosine": 0.99998686247225, "maximum_door_difference": 0.0}
+{"video_id": "8563986596", "status": "passed", "minimum_cosine": 0.9999884756378716, "maximum_door_difference": 0.0}
+{"video_id": "8729448612", "status": "passed", "minimum_cosine": 0.999973054157864, "maximum_door_difference": 0.0}
+{"video_id": "9812351333", "status": "passed", "minimum_cosine": 0.9999916165269194, "maximum_door_difference": 0.0}
+{"mode": "parity", "status": "passed"}
